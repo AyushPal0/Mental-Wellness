@@ -1,28 +1,5 @@
 "use client"
 
-\
-You are given a task to integrate a React component into your codebase.
-Please verify your project has the following setup:
-- shadcn/ui project structure
-- Tailwind CSS v4.0
-- TypeScript
-
-If any of these are missing, provide instructions on how to setup project via shadcn CLI, install Tailwind or Typescript.
-
-\
-Determine the default path
-for components and styles.
-\
-If default path
-for components is not /components/ui, provide instructions
-on
-why
-it
-'s important to create this folder
-Copy-paste this component to /components/ui folder:
-File location: components/floating-dock-demo.tsx
-
-File content:
 import type React from "react"
 import { FloatingDock } from "@/components/ui/floating-dock"
 import { IconBrandGithub, IconBrandX, IconExchange, IconHome, IconNewSection, IconTerminal2 } from "@tabler/icons-react"
@@ -77,10 +54,7 @@ export default function FloatingDockDemo() {
   )
 }
 
-\
-File location: components/ui/floating-dock.tsx
 
-File content:
 import { cn } from "@/lib/utils"
 import { IconLayoutNavbarCollapse } from "@tabler/icons-react"
 import { AnimatePresence, type MotionValue, motion, useMotionValue, useSpring, useTransform } from "motion/react"
