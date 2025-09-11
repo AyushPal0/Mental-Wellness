@@ -1,23 +1,57 @@
+// @/components/ui/input.tsx
+"use client";
 import * as React from "react";
-
 import { cn } from "@/lib/utils";
-import { Slot } from "@radix-ui/react-slot";
-import { cva } from "class-variance-authority";
+import { useMotionTemplate, useMotionValue, motion } from "framer-motion"; // Corrected import
 
-export const inputVariants = cva(
-  "flex w-full rounded-full transition-[background-color,box-shadow] backdrop-blur-sm duration-200 ease-out bg-primary/20 shadow-sm ring-1 ring-transparent focus-visible:bg-primary/20 focus-visible:ring-1 focus-visible:ring-primary/40 focus-visible:ring-offset-4 focus-visible:ring-offset-black/10 disabled:cursor-not-allowed died:opacity-50 md:text-base text-white border-2 border-white/50 h-11 !text-base placeholder:text-white/80 focus:outline-none px-4",
-);
+export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {}
 
-const Input = React.forwardRef<HTMLInputElement, React.ComponentProps<"input"> & { asChild?: boolean }>(
-  ({ className, type, asChild, ...props }, ref) => {
-    const Comp = asChild ? Slot : "input";
+const Input = React.forwardRef<HTMLInputElement, InputProps>(
+  ({ className, type, ...props }, ref) => {
+    const radius = 100; // change this to increase the radius of the hover effect
+    const [visible, setVisible] = React.useState(false);
+
+    let mouseX = useMotionValue(0);
+    let mouseY = useMotionValue(0);
+
+    function handleMouseMove({ currentTarget, clientX, clientY }: any) {
+      let { left, top } = currentTarget.getBoundingClientRect();
+
+      mouseX.set(clientX - left);
+      mouseY.set(clientY - top);
+    }
     return (
-      <Comp
-        type={type}
-        className={cn(inputVariants(), className)}
-        ref={ref}
-        {...props}
-      />
+      <motion.div
+        style={{
+          background: useMotionTemplate`
+        radial-gradient(
+          ${visible ? radius + "px" : "0px"} circle at ${mouseX}px ${mouseY}px,
+          var(--blue-500),
+          transparent 80%
+        )
+      `,
+        }}
+        onMouseMove={handleMouseMove}
+        onMouseEnter={() => setVisible(true)}
+        onMouseLeave={() => setVisible(false)}
+        className="p-[2px] rounded-lg transition duration-300 group/input"
+      >
+        <input
+          type={type}
+          className={cn(
+            `flex h-10 w-full border-none bg-zinc-800/80 text-white shadow-input rounded-md px-3 py-2 text-sm  file:border-0 file:bg-transparent 
+          file:text-sm file:font-medium placeholder:text-neutral-400 dark:placeholder-text-neutral-600 
+          focus-visible:outline-none focus-visible:ring-[2px] focus-visible:ring-neutral-600
+           disabled:cursor-not-allowed disabled:opacity-50
+           dark:shadow-[0px_0px_1px_1px_var(--neutral-700)]
+           group-hover/input:shadow-none transition duration-400
+           `,
+            className
+          )}
+          ref={ref}
+          {...props}
+        />
+      </motion.div>
     );
   }
 );

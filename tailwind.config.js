@@ -4,8 +4,8 @@ module.exports = {
   content: [
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
-      "*.{js,ts,jsx,tsx,mdx}"
-],
+    "*.{js,ts,jsx,tsx,mdx}"
+  ],
   theme: {
     extend: {
       screens: {
@@ -17,8 +17,7 @@ module.exports = {
         "footer-safe-area": "var(--footer-safe-area)",
       },
       backgroundImage: {
-        "gradient-primary":
-          "linear-gradient(90deg,rgba(255,255,255, 0.1) 0%,rgba(255,255,255, 0.4) 100%),rgba(85,85,85,0.1)",
+        "gradient-primary": "linear-gradient(90deg,rgba(255,255,255, 0.1) 0%,rgba(255,255,255, 0.4) 100%),rgba(85,85,85,0.1)",
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -26,8 +25,7 @@ module.exports = {
         sm: "calc(var(--radius) - 4px)",
       },
       transitionProperty: {
-        "colors-and-shadows":
-          "color, background-color, border-color, text-decoration-color, fill, stroke, box-shadow",
+        "colors-and-shadows": "color, background-color, border-color, text-decoration-color, fill, stroke, box-shadow",
       },
       animation: {
         shine: "shine 2s ease-in-out infinite",
@@ -36,12 +34,11 @@ module.exports = {
         serif: ["var(--font-instrument-serif)", "serif"],
       },
       boxShadow: {
-        button:
-          "inset 0 0 1px 1px rgba(255, 255, 255, 0.05), inset 0 0 2px 1px rgba(255, 255, 255, 0.2), inset -1px -1px 1px 0px rgba(0, 0, 0, 0.0), 0 0 10px 0 rgba(255, 255, 255, 0.1)",
-        "button-hover":
-          "inset 0 0 5px 1px rgba(255, 255, 255, 0.2), inset 0.5px 0.5px 1px 0.5px rgba(255, 255, 255, 0.5), inset -0.5px -0.5px 0.5px 0.5px rgba(0, 0, 0, 0.2), 0 0 12px 4px rgba(255, 255, 255, 0.5)",
+        button: "inset 0 0 1px 1px rgba(255, 255, 255, 0.05), inset 0 0 2px 1px rgba(255, 255, 255, 0.2), inset -1px -1px 1px 0px rgba(0, 0, 0, 0.0), 0 0 10px 0 rgba(255, 255, 255, 0.1)",
+        "button-hover": "inset 0 0 5px 1px rgba(255, 255, 255, 0.2), inset 0.5px 0.5px 1px 0.5px rgba(255, 255, 255, 0.5), inset -0.5px -0.5px 0.5px 0.5px rgba(0, 0, 0, 0.2), 0 0 12px 4px rgba(255, 255, 255, 0.5)",
       },
       colors: {
+        // --- Your existing variable-based colors ---
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         card: {
@@ -86,8 +83,17 @@ module.exports = {
           4: "hsl(var(--chart-4))",
           5: "hsl(var(--chart-5))",
         },
+
+        // --- NEW: Added colors specifically for the chatbot UI ---
+        'base-start': '#1D2432',      // A deep, soft slate blue for gradients
+        'base-end': '#111827',        // A near-black with a hint of blue for gradients
+        'surface': '#2C3548',         // For cards and interactive elements
+        'surface-hover': '#3a455c',   // Hover state for cards
+        'primary-chat': '#818cf8',    // A gentle lavender for accents in the chat
+        'text-main': '#e5e7eb',       // Main text color for the chat
+        'text-secondary': '#9ca3af',  // Secondary text color for the chat
       },
     },
   },
-  plugins: [import("tailwindcss-animate")],
+  plugins: [require("tailwindcss-animate")], // Make sure to use require for plugins
 };
