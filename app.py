@@ -1,7 +1,7 @@
 from flask import Flask
-from backend.routes.personality_routes import personality_bp
-from backend.utils.db import init_db  # Assuming you have DB setup here
-
+from routes.personality_routes import personality_bp
+from utils.db import init_db  # Assuming you have DB setup here
+from backend.api.chat_api import chat_api
 # Initialize Flask
 app = Flask(__name__)
 
@@ -10,6 +10,7 @@ init_db(app)
 
 # Register blueprints
 app.register_blueprint(personality_bp, url_prefix="/api/personality")
+app.register_blueprint(chat_api, url_prefix="/api")
 
 # Root health check
 @app.route("/")

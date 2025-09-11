@@ -1,0 +1,6 @@
+langchain
+flask
+pymongo
+python-dotenv
+pinecone
+llm
