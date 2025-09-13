@@ -17,6 +17,7 @@ module.exports = {
         "footer-safe-area": "var(--footer-safe-area)",
       },
       backgroundImage: {
+        "glass-gradient": "linear-gradient(to bottom right, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.05))",
         "gradient-primary": "linear-gradient(90deg,rgba(255,255,255, 0.1) 0%,rgba(255,255,255, 0.4) 100%),rgba(85,85,85,0.1)",
       },
       borderRadius: {
