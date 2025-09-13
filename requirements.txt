@@ -1,0 +1,18 @@
+Flask==3.0.3
+Flask-PyMongo==2.3.0
+pymongo==4.10.1
+
+# For handling environment variables
+python-dotenv==1.0.1
+
+# For data validation (if you validate request payloads)
+marshmallow==3.21.2
+
+# For password hashing / security
+bcrypt==4.2.0
+
+# For migrations with MongoDB (optional, if you plan to manage schemas)
+mongoengine==0.29.1
+
+# For making external API requests (e.g., mental health helpline, therapist lookup)
+requests==2.32.3
