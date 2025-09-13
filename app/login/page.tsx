@@ -1,7 +1,8 @@
 // app/login/page.tsx
 'use client';
 import Link from 'next/link';
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
@@ -31,16 +32,47 @@ const VideoBackground = () => {
 
 // Main Login Component
 export default function Login() {
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const router = useRouter();
+  const [formData, setFormData] = useState({ email: '', password: '' });
+  const [error, setError] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFormData({ ...formData, [e.target.id]: e.target.value });
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("Form submitted");
+    setError('');
+    setIsLoading(true);
+
+    try {
+      const response = await fetch('http://127.0.0.1:5000/api/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to log in');
+      }
+
+      // On successful login, redirect to chatbot with the user ID
+      router.push(`/chatbot?userId=${data.userId}`);
+
+    } catch (err: any) {
+      setError(err.message);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
     <main className="h-[100dvh] w-full overflow-hidden relative">
       <VideoBackground />
       <div className="relative z-10 h-full flex items-center justify-center px-4 dark">
-        {/* Merged Styles: Kept your transparent background and added new UI's structure */}
         <div className="bg-black bg-opacity-50 backdrop-blur-lg rounded-2xl border border-white border-opacity-20 p-8 w-full max-w-md">
           <h2 className="font-bold text-xl text-neutral-200">
             Welcome back to Eunoia
@@ -48,48 +80,32 @@ export default function Login() {
           <p className="text-neutral-300 text-sm max-w-sm mt-2">
             Log in to continue your mental wellness journey.
           </p>
+          
+          {error && <p className="text-red-500 text-sm mt-4 text-center bg-red-500/10 p-2 rounded-md">{error}</p>}
 
           <form className="my-8" onSubmit={handleSubmit}>
             <LabelInputContainer className="mb-4">
               <Label htmlFor="email">Email Address</Label>
-              <Input id="email" placeholder="projectmayhem@fc.com" type="email" />
+              <Input id="email" placeholder="projectmayhem@fc.com" type="email" value={formData.email} onChange={handleChange} required />
             </LabelInputContainer>
             <LabelInputContainer className="mb-4">
               <Label htmlFor="password">Password</Label>
-              <Input id="password" placeholder="••••••••" type="password" />
+              <Input id="password" placeholder="••••••••" type="password" value={formData.password} onChange={handleChange} required />
             </LabelInputContainer>
             
             <button
-              className="bg-gradient-to-br relative group/btn from-zinc-900 to-zinc-900 block bg-zinc-800 w-full text-white rounded-md h-10 font-medium shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:shadow-[0px_1px_0px_0px_#27272a_inset,0px_-1px_0px_0px_#27272a_inset]"
+              className="bg-gradient-to-br relative group/btn from-zinc-900 to-zinc-900 block bg-zinc-800 w-full text-white rounded-md h-10 font-medium shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:shadow-[0px_1px_0px_0px_#27272a_inset,0px_-1px_0px_0px_#27272a_inset] disabled:opacity-50"
               type="submit"
+              disabled={isLoading}
             >
-              Log in &rarr;
+              {isLoading ? 'Logging in...' : 'Log in →'}
               <BottomGradient />
             </button>
 
             <div className="bg-gradient-to-r from-transparent via-neutral-700 to-transparent my-8 h-[1px] w-full" />
 
             <div className="flex flex-col space-y-4">
-               <button
-                className=" relative group/btn flex space-x-2 items-center justify-start px-4 w-full text-black rounded-md h-10 font-medium shadow-input bg-zinc-900 shadow-[0px_0px_1px_1px_#262626]"
-                type="submit"
-              >
-                <IconBrandGithub className="h-4 w-4 text-neutral-300" />
-                <span className="text-neutral-300 text-sm">
-                  GitHub
-                </span>
-                <BottomGradient />
-              </button>
-              <button
-                className=" relative group/btn flex space-x-2 items-center justify-start px-4 w-full text-black rounded-md h-10 font-medium shadow-input bg-zinc-900 shadow-[0px_0px_1px_1px_#262626]"
-                type="submit"
-              >
-                <IconBrandGoogle className="h-4 w-4 text-neutral-300" />
-                <span className="text-neutral-300 text-sm">
-                  Google
-                </span>
-                <BottomGradient />
-              </button>
+               {/* Social login buttons can be implemented here */}
             </div>
           </form>
            <p className="text-sm text-center mt-6 text-neutral-300">

@@ -1,8 +1,10 @@
+// app/chatbot/page.tsx
 'use client'
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef, useEffect, useState, Suspense } from "react";
 import Sidebar from '@/components/Sidebar';
 import ChatArea from '@/components/ChatArea';
 import ProfileTaskPanel from "@/components/ProfileTaskPanel";
+import { useSearchParams } from "next/navigation";
 
 const VideoBackground = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -28,23 +30,46 @@ const VideoBackground = () => {
   );
 };
 
-
-export default function ChatbotPage() {
+// This component uses the hook and must be inside Suspense
+function ChatbotPageContent() {
   const [isPanelOpen, setPanelOpen] = useState(false);
+  const searchParams = useSearchParams();
+  const userId = searchParams.get('userId');
+
+  // Handle case where userId is missing from URL
+  if (!userId) {
+    return (
+        <div className="h-screen w-full relative font-sans overflow-hidden">
+            <VideoBackground />
+            <div className="relative z-10 h-full flex flex-col justify-center items-center text-center text-white px-4 pt-4">
+                <h1 className="text-3xl font-bold">Error</h1>
+                <p>User ID is missing. Please log in to continue.</p>
+            </div>
+        </div>
+    );
+  }
 
   return (
     <div className="h-screen w-full relative font-sans overflow-hidden">
       <VideoBackground />
       <main className="relative z-10 flex h-full w-full items-center justify-center p-4 gap-4">
-        {/* Main content container */}
         <div className="hidden md:flex md:flex-shrink-0 h-[95vh] max-h-[900px]">
-          <Sidebar />
+          <Sidebar userId={userId} />
         </div>
         <div className="flex-1 h-[95vh] max-h-[900px]">
-          <ChatArea onProfileClick={() => setPanelOpen(true)} />
+          <ChatArea userId={userId} onProfileClick={() => setPanelOpen(true)} />
         </div>
       </main>
       <ProfileTaskPanel isOpen={isPanelOpen} onClose={() => setPanelOpen(false)} />
     </div>
   );
+}
+
+// The main page component wraps the content in <Suspense>
+export default function ChatbotPage() {
+    return (
+        <Suspense fallback={<div className="h-screen w-full flex items-center justify-center bg-black text-white">Loading...</div>}>
+            <ChatbotPageContent />
+        </Suspense>
+    )
 }
