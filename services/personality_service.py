@@ -58,7 +58,19 @@ def save_or_update_personality(user_id: str, scores: Dict[str, int]) -> Personal
             }}
         )
         updated = collection.find_one({"user_id": user_id})
-        return Personality(**updated)
+        # Convert _id ObjectId to str for Pydantic model
+        if updated and '_id' in updated:
+            updated['_id'] = str(updated['_id'])
+        print(f"Updated data: {updated}")
+        try:
+            personality = Personality(**updated)
+            print(f"Personality created successfully: {personality}")
+            return personality
+        except Exception as e:
+            print(f"Error creating Personality from updated data: {e}")
+            import traceback
+            traceback.print_exc()
+            raise
 
     else:
         # Create a new personality document

@@ -7,6 +7,12 @@ logger = logging.getLogger(__name__)
 
 db = None
 
+def get_db():
+    """Get the database instance"""
+    if db is None:
+        raise ConnectionFailure("Database not initialized. Call init_db() first.")
+    return db
+
 def init_db(app):
     global db
     # Get MongoDB URI from environment variable or use default

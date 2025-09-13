@@ -20,6 +20,9 @@ def get_questions():
     except FileNotFoundError:
         return jsonify({"success": False, "error": "Questions file not found"}), 404
     except Exception as e:
+        print(f"Error in submit_personality: {e}")
+        import traceback
+        traceback.print_exc()
         return jsonify({"success": False, "error": str(e)}), 500
 
 
@@ -31,21 +34,27 @@ def submit_personality():
     """
     try:
         data = request.get_json()
+        print(f"Received data: {data}")
         if not data:
             return jsonify({"success": False, "error": "No JSON data provided"}), 400
-            
+
         user_id = data.get("user_id")
         scores = data.get("scores")
+        print(f"user_id: {user_id}, scores: {scores}")
 
         if not user_id or not scores:
             return jsonify({"success": False, "error": "Missing user_id or scores"}), 400
 
         personality = save_or_update_personality(user_id, scores)
+        print(f"Personality returned: {personality}")
 
         return jsonify({
-            "success": True, 
-            "message": "Personality saved successfully", 
+            "success": True,
+            "message": "Personality saved successfully",
             "personality": personality.dict(by_alias=True)
         })
     except Exception as e:
+        print(f"Error in submit_personality: {e}")
+        import traceback
+        traceback.print_exc()
         return jsonify({"success": False, "error": str(e)}), 500

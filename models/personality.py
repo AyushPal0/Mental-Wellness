@@ -21,6 +21,7 @@ class Personality(BaseModel):
     perceiving_score: int = 0
 
     created_at: datetime = Field(default_factory=datetime.utcnow)
+    updated_at: Optional[datetime] = None
 
     class Config:
         arbitrary_types_allowed = True
