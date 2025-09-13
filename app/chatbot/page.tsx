@@ -30,13 +30,27 @@ const VideoBackground = () => {
   );
 };
 
-// This component uses the hook and must be inside Suspense
 function ChatbotPageContent() {
   const [isPanelOpen, setPanelOpen] = useState(false);
   const searchParams = useSearchParams();
   const userId = searchParams.get('userId');
+  
+  const [conversationId, setConversationId] = useState<string | null>(null);
+  const [refreshHistoryKey, setRefreshHistoryKey] = useState(Date.now());
 
-  // Handle case where userId is missing from URL
+  const handleNewChat = () => {
+    setConversationId(null); // Setting to null signifies a new chat
+  };
+
+  const handleSelectConversation = (id: string) => {
+    setConversationId(id); // Set to the selected conversation ID
+  };
+
+  const handleConversationStarted = (newConversationId: string) => {
+    setConversationId(newConversationId); // Update the state with the new ID from the backend
+    setRefreshHistoryKey(Date.now()); // Trigger a refresh of the sidebar history
+  };
+
   if (!userId) {
     return (
         <div className="h-screen w-full relative font-sans overflow-hidden">
@@ -54,10 +68,21 @@ function ChatbotPageContent() {
       <VideoBackground />
       <main className="relative z-10 flex h-full w-full items-center justify-center p-4 gap-4">
         <div className="hidden md:flex md:flex-shrink-0 h-[95vh] max-h-[900px]">
-          <Sidebar userId={userId} />
+          <Sidebar 
+            key={refreshHistoryKey} // Re-render sidebar when history needs to refresh
+            userId={userId} 
+            onNewChat={handleNewChat}
+            onSelectConversation={handleSelectConversation}
+          />
         </div>
         <div className="flex-1 h-[95vh] max-h-[900px]">
-          <ChatArea userId={userId} onProfileClick={() => setPanelOpen(true)} />
+          <ChatArea 
+            key={conversationId || 'new-chat'} // Use key to force re-mount for new/selected chats
+            userId={userId} 
+            conversationId={conversationId}
+            onProfileClick={() => setPanelOpen(true)}
+            onConversationStarted={handleConversationStarted}
+          />
         </div>
       </main>
       <ProfileTaskPanel isOpen={isPanelOpen} onClose={() => setPanelOpen(false)} />
@@ -65,7 +90,6 @@ function ChatbotPageContent() {
   );
 }
 
-// The main page component wraps the content in <Suspense>
 export default function ChatbotPage() {
     return (
         <Suspense fallback={<div className="h-screen w-full flex items-center justify-center bg-black text-white">Loading...</div>}>

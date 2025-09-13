@@ -1,11 +1,13 @@
+// components/ProfileTaskPanel.tsx
 'use client';
 
 import React, { useState, useMemo } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { X, Check } from 'lucide-react';
+import { X, Check, LogOut } from 'lucide-react';
 import Image from 'next/image';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { cn } from '@/lib/utils';
+import { useRouter } from 'next/navigation';
 
 // --- MOCK DATA ---
 const initialTasks = [
@@ -32,11 +34,16 @@ interface ProfileTaskPanelProps {
 export default function ProfileTaskPanel({ isOpen, onClose }: ProfileTaskPanelProps) {
   const [tasks, setTasks] = useState(initialTasks);
   const [activeTab, setActiveTab] = useState("profile");
+  const router = useRouter();
 
   const handleTaskToggle = (taskId: number) => {
     setTasks(tasks.map(task => 
       task.id === taskId ? { ...task, completed: !task.completed } : task
     ));
+  };
+
+  const handleLogout = () => {
+    router.push('/login');
   };
 
   const completedTasksCount = useMemo(() => tasks.filter(t => t.completed).length, [tasks]);
@@ -135,6 +142,13 @@ export default function ProfileTaskPanel({ isOpen, onClose }: ProfileTaskPanelPr
                                     />
                                 </div>
                             </div>
+                            <button
+                                onClick={handleLogout}
+                                className="mt-8 flex items-center gap-2 text-white bg-red-500/80 hover:bg-red-500/100 transition-colors px-6 py-2 rounded-full"
+                            >
+                                <LogOut size={18} />
+                                Logout
+                            </button>
                         </div>
                     </TabsContent>
 

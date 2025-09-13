@@ -5,15 +5,17 @@ import { MessageSquare, Plus, Settings } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
 interface HistoryItem {
-    _id: { $oid: string };
-    user_message: string;
+    conversation_id: string;
+    title: string;
 }
 
 interface SidebarProps {
     userId: string;
+    onNewChat: () => void;
+    onSelectConversation: (id: string) => void;
 }
 
-export default function Sidebar({ userId }: SidebarProps) {
+export default function Sidebar({ userId, onNewChat, onSelectConversation }: SidebarProps) {
     const [historyItems, setHistoryItems] = useState<HistoryItem[]>([]);
     const [isLoading, setIsLoading] = useState(true);
 
@@ -41,7 +43,10 @@ export default function Sidebar({ userId }: SidebarProps) {
 
     return (
         <aside className="w-64 bg-white/10 backdrop-blur-3xl text-white p-4 flex flex-col h-full rounded-2xl border border-white/20 shadow-lg">
-            <button className="flex items-center justify-between p-2 rounded-full bg-white/15 hover:bg-white/25 transition-colors duration-200">
+            <button
+                onClick={onNewChat}
+                className="flex items-center justify-between p-2 rounded-full bg-white/15 hover:bg-white/25 transition-colors duration-200"
+            >
                 <span className="text-lg font-semibold ml-2">MindfulAI</span>
                 <Plus size={20} />
             </button>
@@ -50,9 +55,8 @@ export default function Sidebar({ userId }: SidebarProps) {
                 <h2 className="text-xs font-semibold text-white/80 uppercase tracking-wider mb-2 px-2">History</h2>
                 {isLoading ? (
                     <div className="space-y-2">
-                        {/* Loading skeleton */}
-                        {[...Array(4)].map((_, i) => (
-                            <div key={i} className="flex items-center space-x-2 p-2">
+                        {[...Array(5)].map((_, i) => (
+                            <div key={i} className="flex items-center space-x-2 p-2 h-8">
                                 <div className="w-4 h-4 bg-white/20 rounded animate-pulse"></div>
                                 <div className="w-4/5 h-4 bg-white/20 rounded animate-pulse"></div>
                             </div>
@@ -62,9 +66,13 @@ export default function Sidebar({ userId }: SidebarProps) {
                     <ul className="space-y-1">
                         {historyItems.length > 0 ? (
                             historyItems.map((item) => (
-                                <li key={item._id.$oid} className="flex items-center space-x-2 p-2 rounded-md hover:bg-white/15 cursor-pointer transition-colors duration-200">
+                                <li 
+                                  key={item.conversation_id} 
+                                  onClick={() => onSelectConversation(item.conversation_id)}
+                                  className="flex items-center space-x-2 p-2 rounded-md hover:bg-white/15 cursor-pointer transition-colors duration-200"
+                                >
                                     <MessageSquare size={16} className="text-white/70 flex-shrink-0" />
-                                    <span className="truncate text-sm text-white">{item.user_message}</span>
+                                    <span className="truncate text-sm text-white">{item.title}</span>
                                 </li>
                             ))
                         ) : (

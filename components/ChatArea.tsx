@@ -1,3 +1,4 @@
+// components/ChatArea.tsx
 "use client";
 
 import { useState, useRef, useEffect, ChangeEvent, FormEvent } from 'react';
@@ -6,18 +7,19 @@ import { Lightbulb, Menu, User } from 'lucide-react';
 import Image from 'next/image';
 
 interface Message {
-    id: number;
+    id: number | string;
     text: string;
     sender: 'user' | 'ai';
 }
 
 interface ChatAreaProps {
   userId: string;
+  conversationId: string | null;
   onProfileClick: () => void;
+  onConversationStarted: (newConversationId: string) => void;
 }
 
-// Moved WelcomeScreen component to the top of the file
-const WelcomeScreen = () => {
+const WelcomeScreen = () => { 
     const suggestionCards = [
         "Create a guided meditation script for focus",
         "Help me write a gratitude journal entry",
@@ -45,11 +47,39 @@ const WelcomeScreen = () => {
     );
 };
 
-export default function ChatArea({ userId, onProfileClick }: ChatAreaProps) {
+export default function ChatArea({ userId, conversationId, onProfileClick, onConversationStarted }: ChatAreaProps) {
     const [messages, setMessages] = useState<Message[]>([]);
     const [currentInput, setCurrentInput] = useState("");
     const [isLoading, setIsLoading] = useState(false);
     const messagesEndRef = useRef<null | HTMLDivElement>(null);
+    const currentConversationId = useRef(conversationId);
+
+    useEffect(() => {
+        currentConversationId.current = conversationId;
+        if (conversationId) {
+            const fetchConversation = async () => {
+                setIsLoading(true);
+                try {
+                    const res = await fetch(`http://127.0.0.1:5000/api/conversation/${conversationId}`);
+                    const data = await res.json();
+                    const fetchedMessages: Message[] = data.messages.flatMap((msg: any, index: number) => [
+                        { id: `${msg._id.$oid}-user`, text: msg.user_message, sender: 'user' },
+                        { id: `${msg._id.$oid}-ai`, text: msg.bot_response, sender: 'ai' },
+                    ]);
+                    setMessages(fetchedMessages);
+                } catch (error) {
+                    console.error("Failed to fetch conversation:", error);
+                    setMessages([]); // Clear on error
+                } finally {
+                    setIsLoading(false);
+                }
+            };
+            fetchConversation();
+        } else {
+            setMessages([]); // Clear messages for a new chat
+        }
+    }, [conversationId]);
+
 
     useEffect(() => {
         messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -83,6 +113,7 @@ export default function ChatArea({ userId, onProfileClick }: ChatAreaProps) {
                 body: JSON.stringify({
                     user_id: userId,
                     message: messageToSend,
+                    conversation_id: currentConversationId.current // Send current conversation ID
                 }),
             });
 
@@ -92,6 +123,13 @@ export default function ChatArea({ userId, onProfileClick }: ChatAreaProps) {
             }
 
             const data = await response.json();
+            
+            // If this was a new chat, update the conversation ID
+            if (!currentConversationId.current) {
+                currentConversationId.current = data.conversation_id;
+                onConversationStarted(data.conversation_id);
+            }
+
             const aiResponse: Message = { id: Date.now() + 1, text: data.response, sender: 'ai' };
             setMessages((prev) => [...prev, aiResponse]);
 
@@ -103,7 +141,7 @@ export default function ChatArea({ userId, onProfileClick }: ChatAreaProps) {
             setIsLoading(false);
         }
     };
-
+    
     return (
         <main className="flex-1 flex flex-col bg-white/10 backdrop-blur-3xl h-full rounded-2xl border border-white/20 shadow-lg overflow-hidden">
             <header className="flex justify-between items-center p-4 text-white border-b border-white/10 flex-shrink-0">
