@@ -36,6 +36,7 @@ function ChatbotPageContent() {
   const userId = searchParams.get('userId');
   
   const [conversationId, setConversationId] = useState<string | null>(null);
+  // This state will now act as a trigger for the Sidebar to refetch data
   const [refreshHistoryKey, setRefreshHistoryKey] = useState(Date.now());
 
   const handleNewChat = () => {
@@ -47,8 +48,9 @@ function ChatbotPageContent() {
   };
 
   const handleConversationStarted = (newConversationId: string) => {
-    setConversationId(newConversationId); // Update the state with the new ID from the backend
-    setRefreshHistoryKey(Date.now()); // Trigger a refresh of the sidebar history
+    setConversationId(newConversationId);
+    // Update the key to trigger the useEffect in Sidebar, without remounting the component
+    setRefreshHistoryKey(Date.now()); 
   };
 
   if (!userId) {
@@ -69,15 +71,17 @@ function ChatbotPageContent() {
       <main className="relative z-10 flex h-full w-full items-center justify-center p-4 gap-4">
         <div className="hidden md:flex md:flex-shrink-0 h-[95vh] max-h-[900px]">
           <Sidebar 
-            key={refreshHistoryKey} // Re-render sidebar when history needs to refresh
+            // The 'key' prop is removed to prevent remounting
             userId={userId} 
             onNewChat={handleNewChat}
             onSelectConversation={handleSelectConversation}
+            // We pass the key as a 'refreshTrigger' prop instead
+            refreshTrigger={refreshHistoryKey}
           />
         </div>
         <div className="flex-1 h-[95vh] max-h-[900px]">
           <ChatArea 
-            key={conversationId || 'new-chat'} // Use key to force re-mount for new/selected chats
+            key={conversationId || 'new-chat'} // Key is still useful here to reset the chat area
             userId={userId} 
             conversationId={conversationId}
             onProfileClick={() => setPanelOpen(true)}

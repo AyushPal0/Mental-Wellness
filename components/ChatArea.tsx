@@ -19,7 +19,7 @@ interface ChatAreaProps {
   onConversationStarted: (newConversationId: string) => void;
 }
 
-const WelcomeScreen = () => { 
+const WelcomeScreen = () => {
     const suggestionCards = [
         "Create a guided meditation script for focus",
         "Help me write a gratitude journal entry",
@@ -62,24 +62,27 @@ export default function ChatArea({ userId, conversationId, onProfileClick, onCon
                 try {
                     const res = await fetch(`http://127.0.0.1:5000/api/conversation/${conversationId}`);
                     const data = await res.json();
-                    const fetchedMessages: Message[] = data.messages.flatMap((msg: any, index: number) => [
-                        { id: `${msg._id.$oid}-user`, text: msg.user_message, sender: 'user' },
-                        { id: `${msg._id.$oid}-ai`, text: msg.bot_response, sender: 'ai' },
-                    ]);
-                    setMessages(fetchedMessages);
+                    if (data.messages) {
+                        const fetchedMessages: Message[] = data.messages.flatMap((msg: any) => [
+                            { id: `${msg._id.$oid}-user`, text: msg.user_message, sender: 'user' },
+                            { id: `${msg._id.$oid}-ai`, text: msg.bot_response, sender: 'ai' },
+                        ]);
+                        setMessages(fetchedMessages);
+                    } else {
+                         setMessages([]);
+                    }
                 } catch (error) {
                     console.error("Failed to fetch conversation:", error);
-                    setMessages([]); // Clear on error
+                    setMessages([]);
                 } finally {
                     setIsLoading(false);
                 }
             };
             fetchConversation();
         } else {
-            setMessages([]); // Clear messages for a new chat
+            setMessages([]);
         }
     }, [conversationId]);
-
 
     useEffect(() => {
         messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -99,12 +102,15 @@ export default function ChatArea({ userId, conversationId, onProfileClick, onCon
         e.preventDefault();
         if (!currentInput.trim() || isLoading) return;
 
-        const userMessage: Message = { id: Date.now(), text: currentInput, sender: 'user' };
-        setMessages((prev) => [...prev, userMessage]);
-        
-        const messageToSend = currentInput;
+        const userMessageText = currentInput;
+        const userMessage: Message = { id: Date.now(), text: userMessageText, sender: 'user' };
+        setMessages(prev => [...prev, userMessage]);
         setCurrentInput("");
         setIsLoading(true);
+
+        const aiResponseId = Date.now() + 1;
+        const aiPlaceholder: Message = { id: aiResponseId, text: "", sender: 'ai' };
+        setMessages(prev => [...prev, aiPlaceholder]);
 
         try {
             const response = await fetch('http://127.0.0.1:5000/api/chat', {
@@ -112,36 +118,61 @@ export default function ChatArea({ userId, conversationId, onProfileClick, onCon
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
                     user_id: userId,
-                    message: messageToSend,
-                    conversation_id: currentConversationId.current // Send current conversation ID
+                    message: userMessageText,
+                    conversation_id: currentConversationId.current,
                 }),
             });
 
-            if (!response.ok) {
-                const errorData = await response.json();
-                throw new Error(errorData.error || `API error: ${response.statusText}`);
+            if (!response.body) return;
+
+            const reader = response.body.getReader();
+            const decoder = new TextDecoder();
+            let done = false;
+
+            while (!done) {
+                const { value, done: readerDone } = await reader.read();
+                done = readerDone;
+                const chunk = decoder.decode(value, { stream: true });
+
+                const lines = chunk.split('\n\n').filter(line => line.trim() !== '');
+                for (const line of lines) {
+                    if (line.startsWith('data: ')) {
+                        const jsonStr = line.substring(6);
+                        try {
+                            const data = JSON.parse(jsonStr);
+                            if (data.error) {
+                                throw new Error(data.error);
+                            }
+                            if (data.end) {
+                                if (!currentConversationId.current) {
+                                    currentConversationId.current = data.conversation_id;
+                                    onConversationStarted(data.conversation_id);
+                                }
+                                setIsLoading(false);
+                            } else if (data.content) {
+                                setMessages(prev => prev.map(msg =>
+                                    msg.id === aiResponseId
+                                        ? { ...msg, text: msg.text + data.content }
+                                        : msg
+                                ));
+                            }
+                        } catch (e) {
+                            console.error("Error parsing stream data:", e);
+                        }
+                    }
+                }
             }
-
-            const data = await response.json();
-            
-            // If this was a new chat, update the conversation ID
-            if (!currentConversationId.current) {
-                currentConversationId.current = data.conversation_id;
-                onConversationStarted(data.conversation_id);
-            }
-
-            const aiResponse: Message = { id: Date.now() + 1, text: data.response, sender: 'ai' };
-            setMessages((prev) => [...prev, aiResponse]);
-
         } catch (error) {
             console.error("Failed to fetch chat response:", error);
-            const errorResponse: Message = { id: Date.now() + 1, text: "Sorry, something went wrong. Please try again.", sender: 'ai' };
-            setMessages((prev) => [...prev, errorResponse]);
-        } finally {
+            setMessages(prev => prev.map(msg =>
+                msg.id === aiResponseId
+                    ? { ...msg, text: "Sorry, something went wrong. Please try again." }
+                    : msg
+            ));
             setIsLoading(false);
         }
     };
-    
+
     return (
         <main className="flex-1 flex flex-col bg-white/10 backdrop-blur-3xl h-full rounded-2xl border border-white/20 shadow-lg overflow-hidden">
             <header className="flex justify-between items-center p-4 text-white border-b border-white/10 flex-shrink-0">
@@ -151,7 +182,7 @@ export default function ChatArea({ userId, conversationId, onProfileClick, onCon
                     </button>
                     <h1 className="text-lg font-semibold text-white">MindfulAI</h1>
                 </div>
-                <button 
+                <button
                   onClick={onProfileClick}
                   className="h-8 w-8 rounded-full bg-white/20 flex items-center justify-center hover:bg-white/30 transition-colors"
                 >
@@ -168,24 +199,18 @@ export default function ChatArea({ userId, conversationId, onProfileClick, onCon
                              <div className={`flex-shrink-0 h-8 w-8 rounded-full flex items-center justify-center ${msg.sender === 'user' ? 'bg-white/20' : 'bg-gradient-to-br from-purple-500 to-blue-500'}`}>
                                  {msg.sender === 'user' ? <User size={20} className="text-white" /> : <Image src="/gemini-icon.svg" alt="AI" width={20} height={20} />}
                             </div>
-                            <div className="flex-1 bg-white/10 p-4 rounded-xl shadow-md">
+                            <div className="flex-1 bg-white/10 p-4 rounded-xl shadow-md min-h-[70px]">
                                 <p className="font-semibold text-white mb-1">{msg.sender === 'user' ? 'You' : 'MindfulAI'}</p>
-                                <p className="text-white whitespace-pre-wrap">{msg.text}</p>
+                                <p className="text-white whitespace-pre-wrap">
+                                    {msg.text}
+                                    {/* Show a blinking cursor animation while the AI is typing its response */}
+                                    {isLoading && msg.sender === 'ai' && msg.id === messages[messages.length - 1].id && (
+                                        <span className="animate-pulse">_</span>
+                                    )}
+                                </p>
                             </div>
                         </div>
                     ))
-                )}
-                
-                {isLoading && (
-                    <div className="flex items-start gap-4 max-w-4xl mx-auto">
-                        <div className="flex-shrink-0 h-8 w-8 rounded-full bg-gradient-to-br from-purple-500 to-blue-500 flex items-center justify-center">
-                           <Image src="/gemini-icon.svg" alt="AI" width={20} height={20} className="animate-spin" />
-                        </div>
-                        <div className="flex-1 bg-white/10 p-4 rounded-xl shadow-md">
-                            <p className="font-semibold text-white mb-1">MindfulAI</p>
-                            <div className="h-2 bg-gray-500 rounded-full w-1/4 animate-pulse"></div>
-                        </div>
-                    </div>
                 )}
                  <div ref={messagesEndRef} />
             </div>

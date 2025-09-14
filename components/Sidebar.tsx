@@ -13,9 +13,10 @@ interface SidebarProps {
     userId: string;
     onNewChat: () => void;
     onSelectConversation: (id: string) => void;
+    refreshTrigger: number; // Accept the new prop
 }
 
-export default function Sidebar({ userId, onNewChat, onSelectConversation }: SidebarProps) {
+export default function Sidebar({ userId, onNewChat, onSelectConversation, refreshTrigger }: SidebarProps) {
     const [historyItems, setHistoryItems] = useState<HistoryItem[]>([]);
     const [isLoading, setIsLoading] = useState(true);
 
@@ -24,6 +25,7 @@ export default function Sidebar({ userId, onNewChat, onSelectConversation }: Sid
             if (!userId) return;
             setIsLoading(true);
             try {
+                // The API endpoint remains the same
                 const response = await fetch(`http://127.0.0.1:5000/api/chat/history/${userId}`);
                 if (!response.ok) {
                     throw new Error('Failed to fetch chat history');
@@ -39,7 +41,7 @@ export default function Sidebar({ userId, onNewChat, onSelectConversation }: Sid
         };
 
         fetchHistory();
-    }, [userId]);
+    }, [userId, refreshTrigger]); // Add refreshTrigger to the dependency array
 
     return (
         <aside className="w-64 bg-white/10 backdrop-blur-3xl text-white p-4 flex flex-col h-full rounded-2xl border border-white/20 shadow-lg">
