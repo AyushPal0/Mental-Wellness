@@ -3,12 +3,11 @@
 
 import { useState, useRef, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { Footer } from "@/components/footer"
 
 interface Question {
   id: number;
   text: string;
-  dimension: string;
+  dimension: string[];
 }
 
 interface Answer {
@@ -16,7 +15,7 @@ interface Answer {
   value: number;
 }
 
-// VideoBackground component included directly
+// VideoBackground component
 const VideoBackground = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [loaded, setLoaded] = useState(false);
@@ -34,12 +33,10 @@ const VideoBackground = () => {
 
     video.addEventListener('canplay', handleCanPlay);
     
-    // Set video properties for background behavior
     video.muted = true;
     video.loop = true;
     video.playsInline = true;
     
-    // Attempt to play the video
     const playVideo = () => {
       video.play().catch(error => {
         console.log("Video play failed:", error);
@@ -48,7 +45,6 @@ const VideoBackground = () => {
     
     playVideo();
 
-    // Clean up
     return () => {
       video.removeEventListener('canplay', handleCanPlay);
     };
@@ -65,42 +61,71 @@ const VideoBackground = () => {
         preload="auto"
       >
         <source src="/2882620-hd_1920_1080_30fps.mp4" type="video/mp4" />
-        {/* Fallback for browsers that don't support video */}
         <div className="absolute inset-0 bg-black flex items-center justify-center text-white">
           Your browser does not support the video tag.
         </div>
       </video>
-      
-      {/* Overlay for better readability */}
       <div className="absolute inset-0 bg-black bg-opacity-40"></div>
     </div>
   );
 };
 
+// API base URL - adjust this to match your Flask backend
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:5000';
+
 export default function PersonalityTestPage() {
   const router = useRouter();
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const [questions, setQuestions] = useState<Question[]>([]);
   const [answers, setAnswers] = useState<Answer[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  // Sample questions - replace with your friend's API data
-  const questions: Question[] = [
-    { id: 1, text: "I feel energized after spending time with others", dimension: "extraversion" },
-    { id: 2, text: "I tend to expect positive outcomes in most situations", dimension: "optimism" },
-    { id: 3, text: "I prefer having a structured routine rather than spontaneous plans", dimension: "structure" },
-    { id: 4, text: "When stressed, I prefer to talk through my feelings with others", dimension: "coping" },
-    { id: 5, text: "I often find myself getting lost in my thoughts", dimension: "introspection" },
-    { id: 6, text: "I believe that most challenges can be overcome with effort", dimension: "optimism" },
-    { id: 7, text: "I enjoy trying new experiences even if they're outside my comfort zone", dimension: "openness" },
-    { id: 8, text: "I prefer working independently rather than in groups", dimension: "independence" },
-    { id: 9, text: "I find it easy to adapt when plans change suddenly", dimension: "flexibility" },
-    { id: 10, text: "I often notice small details that others might miss", dimension: "observation" },
-  ];
+  // Fetch questions from Flask backend API when component mounts
+  useEffect(() => {
+    const fetchQuestions = async () => {
+      try {
+        setIsLoading(true);
+        const response = await fetch(`${API_BASE_URL}/api/personality/questions`);
+        
+        if (!response.ok) {
+          throw new Error(`Failed to fetch questions: ${response.status} ${response.statusText}`);
+        }
+        
+        const data = await response.json();
+        
+        if (data.success && data.questions) {
+          // Transform questions to match the expected format
+          const formattedQuestions = data.questions.map((q: any) => ({
+            id: q.id,
+            text: q.question, // Use 'question' field from backend
+            dimension: q.dimension // This should be an array like ["I", "E"]
+          }));
+          
+          setQuestions(formattedQuestions);
+        } else {
+          throw new Error(data.error || 'Invalid response format from server');
+        }
+        } catch (err) {
+        setError(err instanceof Error ? err.message : 'Failed to load questions');
+        console.error('Error fetching questions:', err);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchQuestions();
+  }, []);
 
   const handleAnswer = (value: number) => {
+    if (!questions.length) return;
+
     const newAnswers = answers.filter(a => a.questionId !== questions[currentQuestionIndex].id);
-    newAnswers.push({ questionId: questions[currentQuestionIndex].id, value });
+    newAnswers.push({ 
+      questionId: questions[currentQuestionIndex].id, 
+      value 
+    });
     setAnswers(newAnswers);
 
     if (currentQuestionIndex < questions.length - 1) {
@@ -110,34 +135,93 @@ export default function PersonalityTestPage() {
     }
   };
 
+  // Calculate MBTI scores from answers
+  const calculateScores = (answers: Answer[], questions: Question[]) => {
+    const scores: { [key: string]: number } = {
+      'I': 0, 'E': 0, 'N': 0, 'S': 0, 'T': 0, 'F': 0, 'J': 0, 'P': 0
+    };
+
+    answers.forEach(answer => {
+      const question = questions.find(q => q.id === answer.questionId);
+      if (question && question.dimension && question.dimension.length === 2) {
+        const [dim1, dim2] = question.dimension;
+        
+        // For MBTI questions, answer value 1-5 where:
+        // 1-2: Strongly lean toward dim1
+        // 3: Neutral
+        // 4-5: Strongly lean toward dim2
+        if (answer.value <= 2) {
+          scores[dim1] += (3 - answer.value); // More points for stronger agreement
+        } else if (answer.value >= 4) {
+          scores[dim2] += (answer.value - 2); // More points for stronger agreement
+        }
+        // Neutral answers (value 3) don't contribute to either side
+      }
+    });
+
+    return scores;
+  };
+
+  // Determine personality type from scores
+  const determinePersonalityType = (scores: { [key: string]: number }) => {
+    let personalityType = '';
+    
+    // E vs I
+    personalityType += scores.E > scores.I ? 'E' : 'I';
+    
+    // N vs S
+    personalityType += scores.N > scores.S ? 'N' : 'S';
+    
+    // T vs F
+    personalityType += scores.T > scores.F ? 'T' : 'F';
+    
+    // J vs P
+    personalityType += scores.J > scores.P ? 'J' : 'P';
+    
+    return personalityType;
+  };
+
   const handleSubmit = async (finalAnswers: Answer[]) => {
     setIsSubmitting(true);
     try {
-      // Call your friend's API here
-      const response = await fetch('/api/personality-test', {
+      // Calculate scores from answers
+      const scores = calculateScores(finalAnswers, questions);
+      const personalityType = determinePersonalityType(scores);
+
+      // Submit to Flask backend
+      const response = await fetch(`${API_BASE_URL}/api/personality/submit`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ answers: finalAnswers }),
+        body: JSON.stringify({
+          user_id: 'anonymous-user', // Replace with actual user ID when you have auth
+          scores: scores
+        }),
       });
 
       if (!response.ok) {
-        throw new Error('Failed to submit personality test');
+        const errorData = await response.json().catch(() => ({}));
+        throw new Error(errorData.error || `Failed to submit: ${response.status}`);
       }
 
-      const results = await response.json();
+      const result = await response.json();
       
-      // Redirect to dashboard or results page
-      router.push('/dashboard?results=complete');
+      if (result.success) {
+        // Redirect to results page with the personality type
+        router.push(`/results?type=${personalityType}`);
+      } else {
+        throw new Error(result.error || 'Submission failed');
+      }
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'An error occurred');
+      setError(err instanceof Error ? err.message : 'An error occurred while submitting');
+      console.error('Submission error:', err);
     } finally {
       setIsSubmitting(false);
     }
   };
 
-  const progress = ((currentQuestionIndex + 1) / questions.length) * 100;
+  const progress = questions.length > 0 ? ((currentQuestionIndex + 1) / questions.length) * 100 : 0;
 
   if (error) {
     return (
@@ -147,15 +231,58 @@ export default function PersonalityTestPage() {
           <div className="bg-black bg-opacity-70 p-8 rounded-lg max-w-md text-center mx-4">
             <h2 className="text-2xl font-bold text-white mb-4">Something went wrong</h2>
             <p className="text-gray-300 mb-6">{error}</p>
+            <div className="flex gap-4 justify-center">
+              <button 
+                onClick={() => setError(null)}
+                className="bg-white text-black px-6 py-2 rounded-full font-medium hover:bg-opacity-90 transition-all"
+              >
+                Try Again
+              </button>
+              <button 
+                onClick={() => router.push('/')}
+                className="bg-gray-600 text-white px-6 py-2 rounded-full font-medium hover:bg-gray-700 transition-all"
+              >
+                Go Home
+              </button>
+            </div>
+          </div>
+        </div>
+      </main>
+    );
+  }
+
+  if (isLoading) {
+    return (
+      <main className="h-[100dvh] w-full overflow-hidden relative">
+        <VideoBackground />
+        <div className="relative z-10 h-full flex items-center justify-center">
+          <div className="bg-black bg-opacity-70 p-8 rounded-lg max-w-md text-center">
+            <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-white"></div>
+            <p className="text-white mt-4">Loading questions from server...</p>
+            <p className="text-gray-400 text-sm mt-2">Connecting to: {API_BASE_URL}</p>
+          </div>
+        </div>
+      </main>
+    );
+  }
+
+  if (questions.length === 0 && !isLoading) {
+    return (
+      <main className="h-[100dvh] w-full overflow-hidden relative">
+        <VideoBackground />
+        <div className="relative z-10 h-full flex items-center justify-center">
+          <div className="bg-black bg-opacity-70 p-8 rounded-lg max-w-md text-center">
+            <h2 className="text-2xl font-bold text-white mb-4">No Questions Available</h2>
+            <p className="text-gray-300 mb-4">The server returned no questions.</p>
+            <p className="text-gray-400 text-sm">API URL: {API_BASE_URL}/api/personality/questions</p>
             <button 
-              onClick={() => setError(null)}
-              className="bg-white text-black px-6 py-2 rounded-full font-medium hover:bg-opacity-90 transition-all"
+              onClick={() => window.location.reload()}
+              className="bg-white text-black px-6 py-2 rounded-full font-medium hover:bg-opacity-90 transition-all mt-4"
             >
-              Try Again
+              Retry
             </button>
           </div>
         </div>
-        <Footer />
       </main>
     );
   }
@@ -207,10 +334,15 @@ export default function PersonalityTestPage() {
           </div>
           
           {/* Scale Labels */}
-          <div className="flex justify-between text-gray-300 text-sm px-1">
-            <span>Disagree</span>
+          <div className="flex justify-between text-gray-300 text-sm px-1 mb-2">
+            <span>Strongly Disagree</span>
             <span>Neutral</span>
-            <span>Agree</span>
+            <span>Strongly Agree</span>
+          </div>
+
+          {/* Dimension info (for debugging) */}
+          <div className="text-center text-gray-400 text-xs mt-4">
+            Dimension: {questions[currentQuestionIndex]?.dimension?.join(' vs ')}
           </div>
 
           {isSubmitting && (
@@ -221,8 +353,6 @@ export default function PersonalityTestPage() {
           )}
         </div>
       </div>
-
-      <Footer />
     </main>
   );
 }

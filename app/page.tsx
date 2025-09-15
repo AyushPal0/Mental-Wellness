@@ -1,6 +1,5 @@
 'use client';
 import { useEffect, useRef, useState } from 'react';
-import { Footer } from "@/components/footer";
 import Link from 'next/link';
 
 const VideoBackground = () => {
@@ -70,7 +69,9 @@ const Navbar = () => {
       <div className="container mx-auto px-6 py-3">
         <div className="flex justify-between items-center">
           {/* Logo */}
-          <div className="text-white text-2xl font-bold hover:scale-105 transition-transform duration-300 cursor-pointer">Eunoia</div>
+          <Link href="/" className="text-white text-2xl font-bold hover:scale-105 transition-transform duration-300 cursor-pointer">
+            Eunoia
+          </Link>
           
           {/* Navigation Links - Centered */}
           <div className="hidden md:flex space-x-8 absolute left-1/2 transform -translate-x-1/2">
@@ -91,11 +92,11 @@ const Navbar = () => {
           {/* Auth Buttons */}
           <div className="flex space-x-3">
             <Link href="/login" className="text-white px-4 py-2 rounded-full font-medium text-sm bg-white bg-opacity-0 hover:bg-opacity-20 transition-all duration-300 border border-white border-opacity-30 transform hover:-translate-y-1 hover:scale-105">
-  Login
-</Link>
+              Login
+            </Link>
             <Link href="/signup" className="bg-white text-black px-4 py-2 rounded-full font-medium text-sm hover:bg-opacity-95 transition-all duration-300 shadow-sm transform hover:-translate-y-1 hover:scale-105">
-  Sign up
-</Link>
+              Sign up
+            </Link>
           </div>
         </div>
       </div>
@@ -103,7 +104,16 @@ const Navbar = () => {
   );
 };
 
-export default function Home() {
+// Simple Footer component - we'll add this directly to avoid import issues
+const Footer = () => {
+  return (
+    <div className="flex gap-6 items-center absolute bottom-4 left-1/2 transform -translate-x-1/2 text-white opacity-70">
+      <p className="text-sm">© 2024 Eunoia. All rights reserved.</p>
+    </div>
+  );
+};
+
+export default function HomePage() {
   return (
     <main className="h-[100dvh] w-full overflow-hidden relative">
       {/* Navbar */}
@@ -124,17 +134,19 @@ export default function Home() {
         
         <div className="w-24 h-1 bg-white bg-opacity-50 mb-10"></div>
         
-        <div className="flex flex-col sm:flex-row gap-6 mb-16">
-          
-        </div>
-        
         {/* Get Started Button at bottom */}
-        <div className="absolute bottom-32 transform hover:-translate-y-1 transition-transform duration-300">
+        <div className="absolute bottom-32 flex flex-col gap-4 items-center">
           <Link 
             href="/personality-test" 
-            className="bg-white text-black px-8 py-4 rounded-full font-semibold text-lg hover:bg-opacity-90 transition-all duration-300 shadow-lg hover:shadow-xl animate-pulse block transform hover:scale-105"
+            className="bg-white text-black px-8 py-4 rounded-full font-semibold text-lg hover:bg-opacity-90 transition-all duration-300 shadow-lg hover:shadow-xl animate-pulse transform hover:scale-105"
           >
             Get Started
+          </Link>
+          <Link 
+            href="/game/intro" 
+            className="bg-green-500 text-white px-6 py-3 rounded-full font-medium hover:bg-green-600 transition-all duration-300 transform hover:scale-105"
+          >
+            Play Wellness Game
           </Link>
         </div>
       </div>

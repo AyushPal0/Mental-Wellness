@@ -4,10 +4,10 @@ import XLogoIcon from "./icons/x";
 import { socialLinks } from "@/lib/constants";
 import Link from "next/link";
 
-export const Footer = () => {
+export default function Footer() {
   return (
     <div className="flex gap-6 items-center absolute bottom-[calc(var(--inset)+0.8rem)] md:bottom-[calc(var(--inset)+1.5rem)] left-1/2 -translate-x-1/2">
       
     </div>
   );
-};
+}

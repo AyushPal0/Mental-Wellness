@@ -1,0 +1,4 @@
+[submodule "backend"]
+	path = backend
+	url = https://github.com/AyushPal0/Mental-Wellness.git
+	branch = api_stuff
