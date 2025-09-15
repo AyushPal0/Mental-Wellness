@@ -13,12 +13,20 @@ class MentalWellnessApp:
             'mongodb': False,
             'personality_routes': False,
             'task_routes': False,
-            'task_service': False
+            'task_service': False,
+            'community_routes': False  # Added community status
         }
         self.setup_logging()
         self.setup_config()
         self.setup_import_paths()
         self.setup_cors()
+        self.check_required_files()
+        self.setup_database()
+        self.check_task_service()
+        self.register_blueprints()
+        self.setup_task_routes()
+        self.setup_health_routes()
+        self.setup_error_handlers()
         
     def setup_logging(self):
         """Configure logging settings"""
@@ -63,7 +71,11 @@ class MentalWellnessApp:
             'routes/task_routes.py',
             'services/task_service.py',
             'models/task.py',
-            'questions/personality_questions.json'
+            'questions/personality_questions.json',
+            # Community files
+            'routes/community_routes.py',
+            'services/community_service.py',
+            'models/post.py'
         ]
         
         for file_path in required_files:
@@ -132,6 +144,17 @@ class MentalWellnessApp:
         except Exception as e:
             self.logger.error(f"❌ Task routes registration failed: {e}")
             
+        # Community routes - NEW
+        try:
+            self.logger.info("🔄 Attempting to import community_routes...")
+            from routes.community_routes import community_bp
+            self.app.register_blueprint(community_bp, url_prefix="/api/community")
+            self.initialization_status['community_routes'] = True
+            self.logger.info("✅ Community routes registered successfully")
+        except Exception as e:
+            self.logger.error(f"❌ Community routes registration failed: {e}")
+            self.setup_community_fallback_routes()
+            
     def setup_personality_fallback_routes(self):
         """Setup fallback routes for personality functionality"""
         @self.app.route("/api/personality/questions", methods=["GET"])
@@ -170,6 +193,37 @@ class MentalWellnessApp:
                 return jsonify({"success": False, "error": "Personality service not available"}), 500
             except Exception as e:
                 return jsonify({"success": False, "error": str(e)}), 500
+                
+    def setup_community_fallback_routes(self):
+        """Setup fallback routes for community functionality"""
+        @self.app.route("/api/community/posts", methods=["GET"])
+        def get_community_posts():
+            """Direct route for getting community posts"""
+            try:
+                from services.community_service import get_all_posts
+                posts = get_all_posts()
+                return jsonify({"status": "success", "posts": posts}), 200
+            except ImportError:
+                return jsonify({"status": "error", "message": "Community service not available"}), 500
+            except Exception as e:
+                return jsonify({"status": "error", "message": str(e)}), 500
+                
+        @self.app.route("/api/community/posts", methods=["POST"])
+        def create_community_post():
+            """Direct route for creating a community post"""
+            try:
+                from services.community_service import create_post
+                data = request.get_json()
+                post = create_post(
+                    user_id=data.get("user_id"),
+                    content=data.get("content"),
+                    media_url=data.get("media_url")
+                )
+                return jsonify({"status": "success", "post": post.to_dict()}), 201
+            except ImportError:
+                return jsonify({"status": "error", "message": "Community service not available"}), 500
+            except Exception as e:
+                return jsonify({"status": "error", "message": str(e)}), 500
                 
     def setup_task_routes(self):
         """Setup task-related routes"""
@@ -268,6 +322,7 @@ class MentalWellnessApp:
                 "personality_questions": "/api/personality/questions",
                 "personality_submit": "/api/personality/submit",
                 "tasks": "/api/tasks",
+                "community_posts": "/api/community/posts",
                 "health": "/health"
             }
             
@@ -343,7 +398,10 @@ class MentalWellnessApp:
         self.logger.info("🌐 Server starting on http://0.0.0.0:5000")
         self.app.run(debug=True, host="0.0.0.0", port=5000, use_reloader=False)
 
-# Create and run the application
+# Create the application instance
+app_instance = MentalWellnessApp()
+app = app_instance.app
+
+# Run the application
 if __name__ == "__main__":
-    app = MentalWellnessApp()
-    app.run()
+    app_instance.run()

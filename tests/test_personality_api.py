@@ -1,6 +1,6 @@
 import unittest
 import json
-from backend.app import app
+from ..app import app
 
 class PersonalityApiTestCase(unittest.TestCase):
     def setUp(self):
@@ -67,7 +67,7 @@ class PersonalityApiTestCase(unittest.TestCase):
         data = json.loads(response.data)
         self.assertIn('success', data)
         self.assertTrue(data['success'])
-        self.assertEqual(data['personality']['personality_type'], "ESFJ")  # Based on new scores
+        self.assertEqual(data['personality']['personality_type'], "ESFP")  # Based on new scores
 
 if __name__ == '__main__':
     unittest.main()

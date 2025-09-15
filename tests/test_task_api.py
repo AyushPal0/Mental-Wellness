@@ -1,6 +1,6 @@
 import unittest
 import json
-from backend.app import app
+from ..app import app
 
 class TaskApiTestCase(unittest.TestCase):
     def setUp(self):
