@@ -14,7 +14,8 @@ class MentalWellnessApp:
             'personality_routes': False,
             'task_routes': False,
             'task_service': False,
-            'community_routes': False  # Added community status
+            'community_routes': False,
+            'safety_routes': False  # Added safety status
         }
         self.setup_logging()
         self.setup_config()
@@ -75,7 +76,11 @@ class MentalWellnessApp:
             # Community files
             'routes/community_routes.py',
             'services/community_service.py',
-            'models/post.py'
+            'models/post.py',
+            # Safety files
+            'routes/safety_routes.py',
+            'services/safety_service.py',
+            'models/risk_event.py'
         ]
         
         for file_path in required_files:
@@ -144,7 +149,7 @@ class MentalWellnessApp:
         except Exception as e:
             self.logger.error(f"❌ Task routes registration failed: {e}")
             
-        # Community routes - NEW
+        # Community routes
         try:
             self.logger.info("🔄 Attempting to import community_routes...")
             from routes.community_routes import community_bp
@@ -154,6 +159,17 @@ class MentalWellnessApp:
         except Exception as e:
             self.logger.error(f"❌ Community routes registration failed: {e}")
             self.setup_community_fallback_routes()
+            
+        # Safety routes - NEW
+        try:
+            self.logger.info("🔄 Attempting to import safety_routes...")
+            from routes.safety_routes import safety_bp
+            self.app.register_blueprint(safety_bp, url_prefix="/api/safety")
+            self.initialization_status['safety_routes'] = True
+            self.logger.info("✅ Safety routes registered successfully")
+        except Exception as e:
+            self.logger.error(f"❌ Safety routes registration failed: {e}")
+            self.setup_safety_fallback_routes()
             
     def setup_personality_fallback_routes(self):
         """Setup fallback routes for personality functionality"""
@@ -222,6 +238,31 @@ class MentalWellnessApp:
                 return jsonify({"status": "success", "post": post.to_dict()}), 201
             except ImportError:
                 return jsonify({"status": "error", "message": "Community service not available"}), 500
+            except Exception as e:
+                return jsonify({"status": "error", "message": str(e)}), 500
+                
+    def setup_safety_fallback_routes(self):
+        """Setup fallback routes for safety functionality"""
+        @self.app.route("/api/safety/risk-event", methods=["POST"])
+        def handle_risk_event_fallback():
+            """Direct route for handling risk events"""
+            try:
+                from services.safety_service import process_risk_event
+                from models.risk_event import RiskEvent
+                
+                data = request.get_json()
+                if not data or "user_id" not in data or "risk_level" not in data or "message" not in data:
+                    return jsonify({"status": "error", "message": "Missing required fields"}), 400
+                
+                event = RiskEvent(
+                    user_id=data.get("user_id"),
+                    risk_level=data.get("risk_level"),
+                    message=data.get("message")
+                )
+                result = process_risk_event(event)
+                return jsonify({"status": "success", "data": result}), 200
+            except ImportError:
+                return jsonify({"status": "error", "message": "Safety service not available"}), 500
             except Exception as e:
                 return jsonify({"status": "error", "message": str(e)}), 500
                 
@@ -323,6 +364,7 @@ class MentalWellnessApp:
                 "personality_submit": "/api/personality/submit",
                 "tasks": "/api/tasks",
                 "community_posts": "/api/community/posts",
+                "safety_risk_event": "/api/safety/risk-event",
                 "health": "/health"
             }
             
