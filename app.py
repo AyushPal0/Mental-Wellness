@@ -44,6 +44,8 @@ class MentalWellnessApp:
     def setup_import_paths(self):
         """Set up Python import paths"""
         current_dir = os.path.dirname(os.path.abspath(__file__))
+        parent_dir = os.path.dirname(current_dir)
+        sys.path.insert(0, parent_dir)
         sys.path.insert(0, current_dir)
         
     def setup_cors(self):
@@ -53,6 +55,7 @@ class MentalWellnessApp:
     def check_required_files(self):
         """Check if all required files exist"""
         self.logger.info("🔍 Checking if required files exist...")
+        base_dir = os.path.dirname(os.path.abspath(__file__))
         required_files = [
             'utils/db.py',
             'routes/personality_routes.py',
@@ -64,9 +67,10 @@ class MentalWellnessApp:
         ]
         
         for file_path in required_files:
-            if os.path.exists(file_path):
+            abs_path = os.path.join(base_dir, file_path)
+            if os.path.exists(abs_path):
                 self.logger.info(f"✅ Found: {file_path}")
-                if os.path.getsize(file_path) == 0:
+                if os.path.getsize(abs_path) == 0:
                     self.logger.warning(f"⚠️  File is empty: {file_path}")
             else:
                 self.logger.warning(f"❌ Missing: {file_path}")
@@ -273,6 +277,17 @@ class MentalWellnessApp:
                 "endpoints": endpoints,
                 "initialization": self.initialization_status
             })
+
+        @self.app.route("/debug/routes")
+        def debug_routes():
+            routes = []
+            for rule in self.app.url_map.iter_rules():
+                routes.append({
+                    "endpoint": rule.endpoint,
+                    "methods": list(rule.methods),
+                    "rule": rule.rule
+                })
+            return jsonify(routes)
             
     def setup_error_handlers(self):
         """Setup error handlers"""

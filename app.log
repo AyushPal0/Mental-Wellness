@@ -1,35 +1,40 @@
-2025-09-14 02:51:41,895 - __main__ - INFO - 🚀 Starting Mental Wellness Backend...
-2025-09-14 02:51:41,896 - __main__ - INFO - 🔍 Checking if required files exist...
-2025-09-14 02:51:41,896 - __main__ - INFO - ✅ Found: utils/db.py
-2025-09-14 02:51:41,896 - __main__ - INFO - ✅ Found: routes/personality_routes.py
-2025-09-14 02:51:41,896 - __main__ - INFO - ✅ Found: services/personality_service.py
-2025-09-14 02:51:41,896 - __main__ - INFO - ✅ Found: routes/task_routes.py
-2025-09-14 02:51:41,897 - __main__ - INFO - ✅ Found: services/task_service.py
-2025-09-14 02:51:41,897 - __main__ - INFO - ✅ Found: models/task.py
-2025-09-14 02:51:41,897 - __main__ - INFO - ✅ Found: questions/personality_questions.json
-2025-09-14 02:51:41,897 - __main__ - INFO - 🔄 Attempting to import utils.db...
-2025-09-14 02:51:42,034 - utils.db - INFO - ✅ Connected to MongoDB database: mental_wellness
-2025-09-14 02:51:42,034 - __main__ - INFO - ✅ MongoDB initialized successfully
-2025-09-14 02:51:42,034 - __main__ - INFO - 🔄 Testing task service import...
-2025-09-14 02:51:42,078 - __main__ - INFO - ✅ Task service imported successfully
-2025-09-14 02:51:42,079 - __main__ - INFO - ✅ task_service.create_task() function exists
-2025-09-14 02:51:42,079 - __main__ - INFO - ✅ task_service.get_all_tasks() function exists
-2025-09-14 02:51:42,079 - __main__ - INFO - ✅ task_service.get_task_by_id() function exists
-2025-09-14 02:51:42,079 - __main__ - INFO - ✅ task_service.update_task() function exists
-2025-09-14 02:51:42,079 - __main__ - INFO - ✅ task_service.delete_task() function exists
-2025-09-14 02:51:42,079 - __main__ - INFO - 🔄 Attempting to import personality_routes...
-2025-09-14 02:51:42,082 - __main__ - ERROR - ❌ Personality routes registration failed: No module named 'backend'
-2025-09-14 02:51:42,083 - __main__ - INFO - 🔄 Attempting to import task_routes...
-2025-09-14 02:51:42,085 - __main__ - INFO - ✅ Task routes registered successfully
-2025-09-14 02:51:42,086 - __main__ - INFO - 📁 Directory structure:
-2025-09-14 02:51:42,087 - __main__ - INFO - 📂 utils/: ['auth.py', 'db.py', 'moderation.py', 'serializer.py', '__init__.py']
-2025-09-14 02:51:42,087 - __main__ - INFO - 📂 routes/: ['chat_routes.py', 'community_routes.py', 'game_routes.py', 'personality_routes.py', 'safety_routes.py', 'task_routes.py', '__init__.py']
-2025-09-14 02:51:42,087 - __main__ - INFO - 📂 services/: ['chat_service.py', 'community_service.py', 'game_service.py', 'personality_service.py', 'safety_service.py', 'task_service.py', '__init__.py']
-2025-09-14 02:51:42,087 - __main__ - INFO - 📂 models/: ['chat.py', 'game.py', 'personality.py', 'post.py', 'risk_event.py', 'task.py', 'user.py', '__init__.py']
-2025-09-14 02:51:42,088 - __main__ - INFO - 📊 MongoDB collections: ['tasks']
-2025-09-14 02:51:42,088 - __main__ - INFO - 🌐 Server starting on http://0.0.0.0:5000
-2025-09-14 02:51:42,111 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+2025-09-15 15:59:18,434 - __main__ - INFO - 🚀 Starting Mental Wellness Backend...
+2025-09-15 15:59:18,434 - __main__ - INFO - 🔍 Checking if required files exist...
+2025-09-15 15:59:18,434 - __main__ - INFO - ✅ Found: utils/db.py
+2025-09-15 15:59:18,434 - __main__ - INFO - ✅ Found: routes/personality_routes.py
+2025-09-15 15:59:18,435 - __main__ - INFO - ✅ Found: services/personality_service.py
+2025-09-15 15:59:18,435 - __main__ - INFO - ✅ Found: routes/task_routes.py
+2025-09-15 15:59:18,435 - __main__ - INFO - ✅ Found: services/task_service.py
+2025-09-15 15:59:18,435 - __main__ - INFO - ✅ Found: models/task.py
+2025-09-15 15:59:18,435 - __main__ - INFO - ✅ Found: questions/personality_questions.json
+2025-09-15 15:59:18,435 - __main__ - INFO - 🔄 Attempting to import utils.db...
+2025-09-15 15:59:18,564 - utils.db - INFO - ✅ Connected to MongoDB database: mental_wellness
+2025-09-15 15:59:18,564 - __main__ - INFO - ✅ MongoDB initialized successfully
+2025-09-15 15:59:18,564 - __main__ - INFO - 🔄 Testing task service import...
+2025-09-15 15:59:18,619 - __main__ - INFO - ✅ Task service imported successfully
+2025-09-15 15:59:18,619 - __main__ - INFO - ✅ task_service.create_task() function exists
+2025-09-15 15:59:18,619 - __main__ - INFO - ✅ task_service.get_all_tasks() function exists
+2025-09-15 15:59:18,619 - __main__ - INFO - ✅ task_service.get_task_by_id() function exists
+2025-09-15 15:59:18,619 - __main__ - INFO - ✅ task_service.update_task() function exists
+2025-09-15 15:59:18,619 - __main__ - INFO - ✅ task_service.delete_task() function exists
+2025-09-15 15:59:18,620 - __main__ - INFO - 🔄 Attempting to import personality_routes...
+2025-09-15 15:59:18,623 - __main__ - ERROR - ❌ Personality routes registration failed: No module named 'backend'
+2025-09-15 15:59:18,623 - __main__ - INFO - 🔄 Attempting to import task_routes...
+2025-09-15 15:59:18,625 - __main__ - INFO - ✅ Task routes registered successfully
+2025-09-15 15:59:18,626 - __main__ - INFO - 📁 Directory structure:
+2025-09-15 15:59:18,626 - __main__ - INFO - 📂 utils/: ['auth.py', 'db.py', 'moderation.py', 'serializer.py', '__init__.py']
+2025-09-15 15:59:18,626 - __main__ - INFO - 📂 routes/: ['chat_routes.py', 'community_routes.py', 'game_routes.py', 'personality_routes.py', 'safety_routes.py', 'task_routes.py', '__init__.py']
+2025-09-15 15:59:18,628 - __main__ - INFO - 📂 services/: ['chat_service.py', 'community_service.py', 'game_service.py', 'personality_service.py', 'safety_service.py', 'task_service.py', '__init__.py']
+2025-09-15 15:59:18,628 - __main__ - INFO - 📂 models/: ['chat.py', 'game.py', 'personality.py', 'post.py', 'risk_event.py', 'task.py', 'user.py', '__init__.py']
+2025-09-15 15:59:18,629 - __main__ - INFO - 📊 MongoDB collections: ['tasks']
+2025-09-15 15:59:18,629 - __main__ - INFO - 🌐 Server starting on http://0.0.0.0:5000
+2025-09-15 15:59:18,652 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
  * Running on all addresses (0.0.0.0)
  * Running on http://127.0.0.1:5000
- * Running on http://10.12.102.114:5000
-2025-09-14 02:51:42,112 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+ * Running on http://10.12.41.101:5000
+2025-09-15 15:59:18,652 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-09-15 16:06:43,256 - werkzeug - INFO - 127.0.0.1 - - [15/Sep/2025 16:06:43] "GET /api/personality/questions HTTP/1.1" 200 -
+2025-09-15 16:06:43,277 - werkzeug - INFO - 127.0.0.1 - - [15/Sep/2025 16:06:43] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-09-15 16:07:09,942 - werkzeug - INFO - 127.0.0.1 - - [15/Sep/2025 16:07:09] "[35m[1mPOST /api/personality/submit HTTP/1.1[0m" 500 -
+2025-09-15 16:08:11,687 - werkzeug - INFO - 127.0.0.1 - - [15/Sep/2025 16:08:11] "[33mGET /debug/routes HTTP/1.1[0m" 404 -
+2025-09-15 16:08:11,741 - werkzeug - INFO - 127.0.0.1 - - [15/Sep/2025 16:08:11] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
