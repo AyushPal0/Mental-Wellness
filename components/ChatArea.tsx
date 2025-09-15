@@ -13,10 +13,10 @@ interface Message {
 }
 
 interface ChatAreaProps {
-  userId: string;
-  conversationId: string | null;
-  onProfileClick: () => void;
-  onConversationStarted: (newConversationId: string) => void;
+    userId: string;
+    conversationId: string | null;
+    onProfileClick: () => void;
+    onConversationStarted: (newConversationId: string) => void;
 }
 
 const WelcomeScreen = () => {
@@ -197,8 +197,9 @@ export default function ChatArea({ userId, conversationId, onProfileClick, onCon
                     messages.map((msg) => (
                         <div key={msg.id} className={`flex items-start gap-4 max-w-4xl mx-auto`}>
                              <div className={`flex-shrink-0 h-8 w-8 rounded-full flex items-center justify-center ${msg.sender === 'user' ? 'bg-white/20' : 'bg-gradient-to-br from-purple-500 to-blue-500'}`}>
-                                 {msg.sender === 'user' ? <User size={20} className="text-white" /> : <Image src="/gemini-icon.svg" alt="AI" width={20} height={20} />}
-                            </div>
+                                 {/* THIS IS THE MODIFIED LINE */}
+                                 {msg.sender === 'user' ? <User size={20} className="text-white" /> : <Image src="/image.jpg" alt="MindfulAI Logo" width={20} height={20} />}
+                             </div>
                             <div className="flex-1 bg-white/10 p-4 rounded-xl shadow-md min-h-[70px]">
                                 <p className="font-semibold text-white mb-1">{msg.sender === 'user' ? 'You' : 'MindfulAI'}</p>
                                 <p className="text-white whitespace-pre-wrap">
