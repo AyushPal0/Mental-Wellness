@@ -22,7 +22,7 @@ export function LoggedInNavbar({ onProfileClick }: { onProfileClick?: () => void
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ type: 'spring', stiffness: 100, damping: 20, delay: 0.2 }}
-      className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 w-11/12 max-w-lg"
+      className="fixed top-5 left-1/4 transform -translate-x-1/2 z-50 w-11/12 max-w-lg"
     >
       <div className="bg-black/40 backdrop-blur-lg rounded-full border border-white/20 shadow-lg p-2 flex items-center justify-between">
         <Link href={`/home?userId=${userId}`} className="text-white text-lg font-bold pl-3 pr-2">
