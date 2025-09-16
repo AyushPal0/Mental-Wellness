@@ -1,18 +1,20 @@
-// ayushpal0/mental-wellness/Mental-Wellness-frontend/components/LoggedInNavbar.tsx
+// frontend/components/LoggedInNavbar.tsx
 "use client";
 
 import Link from "next/link";
 import { useSearchParams } from 'next/navigation';
 import { motion } from "framer-motion";
-import { User, MessageSquare, ClipboardCheck } from "lucide-react";
+import { User, MessageSquare, ClipboardCheck, Home, Globe } from "lucide-react";
 
-export function LoggedInNavbar({ onProfileClick }: { onProfileClick: () => void; }) {
+export function LoggedInNavbar({ onProfileClick }: { onProfileClick?: () => void; }) {
   const searchParams = useSearchParams();
   const userId = searchParams.get('userId');
 
   const navLinks = [
+    { name: "Home", href: `/home?userId=${userId}`, icon: <Home size={20} /> },
     { name: "Chat", href: `/chatbot?userId=${userId}`, icon: <MessageSquare size={20} /> },
     { name: "Tasks", href: `/tasks?userId=${userId}`, icon: <ClipboardCheck size={20} /> },
+    { name: "Community", href: `/community?userId=${userId}`, icon: <Globe size={20} /> },
   ];
 
   return (
@@ -20,10 +22,10 @@ export function LoggedInNavbar({ onProfileClick }: { onProfileClick: () => void;
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ type: 'spring', stiffness: 100, damping: 20, delay: 0.2 }}
-      className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 w-11/12 max-w-md"
+      className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 w-11/12 max-w-lg"
     >
       <div className="bg-black/40 backdrop-blur-lg rounded-full border border-white/20 shadow-lg p-2 flex items-center justify-between">
-        <Link href={`/chatbot?userId=${userId}`} className="text-white text-lg font-bold pl-3 pr-2">
+        <Link href={`/home?userId=${userId}`} className="text-white text-lg font-bold pl-3 pr-2">
           Eunoia
         </Link>
         
@@ -42,14 +44,16 @@ export function LoggedInNavbar({ onProfileClick }: { onProfileClick: () => void;
           ))}
         </div>
 
-        <motion.button
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.95 }}
-          onClick={onProfileClick}
-          className="h-9 w-9 rounded-full bg-white/20 flex items-center justify-center hover:bg-white/30 transition-colors"
-        >
-          <User size={20} className="text-white" />
-        </motion.button>
+        {onProfileClick &&
+            <motion.button
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={onProfileClick}
+              className="h-9 w-9 rounded-full bg-white/20 flex items-center justify-center hover:bg-white/30 transition-colors"
+            >
+              <User size={20} className="text-white" />
+            </motion.button>
+        }
       </div>
     </motion.nav>
   );
