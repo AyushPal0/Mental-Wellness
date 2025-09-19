@@ -1,15 +1,15 @@
 // app/community/page.tsx
 'use client';
 
-import React, { useState, useEffect, FormEvent, Suspense } from 'react';
+import React, { useState, useEffect, FormEvent, Suspense, useRef } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { LoggedInNavbar } from '@/components/LoggedInNavbar';
 import CommunityPost from '@/components/CommunityPost';
 import UserProfile from '@/components/UserProfile';
-import { Loader2, Plus, Search } from 'lucide-react';
-// Import Avatar components from your UI library (e.g., @radix-ui/react-avatar or your own component path)
+import { Loader2, Plus, Search, Paperclip, SendHorizonal } from 'lucide-react';
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
+import io from 'socket.io-client';
 
 // Interfaces for type safety
 interface User {
@@ -31,7 +31,6 @@ interface Post {
 }
 
 const VideoBackground = () => {
-    // Re-using the video background for consistent UI
     const videoRef = React.useRef<HTMLVideoElement>(null);
     useEffect(() => {
       const video = videoRef.current;
@@ -41,7 +40,7 @@ const VideoBackground = () => {
       video.playsInline = true;
       video.play().catch(console.error);
     }, []);
-  
+
     return (
       <div className="absolute inset-0 w-full h-full z-0 overflow-hidden">
         <video ref={videoRef} className="absolute min-w-full min-h-full w-auto h-auto top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 object-cover">
@@ -60,11 +59,31 @@ function CommunityPageComponent() {
   const [error, setError] = useState<string | null>(null);
   const [selectedUser, setSelectedUser] = useState<User | null>(null);
   const [searchTerm, setSearchTerm] = useState('');
+  const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   const searchParams = useSearchParams();
   const userId = searchParams.get('userId');
 
   useEffect(() => {
+    const socket = io('http://127.0.0.1:5000');
+
+    socket.on('new_post', (newPost) => {
+      setPosts(prev => [newPost, ...prev]);
+    });
+
+    socket.on('post_update', (updatedPost) => {
+      setPosts(prev => prev.map(p => p._id === updatedPost.post_id ? { ...p, likes: updatedPost.likes } : p));
+    });
+
+    socket.on('comment_update', ({ post_id, comment }) => {
+        setPosts(prev => prev.map(p => p._id === post_id ? { ...p, comments: [...p.comments, comment] } : p));
+    });
+
+    socket.on('post_deleted', ({ post_id }) => {
+        setPosts(prev => prev.filter(p => p._id !== post_id));
+    });
+
     const fetchPosts = async () => {
       setIsLoading(true);
       setError(null);
@@ -86,28 +105,54 @@ function CommunityPageComponent() {
       setError("Please log in to join the community.");
       setIsLoading(false);
     }
+
+    return () => {
+        socket.disconnect();
+    }
   }, [userId]);
 
   const handleCreatePost = async (e: FormEvent) => {
     e.preventDefault();
-    if (!newPostContent.trim() || !userId) return;
+    if ((!newPostContent.trim() && !selectedFile) || !userId) return;
 
     setIsPosting(true);
+    const formData = new FormData();
+    formData.append('user_id', userId);
+    formData.append('content', newPostContent);
+    if (selectedFile) {
+        formData.append('media', selectedFile);
+    }
+
     try {
       const response = await fetch('http://127.0.0.1:5000/api/community/posts', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ user_id: userId, content: newPostContent }),
+        body: formData,
       });
       if (!response.ok) throw new Error("Failed to create post.");
 
-      const newPostData = await response.json();
-      setPosts(prev => [newPostData.post, ...prev]);
       setNewPostContent('');
+      setSelectedFile(null);
+      if (fileInputRef.current) fileInputRef.current.value = "";
     } catch (err: any) {
       setError(err.message);
     } finally {
       setIsPosting(false);
+    }
+  };
+
+  const handleDeletePost = async (postId: string) => {
+    if (!userId) return;
+    try {
+        const response = await fetch(`http://127.0.0.1:5000/api/community/posts/${postId}`, {
+            method: 'DELETE',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ user_id: userId })
+        });
+        if (!response.ok) {
+            throw new Error("Failed to delete post.");
+        }
+    } catch (err: any) {
+        setError(err.message);
     }
   };
 
@@ -117,7 +162,6 @@ function CommunityPageComponent() {
         <LoggedInNavbar />
         
         <main className="relative z-10 container mx-auto pt-24 px-4 h-full flex flex-col">
-            {/* Header */}
             <div className="flex-shrink-0 flex justify-between items-center mb-6">
                 <h1 className="text-3xl font-bold text-white">Community of Eunoia</h1>
                 <div className="flex items-center gap-4">
@@ -138,34 +182,48 @@ function CommunityPageComponent() {
                 </div>
             </div>
 
-            {/* Feed */}
             <div className="flex-1 overflow-y-auto pr-2 space-y-6">
                 {isLoading && <div className="text-center py-10"><Loader2 className="mx-auto h-8 w-8 animate-spin text-purple-400"/><p className="mt-2 text-white/60">Loading feed...</p></div>}
                 {error && <div className="text-center text-red-400 p-4 bg-red-900/50 rounded-lg">{error}</div>}
                 <AnimatePresence>
                     {!isLoading && posts.map(post => (
-                        <CommunityPost key={post._id} post={post} onProfileClick={setSelectedUser} />
+                        <CommunityPost 
+                            key={post._id} 
+                            post={post} 
+                            currentUserId={userId || ''}
+                            onProfileClick={setSelectedUser}
+                            onDelete={handleDeletePost}
+                        />
                     ))}
                 </AnimatePresence>
             </div>
             
-            {/* Create Post Input */}
             <motion.div 
                 className="flex-shrink-0 mt-4 pb-4"
                 initial={{ y: 100 }}
                 animate={{ y: 0 }}
                 transition={{ type: 'spring', stiffness: 100 }}
             >
+                {selectedFile && (
+                    <div className="flex items-center gap-2 bg-black/50 border border-white/10 rounded-full h-8 px-3 text-white text-sm mb-2 w-fit">
+                        <Paperclip size={14}/>
+                        <span>{selectedFile.name}</span>
+                    </div>
+                )}
                 <form onSubmit={handleCreatePost} className="relative">
                     <input
                         type="text"
                         value={newPostContent}
                         onChange={(e) => setNewPostContent(e.target.value)}
                         placeholder="Share your thoughts..."
-                        className="w-full bg-black/50 border border-white/20 rounded-full h-14 pl-6 pr-16 text-white placeholder:text-white/50 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                        className="w-full bg-black/50 border border-white/20 rounded-full h-14 pl-6 pr-28 text-white placeholder:text-white/50 focus:outline-none focus:ring-2 focus:ring-purple-500"
                     />
+                    <input ref={fileInputRef} type="file" id="file-upload" className="hidden" onChange={(e) => setSelectedFile(e.target.files ? e.target.files[0] : null)} />
+                    <label htmlFor="file-upload" className="absolute right-16 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 w-10 h-10 rounded-full flex items-center justify-center cursor-pointer transition-colors">
+                        <Paperclip className="w-5 h-5"/>
+                    </label>
                     <button type="submit" disabled={isPosting} className="absolute right-3 top-1/2 -translate-y-1/2 bg-purple-600 hover:bg-purple-700 w-10 h-10 rounded-full flex items-center justify-center transition-colors disabled:bg-purple-800">
-                        {isPosting ? <Loader2 className="w-5 h-5 animate-spin"/> : <Plus className="w-6 h-6" />}
+                        {isPosting ? <Loader2 className="w-5 h-5 animate-spin"/> : <SendHorizonal className="w-5 h-5" />}
                     </button>
                 </form>
             </motion.div>
