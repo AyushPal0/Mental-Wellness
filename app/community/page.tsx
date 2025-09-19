@@ -10,6 +10,7 @@ import UserProfile from '@/components/UserProfile';
 import { Loader2, Plus, Search, Paperclip, SendHorizonal } from 'lucide-react';
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 import io from 'socket.io-client';
+import Link from 'next/link';
 
 // Interfaces for type safety
 interface User {
@@ -25,7 +26,7 @@ interface Post {
   content: string;
   imageUrl?: string;
   createdAt: string;
-  likes: number;
+  likes: string[];
   comments: any[];
   user?: User;
 }
@@ -175,6 +176,9 @@ function CommunityPageComponent() {
                         />
                         <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-white/50" size={20} />
                     </div>
+                    <Link href={`/friends?userId=${userId}`}>
+                        <button className="bg-white/10 text-white px-4 py-2 rounded-full font-medium text-sm">Friends</button>
+                    </Link>
                     <Avatar className="cursor-pointer" onClick={() => setSelectedUser({ _id: userId || '', username: 'You' })}>
                         <AvatarImage src="/placeholder-user.jpg" />
                         <AvatarFallback>YOU</AvatarFallback>
@@ -230,7 +234,7 @@ function CommunityPageComponent() {
         </main>
 
         <AnimatePresence>
-            {selectedUser && <UserProfile user={selectedUser} onClose={() => setSelectedUser(null)} />}
+            {selectedUser && <UserProfile user={selectedUser} onClose={() => setSelectedUser(null)} currentUserId={userId || ''} />}
         </AnimatePresence>
     </div>
   );

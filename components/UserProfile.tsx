@@ -7,7 +7,39 @@ import { X, UserPlus } from 'lucide-react';
 import { Button } from './ui/button';
 import { Avatar, AvatarImage, AvatarFallback } from './ui/avatar';
 
-export default function UserProfile({ user, onClose }: { user: any, onClose: () => void }) {
+// Define a specific type for the user prop for better type safety
+interface UserProfileProps {
+  user: {
+    _id: string;
+    username: string;
+    full_name?: string;
+    avatar?: string;
+  } | null;
+  onClose: () => void;
+  currentUserId: string; // Add currentUserId to know who is sending the request
+}
+
+export default function UserProfile({ user, onClose, currentUserId }: UserProfileProps) {
+  // Add a check to ensure user is not null before rendering
+  if (!user) {
+    return null;
+  }
+
+  const handleSendRequest = async () => {
+    if (!currentUserId || !user) return;
+
+    try {
+      await fetch('http://127.0.0.1:5000/api/friends/friend-request', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ from_user_id: currentUserId, to_user_id: user._id }),
+      });
+      // You can add a success message here if you like
+    } catch (error) {
+      console.error("Failed to send friend request:", error);
+    }
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -34,7 +66,10 @@ export default function UserProfile({ user, onClose }: { user: any, onClose: () 
           </Avatar>
           <h2 className="text-3xl font-bold text-white">{user.full_name || user.username}</h2>
           <p className="text-white/60 mt-1">Mental Wellness Advocate</p>
-          <Button className="mt-6 bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-6 rounded-full transition-colors flex items-center gap-2">
+          <Button
+            onClick={handleSendRequest}
+            className="mt-6 bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-6 rounded-full transition-colors flex items-center gap-2"
+          >
             <UserPlus size={18} />
             Send Friend Request
           </Button>

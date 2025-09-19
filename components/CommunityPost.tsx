@@ -15,14 +15,22 @@ interface User {
   avatar?: string;
 }
 
+interface Comment {
+    _id: string;
+    user_id: string;
+    text: string;
+    created_at: string;
+    user?: User;
+}
+
 interface Post {
   _id: string;
   user_id: string;
   content: string;
   imageUrl?: string;
   createdAt: string;
-  likes: number;
-  comments: any[];
+  likes: string[];
+  comments: Comment[];
   user?: User;
 }
 
@@ -51,10 +59,15 @@ export default function CommunityPost({ post, currentUserId, onProfileClick, onD
   const [showCommentInput, setShowCommentInput] = useState(false);
   const [commentText, setCommentText] = useState("");
   const isOwner = post.user_id === currentUserId;
+  const isLiked = post.likes.includes(currentUserId);
 
   const handleLike = async () => {
       try {
-          await fetch(`http://127.0.0.1:5000/api/community/posts/${post._id}/like`, { method: 'POST' });
+          await fetch(`http://127.0.0.1:5000/api/community/posts/${post._id}/like`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ user_id: currentUserId })
+          });
       } catch (error) {
           console.error("Failed to like post:", error);
       }
@@ -75,9 +88,9 @@ export default function CommunityPost({ post, currentUserId, onProfileClick, onD
         console.error("Failed to add comment:", error);
     }
   }
-  
+
   return (
-    <motion.div 
+    <motion.div
       layout
       className="bg-black/20 backdrop-blur-lg border border-white/10 rounded-2xl p-6 shadow-lg"
       initial={{ opacity: 0, y: 20 }}
@@ -106,6 +119,8 @@ export default function CommunityPost({ post, currentUserId, onProfileClick, onD
       </div>
 
       <p className="text-white/90 mb-4 whitespace-pre-wrap">{post.content}</p>
+
+      {/* This is the new section to display the uploaded image */}
       {post.imageUrl && (
         <div className="mb-4 rounded-xl overflow-hidden">
             <img src={`http://127.0.0.1:5000${post.imageUrl}`} alt="Post content" className="w-full h-auto max-h-[400px] object-cover" />
@@ -113,9 +128,9 @@ export default function CommunityPost({ post, currentUserId, onProfileClick, onD
       )}
 
       <div className="flex items-center justify-between text-white/60 border-t border-white/10 pt-3">
-        <Button variant="ghost" className="flex items-center gap-2 hover:bg-white/10 hover:text-white" onClick={handleLike}>
+        <Button variant="ghost" className={cn("flex items-center gap-2 hover:bg-white/10 hover:text-white", isLiked && "text-red-500")} onClick={handleLike}>
           <Heart size={18} />
-          <span>{post.likes}</span>
+          <span>{post.likes.length}</span>
         </Button>
         <Button variant="ghost" className="flex items-center gap-2 hover:bg-white/10 hover:text-white" onClick={() => setShowCommentInput(!showCommentInput)}>
           <MessageCircle size={18} />
@@ -129,24 +144,39 @@ export default function CommunityPost({ post, currentUserId, onProfileClick, onD
 
       <AnimatePresence>
         {showCommentInput && (
-          <motion.form 
-            onSubmit={handleCommentSubmit}
+          <motion.div
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="mt-4 flex items-center gap-2"
+            className="mt-4"
           >
-            <input 
-              type="text"
-              value={commentText}
-              onChange={(e) => setCommentText(e.target.value)}
-              placeholder="Add a comment..."
-              className="w-full bg-black/50 border border-white/20 rounded-full h-10 px-4 text-white placeholder:text-white/50 focus:outline-none focus:ring-1 focus:ring-purple-500"
-            />
-            <Button type="submit" size="icon" className="bg-purple-600 hover:bg-purple-700 rounded-full w-10 h-10 flex-shrink-0">
-              <Send size={18} />
-            </Button>
-          </motion.form>
+            <form onSubmit={handleCommentSubmit} className="flex items-center gap-2">
+                <input
+                  type="text"
+                  value={commentText}
+                  onChange={(e) => setCommentText(e.target.value)}
+                  placeholder="Add a comment..."
+                  className="w-full bg-black/50 border border-white/20 rounded-full h-10 px-4 text-white placeholder:text-white/50 focus:outline-none focus:ring-1 focus:ring-purple-500"
+                />
+                <Button type="submit" size="icon" className="bg-purple-600 hover:bg-purple-700 rounded-full w-10 h-10 flex-shrink-0">
+                  <Send size={18} />
+                </Button>
+            </form>
+            <div className="mt-4 space-y-3">
+                {post.comments.map(comment => (
+                    <div key={comment._id} className="flex items-start gap-2">
+                        <Avatar className="w-8 h-8">
+                            <AvatarImage src={comment.user?.avatar} />
+                            <AvatarFallback>{comment.user?.username.substring(0,2).toUpperCase()}</AvatarFallback>
+                        </Avatar>
+                        <div>
+                            <p className="font-semibold text-sm">{comment.user?.username}</p>
+                            <p className="text-sm">{comment.text}</p>
+                        </div>
+                    </div>
+                ))}
+            </div>
+          </motion.div>
         )}
       </AnimatePresence>
     </motion.div>
