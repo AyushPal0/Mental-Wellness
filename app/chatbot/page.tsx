@@ -1,10 +1,10 @@
-// app/chatbot/page.tsx
 'use client'
 import React, { useRef, useEffect, useState, Suspense } from "react";
 import Sidebar from '@/components/Sidebar';
 import ChatArea from '@/components/ChatArea';
 import ProfileTaskPanel from "@/components/ProfileTaskPanel";
 import { useSearchParams } from "next/navigation";
+import { LoggedInNavbar } from "@/components/LoggedInNavbar"; // 👈 Import the navbar
 
 const VideoBackground = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -36,20 +36,18 @@ function ChatbotPageContent() {
   const userId = searchParams.get('userId');
   
   const [conversationId, setConversationId] = useState<string | null>(null);
-  // This state will now act as a trigger for the Sidebar to refetch data
   const [refreshHistoryKey, setRefreshHistoryKey] = useState(Date.now());
 
   const handleNewChat = () => {
-    setConversationId(null); // Setting to null signifies a new chat
+    setConversationId(null);
   };
 
   const handleSelectConversation = (id: string) => {
-    setConversationId(id); // Set to the selected conversation ID
+    setConversationId(id);
   };
 
   const handleConversationStarted = (newConversationId: string) => {
     setConversationId(newConversationId);
-    // Update the key to trigger the useEffect in Sidebar, without remounting the component
     setRefreshHistoryKey(Date.now()); 
   };
 
@@ -68,23 +66,25 @@ function ChatbotPageContent() {
   return (
     <div className="h-screen w-full relative font-sans overflow-hidden">
       <VideoBackground />
-      <main className="relative z-10 flex h-full w-full items-center justify-center p-4 gap-4">
-        <div className="hidden md:flex md:flex-shrink-0 h-[95vh] max-h-[900px]">
+      {/* 👇 Add the navbar here, connecting its button to the panel */}
+      <LoggedInNavbar onProfileClick={() => setPanelOpen(true)} />
+      
+      {/* 👇 Adjust top padding (pt-24) to make space for the navbar */}
+      <main className="relative z-10 flex h-full w-full items-center justify-center p-4 gap-4 pt-24">
+        {/* 👇 Adjust height to account for the new padding */}
+        <div className="hidden md:flex md:flex-shrink-0 h-[calc(95vh-5rem)] max-h-[900px]">
           <Sidebar 
-            // The 'key' prop is removed to prevent remounting
             userId={userId} 
             onNewChat={handleNewChat}
             onSelectConversation={handleSelectConversation}
-            // We pass the key as a 'refreshTrigger' prop instead
             refreshTrigger={refreshHistoryKey}
           />
         </div>
-        <div className="flex-1 h-[95vh] max-h-[900px]">
+        <div className="flex-1 h-[calc(95vh-5rem)] max-h-[900px]">
           <ChatArea 
-            key={conversationId || 'new-chat'} // Key is still useful here to reset the chat area
+            key={conversationId || 'new-chat'}
             userId={userId} 
             conversationId={conversationId}
-            onProfileClick={() => setPanelOpen(true)}
             onConversationStarted={handleConversationStarted}
           />
         </div>

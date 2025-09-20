@@ -1,4 +1,3 @@
-// app/community/page.tsx
 'use client';
 
 import React, { useState, useEffect, FormEvent, Suspense, useRef } from 'react';
@@ -11,8 +10,8 @@ import { Loader2, Plus, Search, Paperclip, SendHorizonal } from 'lucide-react';
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 import io from 'socket.io-client';
 import Link from 'next/link';
+import ProfileTaskPanel from '@/components/ProfileTaskPanel';
 
-// Interfaces for type safety
 interface User {
   _id: string;
   username: string;
@@ -62,6 +61,7 @@ function CommunityPageComponent() {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const [isPanelOpen, setPanelOpen] = useState(false);
 
   const searchParams = useSearchParams();
   const userId = searchParams.get('userId');
@@ -160,7 +160,7 @@ function CommunityPageComponent() {
   return (
     <div className="h-screen w-full relative font-sans overflow-hidden">
         <VideoBackground />
-        <LoggedInNavbar />
+        <LoggedInNavbar onProfileClick={() => setPanelOpen(true)} />
         
         <main className="relative z-10 container mx-auto pt-24 px-4 h-full flex flex-col">
             <div className="flex-shrink-0 flex justify-between items-center mb-6">
@@ -179,10 +179,6 @@ function CommunityPageComponent() {
                     <Link href={`/friends?userId=${userId}`}>
                         <button className="bg-white/10 text-white px-4 py-2 rounded-full font-medium text-sm">Friends</button>
                     </Link>
-                    <Avatar className="cursor-pointer" onClick={() => setSelectedUser({ _id: userId || '', username: 'You' })}>
-                        <AvatarImage src="/placeholder-user.jpg" />
-                        <AvatarFallback>YOU</AvatarFallback>
-                    </Avatar>
                 </div>
             </div>
 
@@ -236,6 +232,7 @@ function CommunityPageComponent() {
         <AnimatePresence>
             {selectedUser && <UserProfile user={selectedUser} onClose={() => setSelectedUser(null)} currentUserId={userId || ''} />}
         </AnimatePresence>
+        <ProfileTaskPanel isOpen={isPanelOpen} onClose={() => setPanelOpen(false)} />
     </div>
   );
 }

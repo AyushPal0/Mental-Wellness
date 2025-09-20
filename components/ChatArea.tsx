@@ -1,9 +1,8 @@
-// components/ChatArea.tsx
 "use client";
 
 import { useState, useRef, useEffect, ChangeEvent, FormEvent } from 'react';
 import { PlaceholdersAndVanishInput } from './ui/placeholders-and-vanish-input';
-import { Lightbulb, Menu, User } from 'lucide-react';
+import { Lightbulb, User } from 'lucide-react';
 import Image from 'next/image';
 
 interface Message {
@@ -15,7 +14,6 @@ interface Message {
 interface ChatAreaProps {
     userId: string;
     conversationId: string | null;
-    onProfileClick: () => void;
     onConversationStarted: (newConversationId: string) => void;
 }
 
@@ -30,7 +28,7 @@ const WelcomeScreen = () => {
     return (
         <div className="flex flex-col items-center justify-center h-full text-white px-4">
             <div className="text-center">
-                <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-purple-400 to-blue-400 text-transparent bg-clip-text">
+                <h1 className="text-4xl md:text-5xl font-bold bg-white text-transparent bg-clip-text">
                     Hello, I'm MindfulAI
                 </h1>
                 <p className="mt-4 text-xl md:text-2xl text-white/80">How can I help you on your wellness journey today?</p>
@@ -47,7 +45,7 @@ const WelcomeScreen = () => {
     );
 };
 
-export default function ChatArea({ userId, conversationId, onProfileClick, onConversationStarted }: ChatAreaProps) {
+export default function ChatArea({ userId, conversationId, onConversationStarted }: ChatAreaProps) {
     const [messages, setMessages] = useState<Message[]>([]);
     const [currentInput, setCurrentInput] = useState("");
     const [isLoading, setIsLoading] = useState(false);
@@ -175,21 +173,8 @@ export default function ChatArea({ userId, conversationId, onProfileClick, onCon
 
     return (
         <main className="flex-1 flex flex-col bg-white/10 backdrop-blur-3xl h-full rounded-2xl border border-white/20 shadow-lg overflow-hidden">
-            <header className="flex justify-between items-center p-4 text-white border-b border-white/10 flex-shrink-0">
-                <div className="flex items-center space-x-2">
-                    <button className="md:hidden">
-                        <Menu size={24} />
-                    </button>
-                    <h1 className="text-lg font-semibold text-white">MindfulAI</h1>
-                </div>
-                <button
-                  onClick={onProfileClick}
-                  className="h-8 w-8 rounded-full bg-white/20 flex items-center justify-center hover:bg-white/30 transition-colors"
-                >
-                    <User size={20} className="text-white" />
-                </button>
-            </header>
-
+            {/* The header that was here is now gone. */}
+            
             <div className="flex-1 overflow-y-auto p-4 md:p-6 space-y-6">
                 {messages.length === 0 && !isLoading ? (
                     <WelcomeScreen />
@@ -197,14 +182,12 @@ export default function ChatArea({ userId, conversationId, onProfileClick, onCon
                     messages.map((msg) => (
                         <div key={msg.id} className={`flex items-start gap-4 max-w-4xl mx-auto`}>
                              <div className={`flex-shrink-0 h-8 w-8 rounded-full flex items-center justify-center ${msg.sender === 'user' ? 'bg-white/20' : 'bg-gradient-to-br from-purple-500 to-blue-500'}`}>
-                                 {/* THIS IS THE MODIFIED LINE */}
                                  {msg.sender === 'user' ? <User size={20} className="text-white" /> : <Image src="/image.jpg" alt="MindfulAI Logo" width={20} height={20} />}
                              </div>
                             <div className="flex-1 bg-white/10 p-4 rounded-xl shadow-md min-h-[70px]">
                                 <p className="font-semibold text-white mb-1">{msg.sender === 'user' ? 'You' : 'MindfulAI'}</p>
                                 <p className="text-white whitespace-pre-wrap">
                                     {msg.text}
-                                    {/* Show a blinking cursor animation while the AI is typing its response */}
                                     {isLoading && msg.sender === 'ai' && msg.id === messages[messages.length - 1].id && (
                                         <span className="animate-pulse">_</span>
                                     )}

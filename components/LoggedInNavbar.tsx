@@ -1,4 +1,3 @@
-// frontend/components/LoggedInNavbar.tsx
 "use client";
 
 import Link from "next/link";
@@ -18,13 +17,13 @@ export function LoggedInNavbar({ onProfileClick }: { onProfileClick?: () => void
   ];
 
   return (
-    <motion.nav
-      initial={{ y: -100, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ type: 'spring', stiffness: 100, damping: 20, delay: 0.2 }}
-      className="fixed top-5 left-1/4 transform -translate-x-1/2 z-50 w-11/12 max-w-lg"
-    >
-      <div className="bg-black/40 backdrop-blur-lg rounded-full border border-white/20 shadow-lg p-2 flex items-center justify-between">
+    <div className="fixed top-5 left-0 right-0 z-50 flex justify-center pointer-events-none">
+      <motion.nav
+        initial={{ y: -100, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ type: 'spring', stiffness: 100, damping: 20, delay: 0.2 }}
+        className="w-auto bg-black/40 backdrop-blur-lg rounded-full border border-white/20 shadow-lg p-2 flex items-center justify-between pointer-events-auto"
+      >
         <Link href={`/home?userId=${userId}`} className="text-white text-lg font-bold pl-3 pr-2">
           Eunoia
         </Link>
@@ -49,12 +48,13 @@ export function LoggedInNavbar({ onProfileClick }: { onProfileClick?: () => void
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
               onClick={onProfileClick}
-              className="h-9 w-9 rounded-full bg-white/20 flex items-center justify-center hover:bg-white/30 transition-colors"
+              // This margin-left adds the necessary gap
+              className="h-9 w-9 ml-2 rounded-full bg-white/20 flex items-center justify-center hover:bg-white/30 transition-colors"
             >
               <User size={20} className="text-white" />
             </motion.button>
         }
-      </div>
-    </motion.nav>
+      </motion.nav>
+    </div>
   );
 }

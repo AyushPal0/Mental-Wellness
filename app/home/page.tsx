@@ -6,14 +6,18 @@ import { LoggedInNavbar } from '@/components/LoggedInNavbar';
 import Link from 'next/link';
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 import { motion } from 'framer-motion';
-import { MessageSquare, ClipboardCheck, Globe, Loader2, Check, ArrowRight } from 'lucide-react';
+import { MessageSquare, ClipboardCheck, Globe, Loader2, Check, ArrowRight, Flame } from 'lucide-react'; // Import Flame icon
+import ProfileTaskPanel from '@/components/ProfileTaskPanel';
+import { useAuth } from '@/hooks/use-auth';
 
 interface User {
   _id: string;
   username: string;
   full_name?: string;
   avatar?: string;
+  streak?: number; // Add streak to user type
 }
+
 
 interface Task {
   id: string;
@@ -63,13 +67,15 @@ const FeatureCard = ({ title, icon, href, description }: { title: string, icon: 
 )
 
 function HomePageContent() {
-    const searchParams = useSearchParams();
-    const userId = searchParams.get('userId');
+    const { userId, isLoading: isAuthLoading } = useAuth();
     const [user, setUser] = useState<User | null>(null);
     const [pendingTasks, setPendingTasks] = useState<Task[]>([]);
     const [isLoading, setIsLoading] = useState(true);
+    const [isPanelOpen, setPanelOpen] = useState(false); // Add state for the panel
 
     useEffect(() => {
+        if (isAuthLoading) return;
+
         if (!userId) {
             setIsLoading(false);
             return;
@@ -78,26 +84,27 @@ function HomePageContent() {
         const fetchData = async () => {
             setIsLoading(true);
             try {
-                const [userRes, tasksRes] = await Promise.all([
-                    fetch(`http://127.0.0.1:5000/api/user/${userId}`),
-                    fetch(`http://127.0.0.1:5000/api/tasks/user/${userId}`)
-                ]);
+                const res = await fetch(`http://127.0.0.1:5000/api/home/${userId}`);
 
-                if (userRes.ok) setUser(await userRes.json());
-                if (tasksRes.ok) {
-                    const { tasks } = await tasksRes.json();
-                    setPendingTasks(tasks.filter((t: Task) => t.status === 'pending').slice(0, 3)); // Show max 3
+                if (res.ok) {
+                    const data = await res.json();
+                    setUser(data.user);
+                    setPendingTasks(data.pendingTasks || []);
+                } else {
+                    console.error("Failed to fetch home page data:", await res.text());
+                    setUser(null);
                 }
             } catch (error) {
-                console.error("Failed to fetch data:", error);
+                console.error("Error fetching data:", error);
+                setUser(null);
             } finally {
                 setIsLoading(false);
             }
         };
         fetchData();
-    }, [userId]);
+    }, [userId, isAuthLoading]);
 
-    if (isLoading) {
+    if (isLoading || isAuthLoading) {
         return <div className="flex h-screen w-full items-center justify-center text-white bg-black"><Loader2 className="h-12 w-12 animate-spin text-purple-400" /></div>;
     }
     
@@ -117,7 +124,7 @@ function HomePageContent() {
     return (
         <div className="h-screen w-full relative font-sans overflow-hidden">
             <VideoBackground />
-            <LoggedInNavbar />
+            <LoggedInNavbar onProfileClick={() => setPanelOpen(true)} />
             <main className="relative z-10 container mx-auto pt-24 px-4 h-full">
                 <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}>
                     <div className="flex items-center gap-4 mb-8">
@@ -162,6 +169,7 @@ function HomePageContent() {
                     </motion.div>
                 </div>
             </main>
+            <ProfileTaskPanel isOpen={isPanelOpen} onClose={() => setPanelOpen(false)} />
         </div>
     );
 }
@@ -173,4 +181,3 @@ export default function HomePage() {
         </Suspense>
     );
 }
-
