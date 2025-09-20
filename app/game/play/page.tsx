@@ -1,591 +1,671 @@
 'use client';
 import { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/navigation';
-import { motion } from 'framer-motion';
 
-interface GameItem {
-  id: string;
-  type: string;
-  width: number;
-  height: number;
-  correct_x: number;
-  correct_y: number;
-  correct_rotation: number;
-  start_x: number;
-  start_y: number;
-  start_rotation: number;
-  color?: string;
-}
+// OCD Severity Interpretation
+const OCD_SEVERITY_LEVELS = [
+  { score: 0, label: "None", description: "No significant OCD traits detected", color: "text-green-400" },
+  { score: 20, label: "Mild", description: "Minor organizational preferences", color: "text-blue-400" },
+  { score: 40, label: "Moderate", description: "Noticeable need for order and symmetry", color: "text-yellow-400" },
+  { score: 60, label: "Significant", description: "Strong compulsion for arrangement", color: "text-orange-400" },
+  { score: 80, label: "Severe", description: "Clinical level OCD tendencies", color: "text-red-400" }
+];
 
-interface Position {
-  x: number;
-  y: number;
-  rotation: number;
-}
+// Game levels with increasing disorder
+const GAME_LEVELS = [
+  {
+    id: 1,
+    name: "Neat Arrangement",
+    description: "A perfectly organized table",
+    items: [
+      {
+        id: "book1", 
+        type: "book", 
+        width: 80, 
+        height: 120, 
+        x: 100, 
+        y: 100, 
+        rotation: 0,
+        color: '#8B4513'
+      },
+      {
+        id: "cup1", 
+        type: "cup", 
+        width: 60, 
+        height: 80, 
+        x: 250, 
+        y: 100, 
+        rotation: 0,
+        color: '#87CEEB'
+      },
+      {
+        id: "plate1", 
+        type: "plate", 
+        width: 70, 
+        height: 70, 
+        x: 400, 
+        y: 100, 
+        rotation: 0,
+        color: '#FFF8DC'
+      }
+    ],
+    triggerQuestion: "How comfortable are you with this arrangement?",
+    disorderIntensity: 1
+  },
+  {
+    id: 2,
+    name: "Slightly Messy",
+    description: "The table is slightly disorganized",
+    items: [
+      {
+        id: "book1", 
+        type: "book", 
+        width: 80, 
+        height: 120, 
+        x: 120, 
+        y: 120, 
+        rotation: 15,
+        color: '#8B4513'
+      },
+      {
+        id: "cup1", 
+        type: "cup", 
+        width: 60, 
+        height: 80, 
+        x: 270, 
+        y: 110, 
+        rotation: -10,
+        color: '#87CEEB'
+      },
+      {
+        id: "plate1", 
+        type: "plate", 
+        width: 70, 
+        height: 70, 
+        x: 390, 
+        y: 90, 
+        rotation: 5,
+        color: '#FFF8DC'
+      },
+      {
+        id: "pen1", 
+        type: "pen", 
+        width: 40, 
+        height: 120, 
+        x: 200, 
+        y: 250, 
+        rotation: 45,
+        color: '#2c3e50'
+      }
+    ],
+    triggerQuestion: "Does this slight disorder bother you?",
+    disorderIntensity: 2
+  },
+  {
+    id: 3,
+    name: "Moderately Messy",
+    description: "Items are noticeably disorganized",
+    items: [
+      {
+        id: "book1", 
+        type: "book", 
+        width: 80, 
+        height: 120, 
+        x: 140, 
+        y: 140, 
+        rotation: 25,
+        color: '#8B4513'
+      },
+      {
+        id: "cup1", 
+        type: "cup", 
+        width: 60, 
+        height: 80, 
+        x: 290, 
+        y: 120, 
+        rotation: -20,
+        color: '#87CEEB'
+      },
+      {
+        id: "plate1", 
+        type: "plate", 
+        width: 70, 
+        height: 70, 
+        x: 380, 
+        y: 80, 
+        rotation: 15,
+        color: '#FFF8DC'
+      },
+      {
+        id: "pen1", 
+        type: "pen", 
+        width: 40, 
+        height: 120, 
+        x: 220, 
+        y: 260, 
+        rotation: 65,
+        color: '#2c3e50'
+      },
+      {
+        id: "book2", 
+        type: "book", 
+        width: 70, 
+        height: 100, 
+        x: 170, 
+        y: 280, 
+        rotation: -15,
+        color: '#8B0000'
+      }
+    ],
+    triggerQuestion: "Is this level of disorder uncomfortable for you?",
+    disorderIntensity: 3
+  },
+  {
+    id: 4,
+    name: "Very Messy",
+    description: "The table is quite disorganized",
+    items: [
+      {
+        id: "book1", 
+        type: "book", 
+        width: 80, 
+        height: 120, 
+        x: 160, 
+        y: 160, 
+        rotation: 35,
+        color: '#8B4513'
+      },
+      {
+        id: "cup1", 
+        type: "cup", 
+        width: 60, 
+        height: 80, 
+        x: 310, 
+        y: 130, 
+        rotation: -30,
+        color: '#87CEEB'
+      },
+      {
+        id: "plate1", 
+        type: "plate", 
+        width: 70, 
+        height: 70, 
+        x: 370, 
+        y: 70, 
+        rotation: 25,
+        color: '#FFF8DC'
+      },
+      {
+        id: "pen1", 
+        type: "pen", 
+        width: 40, 
+        height: 120, 
+        x: 240, 
+        y: 270, 
+        rotation: 85,
+        color: '#2c3e50'
+      },
+      {
+        id: "book2", 
+        type: "book", 
+        width: 70, 
+        height: 100, 
+        x: 190, 
+        y: 290, 
+        rotation: -25,
+        color: '#8B0000'
+      },
+      {
+        id: "notebook1", 
+        type: "notebook", 
+        width: 90, 
+        height: 110, 
+        x: 330, 
+        y: 190, 
+        rotation: 15,
+        color: '#4B0082'
+      }
+    ],
+    triggerQuestion: "Does this messy arrangement trigger your OCD?",
+    disorderIntensity: 4
+  },
+  {
+    id: 5,
+    name: "Extremely Messy",
+    description: "The table is highly disorganized",
+    items: [
+      {
+        id: "book1", 
+        type: "book", 
+        width: 80, 
+        height: 120, 
+        x: 180, 
+        y: 180, 
+        rotation: 45,
+        color: '#8B4513'
+      },
+      {
+        id: "cup1", 
+        type: "cup", 
+        width: 60, 
+        height: 80, 
+        x: 330, 
+        y: 140, 
+        rotation: -40,
+        color: '#87CEEB'
+      },
+      {
+        id: "plate1", 
+        type: "plate", 
+        width: 70, 
+        height: 70, 
+        x: 360, 
+        y: 60, 
+        rotation: 35,
+        color: '#FFF8DC'
+      },
+      {
+        id: "pen1", 
+        type: "pen", 
+        width: 40, 
+        height: 120, 
+        x: 260, 
+        y: 280, 
+        rotation: 105,
+        color: '#2c3e50'
+      },
+      {
+        id: "book2", 
+        type: "book", 
+        width: 70, 
+        height: 100, 
+        x: 210, 
+        y: 300, 
+        rotation: -35,
+        color: '#8B0000'
+      },
+      {
+        id: "notebook1", 
+        type: "notebook", 
+        width: 90, 
+        height: 110, 
+        x: 350, 
+        y: 210, 
+        rotation: 25,
+        color: '#4B0082'
+      },
+      {
+        id: "cup2", 
+        type: "cup", 
+        width: 50, 
+        height: 70, 
+        x: 280, 
+        y: 150, 
+        rotation: -15,
+        color: '#FF6347'
+      },
+      {
+        id: "paper1", 
+        type: "paper", 
+        width: 100, 
+        height: 80, 
+        x: 400, 
+        y: 250, 
+        rotation: 10,
+        color: '#FFFFFF'
+      }
+    ],
+    triggerQuestion: "How strongly does this extreme disorder affect you?",
+    disorderIntensity: 5
+  }
+];
 
-interface GameState {
-  sessionId: string | null;
+interface UserResponse {
   level: number;
-  items: GameItem[];
-  itemPositions: Record<string, Position>;
-  completedItems: Set<string>;
-  timeLeft: number;
-  isPlaying: boolean;
-  isCompleted: boolean;
-}
-
-interface Score {
-  totalTime: number;
-  corrections: number;
-  precision: number;
-  severityScore: number;
-  interpretation: string;
+  intensity: number;
+  response: number;
 }
 
 export default function GamePlayPage() {
   const router = useRouter();
-  const [gameState, setGameState] = useState<GameState>({
-    sessionId: null,
-    level: 0,
-    items: [],
-    itemPositions: {},
-    completedItems: new Set(),
-    timeLeft: 0,
-    isPlaying: false,
-    isCompleted: false
-  });
+  const [currentLevel, setCurrentLevel] = useState(0);
+  const [isCompleted, setIsCompleted] = useState(false);
+  const [ocdScore, setOcdScore] = useState(0);
+  const [severityLevel, setSeverityLevel] = useState(OCD_SEVERITY_LEVELS[0]);
+  const [userResponses, setUserResponses] = useState<UserResponse[]>([]);
+  const [showTriggerQuestion, setShowTriggerQuestion] = useState(false);
+  const [viewTime, setViewTime] = useState(0);
+  const [hasSeenTable, setHasSeenTable] = useState(false);
+  const viewTimerRef = useRef<NodeJS.Timeout | null>(null);
 
-  const [score, setScore] = useState<Score>({
-    totalTime: 0,
-    corrections: 0,
-    precision: 0,
-    severityScore: 0,
-    interpretation: ''
-  });
+  const currentLevelData = GAME_LEVELS[currentLevel];
 
-  const [isDragging, setIsDragging] = useState<string | null>(null);
-  const timerRef = useRef<NodeJS.Timeout | null>(null);
-
-  // Start a new game session
-  const startGame = async (level: number = 0) => {
-    try {
-      const response = await fetch('http://localhost:5000/api/game/start', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ game_type: 'ocd_table' })
-      });
-      
-      const data = await response.json();
-      
-      if (!data.success) {
-        console.error('Failed to start game:', data.error);
-        return;
-      }
-
-      const initialPositions: Record<string, Position> = {};
-      data.game_data.items.forEach((item: GameItem) => {
-        initialPositions[item.id] = {
-          x: item.start_x,
-          y: item.start_y,
-          rotation: item.start_rotation
-        };
-      });
-
-      setGameState({
-        sessionId: data.game_data.session_id,
-        level: level,
-        items: data.game_data.items,
-        itemPositions: initialPositions,
-        completedItems: new Set(),
-        timeLeft: data.game_data.time_limit || 120,
-        isPlaying: true,
-        isCompleted: false
-      });
-
-      // Start timer
-      if (timerRef.current) clearInterval(timerRef.current);
-      timerRef.current = setInterval(() => {
-        setGameState(prev => {
-          if (prev.timeLeft <= 1) {
-            if (timerRef.current) clearInterval(timerRef.current);
-            completeLevel();
-            return { ...prev, timeLeft: 0, isPlaying: false };
-          }
-          return { ...prev, timeLeft: prev.timeLeft - 1 };
-        });
-      }, 1000);
-    } catch (error) {
-      console.error('Failed to start game:', error);
-    }
-  };
-
-  // Handle item movement
-  const handleItemMove = (itemId: string, newX: number, newY: number) => {
-    setGameState(prev => ({
-      ...prev,
-      itemPositions: {
-        ...prev.itemPositions,
-        [itemId]: { ...prev.itemPositions[itemId], x: newX, y: newY }
-      }
-    }));
-
-    // Record the action
-    recordAction(itemId, 'drag');
-  };
-
-  // Handle item rotation
-  const handleItemRotate = (itemId: string, newRotation: number) => {
-    setGameState(prev => ({
-      ...prev,
-      itemPositions: {
-        ...prev.itemPositions,
-        [itemId]: { ...prev.itemPositions[itemId], rotation: newRotation }
-      }
-    }));
-
-    // Record the action
-    recordAction(itemId, 'rotate');
-  };
-
-  // Record user action to backend
-  const recordAction = async (itemId: string, actionType: string) => {
-    if (!gameState.sessionId) return;
-
-    try {
-      const action = {
-        session_id: gameState.sessionId,
-        item_id: itemId,
-        action_type: actionType,
-        time_taken: 0.5,
-        timestamp: Date.now() / 1000
-      };
-
-      await fetch('http://localhost:5000/api/game/action', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(action)
-      });
-
-      // Increment corrections count for score
-      setScore(prev => ({ ...prev, corrections: prev.corrections + 1 }));
-    } catch (error) {
-      console.error('Failed to record action:', error);
-    }
-  };
-
-  // Check if an item is correctly placed
-  const checkItemPlacement = async (itemId: string) => {
-    try {
-      const position = gameState.itemPositions[itemId];
-      const response = await fetch('http://localhost:5000/api/game/check-placement', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          id: itemId,
-          x: position.x,
-          y: position.y,
-          rotation: position.rotation
-        })
-      });
-
-      const result = await response.json();
-      
-      if (result.correctly_positioned) {
-        setGameState(prev => ({
-          ...prev,
-          completedItems: new Set(prev.completedItems).add(itemId)
-        }));
-      }
-
-      return result;
-    } catch (error) {
-      console.error('Failed to check placement:', error);
-      return { correctly_positioned: false, distance: 0, rotation_diff: 0 };
-    }
-  };
-
-  // Complete the level and calculate score
-  const completeLevel = async () => {
-    if (!gameState.sessionId || gameState.isCompleted) return;
-
-    try {
-      // Check all items
-      const itemPositions = Object.entries(gameState.itemPositions).map(([id, pos]) => ({
-        id,
-        x: pos.x,
-        y: pos.y,
-        rotation: pos.rotation,
-        correctly_positioned: gameState.completedItems.has(id)
-      }));
-
-      const response = await fetch('http://localhost:5000/api/game/complete', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          session_id: gameState.sessionId,
-          level: gameState.level,
-          items: itemPositions,
-          completion_time: gameState.timeLeft,
-          corrections: score.corrections
-        })
-      });
-
-      const result = await response.json();
-      if (result.success) {
-        setScore({
-          totalTime: result.result.totalTime || 0,
-          corrections: result.result.corrections || 0,
-          precision: result.result.precision || 0,
-          severityScore: result.result.severityScore || 0,
-          interpretation: result.result.interpretation || ''
-        });
-        setGameState(prev => ({ ...prev, isPlaying: false, isCompleted: true }));
-      }
-
-      if (timerRef.current) {
-        clearInterval(timerRef.current);
-        timerRef.current = null;
-      }
-    } catch (error) {
-      console.error('Failed to complete level:', error);
-    }
-  };
-
-  // Clean up on unmount
+  // Start view timer when level changes
   useEffect(() => {
+    setViewTime(0);
+    setShowTriggerQuestion(false);
+    setHasSeenTable(false);
+    
+    if (viewTimerRef.current) {
+      clearInterval(viewTimerRef.current);
+    }
+    
+    viewTimerRef.current = setInterval(() => {
+      setViewTime(prev => prev + 1);
+    }, 1000);
+    
     return () => {
-      if (timerRef.current) {
-        clearInterval(timerRef.current);
+      if (viewTimerRef.current) {
+        clearInterval(viewTimerRef.current);
       }
     };
-  }, []);
+  }, [currentLevel]);
 
-  // Start game on component mount
-  useEffect(() => {
-    startGame(0);
-  }, []);
+  const handleReadyToAnswer = () => {
+    setHasSeenTable(true);
+    setShowTriggerQuestion(true);
+    
+    // Clear the view timer when showing the question
+    if (viewTimerRef.current) {
+      clearInterval(viewTimerRef.current);
+    }
+  };
 
-  // Draggable Item Component
-  const DraggableItem = ({ item, position }: { item: GameItem, position: Position }) => {
-    const handleMouseDown = (e: React.MouseEvent) => {
-      e.preventDefault();
-      setIsDragging(item.id);
-    };
+  const handleUserResponse = (response: number) => {
+    // Record user's response to this level's disorder
+    setUserResponses(prev => [...prev, {
+      level: currentLevel + 1,
+      intensity: currentLevelData.disorderIntensity,
+      response: response
+    }]);
 
-    const handleMouseMove = (e: React.MouseEvent) => {
-      if (!isDragging || isDragging !== item.id) return;
-      
-      const container = e.currentTarget.closest('.game-table');
-      if (container) {
-        const rect = container.getBoundingClientRect();
-        const newX = e.clientX - rect.left - item.width / 2;
-        const newY = e.clientY - rect.top - item.height / 2;
-        handleItemMove(item.id, newX, newY);
+    setShowTriggerQuestion(false);
+    
+    // Move to next level or complete assessment
+    if (currentLevel + 1 < GAME_LEVELS.length) {
+      setTimeout(() => {
+        setCurrentLevel(prev => prev + 1);
+      }, 1000);
+    } else {
+      calculateFinalOCDScore();
+      setIsCompleted(true);
+    }
+  };
+
+  const calculateFinalOCDScore = () => {
+    // Calculate score based on user responses and view times
+    const responseScore = userResponses.reduce((sum, response) => {
+      return sum + (response.response * response.intensity * 3);
+    }, 0);
+    
+    // Average response score (0-100)
+    const avgResponseScore = Math.min(100, responseScore / Math.max(1, userResponses.length));
+    
+    // Calculate time score (people with OCD might look longer at disordered arrangements)
+    const totalViewTime = userResponses.reduce((sum, _, index) => {
+      // Simulate view time (in a real app, you'd track actual view times)
+      return sum + (5 + index * 2); // Increasing view time for more disordered levels
+    }, 0);
+    
+    const timeScore = Math.min(100, totalViewTime * 1.5);
+    
+    // Weighted final score (mostly based on responses)
+    const finalScore = Math.round(
+      (avgResponseScore * 0.8) +
+      (timeScore * 0.2)
+    );
+    
+    setOcdScore(Math.min(100, finalScore));
+    setSeverityLevel(getSeverityLevel(finalScore));
+  };
+
+  const getSeverityLevel = (score: number) => {
+    for (let i = OCD_SEVERITY_LEVELS.length - 1; i >= 0; i--) {
+      if (score >= OCD_SEVERITY_LEVELS[i].score) {
+        return OCD_SEVERITY_LEVELS[i];
       }
-    };
+    }
+    return OCD_SEVERITY_LEVELS[0];
+  };
 
-    const handleMouseUp = () => {
-      if (isDragging === item.id) {
-        setIsDragging(null);
-        checkItemPlacement(item.id);
-      }
-    };
-
-    const handleWheel = (e: React.WheelEvent) => {
-      e.preventDefault();
-      const delta = e.deltaY > 0 ? 5 : -5;
-      const newRotation = (position.rotation + delta) % 360;
-      handleItemRotate(item.id, newRotation);
-    };
-
+  const TableItem = ({ item }: { item: typeof currentLevelData.items[0] }) => {
     return (
-      <motion.div
-        className={`item ${item.type} ${isDragging === item.id ? 'dragging' : ''}`}
+      <div
+        className="item absolute transition-all duration-500"
         style={{
-          position: 'absolute',
-          left: position.x,
-          top: position.y,
+          left: item.x - item.width/2,
+          top: item.y - item.height/2,
           width: item.width,
           height: item.height,
-          transform: `rotate(${position.rotation}deg)`,
-          backgroundColor: item.color || '#ddd',
-          border: '2px solid #999',
-          cursor: 'move',
-          userSelect: 'none',
-          zIndex: isDragging === item.id ? 1000 : 1
+          transform: `rotate(${item.rotation}deg)`,
+          backgroundColor: item.color,
+          borderRadius: item.type === 'plate' ? '50%' : item.type === 'cup' ? '50% 50% 60% 60%' : '4px',
+          boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.2)',
+          border: item.type === 'paper' ? '1px solid #ccc' : 'none'
         }}
-        onMouseDown={handleMouseDown}
-        onMouseMove={handleMouseMove}
-        onMouseUp={handleMouseUp}
-        onMouseLeave={handleMouseUp}
-        onWheel={handleWheel}
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
       >
-        {/* Item content based on type */}
-        {item.type === 'book' && (
-          <div style={{ 
-            background: 'linear-gradient(to right, #8B4513, #A0522D)', 
-            height: '100%', 
-            display: 'flex', 
-            alignItems: 'center', 
-            justifyContent: 'center', 
-            color: 'white', 
-            fontSize: '12px',
-            borderRadius: '4px'
-          }}>
-            Book
-          </div>
-        )}
-        {item.type === 'cup' && (
-          <div style={{ 
-            background: 'linear-gradient(to bottom, #87CEEB, #6495ED)', 
-            height: '100%', 
-            borderRadius: '50% 50% 60% 60%', 
-            display: 'flex', 
-            alignItems: 'center', 
-            justifyContent: 'center', 
-            color: 'white', 
-            fontSize: '12px' 
-          }}>
-            Cup
-          </div>
-        )}
-        {item.type === 'plate' && (
-          <div style={{ 
-            background: 'linear-gradient(to bottom, #FFF8DC, #F5F5DC)', 
-            height: '100%', 
-            borderRadius: '50%', 
-            display: 'flex', 
-            alignItems: 'center', 
-            justifyContent: 'center', 
-            color: '#666', 
-            fontSize: '12px', 
-            border: '2px solid #ddd' 
-          }}>
-            Plate
-          </div>
-        )}
-        {item.type === 'pen' && (
-          <div style={{ 
-            background: 'linear-gradient(to bottom, #333, #000)', 
-            height: '100%', 
-            width: '40%', 
-            margin: '0 auto', 
-            display: 'flex', 
-            alignItems: 'center', 
-            justifyContent: 'center', 
-            color: 'white', 
-            fontSize: '10px',
-            borderRadius: '2px'
-          }}>
-            Pen
-          </div>
-        )}
-      </motion.div>
+        <div className="w-full h-full flex items-center justify-center text-white text-xs font-bold">
+          {item.type.charAt(0).toUpperCase() + item.type.slice(1)}
+        </div>
+      </div>
     );
   };
 
-  if (!gameState.isPlaying && !gameState.isCompleted) {
+  if (isCompleted) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-purple-50">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500 mx-auto mb-4"></div>
-          <p className="text-gray-700">Loading game...</p>
+      <div className="min-h-screen bg-gradient-to-br from-gray-900 to-gray-800 text-white p-4 flex items-center justify-center">
+        <div className="bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-700 rounded-3xl p-8 max-w-4xl w-full shadow-2xl">
+          <div className="text-center mb-8">
+            <div className="w-24 h-24 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center mx-auto mb-6">
+              <svg className="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+              </svg>
+            </div>
+            
+            <h2 className="text-3xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent mb-2">
+              OCD Assessment Complete
+            </h2>
+            <p className="text-gray-400">Based on your responses to {GAME_LEVELS.length} levels of disorder</p>
+          </div>
+          
+          {/* Severity Score */}
+          <div className="bg-gray-700 rounded-2xl p-6 mb-8">
+            <div className="text-center mb-6">
+              <div className="text-5xl font-bold mb-2">{ocdScore}/100</div>
+              <div className={`text-2xl font-bold ${severityLevel.color}`}>{severityLevel.label} Severity</div>
+              <p className="text-gray-400 mt-2">{severityLevel.description}</p>
+            </div>
+            
+            {/* Score Visualization */}
+            <div className="w-full bg-gray-600 rounded-full h-4 mb-2">
+              <div 
+                className="bg-gradient-to-r from-green-400 via-yellow-400 to-red-500 h-4 rounded-full transition-all duration-1000"
+                style={{ width: `${ocdScore}%` }}
+              ></div>
+            </div>
+            <div className="flex justify-between text-xs text-gray-400">
+              <span>None</span>
+              <span>Mild</span>
+              <span>Moderate</span>
+              <span>Significant</span>
+              <span>Severe</span>
+            </div>
+          </div>
+          
+          {/* Response Summary */}
+          <div className="bg-gray-700 rounded-2xl p-6 mb-8">
+            <h3 className="text-lg font-bold mb-4 text-center">Your Responses to Disorder</h3>
+            <div className="space-y-3">
+              {userResponses.map((response, index) => (
+                <div key={index} className="flex items-center justify-between">
+                  <span className="text-gray-400">Level {response.level} (Intensity: {response.intensity}/5):</span>
+                  <span className="font-bold">
+                    {response.response === 1 ? '😌 Comfortable' : 
+                     response.response === 2 ? '🙂 Slight discomfort' : 
+                     response.response === 3 ? '😐 Moderate discomfort' : 
+                     response.response === 4 ? '😣 Quite uncomfortable' : 
+                     '😫 Extremely uncomfortable'}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+          
+          {/* Professional Note */}
+          <div className="bg-blue-900 bg-opacity-30 rounded-2xl p-4 mb-8">
+            <p className="text-sm text-blue-300 text-center">
+              <strong>Note:</strong> This assessment is for informational purposes only and is not a clinical diagnosis. 
+              If you have concerns about OCD, please consult a mental health professional.
+            </p>
+          </div>
+          
+          {/* Action Buttons */}
+          <div className="flex space-x-4">
+            <button 
+              onClick={() => window.location.reload()}
+              className="flex-1 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-bold py-4 rounded-xl transition-all duration-300"
+            >
+              Retake Assessment
+            </button>
+            <button 
+              onClick={() => router.push('/game/intro')}
+              className="flex-1 bg-gray-700 hover:bg-gray-600 text-white font-bold py-4 rounded-xl transition-all duration-300"
+            >
+              Main Menu
+            </button>
+          </div>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-purple-50 p-4">
-      <div className="max-w-4xl mx-auto bg-white rounded-2xl shadow-xl overflow-hidden">
-        {/* Header with progress and timer */}
-        <div className="bg-gradient-to-r from-blue-500 to-purple-600 p-6 text-white">
-          <div className="flex justify-between items-center mb-4">
-            <h1 className="text-2xl font-bold">Table Arrangement Challenge</h1>
-            <div className="bg-white/20 rounded-full px-3 py-1 text-sm font-semibold">
-              Level {gameState.level + 1}
-            </div>
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 to-gray-800 text-white p-4">
+      {/* Header Section */}
+      <div className="max-w-6xl mx-auto mb-8">
+        <div className="flex justify-between items-center">
+          <div>
+            <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+              OCD Trigger Assessment
+            </h1>
+            <p className="text-gray-400 text-sm">Level {currentLevel + 1} of {GAME_LEVELS.length}: {currentLevelData.name}</p>
           </div>
-          
-          <div className="mb-2 flex justify-between text-sm">
-            <span>Time Left</span>
-            <span className={`font-bold ${gameState.timeLeft <= 30 ? 'text-red-300' : ''}`}>
-              {Math.floor(gameState.timeLeft / 60)}:{String(gameState.timeLeft % 60).padStart(2, '0')}
-            </span>
-          </div>
-          <div className="w-full bg-white/30 rounded-full h-2 mb-4">
-            <div 
-              className="bg-white h-2 rounded-full transition-all duration-300"
-              style={{ width: `${(gameState.timeLeft / 120) * 100}%` }}
-            />
-          </div>
-          
-          <div className="flex justify-between text-sm">
-            <span>Items Arranged</span>
-            <span>{gameState.completedItems.size} / {gameState.items.length}</span>
-          </div>
-          <div className="w-full bg-white/30 rounded-full h-2">
-            <div 
-              className="bg-green-400 h-2 rounded-full transition-all duration-300"
-              style={{ width: `${(gameState.completedItems.size / gameState.items.length) * 100}%` }}
-            />
-          </div>
-        </div>
-
-        {/* Game content */}
-        <div className="p-6">
-          <div className="mb-6 text-center">
-            <h2 className="text-xl font-semibold text-gray-800 mb-2">
-              Arrange the items neatly on the table
-            </h2>
-            <p className="text-gray-600">
-              Drag to move items, scroll to rotate them
-            </p>
-          </div>
-
-          {/* Game table */}
-          <div 
-            className="game-table mx-auto relative bg-gray-100 border-2 border-gray-300 rounded-lg overflow-hidden"
-            style={{ width: '600px', height: '400px' }}
-            onMouseMove={(e) => {
-              if (isDragging) {
-                const item = gameState.items.find(i => i.id === isDragging);
-                if (item) {
-                  const rect = e.currentTarget.getBoundingClientRect();
-                  const newX = e.clientX - rect.left - item.width / 2;
-                  const newY = e.clientY - rect.top - item.height / 2;
-                  handleItemMove(isDragging, newX, newY);
-                }
-              }
-            }}
-            onMouseUp={() => {
-              if (isDragging) {
-                checkItemPlacement(isDragging);
-                setIsDragging(null);
-              }
-            }}
-            onMouseLeave={() => {
-              if (isDragging) {
-                checkItemPlacement(isDragging);
-                setIsDragging(null);
-              }
-            }}
-          >
-            {gameState.items.map(item => (
-              <DraggableItem
-                key={item.id}
-                item={item}
-                position={gameState.itemPositions[item.id]}
-              />
-            ))}
-            
-            {/* Table surface pattern */}
-            <div className="absolute inset-0 opacity-10 pointer-events-none"
-                 style={{
-                   backgroundImage: 'linear-gradient(45deg, #ccc 25%, transparent 25%), linear-gradient(-45deg, #ccc 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #ccc 75%), linear-gradient(-45deg, transparent 75%, #ccc 75%)',
-                   backgroundSize: '20px 20px',
-                   backgroundPosition: '0 0, 0 10px, 10px -10px, -10px 0px'
-                 }}
-            />
-          </div>
-
-          {/* Instructions */}
-          <div className="mt-6 p-4 bg-blue-50 rounded-lg">
-            <h3 className="font-semibold text-blue-800 mb-2">How to play:</h3>
-            <ul className="text-sm text-blue-700 list-disc list-inside space-y-1">
-              <li>Click and drag items to move them around the table</li>
-              <li>Use your mouse wheel to rotate items</li>
-              <li>Try to arrange items neatly and symmetrically</li>
-              <li>Click "Complete Level" when you're satisfied with your arrangement</li>
-            </ul>
-          </div>
-
-          {/* Score and controls */}
-          <div className="mt-8 pt-6 border-t border-gray-200">
-            <div className="flex justify-between items-center">
-              <div className="flex space-x-6">
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-green-600">{score.corrections}</div>
-                  <div className="text-sm text-gray-600">Adjustments</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-blue-600">{gameState.completedItems.size}</div>
-                  <div className="text-sm text-gray-600">Completed</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-purple-600">{gameState.items.length - gameState.completedItems.size}</div>
-                  <div className="text-sm text-gray-600">Remaining</div>
-                </div>
-              </div>
-              
-              <button 
-                onClick={completeLevel}
-                className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 py-3 rounded-lg font-semibold hover:shadow-lg transition-shadow disabled:opacity-50"
-                disabled={!gameState.isPlaying}
-              >
-                Complete Level
-              </button>
-            </div>
+          <div className="bg-gray-800 rounded-xl px-4 py-2 border border-gray-700">
+            <span className="text-sm text-gray-400 mr-2">VIEWING TIME</span>
+            <span className="font-bold text-xl">{viewTime}s</span>
           </div>
         </div>
       </div>
 
-      {/* Results modal */}
-      {gameState.isCompleted && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white rounded-2xl p-8 max-w-md w-full mx-4">
-            <h2 className="text-2xl font-bold text-center mb-6">Level Complete!</h2>
+      <div className="max-w-6xl mx-auto">
+        {/* Level Description */}
+        <div className="bg-gray-800 rounded-2xl p-6 mb-8 border border-gray-700 shadow-xl text-center">
+          <h2 className="text-xl font-semibold text-gray-300 mb-2">
+            {currentLevelData.description}
+          </h2>
+          <p className="text-gray-500">
+            Observe the table arrangement and respond how it makes you feel
+          </p>
+          <div className="mt-4">
+            <span className="text-sm text-gray-400">Disorder Intensity: </span>
+            <span className="font-bold text-yellow-400">{currentLevelData.disorderIntensity}/5</span>
+          </div>
+        </div>
+
+        {/* Game Table */}
+        <div className="bg-gray-800 rounded-2xl p-8 border border-gray-700 shadow-xl mb-8">
+          <div 
+            className="game-table mx-auto relative bg-gray-900 border-2 border-gray-700 rounded-xl overflow-hidden shadow-2xl"
+            style={{ width: '700px', height: '450px' }}
+          >
+            {/* Wood texture background */}
+            <div className="absolute inset-0 opacity-20 bg-wood-pattern"></div>
             
-            <div className="space-y-4 mb-6">
-              <div className="flex justify-between">
-                <span className="text-gray-600">Time:</span>
-                <span className="font-semibold">{score.totalTime.toFixed(1)}s</span>
+            {/* Grid pattern overlay */}
+            <div className="absolute inset-0 opacity-10"
+                style={{
+                  backgroundImage: 'linear-gradient(currentColor 1px, transparent 1px), linear-gradient(90deg, currentColor 1px, transparent 1px)',
+                  backgroundSize: '50px 50px',
+                  color: 'rgba(255, 255, 255, 0.1)'
+                }}
+            ></div>
+            
+            {currentLevelData.items.map(item => (
+              <TableItem key={item.id} item={item} />
+            ))}
+          </div>
+        </div>
+
+        {/* Ready Button - Only show if user hasn't seen the table yet */}
+        {!hasSeenTable && (
+          <div className="text-center">
+            <button 
+              onClick={handleReadyToAnswer}
+              className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-bold py-4 px-8 rounded-xl transition-all duration-300 text-lg"
+            >
+              I'm Ready to Answer
+            </button>
+          </div>
+        )}
+      </div>
+
+      {/* Trigger Question */}
+      {showTriggerQuestion && (
+        <div className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 p-4">
+          <div className="bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-700 rounded-3xl p-8 max-w-2xl w-full shadow-2xl">
+            <div className="text-center mb-8">
+              <div className="w-20 h-20 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
               </div>
-              <div className="flex justify-between">
-                <span className="text-gray-600">Adjustments:</span>
-                <span className="font-semibold">{score.corrections}</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-gray-600">Precision:</span>
-                <span className="font-semibold">{score.precision.toFixed(1)}%</span>
-              </div>
-              <div className="flex justify-between text-lg font-bold mt-4 pt-4 border-t">
-                <span className="text-gray-800">OCD Severity Score:</span>
-                <span className="text-purple-600">{score.severityScore.toFixed(1)}</span>
-              </div>
-              <div className="text-center mt-4">
-                <span className={`px-3 py-1 rounded-full text-sm font-semibold ${
-                  score.interpretation === 'Mild' ? 'bg-green-100 text-green-800' :
-                  score.interpretation === 'Moderate' ? 'bg-yellow-100 text-yellow-800' :
-                  'bg-red-100 text-red-800'
-                }`}>
-                  {score.interpretation}
-                </span>
-              </div>
+              
+              <h2 className="text-2xl font-bold text-white mb-4">How does this make you feel?</h2>
+              <p className="text-gray-300 text-lg mb-2">{currentLevelData.triggerQuestion}</p>
+              <p className="text-gray-400 text-sm">(Disorder level: {currentLevelData.disorderIntensity}/5)</p>
             </div>
             
-            <div className="flex space-x-4">
+            <div className="space-y-4">
               <button 
-                onClick={() => startGame(gameState.level + 1)}
-                className="flex-1 bg-gradient-to-r from-blue-500 to-purple-600 text-white py-3 rounded-lg font-semibold hover:shadow-lg transition-shadow"
-                disabled={gameState.level >= 2}
+                onClick={() => handleUserResponse(1)}
+                className="w-full bg-green-700 hover:bg-green-600 text-white font-bold py-4 rounded-xl transition-all duration-300 text-lg"
               >
-                Next Level
+                😌 Completely Comfortable
               </button>
               <button 
-                onClick={() => router.push('/game/results')}
-                className="flex-1 bg-gray-500 text-white py-3 rounded-lg font-semibold hover:bg-gray-600 transition-colors"
+                onClick={() => handleUserResponse(2)}
+                className="w-full bg-blue-700 hover:bg-blue-600 text-white font-bold py-4 rounded-xl transition-all duration-300 text-lg"
               >
-                View Results
+                🙂 Slightly Uncomfortable
+              </button>
+              <button 
+                onClick={() => handleUserResponse(3)}
+                className="w-full bg-yellow-700 hover:bg-yellow-600 text-white font-bold py-4 rounded-xl transition-all duration-300 text-lg"
+              >
+                😐 Moderately Uncomfortable
+              </button>
+              <button 
+                onClick={() => handleUserResponse(4)}
+                className="w-full bg-orange-700 hover:bg-orange-600 text-white font-bold py-4 rounded-xl transition-all duration-300 text-lg"
+              >
+                😣 Quite Uncomfortable
+              </button>
+              <button 
+                onClick={() => handleUserResponse(5)}
+                className="w-full bg-red-700 hover:bg-red-600 text-white font-bold py-4 rounded-xl transition-all duration-300 text-lg"
+              >
+                😫 Extremely Uncomfortable
               </button>
             </div>
           </div>
         </div>
       )}
+
+      <style jsx>{`
+        .bg-wood-pattern {
+          background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h100v100H0z' fill='%23755c39'/%3E%3Cpath d='M0 0l100 100M100 0L0 100' stroke='%235e4226' stroke-width='1' opacity='0.2'/%3E%3C/svg%3E");
+        }
+      `}</style>
     </div>
   );
 }
