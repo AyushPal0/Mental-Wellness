@@ -11,6 +11,9 @@ const OCD_SEVERITY_LEVELS = [
   { score: 80, label: "Severe", description: "Clinical level OCD tendencies", color: "text-red-400" }
 ];
 
+// Risk threshold - scores above this will redirect to the risk page
+const RISK_THRESHOLD = 70;
+
 // Game levels with increasing disorder
 const GAME_LEVELS = [
   {
@@ -388,7 +391,6 @@ export default function GamePlayPage() {
       }, 1000);
     } else {
       calculateFinalOCDScore();
-      setIsCompleted(true);
     }
   };
 
@@ -417,6 +419,35 @@ export default function GamePlayPage() {
     
     setOcdScore(Math.min(100, finalScore));
     setSeverityLevel(getSeverityLevel(finalScore));
+    
+    // Check if score exceeds risk threshold
+    if (finalScore >= RISK_THRESHOLD) {
+      // Get user location for therapist recommendations
+      getUserLocation(finalScore);
+    } else {
+      setIsCompleted(true);
+    }
+  };
+
+  const getUserLocation = (finalScore: number) => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const { latitude, longitude } = position.coords;
+          // Redirect to risk page with location data
+          router.push(`/game/risk?score=${finalScore}&lat=${latitude}&lng=${longitude}`);
+        },
+        (error) => {
+          console.error("Error getting location:", error);
+          // Redirect without location data
+          router.push(`/game/risk?score=${finalScore}`);
+        },
+        { timeout: 10000 }
+      );
+    } else {
+      // Browser doesn't support Geolocation
+      router.push(`/game/risk?score=${finalScore}`);
+    }
   };
 
   const getSeverityLevel = (score: number) => {
