@@ -1,14 +1,14 @@
+// ayushpal0/mental-wellness/Mental-Wellness-frontend/app/tasks/page.tsx
 'use client';
 
 import React, { useState, useEffect, Suspense, FormEvent, useRef } from 'react';
 import { useAuth } from '@/hooks/use-auth';
 import { LoggedInNavbar } from '@/components/LoggedInNavbar';
 import ProfileTaskPanel from '@/components/ProfileTaskPanel';
-import { Loader2, Plus, Trash2, Check, Sparkles, X } from 'lucide-react';
+import { Loader2, Plus, Trash2, Check, Sparkles } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
-// A simple confetti animation component
 import Confetti from 'react-confetti';
 
 interface Task {
@@ -51,7 +51,7 @@ function TasksPageContent() {
     const [isLoading, setIsLoading] = useState(true);
     const [isPanelOpen, setPanelOpen] = useState(false);
     const [showConfetti, setShowConfetti] = useState(false);
-    const [editingTask, setEditingTask] = useState<Task | null>(null);
+    const [isSuggesting, setIsSuggesting] = useState(false); // State for suggestion loading
 
     const fetchTasks = async () => {
         if (!userId) return;
@@ -70,7 +70,7 @@ function TasksPageContent() {
     };
 
     useEffect(() => {
-        fetchTasks();
+        if(userId) fetchTasks();
     }, [userId]);
 
     const handleAddTask = async (e: FormEvent) => {
@@ -84,7 +84,7 @@ function TasksPageContent() {
         });
         if (response.ok) {
             setNewTaskTitle('');
-            fetchTasks(); // Refetch all tasks
+            fetchTasks();
         }
     };
 
@@ -100,10 +100,9 @@ function TasksPageContent() {
         if (response.ok) {
             if (updates.status === 'completed') {
                 setShowConfetti(true);
-                setTimeout(() => setShowConfetti(false), 5000); // Confetti for 5 seconds
+                setTimeout(() => setShowConfetti(false), 5000);
             }
-            fetchTasks(); // Refetch all tasks
-            setEditingTask(null);
+            fetchTasks();
         }
     };
 
@@ -116,16 +115,23 @@ function TasksPageContent() {
         });
 
         if (response.ok) {
-            fetchTasks(); // Refetch all tasks
+            fetchTasks();
         }
     };
     
     const handleGetSuggestion = async () => {
         if(!userId) return;
-        const response = await fetch(`http://127.0.0.1:5000/api/tasks/ai-suggestion/${userId}`);
-        if (response.ok) {
-            const data = await response.json();
-            setNewTaskTitle(data.title); // Pre-fill the input with the AI suggestion
+        setIsSuggesting(true);
+        try {
+            const response = await fetch(`http://127.0.0.1:5000/api/tasks/ai-suggestion/${userId}`);
+            if (response.ok) {
+                const data = await response.json();
+                setNewTaskTitle(data.title);
+            }
+        } catch (error) {
+            console.error("Failed to fetch AI suggestion:", error);
+        } finally {
+            setIsSuggesting(false);
         }
     };
 
@@ -148,7 +154,7 @@ function TasksPageContent() {
 
     return (
         <div className="h-screen w-full relative font-sans overflow-hidden">
-            {showConfetti && <Confetti width={window.innerWidth} height={window.innerHeight} recycle={false} />}
+            {showConfetti && <Confetti width={window.innerWidth} height={window.innerHeight} recycle={false} numberOfPieces={300} />}
             <VideoBackground />
             <LoggedInNavbar onProfileClick={() => setPanelOpen(true)} />
             <main className="relative z-10 container mx-auto pt-24 px-4 h-full flex flex-col">
@@ -171,9 +177,18 @@ function TasksPageContent() {
                                 <Plus size={20} />
                             </button>
                         </form>
-                         <button onClick={handleGetSuggestion} className="bg-white/10 hover:bg-white/20 text-white h-10 px-4 rounded-full flex items-center justify-center flex-shrink-0 ml-2 gap-2">
-                            <Sparkles size={16} className="text-yellow-300"/>
-                            <span>Suggest</span>
+                         {/** 👇 FIX: Updated Suggest button with loading state **/}
+                         <button 
+                            onClick={handleGetSuggestion} 
+                            disabled={isSuggesting}
+                            className="bg-white/10 hover:bg-white/20 text-white h-10 px-4 rounded-full flex items-center justify-center flex-shrink-0 ml-2 gap-2 disabled:opacity-70 disabled:cursor-not-allowed transition-all duration-200"
+                         >
+                            {isSuggesting ? (
+                                <Loader2 size={16} className="animate-spin" />
+                            ) : (
+                                <Sparkles size={16} className="text-yellow-300"/>
+                            )}
+                            <span>{isSuggesting ? 'Thinking...' : 'Suggest'}</span>
                         </button>
                     </div>
 
@@ -188,8 +203,8 @@ function TasksPageContent() {
                                     exit={{ opacity: 0, x: -50, transition: { duration: 0.2 } }}
                                     className="bg-white/5 p-3 rounded-lg flex items-center justify-between gap-4"
                                 >
-                                    <div className="flex items-center gap-3 flex-1" onClick={() => handleUpdateTask(task, { status: task.status === 'completed' ? 'pending' : 'completed' })}>
-                                        <div className={cn('w-6 h-6 rounded-md border-2 flex-shrink-0 flex items-center justify-center transition-all duration-300 cursor-pointer', task.status === 'completed' ? 'border-green-400 bg-green-400' : 'border-white/50 hover:border-white')}>
+                                    <div className="flex items-center gap-3 flex-1 cursor-pointer" onClick={() => handleUpdateTask(task, { status: task.status === 'completed' ? 'pending' : 'completed' })}>
+                                        <div className={cn('w-6 h-6 rounded-md border-2 flex-shrink-0 flex items-center justify-center transition-all duration-300', task.status === 'completed' ? 'border-green-400 bg-green-400' : 'border-white/50 hover:border-white')}>
                                             {task.status === 'completed' && <Check className="w-4 h-4 text-black" />}
                                         </div>
                                         <p className={cn('text-white', task.status === 'completed' && 'line-through text-white/50')}>

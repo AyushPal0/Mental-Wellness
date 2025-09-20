@@ -1,3 +1,4 @@
+// ayushpal0/mental-wellness/Mental-Wellness-frontend/app/home/page.tsx
 'use client';
 
 import React, { useState, useEffect, Suspense, useRef } from 'react';
@@ -6,7 +7,7 @@ import { LoggedInNavbar } from '@/components/LoggedInNavbar';
 import Link from 'next/link';
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 import { motion } from 'framer-motion';
-import { MessageSquare, ClipboardCheck, Globe, Loader2, Check, ArrowRight, Flame } from 'lucide-react'; // Import Flame icon
+import { MessageSquare, ClipboardCheck, Globe, Loader2, Check, ArrowRight, Flame } from 'lucide-react';
 import ProfileTaskPanel from '@/components/ProfileTaskPanel';
 import { useAuth } from '@/hooks/use-auth';
 
@@ -15,7 +16,7 @@ interface User {
   username: string;
   full_name?: string;
   avatar?: string;
-  streak?: number; // Add streak to user type
+  streak?: number;
 }
 
 
@@ -71,11 +72,10 @@ function HomePageContent() {
     const [user, setUser] = useState<User | null>(null);
     const [pendingTasks, setPendingTasks] = useState<Task[]>([]);
     const [isLoading, setIsLoading] = useState(true);
-    const [isPanelOpen, setPanelOpen] = useState(false); // Add state for the panel
+    const [isPanelOpen, setPanelOpen] = useState(false);
 
     useEffect(() => {
         if (isAuthLoading) return;
-
         if (!userId) {
             setIsLoading(false);
             return;
@@ -85,7 +85,6 @@ function HomePageContent() {
             setIsLoading(true);
             try {
                 const res = await fetch(`http://127.0.0.1:5000/api/home/${userId}`);
-
                 if (res.ok) {
                     const data = await res.json();
                     setUser(data.user);
@@ -134,7 +133,16 @@ function HomePageContent() {
                         </Avatar>
                         <div>
                             <h1 className="text-3xl font-bold text-white">Welcome, {user.full_name || user.username}</h1>
-                            <p className="text-white/70">Ready to continue your wellness journey?</p>
+                            <div className="flex items-center gap-4 mt-1">
+                                <p className="text-white/70">Ready to continue your wellness journey?</p>
+                                {/** 👇 FIX: Check for user.streak before comparing it **/}
+                                {user.streak && user.streak > 0 && (
+                                    <div className="flex items-center gap-1 text-orange-400 font-bold bg-orange-400/10 px-3 py-1 rounded-full">
+                                        <Flame size={16} />
+                                        <span>{user.streak}-day streak!</span>
+                                    </div>
+                                )}
+                            </div>
                         </div>
                     </div>
                 </motion.div>
@@ -155,7 +163,7 @@ function HomePageContent() {
                             </div>
                             {pendingTasks.length > 0 ? (
                                 <ul className="space-y-3">
-                                    {pendingTasks.map(task => (
+                                    {pendingTasks.slice(0, 3).map(task => ( // Show max 3 tasks
                                         <li key={task.id} className="flex items-center gap-3 text-white/90">
                                             <div className="w-5 h-5 border-2 border-white/50 rounded-md"></div>
                                             <span>{task.title}</span>

@@ -5,9 +5,9 @@ import "./globals.css"
 import { cn } from "@/lib/utils"
 import { V0Provider } from "@/lib/context"
 import dynamic from "next/dynamic"
+import { UserProvider } from "@/components/context/UserContext"; // Import UserProvider
 
 const V0Setup = dynamic(() => import("@/components/v0-setup"))
-
 const geistSans = Inter({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -37,6 +37,7 @@ export const metadata: Metadata = {
     generator: 'v0.app'
 }
 
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -46,7 +47,10 @@ export default function RootLayout({
     <html lang="en">
       <body className={cn(geistSans.variable, geistMono.variable, instrumentSerif.variable)}>
         <V0Provider isV0={isV0}>
-          {children}
+          {/* Wrap children with UserProvider */}
+          <UserProvider>
+            {children}
+          </UserProvider>
           {isV0 && <V0Setup />}
         </V0Provider>
       </body>
