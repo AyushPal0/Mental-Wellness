@@ -1694,3 +1694,127 @@
 2025-09-20 17:13:36,562 - __main__ - INFO - Starting server on port 5000...
 2025-09-20 17:13:36,598 - werkzeug - WARNING -  * Debugger is active!
 2025-09-20 17:13:36,601 - werkzeug - INFO -  * Debugger PIN: 287-528-982
+2025-09-21 01:14:06,290 - __main__ - INFO - Checking if required files exist...
+2025-09-21 01:14:06,291 - __main__ - INFO - Found directory: utils/
+2025-09-21 01:14:06,291 - __main__ - INFO - Found directory: routes/
+2025-09-21 01:14:06,291 - __main__ - INFO - Found directory: services/
+2025-09-21 01:14:06,291 - __main__ - INFO - Found directory: models/
+2025-09-21 01:14:06,291 - __main__ - INFO - Found directory: questions/
+2025-09-21 01:14:06,291 - __main__ - INFO - Found: utils/db.py
+2025-09-21 01:14:06,292 - __main__ - INFO - Found: routes/personality_routes.py
+2025-09-21 01:14:06,292 - __main__ - INFO - Found: routes/game_routes.py
+2025-09-21 01:14:06,292 - __main__ - INFO - Found: routes/chat_routes.py
+2025-09-21 01:14:06,292 - __main__ - INFO - Found: routes/task_routes.py
+2025-09-21 01:14:06,293 - __main__ - INFO - Found: routes/community_routes.py
+2025-09-21 01:14:06,293 - __main__ - INFO - Found: routes/safety_routes.py
+2025-09-21 01:14:06,293 - __main__ - INFO - Found: services/personality_service.py
+2025-09-21 01:14:06,293 - __main__ - INFO - Found: services/game_service.py
+2025-09-21 01:14:06,293 - __main__ - INFO - Found: services/chat_service.py
+2025-09-21 01:14:06,294 - __main__ - INFO - Found: services/task_service.py
+2025-09-21 01:14:06,294 - __main__ - INFO - Found: services/community_service.py
+2025-09-21 01:14:06,294 - __main__ - INFO - Found: services/safety_service.py
+2025-09-21 01:14:06,294 - __main__ - INFO - Found: questions/personality_questions.json
+2025-09-21 01:14:06,295 - __main__ - INFO - Attempting to import utils.db...
+2025-09-21 01:14:06,674 - __main__ - INFO - MongoDB initialized successfully
+2025-09-21 01:14:06,679 - __main__ - INFO - personality_routes routes registered successfully
+2025-09-21 01:14:06,682 - __main__ - INFO - game_routes routes registered successfully
+2025-09-21 01:14:06,683 - __main__ - ERROR - Failed to import chat_routes: No module named 'backend'
+2025-09-21 01:14:06,684 - __main__ - ERROR - Blueprint task_bp not found in task_routes: module 'routes.task_routes' has no attribute 'task_bp'
+2025-09-21 01:14:06,684 - __main__ - ERROR - Blueprint community_bp not found in community_routes: module 'routes.community_routes' has no attribute 'community_bp'
+2025-09-21 01:14:06,685 - __main__ - ERROR - Blueprint safety_bp not found in safety_routes: module 'routes.safety_routes' has no attribute 'safety_bp'
+2025-09-21 01:14:06,688 - __main__ - INFO - === STARTING EUNOIA MENTAL WELLNESS BACKEND ===
+2025-09-21 01:14:06,688 - __main__ - INFO - Current working directory: C:\Users\palay\OneDrive\Documents\eunoia\backend
+2025-09-21 01:14:06,688 - __main__ - INFO - App directory: C:\Users\palay\OneDrive\Documents\eunoia\backend
+2025-09-21 01:14:06,689 - __main__ - INFO - utils/: ['auth.py', 'db.py', 'moderation.py', 'serializer.py', '__init__.py']
+2025-09-21 01:14:06,689 - __main__ - INFO - routes/: ['chat_routes.py', 'community_routes.py', 'game_routes.py', 'personality_routes.py', 'safety_routes.py', 'task_routes.py', '__init__.py']
+2025-09-21 01:14:06,689 - __main__ - INFO - services/: ['chat_service.py', 'community_service.py', 'game_service.py', 'personality_service.py', 'safety_service.py', 'task_service.py', '__init__.py']
+2025-09-21 01:14:06,690 - __main__ - INFO - models/: ['chat.py', 'game.py', 'personality.py', 'post.py', 'risk_event.py', 'task.py', 'user.py', '__init__.py']
+2025-09-21 01:14:06,690 - __main__ - INFO - 
+=== Registered Routes ===
+2025-09-21 01:14:06,690 - __main__ - INFO -   GET             /static/<path:filename>                  -> static
+2025-09-21 01:14:06,690 - __main__ - INFO -   GET             /api/personality/questions               -> personality.get_questions
+2025-09-21 01:14:06,690 - __main__ - INFO -   POST            /api/personality/submit                  -> personality.submit_personality
+2025-09-21 01:14:06,691 - __main__ - INFO -   POST            /api/game/start                          -> game.start_session
+2025-09-21 01:14:06,691 - __main__ - INFO -   POST            /api/game/action                         -> game.record_action
+2025-09-21 01:14:06,691 - __main__ - INFO -   POST            /api/game/check-placement                -> game.check_placement
+2025-09-21 01:14:06,691 - __main__ - INFO -   POST            /api/game/complete                       -> game.complete_level
+2025-09-21 01:14:06,691 - __main__ - INFO -   GET             /api/game/leaderboard                    -> game.get_leaderboard
+2025-09-21 01:14:06,691 - __main__ - INFO -   GET             /api/personality/questions               -> direct_questions
+2025-09-21 01:14:06,691 - __main__ - INFO -   POST            /api/personality/submit                  -> direct_submit
+2025-09-21 01:14:06,691 - __main__ - INFO -   POST            /api/game/start                          -> game_start
+2025-09-21 01:14:06,691 - __main__ - INFO -   POST            /api/game/action                         -> game_action
+2025-09-21 01:14:06,692 - __main__ - INFO -   POST            /api/game/check-placement                -> check_placement
+2025-09-21 01:14:06,692 - __main__ - INFO -   POST            /api/game/complete                       -> game_complete
+2025-09-21 01:14:06,692 - __main__ - INFO -   GET             /api/game/leaderboard                    -> game_leaderboard
+2025-09-21 01:14:06,692 - __main__ - INFO -   GET             /                                        -> home
+2025-09-21 01:14:06,692 - __main__ - INFO -   GET             /health                                  -> health_check
+2025-09-21 01:14:06,692 - __main__ - INFO -   GET             /api                                     -> api_info
+2025-09-21 01:14:06,693 - __main__ - INFO -   GET             /debug/routes                            -> debug_routes
+2025-09-21 01:14:06,693 - __main__ - INFO -   GET             /api/test                                -> test_route
+2025-09-21 01:14:06,693 - __main__ - INFO - Starting server on port 5000...
+2025-09-21 01:14:06,745 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.12.87.76:5000
+2025-09-21 01:14:06,745 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-09-21 01:14:06,746 - werkzeug - INFO -  * Restarting with stat
+2025-09-21 01:14:06,998 - __main__ - INFO - Checking if required files exist...
+2025-09-21 01:14:06,998 - __main__ - INFO - Found directory: utils/
+2025-09-21 01:14:06,998 - __main__ - INFO - Found directory: routes/
+2025-09-21 01:14:06,999 - __main__ - INFO - Found directory: services/
+2025-09-21 01:14:06,999 - __main__ - INFO - Found directory: models/
+2025-09-21 01:14:06,999 - __main__ - INFO - Found directory: questions/
+2025-09-21 01:14:06,999 - __main__ - INFO - Found: utils/db.py
+2025-09-21 01:14:06,999 - __main__ - INFO - Found: routes/personality_routes.py
+2025-09-21 01:14:07,000 - __main__ - INFO - Found: routes/game_routes.py
+2025-09-21 01:14:07,000 - __main__ - INFO - Found: routes/chat_routes.py
+2025-09-21 01:14:07,000 - __main__ - INFO - Found: routes/task_routes.py
+2025-09-21 01:14:07,000 - __main__ - INFO - Found: routes/community_routes.py
+2025-09-21 01:14:07,000 - __main__ - INFO - Found: routes/safety_routes.py
+2025-09-21 01:14:07,000 - __main__ - INFO - Found: services/personality_service.py
+2025-09-21 01:14:07,001 - __main__ - INFO - Found: services/game_service.py
+2025-09-21 01:14:07,001 - __main__ - INFO - Found: services/chat_service.py
+2025-09-21 01:14:07,001 - __main__ - INFO - Found: services/task_service.py
+2025-09-21 01:14:07,001 - __main__ - INFO - Found: services/community_service.py
+2025-09-21 01:14:07,001 - __main__ - INFO - Found: services/safety_service.py
+2025-09-21 01:14:07,002 - __main__ - INFO - Found: questions/personality_questions.json
+2025-09-21 01:14:07,002 - __main__ - INFO - Attempting to import utils.db...
+2025-09-21 01:14:07,184 - __main__ - INFO - MongoDB initialized successfully
+2025-09-21 01:14:07,188 - __main__ - INFO - personality_routes routes registered successfully
+2025-09-21 01:14:07,190 - __main__ - INFO - game_routes routes registered successfully
+2025-09-21 01:14:07,191 - __main__ - ERROR - Failed to import chat_routes: No module named 'backend'
+2025-09-21 01:14:07,192 - __main__ - ERROR - Blueprint task_bp not found in task_routes: module 'routes.task_routes' has no attribute 'task_bp'
+2025-09-21 01:14:07,193 - __main__ - ERROR - Blueprint community_bp not found in community_routes: module 'routes.community_routes' has no attribute 'community_bp'
+2025-09-21 01:14:07,193 - __main__ - ERROR - Blueprint safety_bp not found in safety_routes: module 'routes.safety_routes' has no attribute 'safety_bp'
+2025-09-21 01:14:07,196 - __main__ - INFO - === STARTING EUNOIA MENTAL WELLNESS BACKEND ===
+2025-09-21 01:14:07,197 - __main__ - INFO - Current working directory: C:\Users\palay\OneDrive\Documents\eunoia\backend
+2025-09-21 01:14:07,197 - __main__ - INFO - App directory: C:\Users\palay\OneDrive\Documents\eunoia\backend
+2025-09-21 01:14:07,197 - __main__ - INFO - utils/: ['auth.py', 'db.py', 'moderation.py', 'serializer.py', '__init__.py']
+2025-09-21 01:14:07,198 - __main__ - INFO - routes/: ['chat_routes.py', 'community_routes.py', 'game_routes.py', 'personality_routes.py', 'safety_routes.py', 'task_routes.py', '__init__.py']
+2025-09-21 01:14:07,198 - __main__ - INFO - services/: ['chat_service.py', 'community_service.py', 'game_service.py', 'personality_service.py', 'safety_service.py', 'task_service.py', '__init__.py']
+2025-09-21 01:14:07,198 - __main__ - INFO - models/: ['chat.py', 'game.py', 'personality.py', 'post.py', 'risk_event.py', 'task.py', 'user.py', '__init__.py']
+2025-09-21 01:14:07,199 - __main__ - INFO - 
+=== Registered Routes ===
+2025-09-21 01:14:07,199 - __main__ - INFO -   GET             /static/<path:filename>                  -> static
+2025-09-21 01:14:07,199 - __main__ - INFO -   GET             /api/personality/questions               -> personality.get_questions
+2025-09-21 01:14:07,199 - __main__ - INFO -   POST            /api/personality/submit                  -> personality.submit_personality
+2025-09-21 01:14:07,199 - __main__ - INFO -   POST            /api/game/start                          -> game.start_session
+2025-09-21 01:14:07,200 - __main__ - INFO -   POST            /api/game/action                         -> game.record_action
+2025-09-21 01:14:07,200 - __main__ - INFO -   POST            /api/game/check-placement                -> game.check_placement
+2025-09-21 01:14:07,200 - __main__ - INFO -   POST            /api/game/complete                       -> game.complete_level
+2025-09-21 01:14:07,200 - __main__ - INFO -   GET             /api/game/leaderboard                    -> game.get_leaderboard
+2025-09-21 01:14:07,200 - __main__ - INFO -   GET             /api/personality/questions               -> direct_questions
+2025-09-21 01:14:07,200 - __main__ - INFO -   POST            /api/personality/submit                  -> direct_submit
+2025-09-21 01:14:07,200 - __main__ - INFO -   POST            /api/game/start                          -> game_start
+2025-09-21 01:14:07,200 - __main__ - INFO -   POST            /api/game/action                         -> game_action
+2025-09-21 01:14:07,201 - __main__ - INFO -   POST            /api/game/check-placement                -> check_placement
+2025-09-21 01:14:07,201 - __main__ - INFO -   POST            /api/game/complete                       -> game_complete
+2025-09-21 01:14:07,201 - __main__ - INFO -   GET             /api/game/leaderboard                    -> game_leaderboard
+2025-09-21 01:14:07,201 - __main__ - INFO -   GET             /                                        -> home
+2025-09-21 01:14:07,201 - __main__ - INFO -   GET             /health                                  -> health_check
+2025-09-21 01:14:07,201 - __main__ - INFO -   GET             /api                                     -> api_info
+2025-09-21 01:14:07,201 - __main__ - INFO -   GET             /debug/routes                            -> debug_routes
+2025-09-21 01:14:07,201 - __main__ - INFO -   GET             /api/test                                -> test_route
+2025-09-21 01:14:07,201 - __main__ - INFO - Starting server on port 5000...
+2025-09-21 01:14:07,238 - werkzeug - WARNING -  * Debugger is active!
+2025-09-21 01:14:07,242 - werkzeug - INFO -  * Debugger PIN: 287-528-982
