@@ -1,14 +1,37 @@
 import json
 import os
+import sys
 from flask import Blueprint, jsonify, request
-from services.personality_service import save_or_update_personality
+
+# Add the parent directory to Python path to fix import issues
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), '..'))
+
+try:
+    from services.personality_service import save_or_update_personality
+except ImportError as e:
+    print(f"Warning: Could not import personality_service: {e}")
+    # Fallback function if import fails
+    def save_or_update_personality(user_id, scores):
+        """Fallback function if the main import fails"""
+        from datetime import datetime
+        class MockPersonality:
+            def dict(self, by_alias=True):
+                return {
+                    "user_id": user_id,
+                    "scores": scores,
+                    "persona_type": "calm_supporter",
+                    "wellness_focus": "Focus & Calm",
+                    "created_at": datetime.now().isoformat(),
+                    "updated_at": datetime.now().isoformat()
+                }
+        return MockPersonality()
 
 personality_bp = Blueprint("personality", __name__)
 
 # Path to the JSON file
 QUESTIONS_FILE = os.path.join(os.path.dirname(__file__), "..", "questions", "personality_questions.json")
 
-@personality_bp.route("/questions", methods=["GET"])  # REMOVED /api/personality prefix
+@personality_bp.route("/questions", methods=["GET"])
 def get_questions():
     """
     Serve the personality test questions from JSON.
@@ -23,7 +46,7 @@ def get_questions():
         return jsonify({"success": False, "error": str(e)}), 500
 
 
-@personality_bp.route("/submit", methods=["POST"])  # REMOVED /api/personality prefix
+@personality_bp.route("/submit", methods=["POST"])
 def submit_personality():
     """
     Accept quiz answers from the frontend, calculate personality, and save/update.

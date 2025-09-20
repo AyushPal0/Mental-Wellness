@@ -1,0 +1,1696 @@
+2025-09-14 02:07:36,668 - __main__ - INFO - Checking if required files exist...
+2025-09-14 02:07:36,668 - __main__ - INFO - Found: utils/db.py
+2025-09-14 02:07:36,669 - __main__ - INFO - Found: routes/personality_routes.py
+2025-09-14 02:07:36,669 - __main__ - INFO - Found: services/personality_service.py
+2025-09-14 02:07:36,669 - __main__ - INFO - Found: questions/personality_questions.json
+2025-09-14 02:07:36,669 - __main__ - INFO - Attempting to import utils.db...
+2025-09-14 02:07:36,911 - __main__ - INFO - MongoDB initialized successfully
+2025-09-14 02:07:36,911 - __main__ - INFO - Attempting to import routes.personality_routes...
+2025-09-14 02:07:36,926 - __main__ - INFO - Personality routes registered successfully
+2025-09-14 02:07:36,927 - __main__ - INFO - START - Starting Mental Wellness Backend...
+2025-09-14 02:07:36,927 - __main__ - INFO - DIR -Current working directory: C:\Users\palay\OneDrive\Documents\eunoia\backend
+2025-09-14 02:07:36,928 - __main__ - INFO - DIR -App directory: C:\Users\palay\OneDrive\Documents\eunoia\backend
+2025-09-14 02:07:36,928 - __main__ - INFO - DIR -utils/: ['auth.py', 'db.py', 'moderation.py', 'serializer.py', '__init__.py']
+2025-09-14 02:07:36,928 - __main__ - INFO -  DIR -auth.py: ...
+2025-09-14 02:07:36,929 - __main__ - INFO -  DIR -db.py: import os...
+2025-09-14 02:07:36,929 - __main__ - INFO -  DIR -moderation.py: ...
+2025-09-14 02:07:36,929 - __main__ - INFO -  DIR -serializer.py: ...
+2025-09-14 02:07:36,929 - __main__ - INFO -  DIR -__init__.py: ...
+2025-09-14 02:07:36,929 - __main__ - INFO - DIR -routes/: ['chat_routes.py', 'community_routes.py', 'game_routes.py', 'personality_routes.py', 'safety_routes.py', 'task_routes.py', '__init__.py']
+2025-09-14 02:07:36,929 - __main__ - INFO -  DIR -chat_routes.py: # backend/routes/chat_routes.py...
+2025-09-14 02:07:36,930 - __main__ - INFO -  DIR -community_routes.py: ...
+2025-09-14 02:07:36,930 - __main__ - INFO -  DIR -game_routes.py: ...
+2025-09-14 02:07:36,930 - __main__ - INFO -  DIR -personality_routes.py: import json...
+2025-09-14 02:07:36,930 - __main__ - INFO -  DIR -safety_routes.py: ...
+2025-09-14 02:07:36,931 - __main__ - INFO -  DIR -task_routes.py: ...
+2025-09-14 02:07:36,931 - __main__ - INFO -  DIR -__init__.py: ...
+2025-09-14 02:07:36,931 - __main__ - INFO - DIR -services/: ['chat_service.py', 'community_service.py', 'game_service.py', 'personality_service.py', 'safety_service.py', 'task_service.py', '__init__.py']
+2025-09-14 02:07:36,931 - __main__ - INFO -  DIR -chat_service.py: # backend/services/chat_service.py...
+2025-09-14 02:07:36,932 - __main__ - INFO -  DIR -community_service.py: ...
+2025-09-14 02:07:36,932 - __main__ - INFO -  DIR -game_service.py: ...
+2025-09-14 02:07:36,932 - __main__ - INFO -  DIR -personality_service.py: from typing import Dict...
+2025-09-14 02:07:36,932 - __main__ - INFO -  DIR -safety_service.py: ...
+2025-09-14 02:07:36,932 - __main__ - INFO -  DIR -task_service.py: ...
+2025-09-14 02:07:36,932 - __main__ - INFO -  DIR -__init__.py: ...
+2025-09-14 02:07:36,933 - __main__ - INFO - 
+ Registered Routes:
+2025-09-14 02:07:36,933 - __main__ - INFO -   GET             /static/<path:filename>                  -> static
+2025-09-14 02:07:36,933 - __main__ - INFO -   GET             /api/personality/questions               -> personality.get_questions
+2025-09-14 02:07:36,933 - __main__ - INFO -   POST            /api/personality/submit                  -> personality.submit_personality
+2025-09-14 02:07:36,933 - __main__ - INFO -   GET             /api/personality/questions               -> direct_questions
+2025-09-14 02:07:36,933 - __main__ - INFO -   POST            /api/personality/submit                  -> direct_submit
+2025-09-14 02:07:36,933 - __main__ - INFO -   GET             /                                        -> home
+2025-09-14 02:07:36,933 - __main__ - INFO -   GET             /health                                  -> health_check
+2025-09-14 02:07:36,933 - __main__ - INFO -   GET             /api                                     -> api_info
+2025-09-14 02:07:36,933 - __main__ - INFO -   GET             /debug/routes                            -> debug_routes
+2025-09-14 02:07:36,965 - werkzeug - WARNING -  * Debugger is active!
+2025-09-14 02:07:36,968 - werkzeug - INFO -  * Debugger PIN: 287-528-982
+2025-09-20 02:09:59,698 - __main__ - INFO - Checking if required files exist...
+2025-09-20 02:09:59,699 - __main__ - INFO - Found directory: utils/
+2025-09-20 02:09:59,699 - __main__ - INFO - Found directory: routes/
+2025-09-20 02:09:59,699 - __main__ - INFO - Found directory: services/
+2025-09-20 02:09:59,699 - __main__ - INFO - Found directory: models/
+2025-09-20 02:09:59,700 - __main__ - INFO - Found directory: questions/
+2025-09-20 02:09:59,700 - __main__ - INFO - Found: utils/db.py
+2025-09-20 02:09:59,700 - __main__ - INFO - Found: routes/personality_routes.py
+2025-09-20 02:09:59,700 - __main__ - INFO - Found: routes/game_routes.py
+2025-09-20 02:09:59,700 - __main__ - INFO - Found: routes/chat_routes.py
+2025-09-20 02:09:59,700 - __main__ - INFO - Found: routes/task_routes.py
+2025-09-20 02:09:59,701 - __main__ - INFO - Found: routes/community_routes.py
+2025-09-20 02:09:59,701 - __main__ - INFO - Found: routes/safety_routes.py
+2025-09-20 02:09:59,701 - __main__ - INFO - Found: services/personality_service.py
+2025-09-20 02:09:59,702 - __main__ - INFO - Found: services/game_service.py
+2025-09-20 02:09:59,702 - __main__ - INFO - Found: services/chat_service.py
+2025-09-20 02:09:59,702 - __main__ - INFO - Found: services/task_service.py
+2025-09-20 02:09:59,703 - __main__ - INFO - Found: services/community_service.py
+2025-09-20 02:09:59,703 - __main__ - INFO - Found: services/safety_service.py
+2025-09-20 02:09:59,703 - __main__ - INFO - Found: questions/personality_questions.json
+2025-09-20 02:09:59,703 - __main__ - INFO - Attempting to import utils.db...
+2025-09-20 02:10:00,331 - __main__ - INFO - MongoDB initialized successfully
+2025-09-20 02:10:00,339 - __main__ - INFO - personality_routes routes registered successfully
+2025-09-20 02:10:00,356 - __main__ - INFO - game_routes routes registered successfully
+2025-09-20 02:10:00,358 - __main__ - ERROR - Failed to import chat_routes: No module named 'backend'
+2025-09-20 02:10:00,360 - __main__ - ERROR - Blueprint task_bp not found in task_routes: module 'routes.task_routes' has no attribute 'task_bp'
+2025-09-20 02:10:00,361 - __main__ - ERROR - Blueprint community_bp not found in community_routes: module 'routes.community_routes' has no attribute 'community_bp'
+2025-09-20 02:10:00,363 - __main__ - ERROR - Blueprint safety_bp not found in safety_routes: module 'routes.safety_routes' has no attribute 'safety_bp'
+2025-09-20 02:10:00,365 - __main__ - INFO - === STARTING EUNOIA MENTAL WELLNESS BACKEND ===
+2025-09-20 02:10:00,366 - __main__ - INFO - Current working directory: C:\Users\palay\OneDrive\Documents\eunoia\backend
+2025-09-20 02:10:00,366 - __main__ - INFO - App directory: C:\Users\palay\OneDrive\Documents\eunoia\backend
+2025-09-20 02:10:00,366 - __main__ - INFO - utils/: ['auth.py', 'db.py', 'moderation.py', 'serializer.py', '__init__.py']
+2025-09-20 02:10:00,367 - __main__ - INFO - routes/: ['chat_routes.py', 'community_routes.py', 'game_routes.py', 'personality_routes.py', 'safety_routes.py', 'task_routes.py', '__init__.py']
+2025-09-20 02:10:00,367 - __main__ - INFO - services/: ['chat_service.py', 'community_service.py', 'game_service.py', 'personality_service.py', 'safety_service.py', 'task_service.py', '__init__.py']
+2025-09-20 02:10:00,367 - __main__ - INFO - models/: ['chat.py', 'game.py', 'personality.py', 'post.py', 'risk_event.py', 'task.py', 'user.py', '__init__.py']
+2025-09-20 02:10:00,368 - __main__ - INFO - 
+=== Registered Routes ===
+2025-09-20 02:10:00,368 - __main__ - INFO -   GET             /static/<path:filename>                  -> static
+2025-09-20 02:10:00,368 - __main__ - INFO -   GET             /api/personality/questions               -> personality.get_questions
+2025-09-20 02:10:00,368 - __main__ - INFO -   POST            /api/personality/submit                  -> personality.submit_personality
+2025-09-20 02:10:00,368 - __main__ - INFO -   POST            /api/game/start                          -> game.start_session
+2025-09-20 02:10:00,370 - __main__ - INFO -   POST            /api/game/action                         -> game.record_action
+2025-09-20 02:10:00,370 - __main__ - INFO -   POST            /api/game/check-placement                -> game.check_placement
+2025-09-20 02:10:00,370 - __main__ - INFO -   POST            /api/game/complete                       -> game.complete_level
+2025-09-20 02:10:00,371 - __main__ - INFO -   GET             /api/game/leaderboard                    -> game.get_leaderboard
+2025-09-20 02:10:00,371 - __main__ - INFO -   GET             /api/personality/questions               -> direct_questions
+2025-09-20 02:10:00,371 - __main__ - INFO -   POST            /api/personality/submit                  -> direct_submit
+2025-09-20 02:10:00,371 - __main__ - INFO -   POST            /api/game/start                          -> game_start
+2025-09-20 02:10:00,371 - __main__ - INFO -   POST            /api/game/complete                       -> game_complete
+2025-09-20 02:10:00,371 - __main__ - INFO -   GET             /                                        -> home
+2025-09-20 02:10:00,371 - __main__ - INFO -   GET             /health                                  -> health_check
+2025-09-20 02:10:00,371 - __main__ - INFO -   GET             /api                                     -> api_info
+2025-09-20 02:10:00,371 - __main__ - INFO -   GET             /debug/routes                            -> debug_routes
+2025-09-20 02:10:00,371 - __main__ - INFO -   GET             /api/test                                -> test_route
+2025-09-20 02:10:00,371 - __main__ - INFO - Starting server on port 5000...
+2025-09-20 02:10:00,645 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.12.128.4:5000
+2025-09-20 02:10:00,645 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-09-20 02:10:00,647 - werkzeug - INFO -  * Restarting with stat
+2025-09-20 02:10:00,914 - __main__ - INFO - Checking if required files exist...
+2025-09-20 02:10:00,914 - __main__ - INFO - Found directory: utils/
+2025-09-20 02:10:00,914 - __main__ - INFO - Found directory: routes/
+2025-09-20 02:10:00,915 - __main__ - INFO - Found directory: services/
+2025-09-20 02:10:00,915 - __main__ - INFO - Found directory: models/
+2025-09-20 02:10:00,915 - __main__ - INFO - Found directory: questions/
+2025-09-20 02:10:00,915 - __main__ - INFO - Found: utils/db.py
+2025-09-20 02:10:00,915 - __main__ - INFO - Found: routes/personality_routes.py
+2025-09-20 02:10:00,915 - __main__ - INFO - Found: routes/game_routes.py
+2025-09-20 02:10:00,916 - __main__ - INFO - Found: routes/chat_routes.py
+2025-09-20 02:10:00,916 - __main__ - INFO - Found: routes/task_routes.py
+2025-09-20 02:10:00,916 - __main__ - INFO - Found: routes/community_routes.py
+2025-09-20 02:10:00,916 - __main__ - INFO - Found: routes/safety_routes.py
+2025-09-20 02:10:00,916 - __main__ - INFO - Found: services/personality_service.py
+2025-09-20 02:10:00,916 - __main__ - INFO - Found: services/game_service.py
+2025-09-20 02:10:00,916 - __main__ - INFO - Found: services/chat_service.py
+2025-09-20 02:10:00,916 - __main__ - INFO - Found: services/task_service.py
+2025-09-20 02:10:00,916 - __main__ - INFO - Found: services/community_service.py
+2025-09-20 02:10:00,916 - __main__ - INFO - Found: services/safety_service.py
+2025-09-20 02:10:00,917 - __main__ - INFO - Found: questions/personality_questions.json
+2025-09-20 02:10:00,917 - __main__ - INFO - Attempting to import utils.db...
+2025-09-20 02:10:01,133 - __main__ - INFO - MongoDB initialized successfully
+2025-09-20 02:10:01,137 - __main__ - INFO - personality_routes routes registered successfully
+2025-09-20 02:10:01,139 - __main__ - INFO - game_routes routes registered successfully
+2025-09-20 02:10:01,140 - __main__ - ERROR - Failed to import chat_routes: No module named 'backend'
+2025-09-20 02:10:01,141 - __main__ - ERROR - Blueprint task_bp not found in task_routes: module 'routes.task_routes' has no attribute 'task_bp'
+2025-09-20 02:10:01,142 - __main__ - ERROR - Blueprint community_bp not found in community_routes: module 'routes.community_routes' has no attribute 'community_bp'
+2025-09-20 02:10:01,143 - __main__ - ERROR - Blueprint safety_bp not found in safety_routes: module 'routes.safety_routes' has no attribute 'safety_bp'
+2025-09-20 02:10:01,145 - __main__ - INFO - === STARTING EUNOIA MENTAL WELLNESS BACKEND ===
+2025-09-20 02:10:01,146 - __main__ - INFO - Current working directory: C:\Users\palay\OneDrive\Documents\eunoia\backend
+2025-09-20 02:10:01,146 - __main__ - INFO - App directory: C:\Users\palay\OneDrive\Documents\eunoia\backend
+2025-09-20 02:10:01,146 - __main__ - INFO - utils/: ['auth.py', 'db.py', 'moderation.py', 'serializer.py', '__init__.py']
+2025-09-20 02:10:01,146 - __main__ - INFO - routes/: ['chat_routes.py', 'community_routes.py', 'game_routes.py', 'personality_routes.py', 'safety_routes.py', 'task_routes.py', '__init__.py']
+2025-09-20 02:10:01,147 - __main__ - INFO - services/: ['chat_service.py', 'community_service.py', 'game_service.py', 'personality_service.py', 'safety_service.py', 'task_service.py', '__init__.py']
+2025-09-20 02:10:01,148 - __main__ - INFO - models/: ['chat.py', 'game.py', 'personality.py', 'post.py', 'risk_event.py', 'task.py', 'user.py', '__init__.py']
+2025-09-20 02:10:01,148 - __main__ - INFO - 
+=== Registered Routes ===
+2025-09-20 02:10:01,148 - __main__ - INFO -   GET             /static/<path:filename>                  -> static
+2025-09-20 02:10:01,148 - __main__ - INFO -   GET             /api/personality/questions               -> personality.get_questions
+2025-09-20 02:10:01,149 - __main__ - INFO -   POST            /api/personality/submit                  -> personality.submit_personality
+2025-09-20 02:10:01,149 - __main__ - INFO -   POST            /api/game/start                          -> game.start_session
+2025-09-20 02:10:01,150 - __main__ - INFO -   POST            /api/game/action                         -> game.record_action
+2025-09-20 02:10:01,150 - __main__ - INFO -   POST            /api/game/check-placement                -> game.check_placement
+2025-09-20 02:10:01,150 - __main__ - INFO -   POST            /api/game/complete                       -> game.complete_level
+2025-09-20 02:10:01,150 - __main__ - INFO -   GET             /api/game/leaderboard                    -> game.get_leaderboard
+2025-09-20 02:10:01,150 - __main__ - INFO -   GET             /api/personality/questions               -> direct_questions
+2025-09-20 02:10:01,151 - __main__ - INFO -   POST            /api/personality/submit                  -> direct_submit
+2025-09-20 02:10:01,151 - __main__ - INFO -   POST            /api/game/start                          -> game_start
+2025-09-20 02:10:01,151 - __main__ - INFO -   POST            /api/game/complete                       -> game_complete
+2025-09-20 02:10:01,151 - __main__ - INFO -   GET             /                                        -> home
+2025-09-20 02:10:01,151 - __main__ - INFO -   GET             /health                                  -> health_check
+2025-09-20 02:10:01,151 - __main__ - INFO -   GET             /api                                     -> api_info
+2025-09-20 02:10:01,151 - __main__ - INFO -   GET             /debug/routes                            -> debug_routes
+2025-09-20 02:10:01,151 - __main__ - INFO -   GET             /api/test                                -> test_route
+2025-09-20 02:10:01,151 - __main__ - INFO - Starting server on port 5000...
+2025-09-20 02:10:01,192 - werkzeug - WARNING -  * Debugger is active!
+2025-09-20 02:10:01,197 - werkzeug - INFO -  * Debugger PIN: 287-528-982
+2025-09-20 02:10:12,790 - werkzeug - INFO -  * Detected change in 'C:\\Users\\palay\\OneDrive\\Documents\\eunoia\\backend\\app.py', reloading
+2025-09-20 02:10:13,254 - werkzeug - INFO -  * Restarting with stat
+2025-09-20 02:10:13,544 - __main__ - INFO - Checking if required files exist...
+2025-09-20 02:10:13,544 - __main__ - INFO - Found directory: utils/
+2025-09-20 02:10:13,544 - __main__ - INFO - Found directory: routes/
+2025-09-20 02:10:13,545 - __main__ - INFO - Found directory: services/
+2025-09-20 02:10:13,545 - __main__ - INFO - Found directory: models/
+2025-09-20 02:10:13,545 - __main__ - INFO - Found directory: questions/
+2025-09-20 02:10:13,545 - __main__ - INFO - Found: utils/db.py
+2025-09-20 02:10:13,545 - __main__ - INFO - Found: routes/personality_routes.py
+2025-09-20 02:10:13,546 - __main__ - INFO - Found: routes/game_routes.py
+2025-09-20 02:10:13,546 - __main__ - INFO - Found: routes/chat_routes.py
+2025-09-20 02:10:13,546 - __main__ - INFO - Found: routes/task_routes.py
+2025-09-20 02:10:13,546 - __main__ - INFO - Found: routes/community_routes.py
+2025-09-20 02:10:13,546 - __main__ - INFO - Found: routes/safety_routes.py
+2025-09-20 02:10:13,546 - __main__ - INFO - Found: services/personality_service.py
+2025-09-20 02:10:13,547 - __main__ - INFO - Found: services/game_service.py
+2025-09-20 02:10:13,547 - __main__ - INFO - Found: services/chat_service.py
+2025-09-20 02:10:13,547 - __main__ - INFO - Found: services/task_service.py
+2025-09-20 02:10:13,548 - __main__ - INFO - Found: services/community_service.py
+2025-09-20 02:10:13,548 - __main__ - INFO - Found: services/safety_service.py
+2025-09-20 02:10:13,548 - __main__ - INFO - Found: questions/personality_questions.json
+2025-09-20 02:10:13,548 - __main__ - INFO - Attempting to import utils.db...
+2025-09-20 02:10:13,786 - __main__ - INFO - MongoDB initialized successfully
+2025-09-20 02:10:13,790 - __main__ - INFO - personality_routes routes registered successfully
+2025-09-20 02:10:13,792 - __main__ - INFO - game_routes routes registered successfully
+2025-09-20 02:10:13,793 - __main__ - ERROR - Failed to import chat_routes: No module named 'backend'
+2025-09-20 02:10:13,794 - __main__ - ERROR - Blueprint task_bp not found in task_routes: module 'routes.task_routes' has no attribute 'task_bp'
+2025-09-20 02:10:13,794 - __main__ - ERROR - Blueprint community_bp not found in community_routes: module 'routes.community_routes' has no attribute 'community_bp'
+2025-09-20 02:10:13,795 - __main__ - ERROR - Blueprint safety_bp not found in safety_routes: module 'routes.safety_routes' has no attribute 'safety_bp'
+2025-09-20 02:10:13,798 - __main__ - INFO - === STARTING EUNOIA MENTAL WELLNESS BACKEND ===
+2025-09-20 02:10:13,798 - __main__ - INFO - Current working directory: C:\Users\palay\OneDrive\Documents\eunoia\backend
+2025-09-20 02:10:13,798 - __main__ - INFO - App directory: C:\Users\palay\OneDrive\Documents\eunoia\backend
+2025-09-20 02:10:13,799 - __main__ - INFO - utils/: ['auth.py', 'db.py', 'moderation.py', 'serializer.py', '__init__.py']
+2025-09-20 02:10:13,799 - __main__ - INFO - routes/: ['chat_routes.py', 'community_routes.py', 'game_routes.py', 'personality_routes.py', 'safety_routes.py', 'task_routes.py', '__init__.py']
+2025-09-20 02:10:13,799 - __main__ - INFO - services/: ['chat_service.py', 'community_service.py', 'game_service.py', 'personality_service.py', 'safety_service.py', 'task_service.py', '__init__.py']
+2025-09-20 02:10:13,800 - __main__ - INFO - models/: ['chat.py', 'game.py', 'personality.py', 'post.py', 'risk_event.py', 'task.py', 'user.py', '__init__.py']
+2025-09-20 02:10:13,800 - __main__ - INFO - 
+=== Registered Routes ===
+2025-09-20 02:10:13,800 - __main__ - INFO -   GET             /static/<path:filename>                  -> static
+2025-09-20 02:10:13,800 - __main__ - INFO -   GET             /api/personality/questions               -> personality.get_questions
+2025-09-20 02:10:13,800 - __main__ - INFO -   POST            /api/personality/submit                  -> personality.submit_personality
+2025-09-20 02:10:13,800 - __main__ - INFO -   POST            /api/game/start                          -> game.start_session
+2025-09-20 02:10:13,800 - __main__ - INFO -   POST            /api/game/action                         -> game.record_action
+2025-09-20 02:10:13,800 - __main__ - INFO -   POST            /api/game/check-placement                -> game.check_placement
+2025-09-20 02:10:13,800 - __main__ - INFO -   POST            /api/game/complete                       -> game.complete_level
+2025-09-20 02:10:13,800 - __main__ - INFO -   GET             /api/game/leaderboard                    -> game.get_leaderboard
+2025-09-20 02:10:13,800 - __main__ - INFO -   GET             /api/personality/questions               -> direct_questions
+2025-09-20 02:10:13,801 - __main__ - INFO -   POST            /api/personality/submit                  -> direct_submit
+2025-09-20 02:10:13,801 - __main__ - INFO -   POST            /api/game/start                          -> game_start
+2025-09-20 02:10:13,801 - __main__ - INFO -   POST            /api/game/action                         -> game_action
+2025-09-20 02:10:13,801 - __main__ - INFO -   POST            /api/game/check-placement                -> check_placement
+2025-09-20 02:10:13,801 - __main__ - INFO -   POST            /api/game/complete                       -> game_complete
+2025-09-20 02:10:13,801 - __main__ - INFO -   GET             /api/game/leaderboard                    -> game_leaderboard
+2025-09-20 02:10:13,802 - __main__ - INFO -   GET             /                                        -> home
+2025-09-20 02:10:13,802 - __main__ - INFO -   GET             /health                                  -> health_check
+2025-09-20 02:10:13,802 - __main__ - INFO -   GET             /api                                     -> api_info
+2025-09-20 02:10:13,802 - __main__ - INFO -   GET             /debug/routes                            -> debug_routes
+2025-09-20 02:10:13,802 - __main__ - INFO -   GET             /api/test                                -> test_route
+2025-09-20 02:10:13,802 - __main__ - INFO - Starting server on port 5000...
+2025-09-20 02:10:13,838 - werkzeug - WARNING -  * Debugger is active!
+2025-09-20 02:10:13,842 - werkzeug - INFO -  * Debugger PIN: 287-528-982
+2025-09-20 02:10:42,318 - __main__ - INFO - Checking if required files exist...
+2025-09-20 02:10:42,319 - __main__ - INFO - Found directory: utils/
+2025-09-20 02:10:42,319 - __main__ - INFO - Found directory: routes/
+2025-09-20 02:10:42,319 - __main__ - INFO - Found directory: services/
+2025-09-20 02:10:42,320 - __main__ - INFO - Found directory: models/
+2025-09-20 02:10:42,320 - __main__ - INFO - Found directory: questions/
+2025-09-20 02:10:42,320 - __main__ - INFO - Found: utils/db.py
+2025-09-20 02:10:42,320 - __main__ - INFO - Found: routes/personality_routes.py
+2025-09-20 02:10:42,321 - __main__ - INFO - Found: routes/game_routes.py
+2025-09-20 02:10:42,321 - __main__ - INFO - Found: routes/chat_routes.py
+2025-09-20 02:10:42,322 - __main__ - INFO - Found: routes/task_routes.py
+2025-09-20 02:10:42,322 - __main__ - INFO - Found: routes/community_routes.py
+2025-09-20 02:10:42,323 - __main__ - INFO - Found: routes/safety_routes.py
+2025-09-20 02:10:42,323 - __main__ - INFO - Found: services/personality_service.py
+2025-09-20 02:10:42,323 - __main__ - INFO - Found: services/game_service.py
+2025-09-20 02:10:42,323 - __main__ - INFO - Found: services/chat_service.py
+2025-09-20 02:10:42,324 - __main__ - INFO - Found: services/task_service.py
+2025-09-20 02:10:42,324 - __main__ - INFO - Found: services/community_service.py
+2025-09-20 02:10:42,324 - __main__ - INFO - Found: services/safety_service.py
+2025-09-20 02:10:42,324 - __main__ - INFO - Found: questions/personality_questions.json
+2025-09-20 02:10:42,324 - __main__ - INFO - Attempting to import utils.db...
+2025-09-20 02:10:42,573 - __main__ - INFO - MongoDB initialized successfully
+2025-09-20 02:10:42,576 - __main__ - INFO - personality_routes routes registered successfully
+2025-09-20 02:10:42,578 - __main__ - INFO - game_routes routes registered successfully
+2025-09-20 02:10:42,579 - __main__ - ERROR - Failed to import chat_routes: No module named 'backend'
+2025-09-20 02:10:42,580 - __main__ - ERROR - Blueprint task_bp not found in task_routes: module 'routes.task_routes' has no attribute 'task_bp'
+2025-09-20 02:10:42,581 - __main__ - ERROR - Blueprint community_bp not found in community_routes: module 'routes.community_routes' has no attribute 'community_bp'
+2025-09-20 02:10:42,581 - __main__ - ERROR - Blueprint safety_bp not found in safety_routes: module 'routes.safety_routes' has no attribute 'safety_bp'
+2025-09-20 02:10:42,584 - __main__ - INFO - === STARTING EUNOIA MENTAL WELLNESS BACKEND ===
+2025-09-20 02:10:42,584 - __main__ - INFO - Current working directory: C:\Users\palay\OneDrive\Documents\eunoia\backend
+2025-09-20 02:10:42,585 - __main__ - INFO - App directory: C:\Users\palay\OneDrive\Documents\eunoia\backend
+2025-09-20 02:10:42,585 - __main__ - INFO - utils/: ['auth.py', 'db.py', 'moderation.py', 'serializer.py', '__init__.py']
+2025-09-20 02:10:42,585 - __main__ - INFO - routes/: ['chat_routes.py', 'community_routes.py', 'game_routes.py', 'personality_routes.py', 'safety_routes.py', 'task_routes.py', '__init__.py']
+2025-09-20 02:10:42,586 - __main__ - INFO - services/: ['chat_service.py', 'community_service.py', 'game_service.py', 'personality_service.py', 'safety_service.py', 'task_service.py', '__init__.py']
+2025-09-20 02:10:42,586 - __main__ - INFO - models/: ['chat.py', 'game.py', 'personality.py', 'post.py', 'risk_event.py', 'task.py', 'user.py', '__init__.py']
+2025-09-20 02:10:42,586 - __main__ - INFO - 
+=== Registered Routes ===
+2025-09-20 02:10:42,587 - __main__ - INFO -   GET             /static/<path:filename>                  -> static
+2025-09-20 02:10:42,587 - __main__ - INFO -   GET             /api/personality/questions               -> personality.get_questions
+2025-09-20 02:10:42,587 - __main__ - INFO -   POST            /api/personality/submit                  -> personality.submit_personality
+2025-09-20 02:10:42,587 - __main__ - INFO -   POST            /api/game/start                          -> game.start_session
+2025-09-20 02:10:42,587 - __main__ - INFO -   POST            /api/game/action                         -> game.record_action
+2025-09-20 02:10:42,587 - __main__ - INFO -   POST            /api/game/check-placement                -> game.check_placement
+2025-09-20 02:10:42,587 - __main__ - INFO -   POST            /api/game/complete                       -> game.complete_level
+2025-09-20 02:10:42,588 - __main__ - INFO -   GET             /api/game/leaderboard                    -> game.get_leaderboard
+2025-09-20 02:10:42,588 - __main__ - INFO -   GET             /api/personality/questions               -> direct_questions
+2025-09-20 02:10:42,588 - __main__ - INFO -   POST            /api/personality/submit                  -> direct_submit
+2025-09-20 02:10:42,588 - __main__ - INFO -   POST            /api/game/start                          -> game_start
+2025-09-20 02:10:42,588 - __main__ - INFO -   POST            /api/game/action                         -> game_action
+2025-09-20 02:10:42,588 - __main__ - INFO -   POST            /api/game/check-placement                -> check_placement
+2025-09-20 02:10:42,588 - __main__ - INFO -   POST            /api/game/complete                       -> game_complete
+2025-09-20 02:10:42,588 - __main__ - INFO -   GET             /api/game/leaderboard                    -> game_leaderboard
+2025-09-20 02:10:42,589 - __main__ - INFO -   GET             /                                        -> home
+2025-09-20 02:10:42,589 - __main__ - INFO -   GET             /health                                  -> health_check
+2025-09-20 02:10:42,589 - __main__ - INFO -   GET             /api                                     -> api_info
+2025-09-20 02:10:42,589 - __main__ - INFO -   GET             /debug/routes                            -> debug_routes
+2025-09-20 02:10:42,589 - __main__ - INFO -   GET             /api/test                                -> test_route
+2025-09-20 02:10:42,589 - __main__ - INFO - Starting server on port 5000...
+2025-09-20 02:10:42,632 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.12.128.4:5000
+2025-09-20 02:10:42,632 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-09-20 02:10:42,633 - werkzeug - INFO -  * Restarting with stat
+2025-09-20 02:10:42,949 - __main__ - INFO - Checking if required files exist...
+2025-09-20 02:10:42,949 - __main__ - INFO - Found directory: utils/
+2025-09-20 02:10:42,949 - __main__ - INFO - Found directory: routes/
+2025-09-20 02:10:42,950 - __main__ - INFO - Found directory: services/
+2025-09-20 02:10:42,950 - __main__ - INFO - Found directory: models/
+2025-09-20 02:10:42,950 - __main__ - INFO - Found directory: questions/
+2025-09-20 02:10:42,950 - __main__ - INFO - Found: utils/db.py
+2025-09-20 02:10:42,951 - __main__ - INFO - Found: routes/personality_routes.py
+2025-09-20 02:10:42,951 - __main__ - INFO - Found: routes/game_routes.py
+2025-09-20 02:10:42,951 - __main__ - INFO - Found: routes/chat_routes.py
+2025-09-20 02:10:42,951 - __main__ - INFO - Found: routes/task_routes.py
+2025-09-20 02:10:42,951 - __main__ - INFO - Found: routes/community_routes.py
+2025-09-20 02:10:42,952 - __main__ - INFO - Found: routes/safety_routes.py
+2025-09-20 02:10:42,952 - __main__ - INFO - Found: services/personality_service.py
+2025-09-20 02:10:42,952 - __main__ - INFO - Found: services/game_service.py
+2025-09-20 02:10:42,952 - __main__ - INFO - Found: services/chat_service.py
+2025-09-20 02:10:42,952 - __main__ - INFO - Found: services/task_service.py
+2025-09-20 02:10:42,953 - __main__ - INFO - Found: services/community_service.py
+2025-09-20 02:10:42,953 - __main__ - INFO - Found: services/safety_service.py
+2025-09-20 02:10:42,953 - __main__ - INFO - Found: questions/personality_questions.json
+2025-09-20 02:10:42,953 - __main__ - INFO - Attempting to import utils.db...
+2025-09-20 02:10:43,192 - __main__ - INFO - MongoDB initialized successfully
+2025-09-20 02:10:43,198 - __main__ - INFO - personality_routes routes registered successfully
+2025-09-20 02:10:43,200 - __main__ - INFO - game_routes routes registered successfully
+2025-09-20 02:10:43,202 - __main__ - ERROR - Failed to import chat_routes: No module named 'backend'
+2025-09-20 02:10:43,203 - __main__ - ERROR - Blueprint task_bp not found in task_routes: module 'routes.task_routes' has no attribute 'task_bp'
+2025-09-20 02:10:43,204 - __main__ - ERROR - Blueprint community_bp not found in community_routes: module 'routes.community_routes' has no attribute 'community_bp'
+2025-09-20 02:10:43,205 - __main__ - ERROR - Blueprint safety_bp not found in safety_routes: module 'routes.safety_routes' has no attribute 'safety_bp'
+2025-09-20 02:10:43,208 - __main__ - INFO - === STARTING EUNOIA MENTAL WELLNESS BACKEND ===
+2025-09-20 02:10:43,208 - __main__ - INFO - Current working directory: C:\Users\palay\OneDrive\Documents\eunoia\backend
+2025-09-20 02:10:43,208 - __main__ - INFO - App directory: C:\Users\palay\OneDrive\Documents\eunoia\backend
+2025-09-20 02:10:43,209 - __main__ - INFO - utils/: ['auth.py', 'db.py', 'moderation.py', 'serializer.py', '__init__.py']
+2025-09-20 02:10:43,209 - __main__ - INFO - routes/: ['chat_routes.py', 'community_routes.py', 'game_routes.py', 'personality_routes.py', 'safety_routes.py', 'task_routes.py', '__init__.py']
+2025-09-20 02:10:43,209 - __main__ - INFO - services/: ['chat_service.py', 'community_service.py', 'game_service.py', 'personality_service.py', 'safety_service.py', 'task_service.py', '__init__.py']
+2025-09-20 02:10:43,210 - __main__ - INFO - models/: ['chat.py', 'game.py', 'personality.py', 'post.py', 'risk_event.py', 'task.py', 'user.py', '__init__.py']
+2025-09-20 02:10:43,210 - __main__ - INFO - 
+=== Registered Routes ===
+2025-09-20 02:10:43,210 - __main__ - INFO -   GET             /static/<path:filename>                  -> static
+2025-09-20 02:10:43,210 - __main__ - INFO -   GET             /api/personality/questions               -> personality.get_questions
+2025-09-20 02:10:43,210 - __main__ - INFO -   POST            /api/personality/submit                  -> personality.submit_personality
+2025-09-20 02:10:43,211 - __main__ - INFO -   POST            /api/game/start                          -> game.start_session
+2025-09-20 02:10:43,211 - __main__ - INFO -   POST            /api/game/action                         -> game.record_action
+2025-09-20 02:10:43,211 - __main__ - INFO -   POST            /api/game/check-placement                -> game.check_placement
+2025-09-20 02:10:43,211 - __main__ - INFO -   POST            /api/game/complete                       -> game.complete_level
+2025-09-20 02:10:43,211 - __main__ - INFO -   GET             /api/game/leaderboard                    -> game.get_leaderboard
+2025-09-20 02:10:43,211 - __main__ - INFO -   GET             /api/personality/questions               -> direct_questions
+2025-09-20 02:10:43,211 - __main__ - INFO -   POST            /api/personality/submit                  -> direct_submit
+2025-09-20 02:10:43,212 - __main__ - INFO -   POST            /api/game/start                          -> game_start
+2025-09-20 02:10:43,212 - __main__ - INFO -   POST            /api/game/action                         -> game_action
+2025-09-20 02:10:43,212 - __main__ - INFO -   POST            /api/game/check-placement                -> check_placement
+2025-09-20 02:10:43,213 - __main__ - INFO -   POST            /api/game/complete                       -> game_complete
+2025-09-20 02:10:43,213 - __main__ - INFO -   GET             /api/game/leaderboard                    -> game_leaderboard
+2025-09-20 02:10:43,213 - __main__ - INFO -   GET             /                                        -> home
+2025-09-20 02:10:43,213 - __main__ - INFO -   GET             /health                                  -> health_check
+2025-09-20 02:10:43,213 - __main__ - INFO -   GET             /api                                     -> api_info
+2025-09-20 02:10:43,213 - __main__ - INFO -   GET             /debug/routes                            -> debug_routes
+2025-09-20 02:10:43,213 - __main__ - INFO -   GET             /api/test                                -> test_route
+2025-09-20 02:10:43,213 - __main__ - INFO - Starting server on port 5000...
+2025-09-20 02:10:43,252 - werkzeug - WARNING -  * Debugger is active!
+2025-09-20 02:10:43,255 - werkzeug - INFO -  * Debugger PIN: 287-528-982
+2025-09-20 02:11:09,951 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 02:11:09] "OPTIONS /api/game/start HTTP/1.1" 200 -
+2025-09-20 02:11:09,954 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 02:11:09] "OPTIONS /api/game/start HTTP/1.1" 200 -
+2025-09-20 02:11:10,218 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 02:11:10] "POST /api/game/start HTTP/1.1" 200 -
+2025-09-20 02:11:10,262 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 02:11:10] "POST /api/game/start HTTP/1.1" 200 -
+2025-09-20 12:59:07,692 - __main__ - INFO - Checking if required files exist...
+2025-09-20 12:59:07,693 - __main__ - INFO - Found directory: utils/
+2025-09-20 12:59:07,693 - __main__ - INFO - Found directory: routes/
+2025-09-20 12:59:07,693 - __main__ - INFO - Found directory: services/
+2025-09-20 12:59:07,693 - __main__ - INFO - Found directory: models/
+2025-09-20 12:59:07,693 - __main__ - INFO - Found directory: questions/
+2025-09-20 12:59:07,694 - __main__ - INFO - Found: utils/db.py
+2025-09-20 12:59:07,694 - __main__ - INFO - Found: routes/personality_routes.py
+2025-09-20 12:59:07,694 - __main__ - INFO - Found: routes/game_routes.py
+2025-09-20 12:59:07,694 - __main__ - INFO - Found: routes/chat_routes.py
+2025-09-20 12:59:07,695 - __main__ - INFO - Found: routes/task_routes.py
+2025-09-20 12:59:07,695 - __main__ - INFO - Found: routes/community_routes.py
+2025-09-20 12:59:07,695 - __main__ - INFO - Found: routes/safety_routes.py
+2025-09-20 12:59:07,695 - __main__ - INFO - Found: services/personality_service.py
+2025-09-20 12:59:07,695 - __main__ - INFO - Found: services/game_service.py
+2025-09-20 12:59:07,696 - __main__ - INFO - Found: services/chat_service.py
+2025-09-20 12:59:07,696 - __main__ - INFO - Found: services/task_service.py
+2025-09-20 12:59:07,696 - __main__ - INFO - Found: services/community_service.py
+2025-09-20 12:59:07,696 - __main__ - INFO - Found: services/safety_service.py
+2025-09-20 12:59:07,696 - __main__ - INFO - Found: questions/personality_questions.json
+2025-09-20 12:59:07,697 - __main__ - INFO - Attempting to import utils.db...
+2025-09-20 12:59:08,285 - __main__ - INFO - MongoDB initialized successfully
+2025-09-20 12:59:08,290 - __main__ - INFO - personality_routes routes registered successfully
+2025-09-20 12:59:08,292 - __main__ - INFO - game_routes routes registered successfully
+2025-09-20 12:59:08,294 - __main__ - ERROR - Failed to import chat_routes: No module named 'backend'
+2025-09-20 12:59:08,296 - __main__ - ERROR - Blueprint task_bp not found in task_routes: module 'routes.task_routes' has no attribute 'task_bp'
+2025-09-20 12:59:08,298 - __main__ - ERROR - Blueprint community_bp not found in community_routes: module 'routes.community_routes' has no attribute 'community_bp'
+2025-09-20 12:59:08,299 - __main__ - ERROR - Blueprint safety_bp not found in safety_routes: module 'routes.safety_routes' has no attribute 'safety_bp'
+2025-09-20 12:59:08,301 - __main__ - INFO - === STARTING EUNOIA MENTAL WELLNESS BACKEND ===
+2025-09-20 12:59:08,302 - __main__ - INFO - Current working directory: C:\Users\palay\OneDrive\Documents\eunoia\backend
+2025-09-20 12:59:08,302 - __main__ - INFO - App directory: C:\Users\palay\OneDrive\Documents\eunoia\backend
+2025-09-20 12:59:08,302 - __main__ - INFO - utils/: ['auth.py', 'db.py', 'moderation.py', 'serializer.py', '__init__.py']
+2025-09-20 12:59:08,302 - __main__ - INFO - routes/: ['chat_routes.py', 'community_routes.py', 'game_routes.py', 'personality_routes.py', 'safety_routes.py', 'task_routes.py', '__init__.py']
+2025-09-20 12:59:08,302 - __main__ - INFO - services/: ['chat_service.py', 'community_service.py', 'game_service.py', 'personality_service.py', 'safety_service.py', 'task_service.py', '__init__.py']
+2025-09-20 12:59:08,303 - __main__ - INFO - models/: ['chat.py', 'game.py', 'personality.py', 'post.py', 'risk_event.py', 'task.py', 'user.py', '__init__.py']
+2025-09-20 12:59:08,303 - __main__ - INFO - 
+=== Registered Routes ===
+2025-09-20 12:59:08,304 - __main__ - INFO -   GET             /static/<path:filename>                  -> static
+2025-09-20 12:59:08,304 - __main__ - INFO -   GET             /api/personality/questions               -> personality.get_questions
+2025-09-20 12:59:08,304 - __main__ - INFO -   POST            /api/personality/submit                  -> personality.submit_personality
+2025-09-20 12:59:08,304 - __main__ - INFO -   POST            /api/game/start                          -> game.start_session
+2025-09-20 12:59:08,305 - __main__ - INFO -   POST            /api/game/action                         -> game.record_action
+2025-09-20 12:59:08,305 - __main__ - INFO -   POST            /api/game/check-placement                -> game.check_placement
+2025-09-20 12:59:08,305 - __main__ - INFO -   POST            /api/game/complete                       -> game.complete_level
+2025-09-20 12:59:08,305 - __main__ - INFO -   GET             /api/game/leaderboard                    -> game.get_leaderboard
+2025-09-20 12:59:08,305 - __main__ - INFO -   GET             /api/personality/questions               -> direct_questions
+2025-09-20 12:59:08,306 - __main__ - INFO -   POST            /api/personality/submit                  -> direct_submit
+2025-09-20 12:59:08,306 - __main__ - INFO -   POST            /api/game/start                          -> game_start
+2025-09-20 12:59:08,306 - __main__ - INFO -   POST            /api/game/action                         -> game_action
+2025-09-20 12:59:08,306 - __main__ - INFO -   POST            /api/game/check-placement                -> check_placement
+2025-09-20 12:59:08,306 - __main__ - INFO -   POST            /api/game/complete                       -> game_complete
+2025-09-20 12:59:08,306 - __main__ - INFO -   GET             /api/game/leaderboard                    -> game_leaderboard
+2025-09-20 12:59:08,307 - __main__ - INFO -   GET             /                                        -> home
+2025-09-20 12:59:08,307 - __main__ - INFO -   GET             /health                                  -> health_check
+2025-09-20 12:59:08,307 - __main__ - INFO -   GET             /api                                     -> api_info
+2025-09-20 12:59:08,307 - __main__ - INFO -   GET             /debug/routes                            -> debug_routes
+2025-09-20 12:59:08,307 - __main__ - INFO -   GET             /api/test                                -> test_route
+2025-09-20 12:59:08,307 - __main__ - INFO - Starting server on port 5000...
+2025-09-20 12:59:08,663 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.12.87.76:5000
+2025-09-20 12:59:08,663 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-09-20 12:59:08,665 - werkzeug - INFO -  * Restarting with stat
+2025-09-20 12:59:08,962 - __main__ - INFO - Checking if required files exist...
+2025-09-20 12:59:08,963 - __main__ - INFO - Found directory: utils/
+2025-09-20 12:59:08,964 - __main__ - INFO - Found directory: routes/
+2025-09-20 12:59:08,964 - __main__ - INFO - Found directory: services/
+2025-09-20 12:59:08,964 - __main__ - INFO - Found directory: models/
+2025-09-20 12:59:08,964 - __main__ - INFO - Found directory: questions/
+2025-09-20 12:59:08,964 - __main__ - INFO - Found: utils/db.py
+2025-09-20 12:59:08,965 - __main__ - INFO - Found: routes/personality_routes.py
+2025-09-20 12:59:08,965 - __main__ - INFO - Found: routes/game_routes.py
+2025-09-20 12:59:08,965 - __main__ - INFO - Found: routes/chat_routes.py
+2025-09-20 12:59:08,965 - __main__ - INFO - Found: routes/task_routes.py
+2025-09-20 12:59:08,966 - __main__ - INFO - Found: routes/community_routes.py
+2025-09-20 12:59:08,966 - __main__ - INFO - Found: routes/safety_routes.py
+2025-09-20 12:59:08,966 - __main__ - INFO - Found: services/personality_service.py
+2025-09-20 12:59:08,966 - __main__ - INFO - Found: services/game_service.py
+2025-09-20 12:59:08,966 - __main__ - INFO - Found: services/chat_service.py
+2025-09-20 12:59:08,967 - __main__ - INFO - Found: services/task_service.py
+2025-09-20 12:59:08,967 - __main__ - INFO - Found: services/community_service.py
+2025-09-20 12:59:08,967 - __main__ - INFO - Found: services/safety_service.py
+2025-09-20 12:59:08,967 - __main__ - INFO - Found: questions/personality_questions.json
+2025-09-20 12:59:08,968 - __main__ - INFO - Attempting to import utils.db...
+2025-09-20 12:59:09,218 - __main__ - INFO - MongoDB initialized successfully
+2025-09-20 12:59:09,223 - __main__ - INFO - personality_routes routes registered successfully
+2025-09-20 12:59:09,225 - __main__ - INFO - game_routes routes registered successfully
+2025-09-20 12:59:09,226 - __main__ - ERROR - Failed to import chat_routes: No module named 'backend'
+2025-09-20 12:59:09,227 - __main__ - ERROR - Blueprint task_bp not found in task_routes: module 'routes.task_routes' has no attribute 'task_bp'
+2025-09-20 12:59:09,228 - __main__ - ERROR - Blueprint community_bp not found in community_routes: module 'routes.community_routes' has no attribute 'community_bp'
+2025-09-20 12:59:09,228 - __main__ - ERROR - Blueprint safety_bp not found in safety_routes: module 'routes.safety_routes' has no attribute 'safety_bp'
+2025-09-20 12:59:09,231 - __main__ - INFO - === STARTING EUNOIA MENTAL WELLNESS BACKEND ===
+2025-09-20 12:59:09,231 - __main__ - INFO - Current working directory: C:\Users\palay\OneDrive\Documents\eunoia\backend
+2025-09-20 12:59:09,232 - __main__ - INFO - App directory: C:\Users\palay\OneDrive\Documents\eunoia\backend
+2025-09-20 12:59:09,232 - __main__ - INFO - utils/: ['auth.py', 'db.py', 'moderation.py', 'serializer.py', '__init__.py']
+2025-09-20 12:59:09,233 - __main__ - INFO - routes/: ['chat_routes.py', 'community_routes.py', 'game_routes.py', 'personality_routes.py', 'safety_routes.py', 'task_routes.py', '__init__.py']
+2025-09-20 12:59:09,233 - __main__ - INFO - services/: ['chat_service.py', 'community_service.py', 'game_service.py', 'personality_service.py', 'safety_service.py', 'task_service.py', '__init__.py']
+2025-09-20 12:59:09,233 - __main__ - INFO - models/: ['chat.py', 'game.py', 'personality.py', 'post.py', 'risk_event.py', 'task.py', 'user.py', '__init__.py']
+2025-09-20 12:59:09,234 - __main__ - INFO - 
+=== Registered Routes ===
+2025-09-20 12:59:09,234 - __main__ - INFO -   GET             /static/<path:filename>                  -> static
+2025-09-20 12:59:09,234 - __main__ - INFO -   GET             /api/personality/questions               -> personality.get_questions
+2025-09-20 12:59:09,234 - __main__ - INFO -   POST            /api/personality/submit                  -> personality.submit_personality
+2025-09-20 12:59:09,234 - __main__ - INFO -   POST            /api/game/start                          -> game.start_session
+2025-09-20 12:59:09,234 - __main__ - INFO -   POST            /api/game/action                         -> game.record_action
+2025-09-20 12:59:09,234 - __main__ - INFO -   POST            /api/game/check-placement                -> game.check_placement
+2025-09-20 12:59:09,234 - __main__ - INFO -   POST            /api/game/complete                       -> game.complete_level
+2025-09-20 12:59:09,235 - __main__ - INFO -   GET             /api/game/leaderboard                    -> game.get_leaderboard
+2025-09-20 12:59:09,235 - __main__ - INFO -   GET             /api/personality/questions               -> direct_questions
+2025-09-20 12:59:09,235 - __main__ - INFO -   POST            /api/personality/submit                  -> direct_submit
+2025-09-20 12:59:09,235 - __main__ - INFO -   POST            /api/game/start                          -> game_start
+2025-09-20 12:59:09,235 - __main__ - INFO -   POST            /api/game/action                         -> game_action
+2025-09-20 12:59:09,235 - __main__ - INFO -   POST            /api/game/check-placement                -> check_placement
+2025-09-20 12:59:09,235 - __main__ - INFO -   POST            /api/game/complete                       -> game_complete
+2025-09-20 12:59:09,236 - __main__ - INFO -   GET             /api/game/leaderboard                    -> game_leaderboard
+2025-09-20 12:59:09,236 - __main__ - INFO -   GET             /                                        -> home
+2025-09-20 12:59:09,236 - __main__ - INFO -   GET             /health                                  -> health_check
+2025-09-20 12:59:09,236 - __main__ - INFO -   GET             /api                                     -> api_info
+2025-09-20 12:59:09,236 - __main__ - INFO -   GET             /debug/routes                            -> debug_routes
+2025-09-20 12:59:09,236 - __main__ - INFO -   GET             /api/test                                -> test_route
+2025-09-20 12:59:09,237 - __main__ - INFO - Starting server on port 5000...
+2025-09-20 12:59:09,275 - werkzeug - WARNING -  * Debugger is active!
+2025-09-20 12:59:09,278 - werkzeug - INFO -  * Debugger PIN: 287-528-982
+2025-09-20 12:59:37,760 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 12:59:37] "OPTIONS /api/game/start HTTP/1.1" 200 -
+2025-09-20 12:59:37,765 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 12:59:37] "OPTIONS /api/game/start HTTP/1.1" 200 -
+2025-09-20 12:59:37,983 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 12:59:37] "POST /api/game/start HTTP/1.1" 200 -
+2025-09-20 12:59:38,077 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 12:59:38] "POST /api/game/start HTTP/1.1" 200 -
+2025-09-20 15:58:25,791 - __main__ - INFO - Checking if required files exist...
+2025-09-20 15:58:25,791 - __main__ - INFO - Found directory: utils/
+2025-09-20 15:58:25,792 - __main__ - INFO - Found directory: routes/
+2025-09-20 15:58:25,792 - __main__ - INFO - Found directory: services/
+2025-09-20 15:58:25,792 - __main__ - INFO - Found directory: models/
+2025-09-20 15:58:25,792 - __main__ - INFO - Found directory: questions/
+2025-09-20 15:58:25,792 - __main__ - INFO - Found: utils/db.py
+2025-09-20 15:58:25,792 - __main__ - INFO - Found: routes/personality_routes.py
+2025-09-20 15:58:25,793 - __main__ - INFO - Found: routes/game_routes.py
+2025-09-20 15:58:25,793 - __main__ - INFO - Found: routes/chat_routes.py
+2025-09-20 15:58:25,793 - __main__ - INFO - Found: routes/task_routes.py
+2025-09-20 15:58:25,793 - __main__ - INFO - Found: routes/community_routes.py
+2025-09-20 15:58:25,793 - __main__ - INFO - Found: routes/safety_routes.py
+2025-09-20 15:58:25,794 - __main__ - INFO - Found: services/personality_service.py
+2025-09-20 15:58:25,794 - __main__ - INFO - Found: services/game_service.py
+2025-09-20 15:58:25,794 - __main__ - INFO - Found: services/chat_service.py
+2025-09-20 15:58:25,794 - __main__ - INFO - Found: services/task_service.py
+2025-09-20 15:58:25,794 - __main__ - INFO - Found: services/community_service.py
+2025-09-20 15:58:25,795 - __main__ - INFO - Found: services/safety_service.py
+2025-09-20 15:58:25,795 - __main__ - INFO - Found: questions/personality_questions.json
+2025-09-20 15:58:25,795 - __main__ - INFO - Attempting to import utils.db...
+2025-09-20 15:58:26,223 - __main__ - INFO - MongoDB initialized successfully
+2025-09-20 15:58:26,229 - __main__ - INFO - personality_routes routes registered successfully
+2025-09-20 15:58:26,230 - __main__ - INFO - game_routes routes registered successfully
+2025-09-20 15:58:26,232 - __main__ - ERROR - Failed to import chat_routes: No module named 'backend'
+2025-09-20 15:58:26,233 - __main__ - ERROR - Blueprint task_bp not found in task_routes: module 'routes.task_routes' has no attribute 'task_bp'
+2025-09-20 15:58:26,234 - __main__ - ERROR - Blueprint community_bp not found in community_routes: module 'routes.community_routes' has no attribute 'community_bp'
+2025-09-20 15:58:26,234 - __main__ - ERROR - Blueprint safety_bp not found in safety_routes: module 'routes.safety_routes' has no attribute 'safety_bp'
+2025-09-20 15:58:26,237 - __main__ - INFO - === STARTING EUNOIA MENTAL WELLNESS BACKEND ===
+2025-09-20 15:58:26,237 - __main__ - INFO - Current working directory: C:\Users\palay\OneDrive\Documents\eunoia\backend
+2025-09-20 15:58:26,237 - __main__ - INFO - App directory: C:\Users\palay\OneDrive\Documents\eunoia\backend
+2025-09-20 15:58:26,238 - __main__ - INFO - utils/: ['auth.py', 'db.py', 'moderation.py', 'serializer.py', '__init__.py']
+2025-09-20 15:58:26,238 - __main__ - INFO - routes/: ['chat_routes.py', 'community_routes.py', 'game_routes.py', 'personality_routes.py', 'safety_routes.py', 'task_routes.py', '__init__.py']
+2025-09-20 15:58:26,238 - __main__ - INFO - services/: ['chat_service.py', 'community_service.py', 'game_service.py', 'personality_service.py', 'safety_service.py', 'task_service.py', '__init__.py']
+2025-09-20 15:58:26,238 - __main__ - INFO - models/: ['chat.py', 'game.py', 'personality.py', 'post.py', 'risk_event.py', 'task.py', 'user.py', '__init__.py']
+2025-09-20 15:58:26,238 - __main__ - INFO - 
+=== Registered Routes ===
+2025-09-20 15:58:26,239 - __main__ - INFO -   GET             /static/<path:filename>                  -> static
+2025-09-20 15:58:26,239 - __main__ - INFO -   GET             /api/personality/questions               -> personality.get_questions
+2025-09-20 15:58:26,239 - __main__ - INFO -   POST            /api/personality/submit                  -> personality.submit_personality
+2025-09-20 15:58:26,239 - __main__ - INFO -   POST            /api/game/start                          -> game.start_session
+2025-09-20 15:58:26,239 - __main__ - INFO -   POST            /api/game/action                         -> game.record_action
+2025-09-20 15:58:26,239 - __main__ - INFO -   POST            /api/game/check-placement                -> game.check_placement
+2025-09-20 15:58:26,239 - __main__ - INFO -   POST            /api/game/complete                       -> game.complete_level
+2025-09-20 15:58:26,239 - __main__ - INFO -   GET             /api/game/leaderboard                    -> game.get_leaderboard
+2025-09-20 15:58:26,240 - __main__ - INFO -   GET             /api/personality/questions               -> direct_questions
+2025-09-20 15:58:26,240 - __main__ - INFO -   POST            /api/personality/submit                  -> direct_submit
+2025-09-20 15:58:26,240 - __main__ - INFO -   POST            /api/game/start                          -> game_start
+2025-09-20 15:58:26,240 - __main__ - INFO -   POST            /api/game/action                         -> game_action
+2025-09-20 15:58:26,240 - __main__ - INFO -   POST            /api/game/check-placement                -> check_placement
+2025-09-20 15:58:26,240 - __main__ - INFO -   POST            /api/game/complete                       -> game_complete
+2025-09-20 15:58:26,240 - __main__ - INFO -   GET             /api/game/leaderboard                    -> game_leaderboard
+2025-09-20 15:58:26,240 - __main__ - INFO -   GET             /                                        -> home
+2025-09-20 15:58:26,240 - __main__ - INFO -   GET             /health                                  -> health_check
+2025-09-20 15:58:26,240 - __main__ - INFO -   GET             /api                                     -> api_info
+2025-09-20 15:58:26,240 - __main__ - INFO -   GET             /debug/routes                            -> debug_routes
+2025-09-20 15:58:26,240 - __main__ - INFO -   GET             /api/test                                -> test_route
+2025-09-20 15:58:26,240 - __main__ - INFO - Starting server on port 5000...
+2025-09-20 15:58:26,563 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.12.87.76:5000
+2025-09-20 15:58:26,564 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-09-20 15:58:26,565 - werkzeug - INFO -  * Restarting with stat
+2025-09-20 15:58:26,777 - __main__ - INFO - Checking if required files exist...
+2025-09-20 15:58:26,778 - __main__ - INFO - Found directory: utils/
+2025-09-20 15:58:26,778 - __main__ - INFO - Found directory: routes/
+2025-09-20 15:58:26,778 - __main__ - INFO - Found directory: services/
+2025-09-20 15:58:26,778 - __main__ - INFO - Found directory: models/
+2025-09-20 15:58:26,778 - __main__ - INFO - Found directory: questions/
+2025-09-20 15:58:26,779 - __main__ - INFO - Found: utils/db.py
+2025-09-20 15:58:26,779 - __main__ - INFO - Found: routes/personality_routes.py
+2025-09-20 15:58:26,779 - __main__ - INFO - Found: routes/game_routes.py
+2025-09-20 15:58:26,779 - __main__ - INFO - Found: routes/chat_routes.py
+2025-09-20 15:58:26,779 - __main__ - INFO - Found: routes/task_routes.py
+2025-09-20 15:58:26,779 - __main__ - INFO - Found: routes/community_routes.py
+2025-09-20 15:58:26,779 - __main__ - INFO - Found: routes/safety_routes.py
+2025-09-20 15:58:26,779 - __main__ - INFO - Found: services/personality_service.py
+2025-09-20 15:58:26,780 - __main__ - INFO - Found: services/game_service.py
+2025-09-20 15:58:26,780 - __main__ - INFO - Found: services/chat_service.py
+2025-09-20 15:58:26,780 - __main__ - INFO - Found: services/task_service.py
+2025-09-20 15:58:26,780 - __main__ - INFO - Found: services/community_service.py
+2025-09-20 15:58:26,780 - __main__ - INFO - Found: services/safety_service.py
+2025-09-20 15:58:26,780 - __main__ - INFO - Found: questions/personality_questions.json
+2025-09-20 15:58:26,780 - __main__ - INFO - Attempting to import utils.db...
+2025-09-20 15:58:26,967 - __main__ - INFO - MongoDB initialized successfully
+2025-09-20 15:58:26,970 - __main__ - INFO - personality_routes routes registered successfully
+2025-09-20 15:58:26,972 - __main__ - INFO - game_routes routes registered successfully
+2025-09-20 15:58:26,973 - __main__ - ERROR - Failed to import chat_routes: No module named 'backend'
+2025-09-20 15:58:26,973 - __main__ - ERROR - Blueprint task_bp not found in task_routes: module 'routes.task_routes' has no attribute 'task_bp'
+2025-09-20 15:58:26,974 - __main__ - ERROR - Blueprint community_bp not found in community_routes: module 'routes.community_routes' has no attribute 'community_bp'
+2025-09-20 15:58:26,974 - __main__ - ERROR - Blueprint safety_bp not found in safety_routes: module 'routes.safety_routes' has no attribute 'safety_bp'
+2025-09-20 15:58:26,976 - __main__ - INFO - === STARTING EUNOIA MENTAL WELLNESS BACKEND ===
+2025-09-20 15:58:26,976 - __main__ - INFO - Current working directory: C:\Users\palay\OneDrive\Documents\eunoia\backend
+2025-09-20 15:58:26,976 - __main__ - INFO - App directory: C:\Users\palay\OneDrive\Documents\eunoia\backend
+2025-09-20 15:58:26,976 - __main__ - INFO - utils/: ['auth.py', 'db.py', 'moderation.py', 'serializer.py', '__init__.py']
+2025-09-20 15:58:26,977 - __main__ - INFO - routes/: ['chat_routes.py', 'community_routes.py', 'game_routes.py', 'personality_routes.py', 'safety_routes.py', 'task_routes.py', '__init__.py']
+2025-09-20 15:58:26,977 - __main__ - INFO - services/: ['chat_service.py', 'community_service.py', 'game_service.py', 'personality_service.py', 'safety_service.py', 'task_service.py', '__init__.py']
+2025-09-20 15:58:26,977 - __main__ - INFO - models/: ['chat.py', 'game.py', 'personality.py', 'post.py', 'risk_event.py', 'task.py', 'user.py', '__init__.py']
+2025-09-20 15:58:26,977 - __main__ - INFO - 
+=== Registered Routes ===
+2025-09-20 15:58:26,977 - __main__ - INFO -   GET             /static/<path:filename>                  -> static
+2025-09-20 15:58:26,977 - __main__ - INFO -   GET             /api/personality/questions               -> personality.get_questions
+2025-09-20 15:58:26,977 - __main__ - INFO -   POST            /api/personality/submit                  -> personality.submit_personality
+2025-09-20 15:58:26,977 - __main__ - INFO -   POST            /api/game/start                          -> game.start_session
+2025-09-20 15:58:26,977 - __main__ - INFO -   POST            /api/game/action                         -> game.record_action
+2025-09-20 15:58:26,978 - __main__ - INFO -   POST            /api/game/check-placement                -> game.check_placement
+2025-09-20 15:58:26,978 - __main__ - INFO -   POST            /api/game/complete                       -> game.complete_level
+2025-09-20 15:58:26,978 - __main__ - INFO -   GET             /api/game/leaderboard                    -> game.get_leaderboard
+2025-09-20 15:58:26,978 - __main__ - INFO -   GET             /api/personality/questions               -> direct_questions
+2025-09-20 15:58:26,978 - __main__ - INFO -   POST            /api/personality/submit                  -> direct_submit
+2025-09-20 15:58:26,978 - __main__ - INFO -   POST            /api/game/start                          -> game_start
+2025-09-20 15:58:26,978 - __main__ - INFO -   POST            /api/game/action                         -> game_action
+2025-09-20 15:58:26,978 - __main__ - INFO -   POST            /api/game/check-placement                -> check_placement
+2025-09-20 15:58:26,978 - __main__ - INFO -   POST            /api/game/complete                       -> game_complete
+2025-09-20 15:58:26,979 - __main__ - INFO -   GET             /api/game/leaderboard                    -> game_leaderboard
+2025-09-20 15:58:26,979 - __main__ - INFO -   GET             /                                        -> home
+2025-09-20 15:58:26,979 - __main__ - INFO -   GET             /health                                  -> health_check
+2025-09-20 15:58:26,979 - __main__ - INFO -   GET             /api                                     -> api_info
+2025-09-20 15:58:26,979 - __main__ - INFO -   GET             /debug/routes                            -> debug_routes
+2025-09-20 15:58:26,979 - __main__ - INFO -   GET             /api/test                                -> test_route
+2025-09-20 15:58:26,979 - __main__ - INFO - Starting server on port 5000...
+2025-09-20 15:58:27,020 - werkzeug - WARNING -  * Debugger is active!
+2025-09-20 15:58:27,023 - werkzeug - INFO -  * Debugger PIN: 287-528-982
+2025-09-20 15:59:35,345 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 15:59:35] "OPTIONS /health HTTP/1.1" 200 -
+2025-09-20 15:59:35,350 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 15:59:35] "OPTIONS /health HTTP/1.1" 200 -
+2025-09-20 15:59:35,608 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 15:59:35] "GET /health HTTP/1.1" 200 -
+2025-09-20 15:59:35,657 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 15:59:35] "GET /health HTTP/1.1" 200 -
+2025-09-20 15:59:35,925 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 15:59:35] "OPTIONS /api/game/start HTTP/1.1" 200 -
+2025-09-20 15:59:35,928 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 15:59:35] "OPTIONS /api/game/start HTTP/1.1" 200 -
+2025-09-20 15:59:35,972 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 15:59:35] "POST /api/game/start HTTP/1.1" 200 -
+2025-09-20 15:59:36,239 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 15:59:36] "POST /api/game/start HTTP/1.1" 200 -
+2025-09-20 16:01:04,302 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:04] "OPTIONS /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:04,306 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:04] "OPTIONS /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:04,314 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:04] "OPTIONS /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:04,319 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:04] "OPTIONS /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:04,326 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:04] "OPTIONS /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:04,332 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:04] "OPTIONS /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:04,613 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:04] "OPTIONS /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:04,618 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:04] "OPTIONS /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:04,632 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:04] "OPTIONS /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:04,647 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:04] "OPTIONS /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:04,653 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:04] "OPTIONS /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:04,659 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:04] "OPTIONS /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:04,926 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:04] "OPTIONS /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:04,931 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:04] "OPTIONS /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:04,960 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:04] "OPTIONS /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:04,966 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:04] "OPTIONS /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:04,968 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:04] "OPTIONS /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:04,974 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:04] "OPTIONS /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:05,253 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:05] "OPTIONS /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:05,257 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:05] "OPTIONS /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:05,271 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:05] "OPTIONS /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:05,281 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:05] "OPTIONS /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:05,289 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:05] "OPTIONS /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:05,294 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:05] "OPTIONS /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:05,563 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:05] "OPTIONS /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:05,581 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:05] "OPTIONS /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:05,584 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:05] "OPTIONS /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:05,600 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:05] "OPTIONS /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:05,604 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:05] "OPTIONS /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:05,618 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:05] "OPTIONS /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:05,888 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:05] "OPTIONS /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:05,896 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:05] "OPTIONS /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:05,905 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:05] "OPTIONS /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:05,923 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:05] "OPTIONS /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:05,930 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:05] "OPTIONS /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:05,945 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:05] "OPTIONS /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:06,195 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:06] "OPTIONS /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:06,209 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:06] "OPTIONS /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:06,228 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:06] "OPTIONS /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:06,237 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:06] "OPTIONS /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:06,256 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:06] "OPTIONS /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:06,260 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:06] "OPTIONS /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:06,513 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:06] "OPTIONS /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:06,521 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:06] "OPTIONS /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:06,549 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:06] "OPTIONS /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:06,553 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:06] "OPTIONS /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:06,572 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:06] "OPTIONS /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:06,585 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:06] "OPTIONS /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:06,832 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:06] "OPTIONS /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:06,836 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:06] "OPTIONS /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:06,864 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:06] "OPTIONS /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:06,868 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:06] "OPTIONS /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:06,897 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:06] "OPTIONS /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:06,904 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:06] "OPTIONS /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:07,155 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:07] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:07,160 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:07] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:07,188 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:07] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:07,194 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:07] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:07,218 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:07] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:07,225 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:07] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:07,472 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:07] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:07,479 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:07] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:07,506 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:07] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:07,523 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:07] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:07,531 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:07] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:07,544 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:07] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:07,796 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:07] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:07,804 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:07] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:07,815 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:07] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:07,845 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:07] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:07,848 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:07] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:07,855 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:07] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:08,103 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:08] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:08,131 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:08] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:08,135 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:08] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:08,162 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:08] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:08,166 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:08] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:08,175 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:08] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:08,421 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:08] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:08,457 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:08] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:08,460 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:08] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:08,486 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:08] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:08,488 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:08] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:08,508 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:08] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:08,733 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:08] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:08,779 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:08] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:08,784 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:08] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:08,819 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:08] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:08,824 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:08] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:08,834 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:08] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:09,043 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:09] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:09,090 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:09] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:09,098 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:09] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:09,134 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:09] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:09,139 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:09] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:09,145 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:09] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:09,355 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:09] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:09,412 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:09] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:09,418 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:09] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:09,448 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:09] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:09,452 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:09] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:09,456 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:09] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:09,672 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:09] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:09,737 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:09] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:09,742 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:09] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:09,764 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:09] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:09,771 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:09] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:09,776 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:09] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:09,994 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:09] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:10,057 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:10] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:10,062 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:10] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:10,076 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:10] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:10,089 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:10] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:10,099 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:10] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:10,303 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:10] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:10,381 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:10] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:10,383 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:10] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:10,385 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:10] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:10,412 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:10] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:10,418 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:10] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:10,618 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:10] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:10,696 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:10] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:10,700 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:10] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:10,703 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:10] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:10,723 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:10] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:10,737 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:10] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:10,931 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:10] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:11,008 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:11] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:11,014 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:11] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:11,023 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:11] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:11,041 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:11] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:11,049 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:11] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:11,244 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:11] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:11,321 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:11] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:11,333 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:11] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:11,338 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:11] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:11,346 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:11] "OPTIONS /api/game/check-placement HTTP/1.1" 200 -
+2025-09-20 16:01:11,356 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:11] "OPTIONS /api/game/check-placement HTTP/1.1" 200 -
+2025-09-20 16:01:11,570 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:11] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:11,633 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:11] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:11,647 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:11] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:11,653 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:11] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:11,669 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:11] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:11,680 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:11] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:11,886 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:11] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:11,948 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:11] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:11,951 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:11] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:11,966 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:11] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:11,988 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:11] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:11,999 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:11] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:12,196 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:12] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:12,257 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:12] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:12,262 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:12] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:12,272 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:12] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:12,304 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:12] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:12,321 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:12] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:12,507 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:12] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:12,570 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:12] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:12,583 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:12] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:12,588 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:12] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:12,629 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:12] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:12,631 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:12] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:12,819 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:12] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:12,897 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:12] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:12,902 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:12] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:12,905 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:12] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:12,942 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:12] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:12,946 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:12] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:13,137 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:13] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:13,228 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:13] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:13,234 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:13] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:13,236 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:13] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:13,262 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:13] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:13,266 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:13] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:13,458 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:13] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:13,549 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:13] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:13,554 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:13] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:13,556 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:13] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:13,580 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:13] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:13,584 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:13] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:13,767 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:13] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:13,877 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:13] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:13,880 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:13] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:13,884 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:13] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:13,894 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:13] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:13,900 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:13] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:14,078 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:14] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:14,203 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:14] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:14,207 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:14] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:14,215 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:14] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:14,220 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:14] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:14,227 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:14] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:14,390 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:14] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:14,530 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:14] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:14,534 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:14] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:14,541 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:14] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:14,548 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:14] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:14,550 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:14] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:14,715 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:14] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:14,855 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:14] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:14,860 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:14] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:14,874 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:14] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:14,889 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:14] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:14,894 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:14] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:15,022 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:15] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:15,189 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:15] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:15,193 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:15] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:15,199 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:15] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:15,215 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:15] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:15,222 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:15] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:15,348 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:15] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:15,509 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:15] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:15,512 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:15] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:15,521 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:15] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:15,538 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:15] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:15,542 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:15] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:15,666 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:15] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:15,835 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:15] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:15,841 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:15] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:15,839 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:15] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:15,853 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:15] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:15,858 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:15] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:15,988 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:15] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:16,161 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:16] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:16,164 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:16] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:16,171 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:16] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:16,172 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:16] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:16,186 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:16] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:16,300 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:16] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:16,488 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:16] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:16,493 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:16] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:16,498 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:16] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:16,505 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:16] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:16,515 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:16] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:16,616 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:16] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:16,815 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:16] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:16,819 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:16] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:16,824 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:16] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:16,833 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:16] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:16,841 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:16] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:16,924 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:16] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:17,129 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:17] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:17,133 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:17] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:17,144 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:17] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:17,151 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:17] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:17,159 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:17] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:17,237 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:17] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:17,438 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:17] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:17,446 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:17] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:17,452 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:17] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:17,466 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:17] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:17,486 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:17] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:17,547 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:17] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:17,749 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:17] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:17,765 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:17] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:17,771 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:17] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:17,780 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:17] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:17,820 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:17] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:17,868 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:17] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:18,080 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:18] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:18,082 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:18] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:18,087 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:18] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:18,092 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:18] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:18,139 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:18] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:18,186 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:18] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:18,394 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:18] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:18,398 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:18] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:18,404 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:18] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:18,422 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:18] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:18,456 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:18] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:18,501 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:18] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:18,703 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:18] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:18,737 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:18] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:18,740 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:18] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:18,748 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:18] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:18,769 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:18] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:18,813 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:18] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:19,016 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:19] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:19,049 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:19] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:19,063 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:19] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:19,067 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:19] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:19,081 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:19] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:19,132 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:19] "OPTIONS /api/game/check-placement HTTP/1.1" 200 -
+2025-09-20 16:01:19,328 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:19] "OPTIONS /api/game/check-placement HTTP/1.1" 200 -
+2025-09-20 16:01:19,360 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:19] "POST /api/game/check-placement HTTP/1.1" 200 -
+2025-09-20 16:01:19,394 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:19] "POST /api/game/check-placement HTTP/1.1" 200 -
+2025-09-20 16:01:19,441 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:19] "POST /api/game/check-placement HTTP/1.1" 200 -
+2025-09-20 16:01:19,534 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:19] "POST /api/game/check-placement HTTP/1.1" 200 -
+2025-09-20 16:01:20,330 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:20] "OPTIONS /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:20,637 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:20] "OPTIONS /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:20,642 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:20] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:20,650 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:20] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:20,653 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:20] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:20,667 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:20] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:20,672 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:20] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:20,943 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:20] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:20,958 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:20] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:20,965 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:20] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:20,970 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:20] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:20,978 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:20] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:20,986 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:20] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:21,256 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:21] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:21,271 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:21] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:21,289 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:21] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:21,291 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:21] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:21,309 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:21] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:21,316 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:21] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:21,580 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:21] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:21,588 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:21] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:21,617 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:21] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:21,625 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:21] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:21,630 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:21] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:21,637 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:21] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:21,891 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:21] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:21,903 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:21] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:21,938 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:21] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:21,945 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:21] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:21,959 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:21] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:21,972 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:21] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:22,222 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:22] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:22,226 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:22] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:22,258 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:22] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:22,285 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:22] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:22,290 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:22] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:22,304 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:22] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:22,535 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:22] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:22,541 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:22] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:22,568 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:22] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:22,596 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:22] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:22,601 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:22] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:22,628 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:22] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:22,845 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:22] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:22,852 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:22] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:22,875 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:22] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:22,915 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:22] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:22,924 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:22] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:22,937 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:22] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:23,156 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:23] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:23,158 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:23] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:23,192 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:23] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:23,235 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:23] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:23,243 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:23] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:23,255 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:23] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:23,464 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:23] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:23,469 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:23] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:23,503 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:23] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:23,553 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:23] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:23,556 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:23] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:23,575 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:23] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:23,776 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:23] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:23,780 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:23] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:23,812 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:23] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:23,860 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:23] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:23,866 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:23] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:23,908 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:23] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:24,097 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:24] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:24,102 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:24] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:24,131 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:24] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:24,174 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:24] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:24,177 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:24] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:24,221 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:24] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:24,423 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:24] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:24,427 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:24] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:24,456 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:24] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:24,487 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:24] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:24,500 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:24] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:24,532 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:24] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:24,736 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:24] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:24,740 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:24] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:24,767 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:24] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:24,797 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:24] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:24,813 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:24] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:24,854 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:24] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:25,062 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:25] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:25,067 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:25] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:25,077 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:25] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:25,111 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:25] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:25,129 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:25] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:25,176 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:25] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:25,378 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:25] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:25,381 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:25] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:25,393 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:25] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:25,441 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:25] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:25,451 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:25] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:25,487 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:25] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:25,690 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:25] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:25,695 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:25] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:25,722 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:25] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:25,756 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:25] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:25,761 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:25] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:25,795 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:25] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:25,999 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:25] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:26,005 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:26] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:26,046 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:26] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:26,088 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:26] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:26,095 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:26] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:26,109 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:26] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:26,306 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:26] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:26,312 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:26] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:26,353 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:26] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:26,409 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:26] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:26,416 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:26] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:26,424 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:26] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:26,622 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:26] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:26,629 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:26] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:26,687 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:26] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:26,730 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:26] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:26,735 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:26] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:26,742 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:26] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:26,948 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:26] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:26,953 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:26] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:26,997 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:26] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:27,043 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:27] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:27,062 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:27] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:27,066 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:27] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:27,267 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:27] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:27,270 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:27] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:27,311 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:27] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:27,356 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:27] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:27,372 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:27] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:27,376 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:27] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:27,578 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:27] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:27,581 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:27] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:27,627 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:27] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:27,673 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:27] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:27,693 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:27] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:27,697 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:27] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:27,894 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:27] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:27,898 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:27] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:27,943 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:27] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:27,985 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:27] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:28,025 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:28] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:28,030 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:28] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:28,207 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:28] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:28,212 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:28] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:28,258 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:28] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:28,304 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:28] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:28,333 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:28] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:28,347 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:28] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:28,538 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:28] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:28,540 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:28] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:28,581 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:28] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:28,628 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:28] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:28,658 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:28] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:28,676 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:28] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:28,851 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:28] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:28,853 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:28] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:28,900 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:28] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:28,943 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:28] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:28,990 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:28] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:28,993 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:28] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:29,174 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:29] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:29,178 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:29] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:29,208 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:29] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:29,254 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:29] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:29,301 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:29] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:29,307 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:29] "POST /api/game/check-placement HTTP/1.1" 200 -
+2025-09-20 16:01:29,488 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:29] "POST /api/game/check-placement HTTP/1.1" 200 -
+2025-09-20 16:01:29,489 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:29] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:29,522 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:29] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:29,567 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:29] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:29,615 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:29] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:29,617 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:29] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:29,804 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:29] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:29,809 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:29] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:29,833 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:29] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:29,881 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:29] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:29,929 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:29] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:29,931 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:29] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:30,116 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:30] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:30,123 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:30] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:30,163 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:30] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:30,194 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:30] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:30,241 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:30] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:30,244 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:30] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:30,428 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:30] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:30,444 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:30] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:30,476 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:30] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:30,508 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:30] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:30,553 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:30] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:30,555 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:30] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:30,743 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:30] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:30,760 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:30] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:30,790 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:30] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:30,822 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:30] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:30,869 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:30] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:30,873 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:30] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:31,059 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:31] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:31,066 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:31] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:31,107 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:31] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:31,136 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:31] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:31,181 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:31] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:31,184 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:31] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:31,370 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:31] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:31,375 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:31] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:31,428 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:31] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:31,448 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:31] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:31,491 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:31] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:31,506 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:31] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:31,679 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:31] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:31,693 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:31] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:31,737 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:31] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:31,768 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:31] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:31,802 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:31] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:31,818 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:31] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:32,005 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:32] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:32,011 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:32] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:32,049 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:32] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:32,082 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:32] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:32,114 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:32] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:32,143 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:32] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:32,316 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:32] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:32,324 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:32] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:32,363 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:32] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:32,393 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:32] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:32,423 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:32] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:32,457 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:32] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:32,626 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:32] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:32,643 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:32] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:32,671 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:32] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:32,705 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:32] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:32,736 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:32] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:32,765 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:32] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:32,938 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:32] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:32,959 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:32] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:32,989 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:32] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:33,019 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:33] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:33,046 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:33] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:33,080 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:33] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:33,249 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:33] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:33,282 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:33] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:33,296 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:33] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:33,329 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:33] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:33,359 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:33] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:33,393 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:33] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:33,566 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:33] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:33,594 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:33] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:33,608 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:33] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:33,643 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:33] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:33,670 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:33] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:33,700 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:33] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:33,876 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:33] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:33,906 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:33] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:33,920 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:33] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:33,953 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:33] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:33,984 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:33] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:34,015 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:34] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:34,185 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:34] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:34,234 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:34] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:34,237 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:34] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:34,263 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:34] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:34,294 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:34] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:34,325 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:34] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:34,498 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:34] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:34,544 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:34] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:34,549 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:34] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:34,574 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:34] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:34,606 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:34] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:34,636 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:34] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:34,809 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:34] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:34,858 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:34] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:34,861 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:34] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:34,888 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:34] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:34,920 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:34] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:34,949 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:34] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:35,120 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:35] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:35,183 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:35] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:35,187 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:35] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:35,194 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:35] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:35,229 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:35] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:35,260 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:35] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:35,431 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:35] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:35,496 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:35] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:35,498 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:35] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:35,503 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:35] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:35,540 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:35] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:35,571 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:35] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:35,746 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:35] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:35,810 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:35] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:35,818 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:35] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:35,824 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:35] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:35,856 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:35] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:35,886 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:35] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:36,052 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:36] "POST /api/game/action HTTP/1.1" 200 -
+2025-09-20 16:01:36,136 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 16:01:36] "OPTIONS /api/game/complete HTTP/1.1" 200 -
+2025-09-20 16:16:02,681 - __main__ - INFO - Checking if required files exist...
+2025-09-20 16:16:02,682 - __main__ - INFO - Found directory: utils/
+2025-09-20 16:16:02,682 - __main__ - INFO - Found directory: routes/
+2025-09-20 16:16:02,682 - __main__ - INFO - Found directory: services/
+2025-09-20 16:16:02,682 - __main__ - INFO - Found directory: models/
+2025-09-20 16:16:02,682 - __main__ - INFO - Found directory: questions/
+2025-09-20 16:16:02,682 - __main__ - INFO - Found: utils/db.py
+2025-09-20 16:16:02,682 - __main__ - INFO - Found: routes/personality_routes.py
+2025-09-20 16:16:02,683 - __main__ - INFO - Found: routes/game_routes.py
+2025-09-20 16:16:02,683 - __main__ - INFO - Found: routes/chat_routes.py
+2025-09-20 16:16:02,683 - __main__ - INFO - Found: routes/task_routes.py
+2025-09-20 16:16:02,683 - __main__ - INFO - Found: routes/community_routes.py
+2025-09-20 16:16:02,683 - __main__ - INFO - Found: routes/safety_routes.py
+2025-09-20 16:16:02,684 - __main__ - INFO - Found: services/personality_service.py
+2025-09-20 16:16:02,684 - __main__ - INFO - Found: services/game_service.py
+2025-09-20 16:16:02,684 - __main__ - INFO - Found: services/chat_service.py
+2025-09-20 16:16:02,684 - __main__ - INFO - Found: services/task_service.py
+2025-09-20 16:16:02,684 - __main__ - INFO - Found: services/community_service.py
+2025-09-20 16:16:02,684 - __main__ - INFO - Found: services/safety_service.py
+2025-09-20 16:16:02,684 - __main__ - INFO - Found: questions/personality_questions.json
+2025-09-20 16:16:02,684 - __main__ - INFO - Attempting to import utils.db...
+2025-09-20 16:16:02,969 - __main__ - INFO - MongoDB initialized successfully
+2025-09-20 16:16:02,972 - __main__ - INFO - personality_routes routes registered successfully
+2025-09-20 16:16:02,974 - __main__ - INFO - game_routes routes registered successfully
+2025-09-20 16:16:02,974 - __main__ - ERROR - Failed to import chat_routes: No module named 'backend'
+2025-09-20 16:16:02,975 - __main__ - ERROR - Blueprint task_bp not found in task_routes: module 'routes.task_routes' has no attribute 'task_bp'
+2025-09-20 16:16:02,975 - __main__ - ERROR - Blueprint community_bp not found in community_routes: module 'routes.community_routes' has no attribute 'community_bp'
+2025-09-20 16:16:02,976 - __main__ - ERROR - Blueprint safety_bp not found in safety_routes: module 'routes.safety_routes' has no attribute 'safety_bp'
+2025-09-20 16:16:02,978 - __main__ - INFO - === STARTING EUNOIA MENTAL WELLNESS BACKEND ===
+2025-09-20 16:16:02,978 - __main__ - INFO - Current working directory: C:\Users\palay\OneDrive\Documents\eunoia\backend
+2025-09-20 16:16:02,978 - __main__ - INFO - App directory: C:\Users\palay\OneDrive\Documents\eunoia\backend
+2025-09-20 16:16:02,978 - __main__ - INFO - utils/: ['auth.py', 'db.py', 'moderation.py', 'serializer.py', '__init__.py']
+2025-09-20 16:16:02,978 - __main__ - INFO - routes/: ['chat_routes.py', 'community_routes.py', 'game_routes.py', 'personality_routes.py', 'safety_routes.py', 'task_routes.py', '__init__.py']
+2025-09-20 16:16:02,979 - __main__ - INFO - services/: ['chat_service.py', 'community_service.py', 'game_service.py', 'personality_service.py', 'safety_service.py', 'task_service.py', '__init__.py']
+2025-09-20 16:16:02,979 - __main__ - INFO - models/: ['chat.py', 'game.py', 'personality.py', 'post.py', 'risk_event.py', 'task.py', 'user.py', '__init__.py']
+2025-09-20 16:16:02,979 - __main__ - INFO - 
+=== Registered Routes ===
+2025-09-20 16:16:02,979 - __main__ - INFO -   GET             /static/<path:filename>                  -> static
+2025-09-20 16:16:02,979 - __main__ - INFO -   GET             /api/personality/questions               -> personality.get_questions
+2025-09-20 16:16:02,980 - __main__ - INFO -   POST            /api/personality/submit                  -> personality.submit_personality
+2025-09-20 16:16:02,980 - __main__ - INFO -   POST            /api/game/start                          -> game.start_session
+2025-09-20 16:16:02,980 - __main__ - INFO -   POST            /api/game/action                         -> game.record_action
+2025-09-20 16:16:02,980 - __main__ - INFO -   POST            /api/game/check-placement                -> game.check_placement
+2025-09-20 16:16:02,980 - __main__ - INFO -   POST            /api/game/complete                       -> game.complete_level
+2025-09-20 16:16:02,980 - __main__ - INFO -   GET             /api/game/leaderboard                    -> game.get_leaderboard
+2025-09-20 16:16:02,980 - __main__ - INFO -   GET             /api/personality/questions               -> direct_questions
+2025-09-20 16:16:02,980 - __main__ - INFO -   POST            /api/personality/submit                  -> direct_submit
+2025-09-20 16:16:02,980 - __main__ - INFO -   POST            /api/game/start                          -> game_start
+2025-09-20 16:16:02,980 - __main__ - INFO -   POST            /api/game/action                         -> game_action
+2025-09-20 16:16:02,981 - __main__ - INFO -   POST            /api/game/check-placement                -> check_placement
+2025-09-20 16:16:02,981 - __main__ - INFO -   POST            /api/game/complete                       -> game_complete
+2025-09-20 16:16:02,981 - __main__ - INFO -   GET             /api/game/leaderboard                    -> game_leaderboard
+2025-09-20 16:16:02,981 - __main__ - INFO -   GET             /                                        -> home
+2025-09-20 16:16:02,981 - __main__ - INFO -   GET             /health                                  -> health_check
+2025-09-20 16:16:02,981 - __main__ - INFO -   GET             /api                                     -> api_info
+2025-09-20 16:16:02,981 - __main__ - INFO -   GET             /debug/routes                            -> debug_routes
+2025-09-20 16:16:02,981 - __main__ - INFO -   GET             /api/test                                -> test_route
+2025-09-20 16:16:02,981 - __main__ - INFO - Starting server on port 5000...
+2025-09-20 16:16:03,020 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.12.87.76:5000
+2025-09-20 16:16:03,020 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-09-20 16:16:03,022 - werkzeug - INFO -  * Restarting with stat
+2025-09-20 16:16:03,236 - __main__ - INFO - Checking if required files exist...
+2025-09-20 16:16:03,236 - __main__ - INFO - Found directory: utils/
+2025-09-20 16:16:03,236 - __main__ - INFO - Found directory: routes/
+2025-09-20 16:16:03,236 - __main__ - INFO - Found directory: services/
+2025-09-20 16:16:03,236 - __main__ - INFO - Found directory: models/
+2025-09-20 16:16:03,237 - __main__ - INFO - Found directory: questions/
+2025-09-20 16:16:03,237 - __main__ - INFO - Found: utils/db.py
+2025-09-20 16:16:03,237 - __main__ - INFO - Found: routes/personality_routes.py
+2025-09-20 16:16:03,237 - __main__ - INFO - Found: routes/game_routes.py
+2025-09-20 16:16:03,237 - __main__ - INFO - Found: routes/chat_routes.py
+2025-09-20 16:16:03,237 - __main__ - INFO - Found: routes/task_routes.py
+2025-09-20 16:16:03,237 - __main__ - INFO - Found: routes/community_routes.py
+2025-09-20 16:16:03,237 - __main__ - INFO - Found: routes/safety_routes.py
+2025-09-20 16:16:03,237 - __main__ - INFO - Found: services/personality_service.py
+2025-09-20 16:16:03,237 - __main__ - INFO - Found: services/game_service.py
+2025-09-20 16:16:03,237 - __main__ - INFO - Found: services/chat_service.py
+2025-09-20 16:16:03,237 - __main__ - INFO - Found: services/task_service.py
+2025-09-20 16:16:03,238 - __main__ - INFO - Found: services/community_service.py
+2025-09-20 16:16:03,238 - __main__ - INFO - Found: services/safety_service.py
+2025-09-20 16:16:03,238 - __main__ - INFO - Found: questions/personality_questions.json
+2025-09-20 16:16:03,238 - __main__ - INFO - Attempting to import utils.db...
+2025-09-20 16:16:03,387 - __main__ - INFO - MongoDB initialized successfully
+2025-09-20 16:16:03,390 - __main__ - INFO - personality_routes routes registered successfully
+2025-09-20 16:16:03,392 - __main__ - INFO - game_routes routes registered successfully
+2025-09-20 16:16:03,393 - __main__ - ERROR - Failed to import chat_routes: No module named 'backend'
+2025-09-20 16:16:03,393 - __main__ - ERROR - Blueprint task_bp not found in task_routes: module 'routes.task_routes' has no attribute 'task_bp'
+2025-09-20 16:16:03,394 - __main__ - ERROR - Blueprint community_bp not found in community_routes: module 'routes.community_routes' has no attribute 'community_bp'
+2025-09-20 16:16:03,394 - __main__ - ERROR - Blueprint safety_bp not found in safety_routes: module 'routes.safety_routes' has no attribute 'safety_bp'
+2025-09-20 16:16:03,396 - __main__ - INFO - === STARTING EUNOIA MENTAL WELLNESS BACKEND ===
+2025-09-20 16:16:03,396 - __main__ - INFO - Current working directory: C:\Users\palay\OneDrive\Documents\eunoia\backend
+2025-09-20 16:16:03,397 - __main__ - INFO - App directory: C:\Users\palay\OneDrive\Documents\eunoia\backend
+2025-09-20 16:16:03,397 - __main__ - INFO - utils/: ['auth.py', 'db.py', 'moderation.py', 'serializer.py', '__init__.py']
+2025-09-20 16:16:03,397 - __main__ - INFO - routes/: ['chat_routes.py', 'community_routes.py', 'game_routes.py', 'personality_routes.py', 'safety_routes.py', 'task_routes.py', '__init__.py']
+2025-09-20 16:16:03,397 - __main__ - INFO - services/: ['chat_service.py', 'community_service.py', 'game_service.py', 'personality_service.py', 'safety_service.py', 'task_service.py', '__init__.py']
+2025-09-20 16:16:03,397 - __main__ - INFO - models/: ['chat.py', 'game.py', 'personality.py', 'post.py', 'risk_event.py', 'task.py', 'user.py', '__init__.py']
+2025-09-20 16:16:03,397 - __main__ - INFO - 
+=== Registered Routes ===
+2025-09-20 16:16:03,397 - __main__ - INFO -   GET             /static/<path:filename>                  -> static
+2025-09-20 16:16:03,398 - __main__ - INFO -   GET             /api/personality/questions               -> personality.get_questions
+2025-09-20 16:16:03,398 - __main__ - INFO -   POST            /api/personality/submit                  -> personality.submit_personality
+2025-09-20 16:16:03,398 - __main__ - INFO -   POST            /api/game/start                          -> game.start_session
+2025-09-20 16:16:03,398 - __main__ - INFO -   POST            /api/game/action                         -> game.record_action
+2025-09-20 16:16:03,398 - __main__ - INFO -   POST            /api/game/check-placement                -> game.check_placement
+2025-09-20 16:16:03,398 - __main__ - INFO -   POST            /api/game/complete                       -> game.complete_level
+2025-09-20 16:16:03,398 - __main__ - INFO -   GET             /api/game/leaderboard                    -> game.get_leaderboard
+2025-09-20 16:16:03,398 - __main__ - INFO -   GET             /api/personality/questions               -> direct_questions
+2025-09-20 16:16:03,399 - __main__ - INFO -   POST            /api/personality/submit                  -> direct_submit
+2025-09-20 16:16:03,399 - __main__ - INFO -   POST            /api/game/start                          -> game_start
+2025-09-20 16:16:03,399 - __main__ - INFO -   POST            /api/game/action                         -> game_action
+2025-09-20 16:16:03,399 - __main__ - INFO -   POST            /api/game/check-placement                -> check_placement
+2025-09-20 16:16:03,399 - __main__ - INFO -   POST            /api/game/complete                       -> game_complete
+2025-09-20 16:16:03,399 - __main__ - INFO -   GET             /api/game/leaderboard                    -> game_leaderboard
+2025-09-20 16:16:03,399 - __main__ - INFO -   GET             /                                        -> home
+2025-09-20 16:16:03,399 - __main__ - INFO -   GET             /health                                  -> health_check
+2025-09-20 16:16:03,399 - __main__ - INFO -   GET             /api                                     -> api_info
+2025-09-20 16:16:03,399 - __main__ - INFO -   GET             /debug/routes                            -> debug_routes
+2025-09-20 16:16:03,399 - __main__ - INFO -   GET             /api/test                                -> test_route
+2025-09-20 16:16:03,399 - __main__ - INFO - Starting server on port 5000...
+2025-09-20 16:16:03,428 - werkzeug - WARNING -  * Debugger is active!
+2025-09-20 16:16:03,432 - werkzeug - INFO -  * Debugger PIN: 287-528-982
+2025-09-20 16:41:31,772 - __main__ - INFO - Checking if required files exist...
+2025-09-20 16:41:31,772 - __main__ - INFO - Found directory: utils/
+2025-09-20 16:41:31,772 - __main__ - INFO - Found directory: routes/
+2025-09-20 16:41:31,772 - __main__ - INFO - Found directory: services/
+2025-09-20 16:41:31,772 - __main__ - INFO - Found directory: models/
+2025-09-20 16:41:31,772 - __main__ - INFO - Found directory: questions/
+2025-09-20 16:41:31,772 - __main__ - INFO - Found: utils/db.py
+2025-09-20 16:41:31,772 - __main__ - INFO - Found: routes/personality_routes.py
+2025-09-20 16:41:31,773 - __main__ - INFO - Found: routes/game_routes.py
+2025-09-20 16:41:31,773 - __main__ - INFO - Found: routes/chat_routes.py
+2025-09-20 16:41:31,773 - __main__ - INFO - Found: routes/task_routes.py
+2025-09-20 16:41:31,773 - __main__ - INFO - Found: routes/community_routes.py
+2025-09-20 16:41:31,773 - __main__ - INFO - Found: routes/safety_routes.py
+2025-09-20 16:41:31,773 - __main__ - INFO - Found: services/personality_service.py
+2025-09-20 16:41:31,774 - __main__ - INFO - Found: services/game_service.py
+2025-09-20 16:41:31,774 - __main__ - INFO - Found: services/chat_service.py
+2025-09-20 16:41:31,774 - __main__ - INFO - Found: services/task_service.py
+2025-09-20 16:41:31,774 - __main__ - INFO - Found: services/community_service.py
+2025-09-20 16:41:31,774 - __main__ - INFO - Found: services/safety_service.py
+2025-09-20 16:41:31,774 - __main__ - INFO - Found: questions/personality_questions.json
+2025-09-20 16:41:31,774 - __main__ - INFO - Attempting to import utils.db...
+2025-09-20 16:41:32,146 - __main__ - INFO - MongoDB initialized successfully
+2025-09-20 16:41:32,149 - __main__ - INFO - personality_routes routes registered successfully
+2025-09-20 16:41:32,151 - __main__ - INFO - game_routes routes registered successfully
+2025-09-20 16:41:32,152 - __main__ - ERROR - Failed to import chat_routes: No module named 'backend'
+2025-09-20 16:41:32,153 - __main__ - ERROR - Blueprint task_bp not found in task_routes: module 'routes.task_routes' has no attribute 'task_bp'
+2025-09-20 16:41:32,154 - __main__ - ERROR - Blueprint community_bp not found in community_routes: module 'routes.community_routes' has no attribute 'community_bp'
+2025-09-20 16:41:32,154 - __main__ - ERROR - Blueprint safety_bp not found in safety_routes: module 'routes.safety_routes' has no attribute 'safety_bp'
+2025-09-20 16:41:32,156 - __main__ - INFO - === STARTING EUNOIA MENTAL WELLNESS BACKEND ===
+2025-09-20 16:41:32,156 - __main__ - INFO - Current working directory: C:\Users\palay\OneDrive\Documents\eunoia\backend
+2025-09-20 16:41:32,156 - __main__ - INFO - App directory: C:\Users\palay\OneDrive\Documents\eunoia\backend
+2025-09-20 16:41:32,156 - __main__ - INFO - utils/: ['auth.py', 'db.py', 'moderation.py', 'serializer.py', '__init__.py']
+2025-09-20 16:41:32,157 - __main__ - INFO - routes/: ['chat_routes.py', 'community_routes.py', 'game_routes.py', 'personality_routes.py', 'safety_routes.py', 'task_routes.py', '__init__.py']
+2025-09-20 16:41:32,157 - __main__ - INFO - services/: ['chat_service.py', 'community_service.py', 'game_service.py', 'personality_service.py', 'safety_service.py', 'task_service.py', '__init__.py']
+2025-09-20 16:41:32,157 - __main__ - INFO - models/: ['chat.py', 'game.py', 'personality.py', 'post.py', 'risk_event.py', 'task.py', 'user.py', '__init__.py']
+2025-09-20 16:41:32,157 - __main__ - INFO - 
+=== Registered Routes ===
+2025-09-20 16:41:32,157 - __main__ - INFO -   GET             /static/<path:filename>                  -> static
+2025-09-20 16:41:32,158 - __main__ - INFO -   GET             /api/personality/questions               -> personality.get_questions
+2025-09-20 16:41:32,158 - __main__ - INFO -   POST            /api/personality/submit                  -> personality.submit_personality
+2025-09-20 16:41:32,158 - __main__ - INFO -   POST            /api/game/start                          -> game.start_session
+2025-09-20 16:41:32,158 - __main__ - INFO -   POST            /api/game/action                         -> game.record_action
+2025-09-20 16:41:32,158 - __main__ - INFO -   POST            /api/game/check-placement                -> game.check_placement
+2025-09-20 16:41:32,158 - __main__ - INFO -   POST            /api/game/complete                       -> game.complete_level
+2025-09-20 16:41:32,158 - __main__ - INFO -   GET             /api/game/leaderboard                    -> game.get_leaderboard
+2025-09-20 16:41:32,158 - __main__ - INFO -   GET             /api/personality/questions               -> direct_questions
+2025-09-20 16:41:32,158 - __main__ - INFO -   POST            /api/personality/submit                  -> direct_submit
+2025-09-20 16:41:32,158 - __main__ - INFO -   POST            /api/game/start                          -> game_start
+2025-09-20 16:41:32,159 - __main__ - INFO -   POST            /api/game/action                         -> game_action
+2025-09-20 16:41:32,159 - __main__ - INFO -   POST            /api/game/check-placement                -> check_placement
+2025-09-20 16:41:32,159 - __main__ - INFO -   POST            /api/game/complete                       -> game_complete
+2025-09-20 16:41:32,159 - __main__ - INFO -   GET             /api/game/leaderboard                    -> game_leaderboard
+2025-09-20 16:41:32,159 - __main__ - INFO -   GET             /                                        -> home
+2025-09-20 16:41:32,159 - __main__ - INFO -   GET             /health                                  -> health_check
+2025-09-20 16:41:32,159 - __main__ - INFO -   GET             /api                                     -> api_info
+2025-09-20 16:41:32,159 - __main__ - INFO -   GET             /debug/routes                            -> debug_routes
+2025-09-20 16:41:32,159 - __main__ - INFO -   GET             /api/test                                -> test_route
+2025-09-20 16:41:32,159 - __main__ - INFO - Starting server on port 5000...
+2025-09-20 16:41:32,200 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.12.87.76:5000
+2025-09-20 16:41:32,201 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-09-20 16:41:32,203 - werkzeug - INFO -  * Restarting with stat
+2025-09-20 16:41:32,419 - __main__ - INFO - Checking if required files exist...
+2025-09-20 16:41:32,419 - __main__ - INFO - Found directory: utils/
+2025-09-20 16:41:32,420 - __main__ - INFO - Found directory: routes/
+2025-09-20 16:41:32,420 - __main__ - INFO - Found directory: services/
+2025-09-20 16:41:32,420 - __main__ - INFO - Found directory: models/
+2025-09-20 16:41:32,420 - __main__ - INFO - Found directory: questions/
+2025-09-20 16:41:32,420 - __main__ - INFO - Found: utils/db.py
+2025-09-20 16:41:32,420 - __main__ - INFO - Found: routes/personality_routes.py
+2025-09-20 16:41:32,420 - __main__ - INFO - Found: routes/game_routes.py
+2025-09-20 16:41:32,421 - __main__ - INFO - Found: routes/chat_routes.py
+2025-09-20 16:41:32,421 - __main__ - INFO - Found: routes/task_routes.py
+2025-09-20 16:41:32,421 - __main__ - INFO - Found: routes/community_routes.py
+2025-09-20 16:41:32,421 - __main__ - INFO - Found: routes/safety_routes.py
+2025-09-20 16:41:32,421 - __main__ - INFO - Found: services/personality_service.py
+2025-09-20 16:41:32,421 - __main__ - INFO - Found: services/game_service.py
+2025-09-20 16:41:32,421 - __main__ - INFO - Found: services/chat_service.py
+2025-09-20 16:41:32,421 - __main__ - INFO - Found: services/task_service.py
+2025-09-20 16:41:32,421 - __main__ - INFO - Found: services/community_service.py
+2025-09-20 16:41:32,421 - __main__ - INFO - Found: services/safety_service.py
+2025-09-20 16:41:32,422 - __main__ - INFO - Found: questions/personality_questions.json
+2025-09-20 16:41:32,422 - __main__ - INFO - Attempting to import utils.db...
+2025-09-20 16:41:32,586 - __main__ - INFO - MongoDB initialized successfully
+2025-09-20 16:41:32,590 - __main__ - INFO - personality_routes routes registered successfully
+2025-09-20 16:41:32,591 - __main__ - INFO - game_routes routes registered successfully
+2025-09-20 16:41:32,592 - __main__ - ERROR - Failed to import chat_routes: No module named 'backend'
+2025-09-20 16:41:32,593 - __main__ - ERROR - Blueprint task_bp not found in task_routes: module 'routes.task_routes' has no attribute 'task_bp'
+2025-09-20 16:41:32,593 - __main__ - ERROR - Blueprint community_bp not found in community_routes: module 'routes.community_routes' has no attribute 'community_bp'
+2025-09-20 16:41:32,594 - __main__ - ERROR - Blueprint safety_bp not found in safety_routes: module 'routes.safety_routes' has no attribute 'safety_bp'
+2025-09-20 16:41:32,596 - __main__ - INFO - === STARTING EUNOIA MENTAL WELLNESS BACKEND ===
+2025-09-20 16:41:32,596 - __main__ - INFO - Current working directory: C:\Users\palay\OneDrive\Documents\eunoia\backend
+2025-09-20 16:41:32,596 - __main__ - INFO - App directory: C:\Users\palay\OneDrive\Documents\eunoia\backend
+2025-09-20 16:41:32,596 - __main__ - INFO - utils/: ['auth.py', 'db.py', 'moderation.py', 'serializer.py', '__init__.py']
+2025-09-20 16:41:32,596 - __main__ - INFO - routes/: ['chat_routes.py', 'community_routes.py', 'game_routes.py', 'personality_routes.py', 'safety_routes.py', 'task_routes.py', '__init__.py']
+2025-09-20 16:41:32,597 - __main__ - INFO - services/: ['chat_service.py', 'community_service.py', 'game_service.py', 'personality_service.py', 'safety_service.py', 'task_service.py', '__init__.py']
+2025-09-20 16:41:32,597 - __main__ - INFO - models/: ['chat.py', 'game.py', 'personality.py', 'post.py', 'risk_event.py', 'task.py', 'user.py', '__init__.py']
+2025-09-20 16:41:32,597 - __main__ - INFO - 
+=== Registered Routes ===
+2025-09-20 16:41:32,597 - __main__ - INFO -   GET             /static/<path:filename>                  -> static
+2025-09-20 16:41:32,597 - __main__ - INFO -   GET             /api/personality/questions               -> personality.get_questions
+2025-09-20 16:41:32,598 - __main__ - INFO -   POST            /api/personality/submit                  -> personality.submit_personality
+2025-09-20 16:41:32,598 - __main__ - INFO -   POST            /api/game/start                          -> game.start_session
+2025-09-20 16:41:32,598 - __main__ - INFO -   POST            /api/game/action                         -> game.record_action
+2025-09-20 16:41:32,598 - __main__ - INFO -   POST            /api/game/check-placement                -> game.check_placement
+2025-09-20 16:41:32,598 - __main__ - INFO -   POST            /api/game/complete                       -> game.complete_level
+2025-09-20 16:41:32,598 - __main__ - INFO -   GET             /api/game/leaderboard                    -> game.get_leaderboard
+2025-09-20 16:41:32,598 - __main__ - INFO -   GET             /api/personality/questions               -> direct_questions
+2025-09-20 16:41:32,598 - __main__ - INFO -   POST            /api/personality/submit                  -> direct_submit
+2025-09-20 16:41:32,598 - __main__ - INFO -   POST            /api/game/start                          -> game_start
+2025-09-20 16:41:32,598 - __main__ - INFO -   POST            /api/game/action                         -> game_action
+2025-09-20 16:41:32,598 - __main__ - INFO -   POST            /api/game/check-placement                -> check_placement
+2025-09-20 16:41:32,598 - __main__ - INFO -   POST            /api/game/complete                       -> game_complete
+2025-09-20 16:41:32,598 - __main__ - INFO -   GET             /api/game/leaderboard                    -> game_leaderboard
+2025-09-20 16:41:32,598 - __main__ - INFO -   GET             /                                        -> home
+2025-09-20 16:41:32,599 - __main__ - INFO -   GET             /health                                  -> health_check
+2025-09-20 16:41:32,599 - __main__ - INFO -   GET             /api                                     -> api_info
+2025-09-20 16:41:32,599 - __main__ - INFO -   GET             /debug/routes                            -> debug_routes
+2025-09-20 16:41:32,599 - __main__ - INFO -   GET             /api/test                                -> test_route
+2025-09-20 16:41:32,599 - __main__ - INFO - Starting server on port 5000...
+2025-09-20 16:41:32,628 - werkzeug - WARNING -  * Debugger is active!
+2025-09-20 16:41:32,630 - werkzeug - INFO -  * Debugger PIN: 287-528-982
+2025-09-20 16:58:40,213 - __main__ - INFO - Checking if required files exist...
+2025-09-20 16:58:40,214 - __main__ - INFO - Found directory: utils/
+2025-09-20 16:58:40,214 - __main__ - INFO - Found directory: routes/
+2025-09-20 16:58:40,215 - __main__ - INFO - Found directory: services/
+2025-09-20 16:58:40,215 - __main__ - INFO - Found directory: models/
+2025-09-20 16:58:40,215 - __main__ - INFO - Found directory: questions/
+2025-09-20 16:58:40,215 - __main__ - INFO - Found: utils/db.py
+2025-09-20 16:58:40,216 - __main__ - INFO - Found: routes/personality_routes.py
+2025-09-20 16:58:40,216 - __main__ - INFO - Found: routes/game_routes.py
+2025-09-20 16:58:40,216 - __main__ - INFO - Found: routes/chat_routes.py
+2025-09-20 16:58:40,217 - __main__ - INFO - Found: routes/task_routes.py
+2025-09-20 16:58:40,217 - __main__ - INFO - Found: routes/community_routes.py
+2025-09-20 16:58:40,217 - __main__ - INFO - Found: routes/safety_routes.py
+2025-09-20 16:58:40,217 - __main__ - INFO - Found: services/personality_service.py
+2025-09-20 16:58:40,218 - __main__ - INFO - Found: services/game_service.py
+2025-09-20 16:58:40,218 - __main__ - INFO - Found: services/chat_service.py
+2025-09-20 16:58:40,218 - __main__ - INFO - Found: services/task_service.py
+2025-09-20 16:58:40,218 - __main__ - INFO - Found: services/community_service.py
+2025-09-20 16:58:40,218 - __main__ - INFO - Found: services/safety_service.py
+2025-09-20 16:58:40,219 - __main__ - INFO - Found: questions/personality_questions.json
+2025-09-20 16:58:40,219 - __main__ - INFO - Attempting to import utils.db...
+2025-09-20 16:58:40,589 - __main__ - INFO - MongoDB initialized successfully
+2025-09-20 16:58:40,595 - __main__ - INFO - personality_routes routes registered successfully
+2025-09-20 16:58:40,598 - __main__ - INFO - game_routes routes registered successfully
+2025-09-20 16:58:40,600 - __main__ - ERROR - Failed to import chat_routes: No module named 'backend'
+2025-09-20 16:58:40,600 - __main__ - ERROR - Blueprint task_bp not found in task_routes: module 'routes.task_routes' has no attribute 'task_bp'
+2025-09-20 16:58:40,601 - __main__ - ERROR - Blueprint community_bp not found in community_routes: module 'routes.community_routes' has no attribute 'community_bp'
+2025-09-20 16:58:40,602 - __main__ - ERROR - Blueprint safety_bp not found in safety_routes: module 'routes.safety_routes' has no attribute 'safety_bp'
+2025-09-20 16:58:40,605 - __main__ - INFO - === STARTING EUNOIA MENTAL WELLNESS BACKEND ===
+2025-09-20 16:58:40,605 - __main__ - INFO - Current working directory: C:\Users\palay\OneDrive\Documents\eunoia\backend
+2025-09-20 16:58:40,605 - __main__ - INFO - App directory: C:\Users\palay\OneDrive\Documents\eunoia\backend
+2025-09-20 16:58:40,606 - __main__ - INFO - utils/: ['auth.py', 'db.py', 'moderation.py', 'serializer.py', '__init__.py']
+2025-09-20 16:58:40,606 - __main__ - INFO - routes/: ['chat_routes.py', 'community_routes.py', 'game_routes.py', 'personality_routes.py', 'safety_routes.py', 'task_routes.py', '__init__.py']
+2025-09-20 16:58:40,606 - __main__ - INFO - services/: ['chat_service.py', 'community_service.py', 'game_service.py', 'personality_service.py', 'safety_service.py', 'task_service.py', '__init__.py']
+2025-09-20 16:58:40,607 - __main__ - INFO - models/: ['chat.py', 'game.py', 'personality.py', 'post.py', 'risk_event.py', 'task.py', 'user.py', '__init__.py']
+2025-09-20 16:58:40,607 - __main__ - INFO - 
+=== Registered Routes ===
+2025-09-20 16:58:40,607 - __main__ - INFO -   GET             /static/<path:filename>                  -> static
+2025-09-20 16:58:40,607 - __main__ - INFO -   GET             /api/personality/questions               -> personality.get_questions
+2025-09-20 16:58:40,607 - __main__ - INFO -   POST            /api/personality/submit                  -> personality.submit_personality
+2025-09-20 16:58:40,607 - __main__ - INFO -   POST            /api/game/start                          -> game.start_session
+2025-09-20 16:58:40,607 - __main__ - INFO -   POST            /api/game/action                         -> game.record_action
+2025-09-20 16:58:40,608 - __main__ - INFO -   POST            /api/game/check-placement                -> game.check_placement
+2025-09-20 16:58:40,608 - __main__ - INFO -   POST            /api/game/complete                       -> game.complete_level
+2025-09-20 16:58:40,608 - __main__ - INFO -   GET             /api/game/leaderboard                    -> game.get_leaderboard
+2025-09-20 16:58:40,608 - __main__ - INFO -   GET             /api/personality/questions               -> direct_questions
+2025-09-20 16:58:40,608 - __main__ - INFO -   POST            /api/personality/submit                  -> direct_submit
+2025-09-20 16:58:40,608 - __main__ - INFO -   POST            /api/game/start                          -> game_start
+2025-09-20 16:58:40,608 - __main__ - INFO -   POST            /api/game/action                         -> game_action
+2025-09-20 16:58:40,609 - __main__ - INFO -   POST            /api/game/check-placement                -> check_placement
+2025-09-20 16:58:40,609 - __main__ - INFO -   POST            /api/game/complete                       -> game_complete
+2025-09-20 16:58:40,609 - __main__ - INFO -   GET             /api/game/leaderboard                    -> game_leaderboard
+2025-09-20 16:58:40,610 - __main__ - INFO -   GET             /                                        -> home
+2025-09-20 16:58:40,610 - __main__ - INFO -   GET             /health                                  -> health_check
+2025-09-20 16:58:40,611 - __main__ - INFO -   GET             /api                                     -> api_info
+2025-09-20 16:58:40,612 - __main__ - INFO -   GET             /debug/routes                            -> debug_routes
+2025-09-20 16:58:40,612 - __main__ - INFO -   GET             /api/test                                -> test_route
+2025-09-20 16:58:40,612 - __main__ - INFO - Starting server on port 5000...
+2025-09-20 16:58:40,657 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.12.87.76:5000
+2025-09-20 16:58:40,657 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-09-20 16:58:40,659 - werkzeug - INFO -  * Restarting with stat
+2025-09-20 16:58:40,947 - __main__ - INFO - Checking if required files exist...
+2025-09-20 16:58:40,947 - __main__ - INFO - Found directory: utils/
+2025-09-20 16:58:40,947 - __main__ - INFO - Found directory: routes/
+2025-09-20 16:58:40,947 - __main__ - INFO - Found directory: services/
+2025-09-20 16:58:40,948 - __main__ - INFO - Found directory: models/
+2025-09-20 16:58:40,948 - __main__ - INFO - Found directory: questions/
+2025-09-20 16:58:40,948 - __main__ - INFO - Found: utils/db.py
+2025-09-20 16:58:40,949 - __main__ - INFO - Found: routes/personality_routes.py
+2025-09-20 16:58:40,950 - __main__ - INFO - Found: routes/game_routes.py
+2025-09-20 16:58:40,950 - __main__ - INFO - Found: routes/chat_routes.py
+2025-09-20 16:58:40,950 - __main__ - INFO - Found: routes/task_routes.py
+2025-09-20 16:58:40,950 - __main__ - INFO - Found: routes/community_routes.py
+2025-09-20 16:58:40,951 - __main__ - INFO - Found: routes/safety_routes.py
+2025-09-20 16:58:40,951 - __main__ - INFO - Found: services/personality_service.py
+2025-09-20 16:58:40,951 - __main__ - INFO - Found: services/game_service.py
+2025-09-20 16:58:40,951 - __main__ - INFO - Found: services/chat_service.py
+2025-09-20 16:58:40,952 - __main__ - INFO - Found: services/task_service.py
+2025-09-20 16:58:40,952 - __main__ - INFO - Found: services/community_service.py
+2025-09-20 16:58:40,952 - __main__ - INFO - Found: services/safety_service.py
+2025-09-20 16:58:40,952 - __main__ - INFO - Found: questions/personality_questions.json
+2025-09-20 16:58:40,952 - __main__ - INFO - Attempting to import utils.db...
+2025-09-20 16:58:41,181 - __main__ - INFO - MongoDB initialized successfully
+2025-09-20 16:58:41,184 - __main__ - INFO - personality_routes routes registered successfully
+2025-09-20 16:58:41,187 - __main__ - INFO - game_routes routes registered successfully
+2025-09-20 16:58:41,188 - __main__ - ERROR - Failed to import chat_routes: No module named 'backend'
+2025-09-20 16:58:41,189 - __main__ - ERROR - Blueprint task_bp not found in task_routes: module 'routes.task_routes' has no attribute 'task_bp'
+2025-09-20 16:58:41,190 - __main__ - ERROR - Blueprint community_bp not found in community_routes: module 'routes.community_routes' has no attribute 'community_bp'
+2025-09-20 16:58:41,190 - __main__ - ERROR - Blueprint safety_bp not found in safety_routes: module 'routes.safety_routes' has no attribute 'safety_bp'
+2025-09-20 16:58:41,193 - __main__ - INFO - === STARTING EUNOIA MENTAL WELLNESS BACKEND ===
+2025-09-20 16:58:41,194 - __main__ - INFO - Current working directory: C:\Users\palay\OneDrive\Documents\eunoia\backend
+2025-09-20 16:58:41,194 - __main__ - INFO - App directory: C:\Users\palay\OneDrive\Documents\eunoia\backend
+2025-09-20 16:58:41,195 - __main__ - INFO - utils/: ['auth.py', 'db.py', 'moderation.py', 'serializer.py', '__init__.py']
+2025-09-20 16:58:41,195 - __main__ - INFO - routes/: ['chat_routes.py', 'community_routes.py', 'game_routes.py', 'personality_routes.py', 'safety_routes.py', 'task_routes.py', '__init__.py']
+2025-09-20 16:58:41,195 - __main__ - INFO - services/: ['chat_service.py', 'community_service.py', 'game_service.py', 'personality_service.py', 'safety_service.py', 'task_service.py', '__init__.py']
+2025-09-20 16:58:41,195 - __main__ - INFO - models/: ['chat.py', 'game.py', 'personality.py', 'post.py', 'risk_event.py', 'task.py', 'user.py', '__init__.py']
+2025-09-20 16:58:41,195 - __main__ - INFO - 
+=== Registered Routes ===
+2025-09-20 16:58:41,195 - __main__ - INFO -   GET             /static/<path:filename>                  -> static
+2025-09-20 16:58:41,196 - __main__ - INFO -   GET             /api/personality/questions               -> personality.get_questions
+2025-09-20 16:58:41,196 - __main__ - INFO -   POST            /api/personality/submit                  -> personality.submit_personality
+2025-09-20 16:58:41,196 - __main__ - INFO -   POST            /api/game/start                          -> game.start_session
+2025-09-20 16:58:41,196 - __main__ - INFO -   POST            /api/game/action                         -> game.record_action
+2025-09-20 16:58:41,196 - __main__ - INFO -   POST            /api/game/check-placement                -> game.check_placement
+2025-09-20 16:58:41,196 - __main__ - INFO -   POST            /api/game/complete                       -> game.complete_level
+2025-09-20 16:58:41,197 - __main__ - INFO -   GET             /api/game/leaderboard                    -> game.get_leaderboard
+2025-09-20 16:58:41,197 - __main__ - INFO -   GET             /api/personality/questions               -> direct_questions
+2025-09-20 16:58:41,197 - __main__ - INFO -   POST            /api/personality/submit                  -> direct_submit
+2025-09-20 16:58:41,197 - __main__ - INFO -   POST            /api/game/start                          -> game_start
+2025-09-20 16:58:41,197 - __main__ - INFO -   POST            /api/game/action                         -> game_action
+2025-09-20 16:58:41,197 - __main__ - INFO -   POST            /api/game/check-placement                -> check_placement
+2025-09-20 16:58:41,197 - __main__ - INFO -   POST            /api/game/complete                       -> game_complete
+2025-09-20 16:58:41,197 - __main__ - INFO -   GET             /api/game/leaderboard                    -> game_leaderboard
+2025-09-20 16:58:41,197 - __main__ - INFO -   GET             /                                        -> home
+2025-09-20 16:58:41,197 - __main__ - INFO -   GET             /health                                  -> health_check
+2025-09-20 16:58:41,198 - __main__ - INFO -   GET             /api                                     -> api_info
+2025-09-20 16:58:41,198 - __main__ - INFO -   GET             /debug/routes                            -> debug_routes
+2025-09-20 16:58:41,198 - __main__ - INFO -   GET             /api/test                                -> test_route
+2025-09-20 16:58:41,198 - __main__ - INFO - Starting server on port 5000...
+2025-09-20 16:58:41,296 - werkzeug - WARNING -  * Debugger is active!
+2025-09-20 16:58:41,300 - werkzeug - INFO -  * Debugger PIN: 287-528-982
+2025-09-20 17:13:35,595 - __main__ - INFO - Checking if required files exist...
+2025-09-20 17:13:35,596 - __main__ - INFO - Found directory: utils/
+2025-09-20 17:13:35,596 - __main__ - INFO - Found directory: routes/
+2025-09-20 17:13:35,596 - __main__ - INFO - Found directory: services/
+2025-09-20 17:13:35,596 - __main__ - INFO - Found directory: models/
+2025-09-20 17:13:35,596 - __main__ - INFO - Found directory: questions/
+2025-09-20 17:13:35,596 - __main__ - INFO - Found: utils/db.py
+2025-09-20 17:13:35,596 - __main__ - INFO - Found: routes/personality_routes.py
+2025-09-20 17:13:35,597 - __main__ - INFO - Found: routes/game_routes.py
+2025-09-20 17:13:35,597 - __main__ - INFO - Found: routes/chat_routes.py
+2025-09-20 17:13:35,597 - __main__ - INFO - Found: routes/task_routes.py
+2025-09-20 17:13:35,597 - __main__ - INFO - Found: routes/community_routes.py
+2025-09-20 17:13:35,597 - __main__ - INFO - Found: routes/safety_routes.py
+2025-09-20 17:13:35,598 - __main__ - INFO - Found: services/personality_service.py
+2025-09-20 17:13:35,598 - __main__ - INFO - Found: services/game_service.py
+2025-09-20 17:13:35,598 - __main__ - INFO - Found: services/chat_service.py
+2025-09-20 17:13:35,598 - __main__ - INFO - Found: services/task_service.py
+2025-09-20 17:13:35,599 - __main__ - INFO - Found: services/community_service.py
+2025-09-20 17:13:35,599 - __main__ - INFO - Found: services/safety_service.py
+2025-09-20 17:13:35,599 - __main__ - INFO - Found: questions/personality_questions.json
+2025-09-20 17:13:35,599 - __main__ - INFO - Attempting to import utils.db...
+2025-09-20 17:13:35,996 - __main__ - INFO - MongoDB initialized successfully
+2025-09-20 17:13:36,000 - __main__ - INFO - personality_routes routes registered successfully
+2025-09-20 17:13:36,003 - __main__ - INFO - game_routes routes registered successfully
+2025-09-20 17:13:36,006 - __main__ - ERROR - Failed to import chat_routes: No module named 'backend'
+2025-09-20 17:13:36,007 - __main__ - ERROR - Blueprint task_bp not found in task_routes: module 'routes.task_routes' has no attribute 'task_bp'
+2025-09-20 17:13:36,008 - __main__ - ERROR - Blueprint community_bp not found in community_routes: module 'routes.community_routes' has no attribute 'community_bp'
+2025-09-20 17:13:36,010 - __main__ - ERROR - Blueprint safety_bp not found in safety_routes: module 'routes.safety_routes' has no attribute 'safety_bp'
+2025-09-20 17:13:36,013 - __main__ - INFO - === STARTING EUNOIA MENTAL WELLNESS BACKEND ===
+2025-09-20 17:13:36,014 - __main__ - INFO - Current working directory: C:\Users\palay\OneDrive\Documents\eunoia\backend
+2025-09-20 17:13:36,014 - __main__ - INFO - App directory: C:\Users\palay\OneDrive\Documents\eunoia\backend
+2025-09-20 17:13:36,015 - __main__ - INFO - utils/: ['auth.py', 'db.py', 'moderation.py', 'serializer.py', '__init__.py']
+2025-09-20 17:13:36,015 - __main__ - INFO - routes/: ['chat_routes.py', 'community_routes.py', 'game_routes.py', 'personality_routes.py', 'safety_routes.py', 'task_routes.py', '__init__.py']
+2025-09-20 17:13:36,016 - __main__ - INFO - services/: ['chat_service.py', 'community_service.py', 'game_service.py', 'personality_service.py', 'safety_service.py', 'task_service.py', '__init__.py']
+2025-09-20 17:13:36,016 - __main__ - INFO - models/: ['chat.py', 'game.py', 'personality.py', 'post.py', 'risk_event.py', 'task.py', 'user.py', '__init__.py']
+2025-09-20 17:13:36,016 - __main__ - INFO - 
+=== Registered Routes ===
+2025-09-20 17:13:36,016 - __main__ - INFO -   GET             /static/<path:filename>                  -> static
+2025-09-20 17:13:36,017 - __main__ - INFO -   GET             /api/personality/questions               -> personality.get_questions
+2025-09-20 17:13:36,017 - __main__ - INFO -   POST            /api/personality/submit                  -> personality.submit_personality
+2025-09-20 17:13:36,017 - __main__ - INFO -   POST            /api/game/start                          -> game.start_session
+2025-09-20 17:13:36,017 - __main__ - INFO -   POST            /api/game/action                         -> game.record_action
+2025-09-20 17:13:36,017 - __main__ - INFO -   POST            /api/game/check-placement                -> game.check_placement
+2025-09-20 17:13:36,017 - __main__ - INFO -   POST            /api/game/complete                       -> game.complete_level
+2025-09-20 17:13:36,017 - __main__ - INFO -   GET             /api/game/leaderboard                    -> game.get_leaderboard
+2025-09-20 17:13:36,018 - __main__ - INFO -   GET             /api/personality/questions               -> direct_questions
+2025-09-20 17:13:36,018 - __main__ - INFO -   POST            /api/personality/submit                  -> direct_submit
+2025-09-20 17:13:36,018 - __main__ - INFO -   POST            /api/game/start                          -> game_start
+2025-09-20 17:13:36,018 - __main__ - INFO -   POST            /api/game/action                         -> game_action
+2025-09-20 17:13:36,018 - __main__ - INFO -   POST            /api/game/check-placement                -> check_placement
+2025-09-20 17:13:36,019 - __main__ - INFO -   POST            /api/game/complete                       -> game_complete
+2025-09-20 17:13:36,019 - __main__ - INFO -   GET             /api/game/leaderboard                    -> game_leaderboard
+2025-09-20 17:13:36,019 - __main__ - INFO -   GET             /                                        -> home
+2025-09-20 17:13:36,019 - __main__ - INFO -   GET             /health                                  -> health_check
+2025-09-20 17:13:36,019 - __main__ - INFO -   GET             /api                                     -> api_info
+2025-09-20 17:13:36,020 - __main__ - INFO -   GET             /debug/routes                            -> debug_routes
+2025-09-20 17:13:36,020 - __main__ - INFO -   GET             /api/test                                -> test_route
+2025-09-20 17:13:36,020 - __main__ - INFO - Starting server on port 5000...
+2025-09-20 17:13:36,066 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.12.87.76:5000
+2025-09-20 17:13:36,066 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-09-20 17:13:36,067 - werkzeug - INFO -  * Restarting with stat
+2025-09-20 17:13:36,353 - __main__ - INFO - Checking if required files exist...
+2025-09-20 17:13:36,353 - __main__ - INFO - Found directory: utils/
+2025-09-20 17:13:36,353 - __main__ - INFO - Found directory: routes/
+2025-09-20 17:13:36,353 - __main__ - INFO - Found directory: services/
+2025-09-20 17:13:36,354 - __main__ - INFO - Found directory: models/
+2025-09-20 17:13:36,354 - __main__ - INFO - Found directory: questions/
+2025-09-20 17:13:36,354 - __main__ - INFO - Found: utils/db.py
+2025-09-20 17:13:36,354 - __main__ - INFO - Found: routes/personality_routes.py
+2025-09-20 17:13:36,355 - __main__ - INFO - Found: routes/game_routes.py
+2025-09-20 17:13:36,355 - __main__ - INFO - Found: routes/chat_routes.py
+2025-09-20 17:13:36,355 - __main__ - INFO - Found: routes/task_routes.py
+2025-09-20 17:13:36,356 - __main__ - INFO - Found: routes/community_routes.py
+2025-09-20 17:13:36,356 - __main__ - INFO - Found: routes/safety_routes.py
+2025-09-20 17:13:36,356 - __main__ - INFO - Found: services/personality_service.py
+2025-09-20 17:13:36,356 - __main__ - INFO - Found: services/game_service.py
+2025-09-20 17:13:36,356 - __main__ - INFO - Found: services/chat_service.py
+2025-09-20 17:13:36,356 - __main__ - INFO - Found: services/task_service.py
+2025-09-20 17:13:36,357 - __main__ - INFO - Found: services/community_service.py
+2025-09-20 17:13:36,357 - __main__ - INFO - Found: services/safety_service.py
+2025-09-20 17:13:36,357 - __main__ - INFO - Found: questions/personality_questions.json
+2025-09-20 17:13:36,357 - __main__ - INFO - Attempting to import utils.db...
+2025-09-20 17:13:36,546 - __main__ - INFO - MongoDB initialized successfully
+2025-09-20 17:13:36,550 - __main__ - INFO - personality_routes routes registered successfully
+2025-09-20 17:13:36,552 - __main__ - INFO - game_routes routes registered successfully
+2025-09-20 17:13:36,553 - __main__ - ERROR - Failed to import chat_routes: No module named 'backend'
+2025-09-20 17:13:36,554 - __main__ - ERROR - Blueprint task_bp not found in task_routes: module 'routes.task_routes' has no attribute 'task_bp'
+2025-09-20 17:13:36,554 - __main__ - ERROR - Blueprint community_bp not found in community_routes: module 'routes.community_routes' has no attribute 'community_bp'
+2025-09-20 17:13:36,555 - __main__ - ERROR - Blueprint safety_bp not found in safety_routes: module 'routes.safety_routes' has no attribute 'safety_bp'
+2025-09-20 17:13:36,558 - __main__ - INFO - === STARTING EUNOIA MENTAL WELLNESS BACKEND ===
+2025-09-20 17:13:36,558 - __main__ - INFO - Current working directory: C:\Users\palay\OneDrive\Documents\eunoia\backend
+2025-09-20 17:13:36,558 - __main__ - INFO - App directory: C:\Users\palay\OneDrive\Documents\eunoia\backend
+2025-09-20 17:13:36,559 - __main__ - INFO - utils/: ['auth.py', 'db.py', 'moderation.py', 'serializer.py', '__init__.py']
+2025-09-20 17:13:36,559 - __main__ - INFO - routes/: ['chat_routes.py', 'community_routes.py', 'game_routes.py', 'personality_routes.py', 'safety_routes.py', 'task_routes.py', '__init__.py']
+2025-09-20 17:13:36,559 - __main__ - INFO - services/: ['chat_service.py', 'community_service.py', 'game_service.py', 'personality_service.py', 'safety_service.py', 'task_service.py', '__init__.py']
+2025-09-20 17:13:36,559 - __main__ - INFO - models/: ['chat.py', 'game.py', 'personality.py', 'post.py', 'risk_event.py', 'task.py', 'user.py', '__init__.py']
+2025-09-20 17:13:36,560 - __main__ - INFO - 
+=== Registered Routes ===
+2025-09-20 17:13:36,560 - __main__ - INFO -   GET             /static/<path:filename>                  -> static
+2025-09-20 17:13:36,560 - __main__ - INFO -   GET             /api/personality/questions               -> personality.get_questions
+2025-09-20 17:13:36,560 - __main__ - INFO -   POST            /api/personality/submit                  -> personality.submit_personality
+2025-09-20 17:13:36,560 - __main__ - INFO -   POST            /api/game/start                          -> game.start_session
+2025-09-20 17:13:36,560 - __main__ - INFO -   POST            /api/game/action                         -> game.record_action
+2025-09-20 17:13:36,560 - __main__ - INFO -   POST            /api/game/check-placement                -> game.check_placement
+2025-09-20 17:13:36,560 - __main__ - INFO -   POST            /api/game/complete                       -> game.complete_level
+2025-09-20 17:13:36,560 - __main__ - INFO -   GET             /api/game/leaderboard                    -> game.get_leaderboard
+2025-09-20 17:13:36,561 - __main__ - INFO -   GET             /api/personality/questions               -> direct_questions
+2025-09-20 17:13:36,561 - __main__ - INFO -   POST            /api/personality/submit                  -> direct_submit
+2025-09-20 17:13:36,561 - __main__ - INFO -   POST            /api/game/start                          -> game_start
+2025-09-20 17:13:36,561 - __main__ - INFO -   POST            /api/game/action                         -> game_action
+2025-09-20 17:13:36,561 - __main__ - INFO -   POST            /api/game/check-placement                -> check_placement
+2025-09-20 17:13:36,561 - __main__ - INFO -   POST            /api/game/complete                       -> game_complete
+2025-09-20 17:13:36,561 - __main__ - INFO -   GET             /api/game/leaderboard                    -> game_leaderboard
+2025-09-20 17:13:36,562 - __main__ - INFO -   GET             /                                        -> home
+2025-09-20 17:13:36,562 - __main__ - INFO -   GET             /health                                  -> health_check
+2025-09-20 17:13:36,562 - __main__ - INFO -   GET             /api                                     -> api_info
+2025-09-20 17:13:36,562 - __main__ - INFO -   GET             /debug/routes                            -> debug_routes
+2025-09-20 17:13:36,562 - __main__ - INFO -   GET             /api/test                                -> test_route
+2025-09-20 17:13:36,562 - __main__ - INFO - Starting server on port 5000...
+2025-09-20 17:13:36,598 - werkzeug - WARNING -  * Debugger is active!
+2025-09-20 17:13:36,601 - werkzeug - INFO -  * Debugger PIN: 287-528-982
