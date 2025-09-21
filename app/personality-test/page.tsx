@@ -1,4 +1,3 @@
-// app/personality-test/page.tsx
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
@@ -228,19 +227,19 @@ export default function PersonalityTestPage() {
       <main className="h-[100dvh] w-full overflow-hidden relative">
         <VideoBackground />
         <div className="relative z-10 h-full flex items-center justify-center">
-          <div className="bg-black bg-opacity-70 p-8 rounded-lg max-w-md text-center mx-4">
+          <div className="bg-white bg-opacity-15 backdrop-blur-md p-8 rounded-lg max-w-md text-center mx-4 border border-white border-opacity-20">
             <h2 className="text-2xl font-bold text-white mb-4">Something went wrong</h2>
-            <p className="text-gray-300 mb-6">{error}</p>
+            <p className="text-gray-200 mb-6">{error}</p>
             <div className="flex gap-4 justify-center">
               <button 
                 onClick={() => setError(null)}
-                className="bg-white text-black px-6 py-2 rounded-full font-medium hover:bg-opacity-90 transition-all"
+                className="bg-white bg-opacity-90 text-gray-900 px-6 py-2 rounded-full font-medium hover:bg-opacity-100 transition-all"
               >
                 Try Again
               </button>
               <button 
                 onClick={() => router.push('/')}
-                className="bg-gray-600 text-white px-6 py-2 rounded-full font-medium hover:bg-gray-700 transition-all"
+                className="bg-white bg-opacity-20 text-white px-6 py-2 rounded-full font-medium hover:bg-opacity-30 transition-all"
               >
                 Go Home
               </button>
@@ -256,10 +255,10 @@ export default function PersonalityTestPage() {
       <main className="h-[100dvh] w-full overflow-hidden relative">
         <VideoBackground />
         <div className="relative z-10 h-full flex items-center justify-center">
-          <div className="bg-black bg-opacity-70 p-8 rounded-lg max-w-md text-center">
+          <div className="bg-white bg-opacity-15 backdrop-blur-md p-8 rounded-lg max-w-md text-center border border-white border-opacity-20">
             <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-white"></div>
             <p className="text-white mt-4">Loading questions from server...</p>
-            <p className="text-gray-400 text-sm mt-2">Connecting to: {API_BASE_URL}</p>
+            <p className="text-gray-300 text-sm mt-2">Connecting to: {API_BASE_URL}</p>
           </div>
         </div>
       </main>
@@ -271,13 +270,13 @@ export default function PersonalityTestPage() {
       <main className="h-[100dvh] w-full overflow-hidden relative">
         <VideoBackground />
         <div className="relative z-10 h-full flex items-center justify-center">
-          <div className="bg-black bg-opacity-70 p-8 rounded-lg max-w-md text-center">
+          <div className="bg-white bg-opacity-15 backdrop-blur-md p-8 rounded-lg max-w-md text-center border border-white border-opacity-20">
             <h2 className="text-2xl font-bold text-white mb-4">No Questions Available</h2>
-            <p className="text-gray-300 mb-4">The server returned no questions.</p>
-            <p className="text-gray-400 text-sm">API URL: {API_BASE_URL}/api/personality/questions</p>
+            <p className="text-gray-200 mb-4">The server returned no questions.</p>
+            <p className="text-gray-300 text-sm">API URL: {API_BASE_URL}/api/personality/questions</p>
             <button 
               onClick={() => window.location.reload()}
-              className="bg-white text-black px-6 py-2 rounded-full font-medium hover:bg-opacity-90 transition-all mt-4"
+              className="bg-white bg-opacity-90 text-gray-900 px-6 py-2 rounded-full font-medium hover:bg-opacity-100 transition-all mt-4"
             >
               Retry
             </button>
@@ -293,7 +292,7 @@ export default function PersonalityTestPage() {
       
       {/* Progress Bar */}
       <div className="absolute top-20 left-1/2 transform -translate-x-1/2 w-80 max-w-full z-10">
-        <div className="w-full bg-gray-700 bg-opacity-70 rounded-full h-2.5">
+        <div className="w-full bg-white bg-opacity-20 backdrop-blur-sm rounded-full h-2.5">
           <div 
             className="bg-white h-2.5 rounded-full transition-all duration-500" 
             style={{ width: `${progress}%` }}
@@ -306,27 +305,24 @@ export default function PersonalityTestPage() {
 
       {/* Question Card */}
       <div className="relative z-10 h-full flex items-center justify-center px-4">
-        <div className="bg-black bg-opacity-70 p-8 rounded-lg max-w-md w-full">
-          <h2 className="text-xl font-semibold text-white mb-2 text-center">
-            Question {currentQuestionIndex + 1}
-          </h2>
-          <p className="text-white text-lg mb-8 text-center">
+        <div className="bg-white bg-opacity-15 backdrop-blur-md p-8 rounded-xl max-w-2xl w-full border border-white border-opacity-20">
+          <h2 className="text-2xl font-semibold text-white mb-8 text-center">
             {questions[currentQuestionIndex]?.text}
-          </p>
+          </h2>
           
           {/* Answer Options */}
-          <div className="flex justify-between mb-4">
+          <div className="flex justify-between mb-6 px-2">
             {[1, 2, 3, 4, 5].map((value) => (
               <button
                 key={value}
                 onClick={() => handleAnswer(value)}
                 disabled={isSubmitting}
-                className={`w-12 h-12 rounded-full flex items-center justify-center font-medium text-lg
+                className={`w-14 h-14 rounded-full flex items-center justify-center font-medium text-lg
                   ${answers.find(a => a.questionId === questions[currentQuestionIndex]?.id)?.value === value
-                    ? 'bg-white text-black' 
-                    : 'bg-gray-700 text-white hover:bg-gray-600'
+                    ? 'bg-white text-gray-900 border-2 border-white' 
+                    : 'bg-transparent text-white border-2 border-white border-opacity-50 hover:bg-white hover:bg-opacity-20'
                   } 
-                  transition-colors duration-200`}
+                  transition-all duration-200`}
               >
                 {value}
               </button>
@@ -334,15 +330,10 @@ export default function PersonalityTestPage() {
           </div>
           
           {/* Scale Labels */}
-          <div className="flex justify-between text-gray-300 text-sm px-1 mb-2">
-            <span>Strongly Disagree</span>
-            <span>Neutral</span>
-            <span>Strongly Agree</span>
-          </div>
-
-          {/* Dimension info (for debugging) */}
-          <div className="text-center text-gray-400 text-xs mt-4">
-            Dimension: {questions[currentQuestionIndex]?.dimension?.join(' vs ')}
+          <div className="flex justify-between text-gray-200 text-sm px-1 mb-8">
+            <span className="text-left">Strongly Disagree</span>
+            <span className="text-center">Neutral</span>
+            <span className="text-right">Strongly Agree</span>
           </div>
 
           {isSubmitting && (
