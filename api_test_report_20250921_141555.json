@@ -1,0 +1,1112 @@
+{
+  "total_tests": 22,
+  "passed_tests": 21,
+  "failed_tests": 1,
+  "endpoints": {
+    "/": {
+      "status": "PASSED",
+      "response": {
+        "initialization": {
+          "auth_routes": true,
+          "chat_routes": true,
+          "community_routes": true,
+          "friends_routes": true,
+          "game_routes": true,
+          "home_routes": true,
+          "mongodb": true,
+          "personality_routes": true,
+          "safety_routes": true,
+          "task_routes": true
+        },
+        "message": "Mental Wellness Backend is running \ud83d\ude80",
+        "status": "healthy"
+      }
+    },
+    "/api/nonexistent": {
+      "status": "PASSED",
+      "response": {
+        "error": "Endpoint not found",
+        "success": false
+      }
+    },
+    "/api/signup": {
+      "status": "PASSED",
+      "response": {
+        "error": "Email and password are required"
+      }
+    },
+    "/api/login": {
+      "status": "PASSED",
+      "response": {
+        "error": "Email and password are required"
+      }
+    },
+    "/api/user/68cfbb42fd3ca376b7387ae5": {
+      "status": "PASSED",
+      "response": {
+        "_id": "68cfbb42fd3ca376b7387ae5",
+        "created_at": "Sun, 21 Sep 2025 08:45:54 GMT",
+        "email": "testuser_1758444353@example.com",
+        "friends": [],
+        "full_name": "Test User",
+        "received_friend_requests": [],
+        "sent_friend_requests": [],
+        "updated_at": "Sun, 21 Sep 2025 08:45:54 GMT",
+        "username": "testuser_1758444353"
+      }
+    },
+    "/api/users/search?q=test": {
+      "status": "PASSED",
+      "response": {
+        "users": [
+          {
+            "_id": "68cf176d95af0fc00951660f",
+            "avatar": "/placeholder-user.jpg",
+            "full_name": "Test User",
+            "username": "testuser_1758402413"
+          },
+          {
+            "_id": "68cf1a2395af0fc009516611",
+            "avatar": "/placeholder-user.jpg",
+            "full_name": "Test User",
+            "username": "testuser_1758403106"
+          },
+          {
+            "_id": "68cf1a7595af0fc009516615",
+            "avatar": "/placeholder-user.jpg",
+            "full_name": "Test User",
+            "username": "testuser_1758403189"
+          },
+          {
+            "_id": "68cf1ac795af0fc009516619",
+            "avatar": "/placeholder-user.jpg",
+            "full_name": "Test User",
+            "username": "testuser_1758403271"
+          },
+          {
+            "_id": "68cf1b2495af0fc00951661d",
+            "avatar": "/placeholder-user.jpg",
+            "full_name": "Test User",
+            "username": "testuser_1758403364"
+          },
+          {
+            "_id": "68cf1b5795af0fc009516621",
+            "avatar": "/placeholder-user.jpg",
+            "full_name": "Test User",
+            "username": "testuser_1758403414"
+          },
+          {
+            "_id": "68cf1b8995af0fc009516625",
+            "avatar": "/placeholder-user.jpg",
+            "full_name": "Test User",
+            "username": "testuser_1758403464"
+          },
+          {
+            "_id": "68cf95b595af0fc009516629",
+            "avatar": "/placeholder-user.jpg",
+            "full_name": "Test User",
+            "username": "testuser_1758434740"
+          },
+          {
+            "_id": "68cf95f395af0fc00951662d",
+            "avatar": "/placeholder-user.jpg",
+            "full_name": "Test User",
+            "username": "testuser_1758434803"
+          },
+          {
+            "_id": "68cf96ec95af0fc009516631",
+            "avatar": "/placeholder-user.jpg",
+            "full_name": "Test User",
+            "username": "testuser_1758435052"
+          }
+        ]
+      }
+    },
+    "/api/community/posts": {
+      "status": "PASSED",
+      "response": {
+        "post": {
+          "_id": "68cfbb42fd3ca376b7387ae6",
+          "comments": [],
+          "content": "This is a test post for API testing",
+          "created_at": "2025-09-21T08:45:54.759497",
+          "id": "ee5f176e-50fc-4670-a796-bce5d447cf0b",
+          "likes": [],
+          "media_url": null,
+          "user": {
+            "_id": "68cfbb42fd3ca376b7387ae5",
+            "full_name": "Test User",
+            "username": "testuser_1758444353"
+          },
+          "user_id": "68cfbb42fd3ca376b7387ae5"
+        },
+        "status": "success"
+      }
+    },
+    "/api/community/posts/ee5f176e-50fc-4670-a796-bce5d447cf0b/like": {
+      "status": "FAILED",
+      "response": "{\n  \"message\": \"like_post() got an unexpected keyword argument 'socketio'\",\n  \"status\": \"error\"\n}\n"
+    },
+    "/api/community/posts/ee5f176e-50fc-4670-a796-bce5d447cf0b/comment": {
+      "status": "PASSED",
+      "response": {
+        "post": {
+          "_id": "68cfbb42fd3ca376b7387ae6",
+          "comments": [
+            {
+              "_id": "68cfbb42fd3ca376b7387ae7",
+              "created_at": "2025-09-21T08:45:54.884000",
+              "text": "This is a test comment",
+              "user_id": "68cfbb42fd3ca376b7387ae5"
+            }
+          ],
+          "content": "This is a test post for API testing",
+          "created_at": "2025-09-21T08:45:54.759497",
+          "id": "ee5f176e-50fc-4670-a796-bce5d447cf0b",
+          "likes": [],
+          "media_url": null,
+          "user": {
+            "_id": "68cfbb42fd3ca376b7387ae5",
+            "full_name": "Test User",
+            "username": "testuser_1758444353"
+          },
+          "user_id": "68cfbb42fd3ca376b7387ae5"
+        },
+        "status": "success"
+      }
+    },
+    "/api/tasks/ai-suggestion/68cfbb42fd3ca376b7387ae5": {
+      "status": "PASSED",
+      "response": {
+        "title": "Practice a 5-minute mindfulness exercise."
+      }
+    },
+    "/api/tasks": {
+      "status": "PASSED",
+      "response": {
+        "category": null,
+        "created_at": "2025-09-21T08:45:55.053813",
+        "description": "This is a test task created during API testing",
+        "due_date": null,
+        "id": "536a0cff-5b44-4bd2-976d-41f6fc56bb78",
+        "status": "pending",
+        "title": "Test Task for API Testing",
+        "user_id": "68cfbb42fd3ca376b7387ae5"
+      }
+    },
+    "/api/tasks/user/68cfbb42fd3ca376b7387ae5": {
+      "status": "PASSED",
+      "response": {
+        "tasks": [
+          {
+            "category": null,
+            "created_at": "2025-09-21T08:45:55.053813",
+            "description": "This is a test task created during API testing",
+            "due_date": null,
+            "id": "536a0cff-5b44-4bd2-976d-41f6fc56bb78",
+            "status": "pending",
+            "title": "Test Task for API Testing",
+            "user_id": "68cfbb42fd3ca376b7387ae5"
+          }
+        ]
+      }
+    },
+    "/api/friends/search?q=test": {
+      "status": "PASSED",
+      "response": {
+        "status": "success",
+        "users": [
+          {
+            "_id": "68cf176d95af0fc00951660f",
+            "created_at": "Sat, 20 Sep 2025 21:06:53 GMT",
+            "email": "testuser_1758402413@example.com",
+            "friends": [],
+            "full_name": "Test User",
+            "received_friend_requests": [],
+            "sent_friend_requests": [],
+            "updated_at": "Sat, 20 Sep 2025 21:06:53 GMT",
+            "username": "testuser_1758402413"
+          },
+          {
+            "_id": "68cf1a2395af0fc009516611",
+            "created_at": "Sat, 20 Sep 2025 21:18:27 GMT",
+            "email": "testuser_1758403106@example.com",
+            "friends": [],
+            "full_name": "Test User",
+            "received_friend_requests": [],
+            "sent_friend_requests": [],
+            "updated_at": "Sat, 20 Sep 2025 21:18:27 GMT",
+            "username": "testuser_1758403106"
+          },
+          {
+            "_id": "68cf1a7595af0fc009516615",
+            "created_at": "Sat, 20 Sep 2025 21:19:49 GMT",
+            "email": "testuser_1758403189@example.com",
+            "friends": [],
+            "full_name": "Test User",
+            "received_friend_requests": [],
+            "sent_friend_requests": [],
+            "updated_at": "Sat, 20 Sep 2025 21:19:49 GMT",
+            "username": "testuser_1758403189"
+          },
+          {
+            "_id": "68cf1ac795af0fc009516619",
+            "created_at": "Sat, 20 Sep 2025 21:21:11 GMT",
+            "email": "testuser_1758403271@example.com",
+            "friends": [],
+            "full_name": "Test User",
+            "received_friend_requests": [],
+            "sent_friend_requests": [],
+            "updated_at": "Sat, 20 Sep 2025 21:21:11 GMT",
+            "username": "testuser_1758403271"
+          },
+          {
+            "_id": "68cf1b2495af0fc00951661d",
+            "created_at": "Sat, 20 Sep 2025 21:22:44 GMT",
+            "email": "testuser_1758403364@example.com",
+            "friends": [],
+            "full_name": "Test User",
+            "received_friend_requests": [],
+            "sent_friend_requests": [],
+            "updated_at": "Sat, 20 Sep 2025 21:22:44 GMT",
+            "username": "testuser_1758403364"
+          },
+          {
+            "_id": "68cf1b5795af0fc009516621",
+            "created_at": "Sat, 20 Sep 2025 21:23:35 GMT",
+            "email": "testuser_1758403414@example.com",
+            "friends": [],
+            "full_name": "Test User",
+            "received_friend_requests": [],
+            "sent_friend_requests": [],
+            "updated_at": "Sat, 20 Sep 2025 21:23:35 GMT",
+            "username": "testuser_1758403414"
+          },
+          {
+            "_id": "68cf1b8995af0fc009516625",
+            "created_at": "Sat, 20 Sep 2025 21:24:25 GMT",
+            "email": "testuser_1758403464@example.com",
+            "friends": [],
+            "full_name": "Test User",
+            "received_friend_requests": [],
+            "sent_friend_requests": [],
+            "updated_at": "Sat, 20 Sep 2025 21:24:25 GMT",
+            "username": "testuser_1758403464"
+          },
+          {
+            "_id": "68cf95b595af0fc009516629",
+            "created_at": "Sun, 21 Sep 2025 06:05:41 GMT",
+            "email": "testuser_1758434740@example.com",
+            "friends": [],
+            "full_name": "Test User",
+            "received_friend_requests": [],
+            "sent_friend_requests": [],
+            "updated_at": "Sun, 21 Sep 2025 06:05:41 GMT",
+            "username": "testuser_1758434740"
+          },
+          {
+            "_id": "68cf95f395af0fc00951662d",
+            "created_at": "Sun, 21 Sep 2025 06:06:43 GMT",
+            "email": "testuser_1758434803@example.com",
+            "friends": [],
+            "full_name": "Test User",
+            "received_friend_requests": [],
+            "sent_friend_requests": [],
+            "updated_at": "Sun, 21 Sep 2025 06:06:43 GMT",
+            "username": "testuser_1758434803"
+          },
+          {
+            "_id": "68cf96ec95af0fc009516631",
+            "created_at": "Sun, 21 Sep 2025 06:10:52 GMT",
+            "email": "testuser_1758435052@example.com",
+            "friends": [],
+            "full_name": "Test User",
+            "received_friend_requests": [],
+            "sent_friend_requests": [],
+            "updated_at": "Sun, 21 Sep 2025 06:10:52 GMT",
+            "username": "testuser_1758435052"
+          },
+          {
+            "_id": "68cf977b14c2dc29e57406c1",
+            "created_at": "Sun, 21 Sep 2025 06:13:15 GMT",
+            "email": "testuser_1758435195@example.com",
+            "friends": [],
+            "full_name": "Test User",
+            "received_friend_requests": [],
+            "sent_friend_requests": [],
+            "updated_at": "Sun, 21 Sep 2025 06:13:15 GMT",
+            "username": "testuser_1758435195"
+          },
+          {
+            "_id": "68cf981bf48d80acbefa246c",
+            "created_at": "Sun, 21 Sep 2025 06:15:55 GMT",
+            "email": "testuser_1758435355@example.com",
+            "friends": [],
+            "full_name": "Test User",
+            "received_friend_requests": [],
+            "sent_friend_requests": [],
+            "updated_at": "Sun, 21 Sep 2025 06:15:55 GMT",
+            "username": "testuser_1758435355"
+          },
+          {
+            "_id": "68cf98e6f48d80acbefa2471",
+            "created_at": "Sun, 21 Sep 2025 06:19:18 GMT",
+            "email": "testuser_1758435558@example.com",
+            "friends": [],
+            "full_name": "Test User",
+            "received_friend_requests": [],
+            "sent_friend_requests": [],
+            "updated_at": "Sun, 21 Sep 2025 06:19:18 GMT",
+            "username": "testuser_1758435558"
+          },
+          {
+            "_id": "68cf9b5b6bdefb6569287b98",
+            "created_at": "Sun, 21 Sep 2025 06:29:47 GMT",
+            "email": "testuser_1758436187@example.com",
+            "friends": [],
+            "full_name": "Test User",
+            "received_friend_requests": [],
+            "sent_friend_requests": [],
+            "updated_at": "Sun, 21 Sep 2025 06:29:47 GMT",
+            "username": "testuser_1758436187"
+          },
+          {
+            "_id": "68cf9df0722f2acd68045fa4",
+            "created_at": "Sun, 21 Sep 2025 06:40:48 GMT",
+            "email": "testuser_1758436848@example.com",
+            "friends": [],
+            "full_name": "Test User",
+            "received_friend_requests": [],
+            "sent_friend_requests": [],
+            "updated_at": "Sun, 21 Sep 2025 06:40:48 GMT",
+            "username": "testuser_1758436848"
+          },
+          {
+            "_id": "68cf9e97722f2acd68045fa7",
+            "created_at": "Sun, 21 Sep 2025 06:43:35 GMT",
+            "email": "testuser_1758437015@example.com",
+            "friends": [],
+            "full_name": "Test User",
+            "received_friend_requests": [],
+            "sent_friend_requests": [],
+            "updated_at": "Sun, 21 Sep 2025 06:43:35 GMT",
+            "username": "testuser_1758437015"
+          },
+          {
+            "_id": "68cf9ec3722f2acd68045faa",
+            "created_at": "Sun, 21 Sep 2025 06:44:19 GMT",
+            "email": "testuser_1758437059@example.com",
+            "friends": [],
+            "full_name": "Test User",
+            "received_friend_requests": [],
+            "sent_friend_requests": [],
+            "updated_at": "Sun, 21 Sep 2025 06:44:19 GMT",
+            "username": "testuser_1758437059"
+          },
+          {
+            "_id": "68cf9eee94a5b822e38f2bb1",
+            "created_at": "Sun, 21 Sep 2025 06:45:02 GMT",
+            "email": "testuser_1758437101@example.com",
+            "friends": [],
+            "full_name": "Test User",
+            "received_friend_requests": [],
+            "sent_friend_requests": [],
+            "updated_at": "Sun, 21 Sep 2025 06:45:02 GMT",
+            "username": "testuser_1758437101"
+          },
+          {
+            "_id": "68cf9faf94a5b822e38f2bb6",
+            "created_at": "Sun, 21 Sep 2025 06:48:15 GMT",
+            "email": "testuser_1758437295@example.com",
+            "friends": [],
+            "full_name": "Test User",
+            "received_friend_requests": [],
+            "sent_friend_requests": [],
+            "updated_at": "Sun, 21 Sep 2025 06:48:15 GMT",
+            "username": "testuser_1758437295"
+          },
+          {
+            "_id": "68cf9fd994a5b822e38f2bbc",
+            "created_at": "Sun, 21 Sep 2025 06:48:57 GMT",
+            "email": "testuser_1758437336@example.com",
+            "friends": [],
+            "full_name": "Test User",
+            "received_friend_requests": [],
+            "sent_friend_requests": [],
+            "updated_at": "Sun, 21 Sep 2025 06:48:57 GMT",
+            "username": "testuser_1758437336"
+          },
+          {
+            "_id": "68cfa00494a5b822e38f2bc2",
+            "created_at": "Sun, 21 Sep 2025 06:49:40 GMT",
+            "email": "testuser_1758437380@example.com",
+            "friends": [],
+            "full_name": "Test User",
+            "received_friend_requests": [],
+            "sent_friend_requests": [],
+            "updated_at": "Sun, 21 Sep 2025 06:49:40 GMT",
+            "username": "testuser_1758437380"
+          },
+          {
+            "_id": "68cfa04b94a5b822e38f2bc8",
+            "created_at": "Sun, 21 Sep 2025 06:50:51 GMT",
+            "email": "testuser_1758437451@example.com",
+            "friends": [],
+            "full_name": "Test User",
+            "received_friend_requests": [],
+            "sent_friend_requests": [],
+            "updated_at": "Sun, 21 Sep 2025 06:50:51 GMT",
+            "username": "testuser_1758437451"
+          },
+          {
+            "_id": "68cfa07e94a5b822e38f2bce",
+            "created_at": "Sun, 21 Sep 2025 06:51:42 GMT",
+            "email": "testuser_1758437501@example.com",
+            "friends": [],
+            "full_name": "Test User",
+            "received_friend_requests": [],
+            "sent_friend_requests": [],
+            "updated_at": "Sun, 21 Sep 2025 06:51:42 GMT",
+            "username": "testuser_1758437501"
+          },
+          {
+            "_id": "68cfa0ad94a5b822e38f2bd4",
+            "created_at": "Sun, 21 Sep 2025 06:52:29 GMT",
+            "email": "testuser_1758437549@example.com",
+            "friends": [],
+            "full_name": "Test User",
+            "received_friend_requests": [],
+            "sent_friend_requests": [],
+            "updated_at": "Sun, 21 Sep 2025 06:52:29 GMT",
+            "username": "testuser_1758437549"
+          },
+          {
+            "_id": "68cfa37594a5b822e38f2bda",
+            "created_at": "Sun, 21 Sep 2025 07:04:21 GMT",
+            "email": "testuser_1758438260@example.com",
+            "friends": [],
+            "full_name": "Test User",
+            "received_friend_requests": [],
+            "sent_friend_requests": [],
+            "updated_at": "Sun, 21 Sep 2025 07:04:21 GMT",
+            "username": "testuser_1758438260"
+          },
+          {
+            "_id": "68cfa3b194a5b822e38f2be0",
+            "created_at": "Sun, 21 Sep 2025 07:05:21 GMT",
+            "email": "testuser_1758438320@example.com",
+            "friends": [],
+            "full_name": "Test User",
+            "received_friend_requests": [],
+            "sent_friend_requests": [],
+            "updated_at": "Sun, 21 Sep 2025 07:05:21 GMT",
+            "username": "testuser_1758438320"
+          },
+          {
+            "_id": "68cfa3e394a5b822e38f2be6",
+            "created_at": "Sun, 21 Sep 2025 07:06:11 GMT",
+            "email": "testuser_1758438371@example.com",
+            "friends": [],
+            "full_name": "Test User",
+            "received_friend_requests": [],
+            "sent_friend_requests": [],
+            "updated_at": "Sun, 21 Sep 2025 07:06:11 GMT",
+            "username": "testuser_1758438371"
+          },
+          {
+            "_id": "68cfa44794a5b822e38f2bec",
+            "created_at": "Sun, 21 Sep 2025 07:07:51 GMT",
+            "email": "testuser_1758438471@example.com",
+            "friends": [],
+            "full_name": "Test User",
+            "received_friend_requests": [],
+            "sent_friend_requests": [],
+            "updated_at": "Sun, 21 Sep 2025 07:07:51 GMT",
+            "username": "testuser_1758438471"
+          },
+          {
+            "_id": "68cfa48a94a5b822e38f2bf2",
+            "created_at": "Sun, 21 Sep 2025 07:08:58 GMT",
+            "email": "testuser_1758438538@example.com",
+            "friends": [],
+            "full_name": "Test User",
+            "received_friend_requests": [],
+            "sent_friend_requests": [],
+            "updated_at": "Sun, 21 Sep 2025 07:08:58 GMT",
+            "username": "testuser_1758438538"
+          },
+          {
+            "_id": "68cfa4cc94a5b822e38f2bf8",
+            "created_at": "Sun, 21 Sep 2025 07:10:04 GMT",
+            "email": "testuser_1758438603@example.com",
+            "friends": [],
+            "full_name": "Test User",
+            "received_friend_requests": [],
+            "sent_friend_requests": [],
+            "updated_at": "Sun, 21 Sep 2025 07:10:04 GMT",
+            "username": "testuser_1758438603"
+          },
+          {
+            "_id": "68cfa51494a5b822e38f2bfe",
+            "created_at": "Sun, 21 Sep 2025 07:11:16 GMT",
+            "email": "testuser_1758438676@example.com",
+            "friends": [],
+            "full_name": "Test User",
+            "received_friend_requests": [],
+            "sent_friend_requests": [],
+            "updated_at": "Sun, 21 Sep 2025 07:11:16 GMT",
+            "username": "testuser_1758438676"
+          },
+          {
+            "_id": "68cfa5d994a5b822e38f2c04",
+            "created_at": "Sun, 21 Sep 2025 07:14:33 GMT",
+            "email": "testuser_1758438873@example.com",
+            "friends": [],
+            "full_name": "Test User",
+            "received_friend_requests": [],
+            "sent_friend_requests": [],
+            "updated_at": "Sun, 21 Sep 2025 07:14:33 GMT",
+            "username": "testuser_1758438873"
+          },
+          {
+            "_id": "68cfa64594a5b822e38f2c0a",
+            "created_at": "Sun, 21 Sep 2025 07:16:21 GMT",
+            "email": "testuser_1758438981@example.com",
+            "friends": [],
+            "full_name": "Test User",
+            "received_friend_requests": [],
+            "sent_friend_requests": [],
+            "updated_at": "Sun, 21 Sep 2025 07:16:21 GMT",
+            "username": "testuser_1758438981"
+          },
+          {
+            "_id": "68cfa69294a5b822e38f2c10",
+            "created_at": "Sun, 21 Sep 2025 07:17:38 GMT",
+            "email": "testuser_1758439058@example.com",
+            "friends": [],
+            "full_name": "Test User",
+            "received_friend_requests": [],
+            "sent_friend_requests": [],
+            "updated_at": "Sun, 21 Sep 2025 07:17:38 GMT",
+            "username": "testuser_1758439058"
+          },
+          {
+            "_id": "68cfa72194a5b822e38f2c16",
+            "created_at": "Sun, 21 Sep 2025 07:20:01 GMT",
+            "email": "testuser_1758439201@example.com",
+            "friends": [],
+            "full_name": "Test User",
+            "received_friend_requests": [],
+            "sent_friend_requests": [],
+            "updated_at": "Sun, 21 Sep 2025 07:20:01 GMT",
+            "username": "testuser_1758439201"
+          },
+          {
+            "_id": "68cfa7a394a5b822e38f2c1c",
+            "created_at": "Sun, 21 Sep 2025 07:22:11 GMT",
+            "email": "testuser_1758439331@example.com",
+            "friends": [],
+            "full_name": "Test User",
+            "received_friend_requests": [],
+            "sent_friend_requests": [],
+            "updated_at": "Sun, 21 Sep 2025 07:22:11 GMT",
+            "username": "testuser_1758439331"
+          },
+          {
+            "_id": "68cfae63472111f8ec21e678",
+            "created_at": "Sun, 21 Sep 2025 07:50:59 GMT",
+            "email": "testuser_1758441059@example.com",
+            "friends": [],
+            "full_name": "Test User",
+            "received_friend_requests": [],
+            "sent_friend_requests": [],
+            "updated_at": "Sun, 21 Sep 2025 07:50:59 GMT",
+            "username": "testuser_1758441059"
+          },
+          {
+            "_id": "68cfaf13472111f8ec21e67c",
+            "created_at": "Sun, 21 Sep 2025 07:53:55 GMT",
+            "email": "testuser_1758441234@example.com",
+            "friends": [],
+            "full_name": "Test User",
+            "received_friend_requests": [],
+            "sent_friend_requests": [],
+            "updated_at": "Sun, 21 Sep 2025 07:53:55 GMT",
+            "username": "testuser_1758441234"
+          },
+          {
+            "_id": "68cfafd4472111f8ec21e680",
+            "created_at": "Sun, 21 Sep 2025 07:57:08 GMT",
+            "email": "testuser_1758441427@example.com",
+            "friends": [],
+            "full_name": "Test User",
+            "received_friend_requests": [],
+            "sent_friend_requests": [],
+            "updated_at": "Sun, 21 Sep 2025 07:57:08 GMT",
+            "username": "testuser_1758441427"
+          },
+          {
+            "_id": "68cfb0c3472111f8ec21e684",
+            "created_at": "Sun, 21 Sep 2025 08:01:07 GMT",
+            "email": "testuser_1758441666@example.com",
+            "friends": [],
+            "full_name": "Test User",
+            "received_friend_requests": [],
+            "sent_friend_requests": [],
+            "updated_at": "Sun, 21 Sep 2025 08:01:07 GMT",
+            "username": "testuser_1758441666"
+          },
+          {
+            "_id": "68cfb126472111f8ec21e688",
+            "created_at": "Sun, 21 Sep 2025 08:02:46 GMT",
+            "email": "testuser_1758441766@example.com",
+            "friends": [],
+            "full_name": "Test User",
+            "received_friend_requests": [],
+            "sent_friend_requests": [],
+            "updated_at": "Sun, 21 Sep 2025 08:02:46 GMT",
+            "username": "testuser_1758441766"
+          },
+          {
+            "_id": "68cfb2fbfd3ca376b7387ac6",
+            "created_at": "Sun, 21 Sep 2025 08:10:35 GMT",
+            "email": "testuser_1758442235@example.com",
+            "friends": [],
+            "full_name": "Test User",
+            "received_friend_requests": [],
+            "sent_friend_requests": [],
+            "updated_at": "Sun, 21 Sep 2025 08:10:35 GMT",
+            "username": "testuser_1758442235"
+          },
+          {
+            "_id": "68cfb637fd3ca376b7387acc",
+            "created_at": "Sun, 21 Sep 2025 08:24:23 GMT",
+            "email": "testuser_1758443062@example.com",
+            "friends": [],
+            "full_name": "Test User",
+            "received_friend_requests": [],
+            "sent_friend_requests": [],
+            "updated_at": "Sun, 21 Sep 2025 08:24:23 GMT",
+            "username": "testuser_1758443062"
+          },
+          {
+            "_id": "68cfb7a1fd3ca376b7387ad2",
+            "created_at": "Sun, 21 Sep 2025 08:30:25 GMT",
+            "email": "testuser_1758443424@example.com",
+            "friends": [],
+            "full_name": "Test User",
+            "received_friend_requests": [],
+            "sent_friend_requests": [],
+            "updated_at": "Sun, 21 Sep 2025 08:30:25 GMT",
+            "username": "testuser_1758443424"
+          },
+          {
+            "_id": "68cfb994fd3ca376b7387ad8",
+            "created_at": "Sun, 21 Sep 2025 08:38:44 GMT",
+            "email": "testuser_1758443923@example.com",
+            "friends": [],
+            "full_name": "Test User",
+            "received_friend_requests": [],
+            "sent_friend_requests": [],
+            "updated_at": "Sun, 21 Sep 2025 08:38:44 GMT",
+            "username": "testuser_1758443923"
+          },
+          {
+            "_id": "68cfbb20fd3ca376b7387adf",
+            "created_at": "Sun, 21 Sep 2025 08:45:20 GMT",
+            "email": "testuser_1758444318@example.com",
+            "friends": [],
+            "full_name": "Test User",
+            "received_friend_requests": [],
+            "sent_friend_requests": [],
+            "updated_at": "Sun, 21 Sep 2025 08:45:20 GMT",
+            "username": "testuser_1758444318"
+          },
+          {
+            "_id": "68cfbb42fd3ca376b7387ae5",
+            "created_at": "Sun, 21 Sep 2025 08:45:54 GMT",
+            "email": "testuser_1758444353@example.com",
+            "friends": [],
+            "full_name": "Test User",
+            "received_friend_requests": [],
+            "sent_friend_requests": [],
+            "updated_at": "Sun, 21 Sep 2025 08:45:54 GMT",
+            "username": "testuser_1758444353"
+          }
+        ]
+      }
+    },
+    "/api/friends/friends/68cfbb42fd3ca376b7387ae5": {
+      "status": "PASSED",
+      "response": {
+        "friends": [],
+        "status": "success"
+      }
+    },
+    "/api/game/start": {
+      "status": "PASSED",
+      "response": {
+        "items": [
+          {
+            "correct_rotation": 0,
+            "correct_x": 100,
+            "correct_y": 100,
+            "height": 120,
+            "id": "book1",
+            "start_rotation": -0.8656223747141532,
+            "start_x": 94.98372043724297,
+            "start_y": 91.25286423448026,
+            "type": "book",
+            "width": 80
+          },
+          {
+            "correct_rotation": 0,
+            "correct_x": 250,
+            "correct_y": 100,
+            "height": 80,
+            "id": "cup1",
+            "start_rotation": -4.13314954339358,
+            "start_x": 237.1835975309661,
+            "start_y": 93.226845088132,
+            "type": "cup",
+            "width": 60
+          },
+          {
+            "correct_rotation": 0,
+            "correct_x": 400,
+            "correct_y": 100,
+            "height": 70,
+            "id": "plate1",
+            "start_rotation": -0.031020027637240766,
+            "start_x": 393.06887697529294,
+            "start_y": 88.13325073490755,
+            "type": "plate",
+            "width": 70
+          }
+        ],
+        "level": 0,
+        "precision_threshold": 5,
+        "rotation_threshold": 5,
+        "session_id": "cd21ecd5-7bd0-43ab-920f-64a609cbe04d",
+        "time_limit": 120
+      }
+    },
+    "/api/home/68cfbb42fd3ca376b7387ae5": {
+      "status": "PASSED",
+      "response": {
+        "user": {
+          "_id": {
+            "$oid": "68cfbb42fd3ca376b7387ae5"
+          },
+          "username": "testuser_1758444353",
+          "email": "testuser_1758444353@example.com",
+          "full_name": "Test User",
+          "friends": [],
+          "sent_friend_requests": [],
+          "received_friend_requests": [],
+          "created_at": {
+            "$date": "2025-09-21T08:45:54.220Z"
+          },
+          "updated_at": {
+            "$date": "2025-09-21T08:45:54.220Z"
+          }
+        },
+        "pendingTasks": [
+          {
+            "_id": {
+              "$oid": "68cfbb43fd3ca376b7387ae8"
+            },
+            "id": "536a0cff-5b44-4bd2-976d-41f6fc56bb78",
+            "user_id": "68cfbb42fd3ca376b7387ae5",
+            "title": "Test Task for API Testing",
+            "description": "This is a test task created during API testing",
+            "category": null,
+            "status": "pending",
+            "created_at": "2025-09-21T08:45:55.053813",
+            "due_date": null
+          }
+        ]
+      }
+    },
+    "/api/safety/risk-event": {
+      "status": "PASSED",
+      "response": {
+        "data": {
+          "contacts": {
+            "emergency": "Dial 112 (India Emergency Services)",
+            "helplines": [
+              {
+                "name": "KIRAN Mental Health Helpline",
+                "phone": "1800-599-0019"
+              },
+              {
+                "name": "Vandrevala Foundation Helpline",
+                "phone": "1860-2662-345"
+              }
+            ]
+          },
+          "event": {
+            "_id": "68cfbb43fd3ca376b7387ae9",
+            "message": "This is a test risk event for API testing",
+            "risk_level": "low",
+            "timestamp": "2025-09-21T08:45:55.368814",
+            "user_id": "68cfbb42fd3ca376b7387ae5"
+          }
+        },
+        "status": "success"
+      }
+    },
+    "/api/personality/questions": {
+      "status": "PASSED",
+      "response": {
+        "questions": [
+          {
+            "dimension": [
+              "I",
+              "E"
+            ],
+            "id": 1,
+            "question": "Do you feel more energized after spending time alone than after social gatherings?"
+          },
+          {
+            "dimension": [
+              "I",
+              "E"
+            ],
+            "id": 2,
+            "question": "Do you usually start conversations rather than waiting for others?"
+          },
+          {
+            "dimension": [
+              "I",
+              "E"
+            ],
+            "id": 3,
+            "question": "Do you find long periods of social interaction draining?"
+          },
+          {
+            "dimension": [
+              "I",
+              "E"
+            ],
+            "id": 4,
+            "question": "Do you enjoy being the center of attention in groups?"
+          },
+          {
+            "dimension": [
+              "I",
+              "E"
+            ],
+            "id": 5,
+            "question": "Do you often prefer writing over speaking in face-to-face interactions?"
+          },
+          {
+            "dimension": [
+              "I",
+              "E"
+            ],
+            "id": 6,
+            "question": "Do you usually act quickly in social situations rather than thinking first?"
+          },
+          {
+            "dimension": [
+              "I",
+              "E"
+            ],
+            "id": 7,
+            "question": "Do you usually recharge by being around people instead of spending time alone?"
+          },
+          {
+            "dimension": [
+              "N",
+              "S"
+            ],
+            "id": 8,
+            "question": "Do you focus more on future possibilities rather than present realities?"
+          },
+          {
+            "dimension": [
+              "N",
+              "S"
+            ],
+            "id": 9,
+            "question": "Do you find yourself drawn to abstract theories rather than concrete facts?"
+          },
+          {
+            "dimension": [
+              "N",
+              "S"
+            ],
+            "id": 10,
+            "question": "Do you often think about what could be rather than what is?"
+          },
+          {
+            "dimension": [
+              "N",
+              "S"
+            ],
+            "id": 11,
+            "question": "Do you prefer practical examples over conceptual explanations?"
+          },
+          {
+            "dimension": [
+              "N",
+              "S"
+            ],
+            "id": 12,
+            "question": "Do you rely more on gut feelings than step-by-step analysis?"
+          },
+          {
+            "dimension": [
+              "N",
+              "S"
+            ],
+            "id": 13,
+            "question": "Do you prefer detailed instructions rather than broad overviews?"
+          },
+          {
+            "dimension": [
+              "N",
+              "S"
+            ],
+            "id": 14,
+            "question": "Do you get excited imagining future scenarios more than focusing on present tasks?"
+          },
+          {
+            "dimension": [
+              "T",
+              "F"
+            ],
+            "id": 15,
+            "question": "Do you usually base decisions on logic and consistency over emotions?"
+          },
+          {
+            "dimension": [
+              "T",
+              "F"
+            ],
+            "id": 16,
+            "question": "Do you find it easier to point out flaws than to comfort others?"
+          },
+          {
+            "dimension": [
+              "T",
+              "F"
+            ],
+            "id": 17,
+            "question": "Do you value objective truth over personal values when making decisions?"
+          },
+          {
+            "dimension": [
+              "T",
+              "F"
+            ],
+            "id": 18,
+            "question": "Do you find yourself naturally empathetic in emotional situations?"
+          },
+          {
+            "dimension": [
+              "T",
+              "F"
+            ],
+            "id": 19,
+            "question": "Do you prefer to remain impartial rather than getting emotionally involved?"
+          },
+          {
+            "dimension": [
+              "T",
+              "F"
+            ],
+            "id": 20,
+            "question": "Do you often rely on fairness more than compassion in conflicts?"
+          },
+          {
+            "dimension": [
+              "T",
+              "F"
+            ],
+            "id": 21,
+            "question": "Do you usually decide based on feelings rather than rational analysis?"
+          },
+          {
+            "dimension": [
+              "J",
+              "P"
+            ],
+            "id": 22,
+            "question": "Do you prefer having a detailed plan before starting something?"
+          },
+          {
+            "dimension": [
+              "J",
+              "P"
+            ],
+            "id": 23,
+            "question": "Do you feel uncomfortable when things are unstructured?"
+          },
+          {
+            "dimension": [
+              "J",
+              "P"
+            ],
+            "id": 24,
+            "question": "Do you enjoy deadlines as motivation rather than open timelines?"
+          },
+          {
+            "dimension": [
+              "J",
+              "P"
+            ],
+            "id": 25,
+            "question": "Do you prefer to keep your options open rather than committing early?"
+          },
+          {
+            "dimension": [
+              "J",
+              "P"
+            ],
+            "id": 26,
+            "question": "Do you find spontaneity more enjoyable than sticking to a schedule?"
+          },
+          {
+            "dimension": [
+              "J",
+              "P"
+            ],
+            "id": 27,
+            "question": "Do you often make to-do lists and stick to them?"
+          },
+          {
+            "dimension": [
+              "J",
+              "P"
+            ],
+            "id": 28,
+            "question": "Do you handle last-minute changes with ease rather than frustration?"
+          }
+        ]
+      }
+    },
+    "/api/personality/submit": {
+      "status": "PASSED",
+      "response": {
+        "message": "Personality saved successfully",
+        "personality": {
+          "_id": "68cfbb43fd3ca376b7387aea",
+          "created_at": "Sun, 21 Sep 2025 08:45:55 GMT",
+          "extraversion_score": 8,
+          "feeling_score": 10,
+          "introversion_score": 12,
+          "intuition_score": 14,
+          "judging_score": 11,
+          "perceiving_score": 9,
+          "personality_type": "INTJ",
+          "sensing_score": 6,
+          "thinking_score": 10,
+          "updated_at": null,
+          "user_id": "68cfbb42fd3ca376b7387ae5"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,298 @@
+{
+  "total_tests": 20,
+  "passed_tests": 16,
+  "failed_tests": 4,
+  "endpoints": {
+    "/": {
+      "status": "PASSED",
+      "response": {
+        "initialization": {
+          "auth_routes": true,
+          "chat_routes": true,
+          "community_routes": true,
+          "friends_routes": true,
+          "game_routes": true,
+          "home_routes": true,
+          "mongodb": true,
+          "personality_routes": true,
+          "safety_routes": true,
+          "task_routes": true
+        },
+        "message": "Mental Wellness Backend is running \ud83d\ude80",
+        "status": "healthy"
+      }
+    },
+    "/api/nonexistent": {
+      "status": "PASSED",
+      "response": {
+        "error": "Endpoint not found",
+        "success": false
+      }
+    },
+    "/api/signup": {
+      "status": "PASSED",
+      "response": {
+        "error": "Email and password are required"
+      }
+    },
+    "/api/login": {
+      "status": "PASSED",
+      "response": {
+        "error": "Email and password are required"
+      }
+    },
+    "/api/user/68cf9df0722f2acd68045fa4": {
+      "status": "PASSED",
+      "response": {
+        "_id": "68cf9df0722f2acd68045fa4",
+        "created_at": "Sun, 21 Sep 2025 06:40:48 GMT",
+        "email": "testuser_1758436848@example.com",
+        "friends": [],
+        "full_name": "Test User",
+        "received_friend_requests": [],
+        "sent_friend_requests": [],
+        "updated_at": "Sun, 21 Sep 2025 06:40:48 GMT",
+        "username": "testuser_1758436848"
+      }
+    },
+    "/api/users/search?q=test": {
+      "status": "PASSED",
+      "response": {
+        "users": [
+          {
+            "_id": "68cf176d95af0fc00951660f",
+            "avatar": "/placeholder-user.jpg",
+            "full_name": "Test User",
+            "username": "testuser_1758402413"
+          },
+          {
+            "_id": "68cf1a2395af0fc009516611",
+            "avatar": "/placeholder-user.jpg",
+            "full_name": "Test User",
+            "username": "testuser_1758403106"
+          },
+          {
+            "_id": "68cf1a7595af0fc009516615",
+            "avatar": "/placeholder-user.jpg",
+            "full_name": "Test User",
+            "username": "testuser_1758403189"
+          },
+          {
+            "_id": "68cf1ac795af0fc009516619",
+            "avatar": "/placeholder-user.jpg",
+            "full_name": "Test User",
+            "username": "testuser_1758403271"
+          },
+          {
+            "_id": "68cf1b2495af0fc00951661d",
+            "avatar": "/placeholder-user.jpg",
+            "full_name": "Test User",
+            "username": "testuser_1758403364"
+          },
+          {
+            "_id": "68cf1b5795af0fc009516621",
+            "avatar": "/placeholder-user.jpg",
+            "full_name": "Test User",
+            "username": "testuser_1758403414"
+          },
+          {
+            "_id": "68cf1b8995af0fc009516625",
+            "avatar": "/placeholder-user.jpg",
+            "full_name": "Test User",
+            "username": "testuser_1758403464"
+          },
+          {
+            "_id": "68cf95b595af0fc009516629",
+            "avatar": "/placeholder-user.jpg",
+            "full_name": "Test User",
+            "username": "testuser_1758434740"
+          },
+          {
+            "_id": "68cf95f395af0fc00951662d",
+            "avatar": "/placeholder-user.jpg",
+            "full_name": "Test User",
+            "username": "testuser_1758434803"
+          },
+          {
+            "_id": "68cf96ec95af0fc009516631",
+            "avatar": "/placeholder-user.jpg",
+            "full_name": "Test User",
+            "username": "testuser_1758435052"
+          }
+        ]
+      }
+    },
+    "/api/community/posts": {
+      "status": "FAILED",
+      "response": "{\n  \"message\": \"Missing required fields\",\n  \"status\": \"error\"\n}\n"
+    },
+    "/api/tasks/ai-suggestion/68cf9df0722f2acd68045fa4": {
+      "status": "PASSED",
+      "response": {
+        "title": "Practice a 5-minute mindfulness exercise."
+      }
+    },
+    "/api/tasks": {
+      "status": "PASSED",
+      "response": {
+        "category": null,
+        "created_at": "2025-09-21T06:40:49.343028",
+        "description": "This is a test task created during API testing",
+        "due_date": null,
+        "id": "c80f9c1b-ce66-4638-9f93-985cd515869f",
+        "status": "pending",
+        "title": "Test Task for API Testing",
+        "user_id": "68cf9df0722f2acd68045fa4"
+      }
+    },
+    "/api/tasks/user/68cf9df0722f2acd68045fa4": {
+      "status": "PASSED",
+      "response": {
+        "tasks": [
+          {
+            "category": null,
+            "created_at": "2025-09-21T06:40:49.343028",
+            "description": "This is a test task created during API testing",
+            "due_date": null,
+            "id": "c80f9c1b-ce66-4638-9f93-985cd515869f",
+            "status": "pending",
+            "title": "Test Task for API Testing",
+            "user_id": "68cf9df0722f2acd68045fa4"
+          }
+        ]
+      }
+    },
+    "/api/friends/search?q=test": {
+      "status": "FAILED",
+      "response": "{\n  \"message\": \"'' is not a valid ObjectId, it must be a 12-byte input or a 24-character hex string\",\n  \"status\": \"error\"\n}\n"
+    },
+    "/api/friends/friends/68cf9df0722f2acd68045fa4": {
+      "status": "PASSED",
+      "response": {
+        "friends": [],
+        "status": "success"
+      }
+    },
+    "/api/game/start": {
+      "status": "PASSED",
+      "response": {
+        "items": [
+          {
+            "correct_rotation": 0,
+            "correct_x": 100,
+            "correct_y": 100,
+            "height": 120,
+            "id": "book1",
+            "start_rotation": -2.093468824347581,
+            "start_x": 102.12941822326606,
+            "start_y": 106.79378073622502,
+            "type": "book",
+            "width": 80
+          },
+          {
+            "correct_rotation": 0,
+            "correct_x": 250,
+            "correct_y": 100,
+            "height": 80,
+            "id": "cup1",
+            "start_rotation": -1.961385153060884,
+            "start_x": 252.54965771606075,
+            "start_y": 95.49953417113332,
+            "type": "cup",
+            "width": 60
+          },
+          {
+            "correct_rotation": 0,
+            "correct_x": 400,
+            "correct_y": 100,
+            "height": 70,
+            "id": "plate1",
+            "start_rotation": 1.8569105204803718,
+            "start_x": 403.61274708735897,
+            "start_y": 81.47060116849806,
+            "type": "plate",
+            "width": 70
+          }
+        ],
+        "level": 0,
+        "precision_threshold": 5,
+        "rotation_threshold": 5,
+        "session_id": "167024d4-173c-46c3-976e-3ae3556c366e",
+        "time_limit": 120
+      }
+    },
+    "/api/home/68cf9df0722f2acd68045fa4": {
+      "status": "PASSED",
+      "response": {
+        "user": {
+          "_id": {
+            "$oid": "68cf9df0722f2acd68045fa4"
+          },
+          "username": "testuser_1758436848",
+          "email": "testuser_1758436848@example.com",
+          "full_name": "Test User",
+          "friends": [],
+          "sent_friend_requests": [],
+          "received_friend_requests": [],
+          "created_at": {
+            "$date": "2025-09-21T06:40:48.710Z"
+          },
+          "updated_at": {
+            "$date": "2025-09-21T06:40:48.710Z"
+          }
+        },
+        "pendingTasks": [
+          {
+            "_id": {
+              "$oid": "68cf9df1722f2acd68045fa5"
+            },
+            "id": "c80f9c1b-ce66-4638-9f93-985cd515869f",
+            "user_id": "68cf9df0722f2acd68045fa4",
+            "title": "Test Task for API Testing",
+            "description": "This is a test task created during API testing",
+            "category": null,
+            "status": "pending",
+            "created_at": "2025-09-21T06:40:49.343028",
+            "due_date": null
+          }
+        ]
+      }
+    },
+    "/api/safety/risk-event": {
+      "status": "PASSED",
+      "response": {
+        "data": {
+          "contacts": {
+            "emergency": "Dial 112 (India Emergency Services)",
+            "helplines": [
+              {
+                "name": "KIRAN Mental Health Helpline",
+                "phone": "1800-599-0019"
+              },
+              {
+                "name": "Vandrevala Foundation Helpline",
+                "phone": "1860-2662-345"
+              }
+            ]
+          },
+          "event": {
+            "_id": "68cf9df1722f2acd68045fa6",
+            "message": "This is a test risk event for API testing",
+            "risk_level": "low",
+            "timestamp": "2025-09-21T06:40:49.565026",
+            "user_id": "68cf9df0722f2acd68045fa4"
+          }
+        },
+        "status": "success"
+      }
+    },
+    "/api/personality/questions": {
+      "status": "FAILED",
+      "response": "{\n  \"error\": \"Endpoint not found\",\n  \"success\": false\n}\n"
+    },
+    "/api/personality/submit": {
+      "status": "FAILED",
+      "response": "{\n  \"error\": \"Endpoint not found\",\n  \"success\": false\n}\n"
+    }
+  }
+}
