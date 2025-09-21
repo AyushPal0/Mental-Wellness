@@ -1,0 +1,314 @@
+2025-09-16 17:30:03,134 - __main__ - INFO - 🔍 Checking if required files exist...
+2025-09-16 17:30:03,134 - __main__ - INFO - ✅ Found: utils/db.py
+2025-09-16 17:30:03,135 - __main__ - INFO - ✅ Found: routes/auth_routes.py
+2025-09-16 17:30:03,135 - __main__ - INFO - ✅ Found: routes/chat_routes.py
+2025-09-16 17:30:03,136 - __main__ - INFO - ✅ Found: routes/personality_routes.py
+2025-09-16 17:30:03,137 - __main__ - INFO - ✅ Found: services/personality_service.py
+2025-09-16 17:30:03,137 - __main__ - INFO - ✅ Found: routes/task_routes.py
+2025-09-16 17:30:03,137 - __main__ - INFO - ✅ Found: services/task_service.py
+2025-09-16 17:30:03,138 - __main__ - INFO - ✅ Found: models/task.py
+2025-09-16 17:30:03,139 - __main__ - INFO - ✅ Found: questions/personality_questions.json
+2025-09-16 17:30:03,139 - __main__ - INFO - ✅ Found: routes/community_routes.py
+2025-09-16 17:30:03,140 - __main__ - INFO - ✅ Found: services/community_service.py
+2025-09-16 17:30:03,140 - __main__ - INFO - ✅ Found: models/post.py
+2025-09-16 17:30:03,141 - __main__ - INFO - ✅ Found: routes/safety_routes.py
+2025-09-16 17:30:03,142 - __main__ - INFO - ✅ Found: services/safety_service.py
+2025-09-16 17:30:03,142 - __main__ - INFO - ✅ Found: models/risk_event.py
+2025-09-16 17:30:03,143 - __main__ - INFO - 🔄 Attempting to import utils.db...
+2025-09-16 17:30:11,685 - __main__ - ERROR - ❌ MongoDB utils not found: cannot import name 'init_db' from 'utils.db' (C:\Users\gouta\OneDrive\Desktop\mentall_wellness\backend\Mental-Wellness-database\utils\db.py)
+2025-09-16 17:30:11,685 - __main__ - INFO - 🔄 Testing task service import...
+2025-09-16 17:30:13,214 - __main__ - INFO - ✅ Task service imported successfully
+2025-09-16 17:30:13,215 - __main__ - INFO - ✅ task_service.create_task() function exists
+2025-09-16 17:30:13,215 - __main__ - INFO - ✅ task_service.get_all_tasks() function exists
+2025-09-16 17:30:13,215 - __main__ - INFO - ✅ task_service.get_task_by_id() function exists
+2025-09-16 17:30:13,216 - __main__ - INFO - ✅ task_service.update_task() function exists
+2025-09-16 17:30:13,216 - __main__ - INFO - ✅ task_service.delete_task() function exists
+2025-09-16 17:30:13,216 - __main__ - INFO - 🔄 Attempting to import auth_routes...
+2025-09-16 17:30:13,358 - __main__ - INFO - ✅ Auth routes registered successfully
+2025-09-16 17:30:13,359 - __main__ - INFO - 🔄 Attempting to import chat_routes...
+2025-09-16 17:30:47,381 - __main__ - INFO - ✅ Chat routes registered successfully
+2025-09-16 17:30:47,382 - __main__ - INFO - 🔄 Attempting to import personality_routes...
+2025-09-16 17:30:47,423 - __main__ - INFO - ✅ Personality routes registered successfully
+2025-09-16 17:30:47,424 - __main__ - INFO - 🔄 Attempting to import task_routes...
+2025-09-16 17:30:47,451 - __main__ - INFO - ✅ Task routes registered successfully
+2025-09-16 17:30:47,451 - __main__ - INFO - 🔄 Attempting to import community_routes...
+2025-09-16 17:30:47,513 - __main__ - INFO - ✅ Community routes registered successfully
+2025-09-16 17:30:47,514 - __main__ - INFO - 🔄 Attempting to import safety_routes...
+2025-09-16 17:30:47,565 - __main__ - INFO - ✅ Safety routes registered successfully
+2025-09-16 17:30:47,568 - __main__ - INFO - 🚀 Starting Mental Wellness Backend...
+2025-09-16 17:30:47,569 - __main__ - INFO - 📁 Directory structure:
+2025-09-16 17:30:47,570 - __main__ - INFO - 📂 utils/: ['auth.py', 'db.py', 'moderation.py', 'serializer.py', '__init__.py']
+2025-09-16 17:30:47,571 - __main__ - INFO - 📂 routes/: ['auth_routes.py', 'chat_api.py', 'chat_routes.py', 'community_routes.py', 'game_routes.py', 'personality_routes.py', 'safety_routes.py', 'task_routes.py', '__init__.py']
+2025-09-16 17:30:47,572 - __main__ - INFO - 📂 services/: ['chat_service.py', 'community_service.py', 'community_service_fallback.py', 'embedding.py', 'game_service.py', 'ingest_data.py', 'personality_service.py', 'safety_service.py', 'task_service.py', '__init__.py']
+2025-09-16 17:30:47,573 - __main__ - INFO - 📂 models/: ['chat.py', 'conversation.py', 'game.py', 'personality.py', 'post.py', 'risk_event.py', 'task.py', 'user.py', '__init__.py']
+2025-09-16 17:30:47,726 - __main__ - INFO - 📊 MongoDB collections: ['users', 'risk_events', 'conversations', 'posts', 'chats', 'tasks']
+2025-09-16 17:30:47,726 - __main__ - INFO - 🌐 Server starting on http://0.0.0.0:5000
+2025-09-16 17:30:48,101 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.9.29.99:5000
+2025-09-16 17:30:48,102 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-09-16 17:30:56,096 - werkzeug - INFO - 127.0.0.1 - - [16/Sep/2025 17:30:56] "OPTIONS /api/login HTTP/1.1" 200 -
+2025-09-16 17:30:56,690 - werkzeug - INFO - 127.0.0.1 - - [16/Sep/2025 17:30:56] "POST /api/login HTTP/1.1" 200 -
+2025-09-16 17:30:57,042 - werkzeug - INFO - 127.0.0.1 - - [16/Sep/2025 17:30:57] "GET /api/chat/history/68c5c8510f91293467735926 HTTP/1.1" 200 -
+2025-09-16 17:30:57,145 - werkzeug - INFO - 127.0.0.1 - - [16/Sep/2025 17:30:57] "GET /api/chat/history/68c5c8510f91293467735926 HTTP/1.1" 200 -
+2025-09-16 17:31:06,455 - werkzeug - INFO - 127.0.0.1 - - [16/Sep/2025 17:31:06] "[35m[1mGET /api/community/posts HTTP/1.1[0m" 500 -
+2025-09-16 17:31:06,492 - werkzeug - INFO - 127.0.0.1 - - [16/Sep/2025 17:31:06] "[35m[1mGET /api/community/posts HTTP/1.1[0m" 500 -
+2025-09-21 02:34:01,260 - __main__ - INFO - Current working directory: C:\Users\gouta\OneDrive\Desktop\mentall_wellness\backend\Mental-Wellness-database
+2025-09-21 02:34:01,261 - __main__ - INFO - Files in utils/: ['auth.py', 'db.py', 'moderation.py', 'serializer.py', '__init__.py']
+2025-09-21 02:34:01,262 - __main__ - INFO - Files in routes/: ['auth_routes.py', 'chat_api.py', 'chat_routes.py', 'community_routes.py', 'friends_routes.py', 'game_routes.py', 'home_routes.py', 'personality_routes.py', 'safety_routes.py', 'task_routes.py', '__init__.py']
+2025-09-21 02:34:01,262 - __main__ - INFO - Files in services/: ['chat_service.py', 'community_service.py', 'community_service_fallback.py', 'embedding.py', 'friends_service.py', 'game_service.py', 'ingest_data.py', 'personality_service.py', 'safety_service.py', 'task_service.py', '__init__.py']
+2025-09-21 02:34:01,262 - __main__ - INFO - Files in models/: ['chat.py', 'conversation.py', 'game.py', 'personality.py', 'post.py', 'risk_event.py', 'task.py', 'user.py', '__init__.py']
+2025-09-21 02:34:01,263 - __main__ - INFO - 
+============================== REGISTERED ROUTES ==============================
+2025-09-21 02:34:01,263 - __main__ - INFO -   GET             /static/<path:filename>                  -> static
+2025-09-21 02:34:01,263 - __main__ - INFO -   POST            /api/signup                              -> auth.signup
+2025-09-21 02:34:01,264 - __main__ - INFO -   POST            /api/login                               -> auth.login
+2025-09-21 02:34:01,264 - __main__ - INFO -   GET             /api/user/<user_id>                      -> auth.get_user_profile
+2025-09-21 02:34:01,264 - __main__ - INFO -   POST            /api/user/<user_id>/complete-onboarding  -> auth.complete_onboarding
+2025-09-21 02:34:01,265 - __main__ - INFO -   GET             /api/users/search                        -> auth.search_users
+2025-09-21 02:34:01,265 - __main__ - INFO -   GET             /api/personality/api/personality/questions -> personality.get_questions
+2025-09-21 02:34:01,265 - __main__ - INFO -   POST            /api/personality/api/personality/submit  -> personality.submit_personality
+2025-09-21 02:34:01,265 - __main__ - INFO -   POST            /api/game/start                          -> game.start_session
+2025-09-21 02:34:01,266 - __main__ - INFO -   POST            /api/game/action                         -> game.record_action
+2025-09-21 02:34:01,266 - __main__ - INFO -   POST            /api/game/check-placement                -> game.check_placement
+2025-09-21 02:34:01,266 - __main__ - INFO -   POST            /api/game/complete                       -> game.complete_level
+2025-09-21 02:34:01,266 - __main__ - INFO -   GET             /api/game/leaderboard                    -> game.get_leaderboard
+2025-09-21 02:34:01,267 - __main__ - INFO -   POST            /api/chat                                -> chat.chat
+2025-09-21 02:34:01,267 - __main__ - INFO -   GET             /api/chat/history/<user_id>              -> chat.get_history
+2025-09-21 02:34:01,267 - __main__ - INFO -   GET             /api/conversation/<conversation_id>      -> chat.get_conversation_messages
+2025-09-21 02:34:01,267 - __main__ - INFO -   GET             /api/tasks/ai-suggestion/<user_id>       -> tasks.get_ai_suggestion_route
+2025-09-21 02:34:01,267 - __main__ - INFO -   POST            /api/tasks                               -> tasks.create_task_route
+2025-09-21 02:34:01,269 - __main__ - INFO -   GET             /api/tasks/user/<user_id>                -> tasks.get_tasks_for_user_route
+2025-09-21 02:34:01,269 - __main__ - INFO -   GET             /api/tasks/<task_id>                     -> tasks.get_task_route
+2025-09-21 02:34:01,269 - __main__ - INFO -   PUT             /api/tasks/<task_id>                     -> tasks.update_task_route
+2025-09-21 02:34:01,269 - __main__ - INFO -   DELETE          /api/tasks/<task_id>                     -> tasks.delete_task_route
+2025-09-21 02:34:01,269 - __main__ - INFO -   POST            /api/community/posts                     -> community.create_post
+2025-09-21 02:34:01,269 - __main__ - INFO -   GET             /api/community/posts                     -> community.get_posts_route
+2025-09-21 02:34:01,269 - __main__ - INFO -   POST            /api/community/posts/<post_id>/like      -> community.like_post
+2025-09-21 02:34:01,269 - __main__ - INFO -   POST            /api/community/posts/<post_id>/comment   -> community.comment_post
+2025-09-21 02:34:01,269 - __main__ - INFO -   DELETE          /api/community/posts/<post_id>           -> community.delete_post
+2025-09-21 02:34:01,269 - __main__ - INFO -   POST            /api/safety/risk-event                   -> safety.handle_risk_event
+2025-09-21 02:34:01,270 - __main__ - INFO -   GET             /api/home/<user_id>                      -> home.get_home_data
+2025-09-21 02:34:01,270 - __main__ - INFO -   GET             /api/friends/search                      -> friends.search_users
+2025-09-21 02:34:01,270 - __main__ - INFO -   POST            /api/friends/friend-request              -> friends.send_friend_request
+2025-09-21 02:34:01,270 - __main__ - INFO -   POST            /api/friends/friend-request/respond      -> friends.respond_to_friend_request
+2025-09-21 02:34:01,270 - __main__ - INFO -   GET             /api/friends/friends/<user_id>           -> friends.get_friends
+2025-09-21 02:34:01,270 - __main__ - INFO -   GET             /api/friends/friend-requests/<user_id>   -> friends.get_friend_requests
+2025-09-21 02:34:01,270 - __main__ - INFO -   GET             /                                        -> home
+2025-09-21 02:34:01,271 - __main__ - INFO -   GET             /health                                  -> health_check
+2025-09-21 02:34:01,271 - __main__ - INFO -   GET             /debug/routes                            -> debug_routes
+2025-09-21 02:34:01,271 - __main__ - INFO -   GET             /uploads/<path:filename>                 -> uploaded_file
+2025-09-21 02:34:01,271 - __main__ - INFO -   POST            /api/game/start                          -> game_start
+2025-09-21 02:34:01,272 - __main__ - INFO -   POST            /api/game/complete                       -> game_complete
+2025-09-21 02:34:01,272 - __main__ - INFO - ================================================================================
+
+2025-09-21 02:34:01,282 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.9.20.255:5000
+2025-09-21 02:34:01,283 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-09-21 02:34:01,283 - werkzeug - INFO -  * Restarting with stat
+2025-09-21 02:34:09,177 - __main__ - INFO - Current working directory: C:\Users\gouta\OneDrive\Desktop\mentall_wellness\backend\Mental-Wellness-database
+2025-09-21 02:34:09,178 - __main__ - INFO - Files in utils/: ['auth.py', 'db.py', 'moderation.py', 'serializer.py', '__init__.py']
+2025-09-21 02:34:09,178 - __main__ - INFO - Files in routes/: ['auth_routes.py', 'chat_api.py', 'chat_routes.py', 'community_routes.py', 'friends_routes.py', 'game_routes.py', 'home_routes.py', 'personality_routes.py', 'safety_routes.py', 'task_routes.py', '__init__.py']
+2025-09-21 02:34:09,179 - __main__ - INFO - Files in services/: ['chat_service.py', 'community_service.py', 'community_service_fallback.py', 'embedding.py', 'friends_service.py', 'game_service.py', 'ingest_data.py', 'personality_service.py', 'safety_service.py', 'task_service.py', '__init__.py']
+2025-09-21 02:34:09,179 - __main__ - INFO - Files in models/: ['chat.py', 'conversation.py', 'game.py', 'personality.py', 'post.py', 'risk_event.py', 'task.py', 'user.py', '__init__.py']
+2025-09-21 02:34:09,179 - __main__ - INFO - 
+============================== REGISTERED ROUTES ==============================
+2025-09-21 02:34:09,180 - __main__ - INFO -   GET             /static/<path:filename>                  -> static
+2025-09-21 02:34:09,180 - __main__ - INFO -   POST            /api/signup                              -> auth.signup
+2025-09-21 02:34:09,180 - __main__ - INFO -   POST            /api/login                               -> auth.login
+2025-09-21 02:34:09,180 - __main__ - INFO -   GET             /api/user/<user_id>                      -> auth.get_user_profile
+2025-09-21 02:34:09,180 - __main__ - INFO -   POST            /api/user/<user_id>/complete-onboarding  -> auth.complete_onboarding
+2025-09-21 02:34:09,181 - __main__ - INFO -   GET             /api/users/search                        -> auth.search_users
+2025-09-21 02:34:09,181 - __main__ - INFO -   GET             /api/personality/api/personality/questions -> personality.get_questions
+2025-09-21 02:34:09,181 - __main__ - INFO -   POST            /api/personality/api/personality/submit  -> personality.submit_personality
+2025-09-21 02:34:09,181 - __main__ - INFO -   POST            /api/game/start                          -> game.start_session
+2025-09-21 02:34:09,181 - __main__ - INFO -   POST            /api/game/action                         -> game.record_action
+2025-09-21 02:34:09,181 - __main__ - INFO -   POST            /api/game/check-placement                -> game.check_placement
+2025-09-21 02:34:09,182 - __main__ - INFO -   POST            /api/game/complete                       -> game.complete_level
+2025-09-21 02:34:09,182 - __main__ - INFO -   GET             /api/game/leaderboard                    -> game.get_leaderboard
+2025-09-21 02:34:09,182 - __main__ - INFO -   POST            /api/chat                                -> chat.chat
+2025-09-21 02:34:09,182 - __main__ - INFO -   GET             /api/chat/history/<user_id>              -> chat.get_history
+2025-09-21 02:34:09,182 - __main__ - INFO -   GET             /api/conversation/<conversation_id>      -> chat.get_conversation_messages
+2025-09-21 02:34:09,182 - __main__ - INFO -   GET             /api/tasks/ai-suggestion/<user_id>       -> tasks.get_ai_suggestion_route
+2025-09-21 02:34:09,182 - __main__ - INFO -   POST            /api/tasks                               -> tasks.create_task_route
+2025-09-21 02:34:09,183 - __main__ - INFO -   GET             /api/tasks/user/<user_id>                -> tasks.get_tasks_for_user_route
+2025-09-21 02:34:09,183 - __main__ - INFO -   GET             /api/tasks/<task_id>                     -> tasks.get_task_route
+2025-09-21 02:34:09,183 - __main__ - INFO -   PUT             /api/tasks/<task_id>                     -> tasks.update_task_route
+2025-09-21 02:34:09,183 - __main__ - INFO -   DELETE          /api/tasks/<task_id>                     -> tasks.delete_task_route
+2025-09-21 02:34:09,183 - __main__ - INFO -   POST            /api/community/posts                     -> community.create_post
+2025-09-21 02:34:09,184 - __main__ - INFO -   GET             /api/community/posts                     -> community.get_posts_route
+2025-09-21 02:34:09,184 - __main__ - INFO -   POST            /api/community/posts/<post_id>/like      -> community.like_post
+2025-09-21 02:34:09,184 - __main__ - INFO -   POST            /api/community/posts/<post_id>/comment   -> community.comment_post
+2025-09-21 02:34:09,184 - __main__ - INFO -   DELETE          /api/community/posts/<post_id>           -> community.delete_post
+2025-09-21 02:34:09,184 - __main__ - INFO -   POST            /api/safety/risk-event                   -> safety.handle_risk_event
+2025-09-21 02:34:09,185 - __main__ - INFO -   GET             /api/home/<user_id>                      -> home.get_home_data
+2025-09-21 02:34:09,185 - __main__ - INFO -   GET             /api/friends/search                      -> friends.search_users
+2025-09-21 02:34:09,185 - __main__ - INFO -   POST            /api/friends/friend-request              -> friends.send_friend_request
+2025-09-21 02:34:09,185 - __main__ - INFO -   POST            /api/friends/friend-request/respond      -> friends.respond_to_friend_request
+2025-09-21 02:34:09,185 - __main__ - INFO -   GET             /api/friends/friends/<user_id>           -> friends.get_friends
+2025-09-21 02:34:09,186 - __main__ - INFO -   GET             /api/friends/friend-requests/<user_id>   -> friends.get_friend_requests
+2025-09-21 02:34:09,186 - __main__ - INFO -   GET             /                                        -> home
+2025-09-21 02:34:09,186 - __main__ - INFO -   GET             /health                                  -> health_check
+2025-09-21 02:34:09,186 - __main__ - INFO -   GET             /debug/routes                            -> debug_routes
+2025-09-21 02:34:09,186 - __main__ - INFO -   GET             /uploads/<path:filename>                 -> uploaded_file
+2025-09-21 02:34:09,186 - __main__ - INFO -   POST            /api/game/start                          -> game_start
+2025-09-21 02:34:09,187 - __main__ - INFO -   POST            /api/game/complete                       -> game_complete
+2025-09-21 02:34:09,187 - __main__ - INFO - ================================================================================
+
+2025-09-21 02:34:12,598 - werkzeug - INFO -  * Detected change in 'C:\\Users\\gouta\\OneDrive\\Desktop\\mentall_wellness\\backend\\Mental-Wellness-database\\models\\chat.py', reloading
+2025-09-21 02:34:13,262 - werkzeug - INFO -  * Restarting with stat
+2025-09-21 02:34:20,591 - __main__ - INFO - Current working directory: C:\Users\gouta\OneDrive\Desktop\mentall_wellness\backend\Mental-Wellness-database
+2025-09-21 02:34:20,591 - __main__ - INFO - Files in utils/: ['auth.py', 'db.py', 'moderation.py', 'serializer.py', '__init__.py']
+2025-09-21 02:34:20,591 - __main__ - INFO - Files in routes/: ['auth_routes.py', 'chat_api.py', 'chat_routes.py', 'community_routes.py', 'friends_routes.py', 'game_routes.py', 'home_routes.py', 'personality_routes.py', 'safety_routes.py', 'task_routes.py', '__init__.py']
+2025-09-21 02:34:20,592 - __main__ - INFO - Files in services/: ['chat_service.py', 'community_service.py', 'community_service_fallback.py', 'embedding.py', 'friends_service.py', 'game_service.py', 'ingest_data.py', 'personality_service.py', 'safety_service.py', 'task_service.py', '__init__.py']
+2025-09-21 02:34:20,592 - __main__ - INFO - Files in models/: ['chat.py', 'conversation.py', 'game.py', 'personality.py', 'post.py', 'risk_event.py', 'task.py', 'user.py', '__init__.py']
+2025-09-21 02:34:20,592 - __main__ - INFO - 
+============================== REGISTERED ROUTES ==============================
+2025-09-21 02:34:20,592 - __main__ - INFO -   GET             /static/<path:filename>                  -> static
+2025-09-21 02:34:20,593 - __main__ - INFO -   POST            /api/signup                              -> auth.signup
+2025-09-21 02:34:20,593 - __main__ - INFO -   POST            /api/login                               -> auth.login
+2025-09-21 02:34:20,593 - __main__ - INFO -   GET             /api/user/<user_id>                      -> auth.get_user_profile
+2025-09-21 02:34:20,593 - __main__ - INFO -   POST            /api/user/<user_id>/complete-onboarding  -> auth.complete_onboarding
+2025-09-21 02:34:20,593 - __main__ - INFO -   GET             /api/users/search                        -> auth.search_users
+2025-09-21 02:34:20,593 - __main__ - INFO -   GET             /api/personality/api/personality/questions -> personality.get_questions
+2025-09-21 02:34:20,593 - __main__ - INFO -   POST            /api/personality/api/personality/submit  -> personality.submit_personality
+2025-09-21 02:34:20,593 - __main__ - INFO -   POST            /api/game/start                          -> game.start_session
+2025-09-21 02:34:20,593 - __main__ - INFO -   POST            /api/game/action                         -> game.record_action
+2025-09-21 02:34:20,593 - __main__ - INFO -   POST            /api/game/check-placement                -> game.check_placement
+2025-09-21 02:34:20,593 - __main__ - INFO -   POST            /api/game/complete                       -> game.complete_level
+2025-09-21 02:34:20,593 - __main__ - INFO -   GET             /api/game/leaderboard                    -> game.get_leaderboard
+2025-09-21 02:34:20,593 - __main__ - INFO -   POST            /api/chat                                -> chat.chat
+2025-09-21 02:34:20,594 - __main__ - INFO -   GET             /api/chat/history/<user_id>              -> chat.get_history
+2025-09-21 02:34:20,594 - __main__ - INFO -   GET             /api/conversation/<conversation_id>      -> chat.get_conversation_messages
+2025-09-21 02:34:20,594 - __main__ - INFO -   GET             /api/tasks/ai-suggestion/<user_id>       -> tasks.get_ai_suggestion_route
+2025-09-21 02:34:20,594 - __main__ - INFO -   POST            /api/tasks                               -> tasks.create_task_route
+2025-09-21 02:34:20,594 - __main__ - INFO -   GET             /api/tasks/user/<user_id>                -> tasks.get_tasks_for_user_route
+2025-09-21 02:34:20,594 - __main__ - INFO -   GET             /api/tasks/<task_id>                     -> tasks.get_task_route
+2025-09-21 02:34:20,594 - __main__ - INFO -   PUT             /api/tasks/<task_id>                     -> tasks.update_task_route
+2025-09-21 02:34:20,594 - __main__ - INFO -   DELETE          /api/tasks/<task_id>                     -> tasks.delete_task_route
+2025-09-21 02:34:20,594 - __main__ - INFO -   POST            /api/community/posts                     -> community.create_post
+2025-09-21 02:34:20,595 - __main__ - INFO -   GET             /api/community/posts                     -> community.get_posts_route
+2025-09-21 02:34:20,595 - __main__ - INFO -   POST            /api/community/posts/<post_id>/like      -> community.like_post
+2025-09-21 02:34:20,595 - __main__ - INFO -   POST            /api/community/posts/<post_id>/comment   -> community.comment_post
+2025-09-21 02:34:20,595 - __main__ - INFO -   DELETE          /api/community/posts/<post_id>           -> community.delete_post
+2025-09-21 02:34:20,595 - __main__ - INFO -   POST            /api/safety/risk-event                   -> safety.handle_risk_event
+2025-09-21 02:34:20,595 - __main__ - INFO -   GET             /api/home/<user_id>                      -> home.get_home_data
+2025-09-21 02:34:20,595 - __main__ - INFO -   GET             /api/friends/search                      -> friends.search_users
+2025-09-21 02:34:20,596 - __main__ - INFO -   POST            /api/friends/friend-request              -> friends.send_friend_request
+2025-09-21 02:34:20,596 - __main__ - INFO -   POST            /api/friends/friend-request/respond      -> friends.respond_to_friend_request
+2025-09-21 02:34:20,596 - __main__ - INFO -   GET             /api/friends/friends/<user_id>           -> friends.get_friends
+2025-09-21 02:34:20,596 - __main__ - INFO -   GET             /api/friends/friend-requests/<user_id>   -> friends.get_friend_requests
+2025-09-21 02:34:20,596 - __main__ - INFO -   GET             /                                        -> home
+2025-09-21 02:34:20,596 - __main__ - INFO -   GET             /health                                  -> health_check
+2025-09-21 02:34:20,596 - __main__ - INFO -   GET             /debug/routes                            -> debug_routes
+2025-09-21 02:34:20,596 - __main__ - INFO -   GET             /uploads/<path:filename>                 -> uploaded_file
+2025-09-21 02:34:20,596 - __main__ - INFO -   POST            /api/game/start                          -> game_start
+2025-09-21 02:34:20,596 - __main__ - INFO -   POST            /api/game/complete                       -> game_complete
+2025-09-21 02:34:20,596 - __main__ - INFO - ================================================================================
+
+2025-09-21 02:34:22,902 - werkzeug - INFO -  * Detected change in 'C:\\Users\\gouta\\OneDrive\\Desktop\\mentall_wellness\\backend\\Mental-Wellness-database\\models\\post.py', reloading
+2025-09-21 02:34:23,531 - werkzeug - INFO -  * Restarting with stat
+2025-09-21 02:34:29,979 - __main__ - INFO - Current working directory: C:\Users\gouta\OneDrive\Desktop\mentall_wellness\backend\Mental-Wellness-database
+2025-09-21 02:34:29,980 - __main__ - INFO - Files in utils/: ['auth.py', 'db.py', 'moderation.py', 'serializer.py', '__init__.py']
+2025-09-21 02:34:29,980 - __main__ - INFO - Files in routes/: ['auth_routes.py', 'chat_api.py', 'chat_routes.py', 'community_routes.py', 'friends_routes.py', 'game_routes.py', 'home_routes.py', 'personality_routes.py', 'safety_routes.py', 'task_routes.py', '__init__.py']
+2025-09-21 02:34:29,981 - __main__ - INFO - Files in services/: ['chat_service.py', 'community_service.py', 'community_service_fallback.py', 'embedding.py', 'friends_service.py', 'game_service.py', 'ingest_data.py', 'personality_service.py', 'safety_service.py', 'task_service.py', '__init__.py']
+2025-09-21 02:34:29,981 - __main__ - INFO - Files in models/: ['chat.py', 'conversation.py', 'game.py', 'personality.py', 'post.py', 'risk_event.py', 'task.py', 'user.py', '__init__.py']
+2025-09-21 02:34:29,981 - __main__ - INFO - 
+============================== REGISTERED ROUTES ==============================
+2025-09-21 02:34:29,981 - __main__ - INFO -   GET             /static/<path:filename>                  -> static
+2025-09-21 02:34:29,982 - __main__ - INFO -   POST            /api/signup                              -> auth.signup
+2025-09-21 02:34:29,982 - __main__ - INFO -   POST            /api/login                               -> auth.login
+2025-09-21 02:34:29,982 - __main__ - INFO -   GET             /api/user/<user_id>                      -> auth.get_user_profile
+2025-09-21 02:34:29,982 - __main__ - INFO -   POST            /api/user/<user_id>/complete-onboarding  -> auth.complete_onboarding
+2025-09-21 02:34:29,982 - __main__ - INFO -   GET             /api/users/search                        -> auth.search_users
+2025-09-21 02:34:29,982 - __main__ - INFO -   GET             /api/personality/api/personality/questions -> personality.get_questions
+2025-09-21 02:34:29,982 - __main__ - INFO -   POST            /api/personality/api/personality/submit  -> personality.submit_personality
+2025-09-21 02:34:29,983 - __main__ - INFO -   POST            /api/game/start                          -> game.start_session
+2025-09-21 02:34:29,983 - __main__ - INFO -   POST            /api/game/action                         -> game.record_action
+2025-09-21 02:34:29,983 - __main__ - INFO -   POST            /api/game/check-placement                -> game.check_placement
+2025-09-21 02:34:29,983 - __main__ - INFO -   POST            /api/game/complete                       -> game.complete_level
+2025-09-21 02:34:29,983 - __main__ - INFO -   GET             /api/game/leaderboard                    -> game.get_leaderboard
+2025-09-21 02:34:29,983 - __main__ - INFO -   POST            /api/chat                                -> chat.chat
+2025-09-21 02:34:29,984 - __main__ - INFO -   GET             /api/chat/history/<user_id>              -> chat.get_history
+2025-09-21 02:34:29,984 - __main__ - INFO -   GET             /api/conversation/<conversation_id>      -> chat.get_conversation_messages
+2025-09-21 02:34:29,984 - __main__ - INFO -   GET             /api/tasks/ai-suggestion/<user_id>       -> tasks.get_ai_suggestion_route
+2025-09-21 02:34:29,984 - __main__ - INFO -   POST            /api/tasks                               -> tasks.create_task_route
+2025-09-21 02:34:29,984 - __main__ - INFO -   GET             /api/tasks/user/<user_id>                -> tasks.get_tasks_for_user_route
+2025-09-21 02:34:29,985 - __main__ - INFO -   GET             /api/tasks/<task_id>                     -> tasks.get_task_route
+2025-09-21 02:34:29,985 - __main__ - INFO -   PUT             /api/tasks/<task_id>                     -> tasks.update_task_route
+2025-09-21 02:34:29,985 - __main__ - INFO -   DELETE          /api/tasks/<task_id>                     -> tasks.delete_task_route
+2025-09-21 02:34:29,985 - __main__ - INFO -   POST            /api/community/posts                     -> community.create_post
+2025-09-21 02:34:29,986 - __main__ - INFO -   GET             /api/community/posts                     -> community.get_posts_route
+2025-09-21 02:34:29,986 - __main__ - INFO -   POST            /api/community/posts/<post_id>/like      -> community.like_post
+2025-09-21 02:34:29,986 - __main__ - INFO -   POST            /api/community/posts/<post_id>/comment   -> community.comment_post
+2025-09-21 02:34:29,986 - __main__ - INFO -   DELETE          /api/community/posts/<post_id>           -> community.delete_post
+2025-09-21 02:34:29,986 - __main__ - INFO -   POST            /api/safety/risk-event                   -> safety.handle_risk_event
+2025-09-21 02:34:29,987 - __main__ - INFO -   GET             /api/home/<user_id>                      -> home.get_home_data
+2025-09-21 02:34:29,987 - __main__ - INFO -   GET             /api/friends/search                      -> friends.search_users
+2025-09-21 02:34:29,987 - __main__ - INFO -   POST            /api/friends/friend-request              -> friends.send_friend_request
+2025-09-21 02:34:29,987 - __main__ - INFO -   POST            /api/friends/friend-request/respond      -> friends.respond_to_friend_request
+2025-09-21 02:34:29,987 - __main__ - INFO -   GET             /api/friends/friends/<user_id>           -> friends.get_friends
+2025-09-21 02:34:29,988 - __main__ - INFO -   GET             /api/friends/friend-requests/<user_id>   -> friends.get_friend_requests
+2025-09-21 02:34:29,988 - __main__ - INFO -   GET             /                                        -> home
+2025-09-21 02:34:29,988 - __main__ - INFO -   GET             /health                                  -> health_check
+2025-09-21 02:34:29,988 - __main__ - INFO -   GET             /debug/routes                            -> debug_routes
+2025-09-21 02:34:29,988 - __main__ - INFO -   GET             /uploads/<path:filename>                 -> uploaded_file
+2025-09-21 02:34:29,988 - __main__ - INFO -   POST            /api/game/start                          -> game_start
+2025-09-21 02:34:29,988 - __main__ - INFO -   POST            /api/game/complete                       -> game_complete
+2025-09-21 02:34:29,989 - __main__ - INFO - ================================================================================
+
+2025-09-21 02:34:42,115 - werkzeug - INFO -  * Detected change in 'C:\\Users\\gouta\\OneDrive\\Desktop\\mentall_wellness\\backend\\Mental-Wellness-database\\routes\\auth_routes.py', reloading
+2025-09-21 02:34:42,663 - werkzeug - INFO -  * Restarting with stat
+2025-09-21 02:34:53,011 - __main__ - INFO - Current working directory: C:\Users\gouta\OneDrive\Desktop\mentall_wellness\backend\Mental-Wellness-database
+2025-09-21 02:34:53,012 - __main__ - INFO - Files in utils/: ['auth.py', 'db.py', 'moderation.py', 'serializer.py', '__init__.py']
+2025-09-21 02:34:53,012 - __main__ - INFO - Files in routes/: ['auth_routes.py', 'chat_api.py', 'chat_routes.py', 'community_routes.py', 'friends_routes.py', 'game_routes.py', 'home_routes.py', 'personality_routes.py', 'safety_routes.py', 'task_routes.py', '__init__.py']
+2025-09-21 02:34:53,013 - __main__ - INFO - Files in services/: ['chat_service.py', 'community_service.py', 'community_service_fallback.py', 'embedding.py', 'friends_service.py', 'game_service.py', 'ingest_data.py', 'personality_service.py', 'safety_service.py', 'task_service.py', '__init__.py']
+2025-09-21 02:34:53,013 - __main__ - INFO - Files in models/: ['chat.py', 'conversation.py', 'game.py', 'personality.py', 'post.py', 'risk_event.py', 'task.py', 'user.py', '__init__.py']
+2025-09-21 02:34:53,013 - __main__ - INFO - 
+============================== REGISTERED ROUTES ==============================
+2025-09-21 02:34:53,013 - __main__ - INFO -   GET             /static/<path:filename>                  -> static
+2025-09-21 02:34:53,014 - __main__ - INFO -   POST            /api/signup                              -> auth.signup
+2025-09-21 02:34:53,014 - __main__ - INFO -   POST            /api/login                               -> auth.login
+2025-09-21 02:34:53,014 - __main__ - INFO -   GET             /api/user/<user_id>                      -> auth.get_user_profile
+2025-09-21 02:34:53,014 - __main__ - INFO -   GET             /api/users/search                        -> auth.search_users
+2025-09-21 02:34:53,014 - __main__ - INFO -   GET             /api/personality/api/personality/questions -> personality.get_questions
+2025-09-21 02:34:53,014 - __main__ - INFO -   POST            /api/personality/api/personality/submit  -> personality.submit_personality
+2025-09-21 02:34:53,014 - __main__ - INFO -   POST            /api/game/start                          -> game.start_session
+2025-09-21 02:34:53,015 - __main__ - INFO -   POST            /api/game/action                         -> game.record_action
+2025-09-21 02:34:53,015 - __main__ - INFO -   POST            /api/game/check-placement                -> game.check_placement
+2025-09-21 02:34:53,015 - __main__ - INFO -   POST            /api/game/complete                       -> game.complete_level
+2025-09-21 02:34:53,015 - __main__ - INFO -   GET             /api/game/leaderboard                    -> game.get_leaderboard
+2025-09-21 02:34:53,015 - __main__ - INFO -   POST            /api/chat                                -> chat.chat
+2025-09-21 02:34:53,015 - __main__ - INFO -   GET             /api/chat/history/<user_id>              -> chat.get_history
+2025-09-21 02:34:53,016 - __main__ - INFO -   GET             /api/conversation/<conversation_id>      -> chat.get_conversation_messages
+2025-09-21 02:34:53,016 - __main__ - INFO -   GET             /api/tasks/ai-suggestion/<user_id>       -> tasks.get_ai_suggestion_route
+2025-09-21 02:34:53,016 - __main__ - INFO -   POST            /api/tasks                               -> tasks.create_task_route
+2025-09-21 02:34:53,016 - __main__ - INFO -   GET             /api/tasks/user/<user_id>                -> tasks.get_tasks_for_user_route
+2025-09-21 02:34:53,016 - __main__ - INFO -   GET             /api/tasks/<task_id>                     -> tasks.get_task_route
+2025-09-21 02:34:53,016 - __main__ - INFO -   PUT             /api/tasks/<task_id>                     -> tasks.update_task_route
+2025-09-21 02:34:53,016 - __main__ - INFO -   DELETE          /api/tasks/<task_id>                     -> tasks.delete_task_route
+2025-09-21 02:34:53,016 - __main__ - INFO -   POST            /api/community/posts                     -> community.create_post
+2025-09-21 02:34:53,017 - __main__ - INFO -   GET             /api/community/posts                     -> community.get_posts_route
+2025-09-21 02:34:53,017 - __main__ - INFO -   POST            /api/community/posts/<post_id>/like      -> community.like_post
+2025-09-21 02:34:53,017 - __main__ - INFO -   POST            /api/community/posts/<post_id>/comment   -> community.comment_post
+2025-09-21 02:34:53,017 - __main__ - INFO -   DELETE          /api/community/posts/<post_id>           -> community.delete_post
+2025-09-21 02:34:53,017 - __main__ - INFO -   POST            /api/safety/risk-event                   -> safety.handle_risk_event
+2025-09-21 02:34:53,017 - __main__ - INFO -   GET             /api/home/<user_id>                      -> home.get_home_data
+2025-09-21 02:34:53,017 - __main__ - INFO -   GET             /api/friends/search                      -> friends.search_users
+2025-09-21 02:34:53,017 - __main__ - INFO -   POST            /api/friends/friend-request              -> friends.send_friend_request
+2025-09-21 02:34:53,018 - __main__ - INFO -   POST            /api/friends/friend-request/respond      -> friends.respond_to_friend_request
+2025-09-21 02:34:53,018 - __main__ - INFO -   GET             /api/friends/friends/<user_id>           -> friends.get_friends
+2025-09-21 02:34:53,018 - __main__ - INFO -   GET             /api/friends/friend-requests/<user_id>   -> friends.get_friend_requests
+2025-09-21 02:34:53,018 - __main__ - INFO -   GET             /                                        -> home
+2025-09-21 02:34:53,018 - __main__ - INFO -   GET             /health                                  -> health_check
+2025-09-21 02:34:53,018 - __main__ - INFO -   GET             /debug/routes                            -> debug_routes
+2025-09-21 02:34:53,018 - __main__ - INFO -   GET             /uploads/<path:filename>                 -> uploaded_file
+2025-09-21 02:34:53,018 - __main__ - INFO -   POST            /api/game/start                          -> game_start
+2025-09-21 02:34:53,018 - __main__ - INFO -   POST            /api/game/complete                       -> game_complete
+2025-09-21 02:34:53,018 - __main__ - INFO - ================================================================================
+
+2025-09-21 02:34:55,382 - werkzeug - INFO -  * Detected change in 'C:\\Users\\gouta\\OneDrive\\Desktop\\mentall_wellness\\backend\\Mental-Wellness-database\\app.py', reloading
+2025-09-21 02:34:55,876 - werkzeug - INFO -  * Restarting with stat
