@@ -48,8 +48,9 @@ export default function Signup() {
         throw new Error(data.error || 'Failed to sign up');
       }
 
-      // On successful signup, redirect to chatbot with the new user ID
-      router.push(`/chatbot?userId=${data.userId}`);
+      // On successful signup, save userId and redirect to the first onboarding step
+      sessionStorage.setItem('userId', data.userId);
+      router.push(`/onboarding/personality-test?userId=${data.userId}`);
 
     } catch (err: any) {
       setError(err.message);

@@ -60,7 +60,7 @@ export default function Login() {
       }
 
       // On successful login, redirect to chatbot with the user ID
-      router.push(`/chatbot?userId=${data.userId}`);
+      router.push(`/home?userId=${data.userId}`);
 
     } catch (err: any) {
       setError(err.message);
