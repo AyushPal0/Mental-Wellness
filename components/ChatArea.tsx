@@ -17,6 +17,7 @@ interface ChatAreaProps {
     onConversationStarted: (newConversationId: string) => void;
 }
 
+// --- NEW: A more engaging welcome screen for when the chat is empty ---
 const WelcomeScreen = () => {
     const suggestionCards = [
         "Create a guided meditation script for focus",
@@ -173,17 +174,17 @@ export default function ChatArea({ userId, conversationId, onConversationStarted
 
     return (
         <main className="flex-1 flex flex-col bg-white/10 backdrop-blur-3xl h-full rounded-2xl border border-white/20 shadow-lg overflow-hidden">
-            {/* The header that was here is now gone. */}
-            
             <div className="flex-1 overflow-y-auto p-4 md:p-6 space-y-6">
                 {messages.length === 0 && !isLoading ? (
                     <WelcomeScreen />
                 ) : (
                     messages.map((msg) => (
                         <div key={msg.id} className={`flex items-start gap-4 max-w-4xl mx-auto`}>
+                             {/* --- ENHANCEMENT: Swapped out generic icons for better avatars --- */}
                              <div className={`flex-shrink-0 h-8 w-8 rounded-full flex items-center justify-center ${msg.sender === 'user' ? 'bg-white/20' : 'bg-gradient-to-br from-purple-500 to-blue-500'}`}>
                                  {msg.sender === 'user' ? <User size={20} className="text-white" /> : <Image src="/image.jpg" alt="MindfulAI Logo" width={20} height={20} />}
                              </div>
+                            {/* --- ENHANCEMENT: Better styling for message bubbles --- */}
                             <div className="flex-1 bg-white/10 p-4 rounded-xl shadow-md min-h-[70px]">
                                 <p className="font-semibold text-white mb-1">{msg.sender === 'user' ? 'You' : 'MindfulAI'}</p>
                                 <p className="text-white whitespace-pre-wrap">

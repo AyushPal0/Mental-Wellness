@@ -5,8 +5,9 @@ import { motion } from 'framer-motion';
 import { useAuth } from '@/hooks/use-auth';
 import { useRouter } from 'next/navigation';
 import { Loader2 } from 'lucide-react';
+// 1. Import the provider
+import { OnboardingProvider } from '@/components/context/OnboardingContext';
 
-// This component provides the consistent "liquid glass" UI for all onboarding steps.
 const VideoBackground = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
   useEffect(() => {
@@ -21,7 +22,6 @@ const VideoBackground = () => {
   return (
     <div className="absolute inset-0 w-full h-full z-0 overflow-hidden">
       <video ref={videoRef} className="absolute min-w-full min-h-full w-auto h-auto top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 object-cover">
-        {/* Using a different video for onboarding to distinguish it visually */}
         <source src="/2882620-hd_1920_1080_30fps.mp4" type="video/mp4" />
       </video>
       <div className="absolute inset-0 bg-black bg-opacity-50"></div>
@@ -29,20 +29,16 @@ const VideoBackground = () => {
   );
 };
 
-// This is the main layout component for the /onboarding route.
-// It's a Client Component because it uses hooks for auth checking and routing.
 export default function OnboardingLayout({ children }: { children: React.ReactNode }) {
   const { userId, isLoading } = useAuth();
   const router = useRouter();
 
   useEffect(() => {
-    // This effect ensures that if a user is not logged in, they are redirected away from the onboarding flow.
     if (!isLoading && !userId) {
       router.push('/login');
     }
   }, [userId, isLoading, router]);
 
-  // While the auth state is being determined, show a loading spinner.
   if (isLoading) {
     return (
       <main className="h-[100dvh] w-full relative">
@@ -54,8 +50,6 @@ export default function OnboardingLayout({ children }: { children: React.ReactNo
     );
   }
 
-  // Once the user is authenticated, render the onboarding UI shell.
-  // The `children` prop will be the specific page component for each step (e.g., personality-test/page.tsx).
   return (
     <main className="h-[100dvh] w-full overflow-hidden relative">
       <VideoBackground />
@@ -66,10 +60,12 @@ export default function OnboardingLayout({ children }: { children: React.ReactNo
           transition={{ duration: 0.5, ease: "easeOut" }}
           className="bg-black/50 backdrop-blur-xl rounded-2xl border border-white/20 p-6 sm:p-8 w-full max-w-4xl h-[90vh] flex flex-col"
         >
-          {children}
+          {/* 2. Wrap the children with the provider */}
+          <OnboardingProvider>
+            {children}
+          </OnboardingProvider>
         </motion.div>
       </div>
     </main>
   );
 }
-

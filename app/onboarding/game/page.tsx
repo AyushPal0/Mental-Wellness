@@ -51,7 +51,7 @@ function OnboardingGameContent() {
         if (!userId) return;
         setIsLoading(true);
         await updateStatus('game', 'completed');
-        router.push(`/onboarding/task?userId=${userId}`);
+        router.push(`/onboarding/tasks?userId=${userId}`);
     };
 
     const getGameInfo = (game: string | null) => {
@@ -91,7 +91,9 @@ function OnboardingGameContent() {
                 {gameInfo.description} Based on our chat, we think this will be a great activity for you.
             </motion.p>
             <motion.div initial={{scale:0.8, opacity:0}} animate={{scale:1, opacity:1}} transition={{delay:0.7}} className="mt-8 flex flex-col sm:flex-row gap-4">
-                <Link href={`/game/play?game=${assignedGame}&userId=${userId}`} passHref>
+                {/* --- THIS IS THE FIX --- */}
+                {/* We add `&onboarding=true` to the URL to signal that this is part of the onboarding flow. */}
+                <Link href={`/game/play?game=${assignedGame}&userId=${userId}&onboarding=true`} passHref>
                     <Button size="lg" className="bg-purple-600 hover:bg-purple-700 text-white font-bold h-12 px-8">
                         <Play className="mr-2 h-5 w-5"/>
                         Play Now
