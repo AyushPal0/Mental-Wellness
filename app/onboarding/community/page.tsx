@@ -49,20 +49,35 @@ function OnboardingCommunityContent() {
     if (authLoading) {
         return <div className="flex h-full w-full items-center justify-center"><Loader2 className="h-8 w-8 animate-spin"/></div>;
     }
+    
+    const containerVariants = {
+        hidden: { opacity: 0 },
+        visible: { opacity: 1, transition: { staggerChildren: 0.2 } }
+    };
+
+    const itemVariants = {
+        hidden: { y: 20, opacity: 0 },
+        visible: { y: 0, opacity: 1 }
+    };
 
     return (
-        <div className="flex flex-col h-full items-center justify-center text-center text-white">
-            <motion.div initial={{scale:0.5, opacity:0}} animate={{scale:1, opacity:1}} transition={{delay:0.2, type: 'spring'}}>
+        <motion.div 
+            className="flex flex-col h-full items-center justify-center text-center text-white"
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+        >
+            <motion.div variants={itemVariants}>
                 <MessageSquarePlus size={64} className="mx-auto text-green-400" />
             </motion.div>
             <motion.h1 
-                initial={{y: 20, opacity:0}} animate={{y:0, opacity:1}} transition={{delay:0.4}}
-                className="text-3xl font-bold mt-6"
+                variants={itemVariants}
+                className="text-3xl md:text-4xl font-bold mt-6"
             >
-                Introduce Yourself to the Community
+                Introduce Yourself
             </motion.h1>
             <motion.p 
-                initial={{y: 20, opacity:0}} animate={{y:0, opacity:1}} transition={{delay:0.5}}
+                variants={itemVariants}
                 className="text-white/70 mt-2 max-w-md"
             >
                 Sharing a little about yourself is a great way to connect. What's one thing you'd like others to know?
@@ -70,7 +85,7 @@ function OnboardingCommunityContent() {
             
             <motion.form 
                 onSubmit={handleSubmit}
-                initial={{y: 20, opacity:0}} animate={{y:0, opacity:1}} transition={{delay:0.6}}
+                variants={itemVariants}
                 className="mt-8 w-full max-w-md"
             >
                 <textarea
@@ -78,20 +93,23 @@ function OnboardingCommunityContent() {
                     onChange={(e) => setPostContent(e.target.value)}
                     placeholder="e.g., Hi everyone! I'm here to learn more about mindfulness..."
                     className="w-full bg-black/20 border border-white/20 rounded-2xl h-32 p-4 text-white placeholder:text-white/50 focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all"
+                    rows={4}
                 />
                 <Button 
                     type="submit" 
                     size="lg" 
                     disabled={isSubmitting || !postContent.trim()}
-                    className="mt-4 bg-purple-600 hover:bg-purple-700 text-white font-bold h-12 px-8 w-full"
+                    className="mt-4 bg-purple-600 hover:bg-purple-700 text-white font-bold h-12 px-8 w-full shadow-lg shadow-purple-500/30"
                 >
                     {isSubmitting ? <Loader2 className="animate-spin" /> : "Post & Finish Onboarding"}
                 </Button>
             </motion.form>
-            <Button onClick={handleSkip} variant="ghost" className="text-white/60 hover:text-white mt-4">
-                Skip and go to Home
-            </Button>
-        </div>
+            <motion.div variants={itemVariants}>
+                <Button onClick={handleSkip} variant="ghost" className="text-white/60 hover:text-white mt-4">
+                    Skip and go to Home
+                </Button>
+            </motion.div>
+        </motion.div>
     );
 }
 

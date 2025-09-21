@@ -6,7 +6,7 @@ import { useAuth } from '@/hooks/use-auth';
 import { useOnboarding } from '@/components/context/OnboardingContext';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
-import { Loader2, Gamepad2, Play } from 'lucide-react';
+import { Loader2, Gamepad2, Play, SkipForward } from 'lucide-react';
 import Link from 'next/link';
 
 function OnboardingGameContent() {
@@ -28,7 +28,6 @@ function OnboardingGameContent() {
                     if (data.game) {
                         setAssignedGame(data.game);
                     } else {
-                        // Handle case where game is not assigned, maybe assign it now
                         const assignResponse = await fetch(`http://127.0.0.1:5000/api/onboarding/assign-game`, {
                             method: 'POST',
                             headers: { 'Content-Type': 'application/json' },
@@ -44,10 +43,10 @@ function OnboardingGameContent() {
                 setIsLoading(false);
             }
         };
-        fetchAssignedGame();
+        if(userId) fetchAssignedGame();
     }, [userId]);
 
-    const handleGameComplete = async () => {
+    const handleSkip = async () => {
         if (!userId) return;
         setIsLoading(true);
         await updateStatus('game', 'completed');
@@ -73,40 +72,62 @@ function OnboardingGameContent() {
 
     const gameInfo = getGameInfo(assignedGame);
 
+    const containerVariants = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: { staggerChildren: 0.2 }
+        }
+    };
+
+    const itemVariants = {
+        hidden: { y: 20, opacity: 0 },
+        visible: { y: 0, opacity: 1 }
+    };
+
     return (
-        <div className="flex flex-col h-full items-center justify-center text-center text-white">
-            <motion.div initial={{scale:0.5, opacity:0}} animate={{scale:1, opacity:1}} transition={{delay:0.2, type: 'spring'}}>
+        <motion.div 
+            className="flex flex-col h-full items-center justify-center text-center text-white"
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+        >
+            <motion.div variants={itemVariants} className="mb-4">
                 <Gamepad2 size={64} className="mx-auto text-purple-400" />
             </motion.div>
             <motion.h1 
-                initial={{y: 20, opacity:0}} animate={{y:0, opacity:1}} transition={{delay:0.4}}
-                className="text-3xl font-bold mt-6"
+                variants={itemVariants}
+                className="text-3xl md:text-4xl font-bold mt-4"
             >
-                Your Recommended Game: {gameInfo.name}
+                Your Recommended Game
             </motion.h1>
             <motion.p 
-                initial={{y: 20, opacity:0}} animate={{y:0, opacity:1}} transition={{delay:0.5}}
-                className="text-white/70 mt-2 max-w-md"
+                variants={itemVariants}
+                className="text-2xl font-semibold text-purple-300 mt-2"
+            >
+                {gameInfo.name}
+            </motion.p>
+            <motion.p 
+                variants={itemVariants}
+                className="text-white/70 mt-4 max-w-md"
             >
                 {gameInfo.description} Based on our chat, we think this will be a great activity for you.
             </motion.p>
-            <motion.div initial={{scale:0.8, opacity:0}} animate={{scale:1, opacity:1}} transition={{delay:0.7}} className="mt-8 flex flex-col sm:flex-row gap-4">
-                {/* --- THIS IS THE FIX --- */}
-                {/* We add `&onboarding=true` to the URL to signal that this is part of the onboarding flow. */}
+            <motion.div variants={itemVariants} className="mt-10 flex flex-col sm:flex-row gap-4">
                 <Link href={`/game/play?game=${assignedGame}&userId=${userId}&onboarding=true`} passHref>
-                    <Button size="lg" className="bg-purple-600 hover:bg-purple-700 text-white font-bold h-12 px-8">
+                    <Button size="lg" className="bg-purple-600 hover:bg-purple-700 text-white font-bold h-12 px-8 w-full sm:w-auto shadow-lg shadow-purple-500/30">
                         <Play className="mr-2 h-5 w-5"/>
                         Play Now
                     </Button>
                 </Link>
-                <Button size="lg" onClick={handleGameComplete} variant="ghost" className="text-white/70 hover:text-white hover:bg-white/10 h-12 px-8">
+                <Button size="lg" onClick={handleSkip} variant="ghost" className="text-white/70 hover:text-white hover:bg-white/10 h-12 px-8 w-full sm:w-auto">
+                     <SkipForward className="mr-2 h-5 w-5" />
                     Skip
                 </Button>
             </motion.div>
-        </div>
+        </motion.div>
     );
 }
-
 
 export default function OnboardingGamePage() {
     return (

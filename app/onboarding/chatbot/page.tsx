@@ -45,7 +45,6 @@ function OnboardingChatbotContent() {
 
         await updateStatus('chatbot_interaction', 'completed');
         
-        // Call backend to assign a game
         await fetch(`http://127.0.0.1:5000/api/onboarding/assign-game`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -61,23 +60,38 @@ function OnboardingChatbotContent() {
 
     return (
         <div className="flex flex-col h-full">
-            <div className="flex-shrink-0 text-center mb-4">
+            <motion.div 
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                className="flex-shrink-0 text-center mb-4"
+            >
                 <h1 className="text-2xl font-bold text-white">Let's Talk</h1>
                 <p className="text-white/70">Chat with MindfulAI for a few minutes to help us understand you better.</p>
                 <div className="mt-2 text-lg font-mono bg-white/10 rounded-full px-4 py-1 inline-block">
                     {Math.floor(timeLeft / 60)}:{(timeLeft % 60).toString().padStart(2, '0')}
                 </div>
-            </div>
+            </motion.div>
             
-            <div className="flex-grow min-h-0">
+            <motion.div 
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                className="flex-grow min-h-0"
+            >
                 <ChatArea 
                     userId={userId!} 
                     conversationId={conversationId}
                     onConversationStarted={setConversationId}
                 />
-            </div>
+            </motion.div>
             
-            <motion.div initial={{opacity: 0}} animate={{opacity: 1}} transition={{delay: 0.5}} className="flex-shrink-0 text-center mt-4">
+            <motion.div 
+                initial={{ opacity: 0 }} 
+                animate={{ opacity: 1 }} 
+                transition={{ delay: 0.5 }} 
+                className="flex-shrink-0 text-center mt-4"
+            >
                  <Button variant="ghost" onClick={handleCompletion} className="text-white/60 hover:text-white">
                     Skip for now
                 </Button>

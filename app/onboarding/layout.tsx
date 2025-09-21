@@ -1,12 +1,12 @@
 'use client';
 
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import { useAuth } from '@/hooks/use-auth';
 import { useRouter } from 'next/navigation';
 import { Loader2 } from 'lucide-react';
-// 1. Import the provider
-import { OnboardingProvider } from '@/components/context/OnboardingContext';
+// Import the context directly, not the provider component
+import { OnboardingContext } from '@/components/context/OnboardingContext';
 
 const VideoBackground = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -38,8 +38,23 @@ export default function OnboardingLayout({ children }: { children: React.ReactNo
       router.push('/login');
     }
   }, [userId, isLoading, router]);
+  
+  // Define the context value's logic directly in the layout
+  const updateStatus = useCallback(async (step: string, status: string) => {
+    if (!userId) return;
+    try {
+      await fetch('http://127.0.0.1:5000/api/onboarding/update', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ user_id: userId, step, status }),
+      });
+    } catch (error) {
+      console.error(`Failed to update onboarding step ${step}:`, error);
+    }
+  }, [userId]);
 
-  if (isLoading) {
+  // Show a loading screen until the user ID is confirmed
+  if (isLoading || !userId) {
     return (
       <main className="h-[100dvh] w-full relative">
         <VideoBackground />
@@ -50,22 +65,22 @@ export default function OnboardingLayout({ children }: { children: React.ReactNo
     );
   }
 
+  // Once loaded, provide the context to all child pages
   return (
-    <main className="h-[100dvh] w-full overflow-hidden relative">
-      <VideoBackground />
-      <div className="relative z-10 h-full flex items-center justify-center p-4">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5, ease: "easeOut" }}
-          className="bg-black/50 backdrop-blur-xl rounded-2xl border border-white/20 p-6 sm:p-8 w-full max-w-4xl h-[90vh] flex flex-col"
-        >
-          {/* 2. Wrap the children with the provider */}
-          <OnboardingProvider>
+    <OnboardingContext.Provider value={{ updateStatus }}>
+      <main className="h-[100dvh] w-full overflow-hidden relative">
+        <VideoBackground />
+        <div className="relative z-10 h-full flex items-center justify-center p-4">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+            className="bg-black/30 backdrop-blur-xl rounded-2xl border border-white/10 p-6 sm:p-8 w-full max-w-4xl h-[90vh] flex flex-col shadow-2xl"
+          >
             {children}
-          </OnboardingProvider>
-        </motion.div>
-      </div>
-    </main>
+          </motion.div>
+        </div>
+      </main>
+    </OnboardingContext.Provider>
   );
 }
